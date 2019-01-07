@@ -39,9 +39,15 @@
     "class-methods-use-this": 0,
     "import/no-unresolved": [
       "error",
-      { "commonjs": true}
+      {
+        "commonjs": true
+      }
     ],
-    "max-len": ["error", 80, 2],
+    "max-len": [
+      "error",
+      80,
+      2
+    ],
     "new-cap": "error",
     "no-param-reassign": "off",
     "no-trailing-spaces": "warn",
@@ -61,7 +67,14 @@
         }
       }
     ],
-    "semi": ["error", "always"],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
     "valid-jsdoc": [
       "error",
       {

@@ -1,18 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import routes from '../routes';
 
-/**
- * @description The App component
- */
-class App extends Component {
-/**
- * @returns {JSX}- Returns the app component
- */
-  render() {
-    return (
-          <div>
-            <h2>Welcome to Authors Haven</h2>
-          </div>
-    );
-  }
-}
+const App = () => (
+  <BrowserRouter>
+    <Switch>
+      {routes.map(route => (
+        <Route
+          path={route.path}
+          key={route.name}
+          component={route.component}
+          exact
+        />
+      ))}
+    </Switch>
+  </BrowserRouter>
+);
+
 export default App;
