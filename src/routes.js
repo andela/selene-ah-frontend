@@ -1,8 +1,10 @@
-import Main from './components/Main';
-import Home from './containers/Home';
+import Hello from './containers/Hello';
+// import Main from ./components/Main';
+
 
 const routes = [
-  { path: '/main', component: Main, name: 'main' },
-  { path: '/', component: Home, name: 'home' },
+  {
+    path: '/hello', component: Hello, name: 'hello', exact: false,
+  },
 ];
 export default routes;
