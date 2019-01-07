@@ -1,13 +1,18 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
+/**
+ * @description The App component
+ */
 class App extends Component {
-    render() {
-        return (
+/**
+ * @returns {JSX}- Returns the app component
+ */
+  render() {
+    return (
           <div>
-            <h2>Welcome to Author's Haven</h2>
+            <h2>Welcome to Authors Haven</h2>
           </div>
-        );
-    }
+    );
+  }
 }
-
 export default App;
