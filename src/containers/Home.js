@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { Component } from 'react'
 
 class Home extends Component {
@@ -10,5 +11,10 @@ class Home extends Component {
     )
   }
 }
+=======
+import React from 'react'
+
+const Home = () => <div>Felling at Home</div>
+>>>>>>> router configured [delivers ##161779819]
 
 export default Home
