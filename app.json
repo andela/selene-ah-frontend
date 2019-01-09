@@ -1,0 +1,16 @@
+{
+  "addons": [
+
+  ],
+  "buildpacks": [
+
+  ],
+  "env": {
+  },
+  "formation": {
+  },
+  "name": "selene-ah-frontend",
+  "scripts": {
+  },
+  "stack": "heroku-18"
+}
