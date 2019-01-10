@@ -1,0 +1,25 @@
+<svg id="google" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fbbb00;
+      }
+
+      .cls-2 {
+        fill: #518ef8;
+      }
+
+      .cls-3 {
+        fill: #28b446;
+      }
+
+      .cls-4 {
+        fill: #f14336;
+      }
+    </style>
+  </defs>
+  <path id="Path_548" data-name="Path 548" class="cls-1" d="M6.205,13.681l-.975,3.64-3.563.073a14.034,14.034,0,0,1-.1-13.074L4.737,4.9,6.126,8.056a8.322,8.322,0,0,0,.079,5.624Z" transform="translate(0 3.24)"/>
+  <path id="Path_549" data-name="Path 549" class="cls-2" d="M21.622,6.505a14,14,0,0,1-4.991,13.534l-4-.2-.565-3.53a8.344,8.344,0,0,0,3.591-4.261H8.176V6.505Z" transform="translate(6.131 4.879)"/>
+  <path id="Path_550" data-name="Path 550" class="cls-3" d="M22.048,17.664a14,14,0,0,1-21.1-4.282L5.49,9.67a8.324,8.324,0,0,0,12,4.263l4.56,3.733Z" transform="translate(0.715 7.252)"/>
+  <path id="Path_551" data-name="Path 551" class="cls-4" d="M22.263,3.223,17.729,6.935A8.326,8.326,0,0,0,5.453,11.294L.9,7.563a14,14,0,0,1,21.368-4.34Z" transform="translate(0.671 0)"/>
+</svg>

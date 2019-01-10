@@ -1,0 +1,71 @@
+@import '../../../assets/scss/abstracts/variables';
+
+.login-wrapper {
+  margin-left: 10rem;
+
+  p {
+    margin-bottom: .5rem;
+  }
+}
+
+.or {
+  margin-top: .5rem !important;
+  padding: 5px;
+}
+
+.line {
+  width: 42.5% !important;
+  text-align: left;
+}
+
+.login-container {
+  margin-left: 25rem;
+}
+.signup-container {
+  text-align: left;
+  .flex-name input[type='text'] {
+    color: $grey-color;
+    width: 95%;
+  }
+  input[type='text'] {
+    color: $grey-color;
+    width: 97.5%;
+  }
+  input[type='email'] {
+    color: $grey-color;
+    width: 97.5%;
+  }
+  input[type='password']{
+    color: $grey-color;
+    width: 95%;
+    display: inline-block;
+    margin-bottom: 0px !important;
+  }
+  .side_input {
+    display: flex;
+    margin-right:5px auto;
+  }
+  .form-button {
+    width: 97.5%;
+  }
+  a {
+    color: $white !important;
+  }
+  .center {
+    text-align: center;
+  }
+
+  .center a {
+    text-decoration: underline;
+  }
+  .inValid, .inValid:focus {
+    border:1px solid red;
+    box-shadow: none;
+  }
+  .small-text {
+    font-size: 10px;
+    margin-top: 0px !important;
+    font-style: italic;
+    color: lightblue;
+  }
+}

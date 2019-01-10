@@ -1,5 +1,14 @@
-$bg-color: rgb(216, 213, 213);
+@import 'abstracts/variables';
 
-body {
- background: $bg-color;
-}
+// ABSTRACT IMPORTS
+@import 'abstracts/mixins';
+
+// BASE IMPORTS
+@import 'base/reset';
+@import 'base/typography';
+@import 'base/utilities';
+
+// COMPONENETS IMPORTS
+@import 'components/button/button';
+@import 'components/form/form';
+@import 'components/navbar/navbar';

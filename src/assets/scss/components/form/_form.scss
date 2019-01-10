@@ -1,0 +1,174 @@
+body {
+  background: rgba($white, .9);
+  overflow: hidden;
+}
+
+.background-image {
+  position: absolute;
+  height: 160%;
+  right: -55rem;
+  top: -23rem;
+  z-index: 0;
+}
+.form-image{
+  position: absolute;
+  right: 0px;
+}
+
+.flex-wrapper {
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 20rem;
+}
+
+.image-container {
+  width: 40%;
+  height: calc(100% - 100px);
+  z-index: 10;
+}
+
+.img-responsive {
+  height: 350px;
+  margin-left: 20rem;
+}
+
+.login-container {
+  z-index: 10;
+  margin-top: -10rem;
+  margin-right: 6rem;
+  color: $white;
+  width: 40rem;
+  text-align: center;
+}
+
+.login-wrapper {
+  margin-left: 10rem;
+
+  h3 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+  }
+
+  p {
+    margin-bottom: 5rem;
+  }
+
+  .input-group {
+
+    input {
+      width: 100%;
+      box-shadow: $card-shadow;
+      padding: 1rem 1rem;
+      border: none;
+      border-radius: 2px;
+      color: $grey-color;
+    }
+  }
+}
+
+.form-container {
+  width: 90%;
+  margin: 0 5%;
+  text-align: left;
+}
+
+.form-button {
+  width: 100%;
+  background: $primary-color-dark;
+  color: $white;
+  border: none;
+  border-radius: 2px;
+  box-shadow: $card-shadow-hover;
+  @include hover-tansistion;
+
+  &:hover {
+    color: $white;
+    background: lighten($primary-color-dark, 5);
+    box-shadow: $card-shadow;
+  }
+}
+
+.or {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  margin-top: 3rem;
+
+  p {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 0;
+  }
+}
+
+.line {
+  height: 1px;
+  background-color: $white;
+  width: 45%;
+}
+
+
+.socail-btn {
+  border-radius: .5rem;
+  background-color: #FFFFFF;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.16);
+  width: 8rem;
+  height: 5rem;
+
+  .facebook-btn {
+    background: url('../images/socials/facebook.svg') no-repeat;
+    background-position: bottom center;
+    width: 100%;
+  }
+}
+
+@media (min-width: 10em) and (max-width: 43rem) {
+  .login-wrapper {
+    box-shadow: none !important;
+    border-top: none !important;
+  }
+}
+
+@media (min-width: 10em) and (max-width: 59em) {
+  .background-image {
+    display: none;
+  }
+
+  .form-nav {
+    display: none;
+  }
+
+  .flex-wrapper {
+    display: block;
+    height: 100vh;
+  }
+
+  .image-container {
+    display: none;
+  }
+
+  .login-container {
+    margin-top: -6rem;
+    margin-right: auto;
+    margin-left: auto;
+
+    .login-wrapper {
+      color: #345;
+      padding: 6rem 0;
+      margin-left: 0;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.12);
+      border-top: 2px solid #2C2360;
+      border-radius: 5px;
+    }
+
+    .line {
+      background-color: #345;
+    }
+
+    .form-container {
+      width: 60%;
+      margin: 0 auto;
+    }
+  }
+}

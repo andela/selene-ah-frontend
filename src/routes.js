@@ -1,10 +1,13 @@
-import Hello from './containers/Hello';
-// import Main from ./components/Main';
+import Login from './containers/Auth/Login/Login';
+import SignUp from './containers/Auth/SignUp/SignUpContainer';
 
 
 const routes = [
   {
-    path: '/hello', component: Hello, name: 'hello', exact: false,
+    path: '/login', component: Login, name: 'login', exact: false,
+  },
+  {
+    path: '/signup', component: SignUp, name: 'signup', exact: false,
   },
 ];
 export default routes;

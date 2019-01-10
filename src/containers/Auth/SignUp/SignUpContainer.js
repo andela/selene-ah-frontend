@@ -1,20 +1,18 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-
-import * as actionCreators from '../actions/actionCreators';
-
-import Home from './Home';
+import * as actionCreators from '../../../actions/authAction/signup';
+import Signup from './SignUp';
 
 const mapStateToProps = state => ({
-  articles: state.articles,
+  ...state.signup,
 });
 
 const
   mapDispatchToProps = dispatch => bindActionCreators(actionCreators, dispatch);
 
-const Main = connect(
+const SignUpContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Home);
+)(Signup);
 
-export default Main;
+export default SignUpContainer;
