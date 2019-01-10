@@ -1,14 +1,23 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
+/**
+ *
+ * @class Home
+ * @extends {Component}
+ */
 class Home extends Component {
-  render () {
+  /**
+   * @returns {JSX} Html template
+   * @memberof Home
+   */
+  render() {
     return (
       <div>
-        <h2>Welcome to Author's Haven</h2>
-        {this.props.children}
+        <h2>Welcome to Authors Haven</h2>
       </div>
-    )
+    );
   }
 }
 
-export default Home
+
+export default Home;
