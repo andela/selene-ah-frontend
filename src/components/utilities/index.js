@@ -7,3 +7,5 @@ export { default as SideNavItem } from './SideNav/SideNavItem';
 export { default as Tag } from './Tag/Tag';
 export { default as TagParent } from './Tag/TagParent';
 export { default as SideNav } from './SideNav/SideNav';
+export { default as Card } from './Card/Card';
+export { default as CardParent } from './Card/CardParent';

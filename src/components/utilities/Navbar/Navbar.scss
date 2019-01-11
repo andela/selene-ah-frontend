@@ -48,6 +48,7 @@ $navbar-hover-color: #f6f9fc;
     font-size: 1.9rem;
     color: $navbar-logo-color;
     font-weight: bold;
+    vertical-align: super;
   }
 
   &--links {
@@ -110,13 +111,9 @@ $navbar-hover-color: #f6f9fc;
       }
     }
   }
-<<<<<<< HEAD
-
-  .navbar--left .navbar--logo {
-=======
   #navbar .navbar--logo {
->>>>>>> dummy-branch
     padding: 3rem 0;
+    vertical-align: super;
   }
 
   &__has-dropdown:hover > div {
@@ -169,11 +166,7 @@ $navbar-hover-color: #f6f9fc;
         margin-top: -1px;
         font-weight: 500;
 
-<<<<<<< HEAD
-        &:focus, 
-=======
         &:focus,
->>>>>>> dummy-branch
         &:focus &::placeholder,
         &:focus .icon {
           color: lighten($navbar-links-color, 20);
@@ -192,8 +185,6 @@ $navbar-hover-color: #f6f9fc;
       }
     }
   }
-<<<<<<< HEAD
-=======
 }
 
 /* NAVBAR RESPONSIVE STYLES */
@@ -225,6 +216,7 @@ $navbar-hover-color: #f6f9fc;
 
       .navbar--logo {
         align-self: center;
+        vertical-align: super;
       }
 
       span {
@@ -263,6 +255,7 @@ $navbar-hover-color: #f6f9fc;
 
       .navbar--logo {
         align-self: center;
+        vertical-align: super;
       }
 
       span {
@@ -271,5 +264,16 @@ $navbar-hover-color: #f6f9fc;
       }
     }
   }
->>>>>>> dummy-branch
+
 }
+
+.flex {
+  display: flex;
+}
+.bell {
+  vertical-align: middle;
+}
+ .avar {
+   vertical-align: middle;
+   margin-right: 2rem;
+ }

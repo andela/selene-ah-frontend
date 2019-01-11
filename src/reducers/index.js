@@ -5,6 +5,7 @@ import socialAuthReducer from './authReducers/socialAuthReducer';
 import resetPassword from './authReducers/resetPassword';
 import updatePassword from './authReducers/updatePassword';
 import articleViewReducer from './articleViewReducer/articleView';
+import articlesResponse from './authReducers/home';
 
 const rootReducer = combineReducers({
   signup,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   resetPassword,
   updatePassword,
   articleViewReducer,
+  articlesResponse,
 });
 
 export default rootReducer;

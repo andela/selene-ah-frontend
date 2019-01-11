@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const TagParent = props => (
   <Fragment>
-    <div className="tags tags__horizontal hide-on-small pt-3">
+    <div className="tags tags__horizontal hide-on-med-and-down pt-3">
       <div className="wrapper">
         {props.children}
       </div>

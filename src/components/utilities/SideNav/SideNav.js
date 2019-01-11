@@ -1,9 +1,11 @@
 /* eslint-disable max-len */
 import React, { Fragment, Component } from 'react';
+import PropTypes from 'prop-types';
+import robot from '../../../assets/images/avatars/robot.svg';
 import './SideNav.scss';
 
 /**
- * @class
+ * @className
  * @description Class implements sidenav feature
  */
 export default class SideNav extends Component {
@@ -15,26 +17,24 @@ export default class SideNav extends Component {
     return (
       <Fragment>
         <div id="sidenav" className="sidenav--show">
-          <ul>
-            <li>
-              <div className="user-view">
-                <div className="background">
-                  Image
-                </div>
-                <a href="#user">User</a>
-                <a href="#name"><span className="white-text name">John Doe</span></a>
-                <a href="#email"><span className="white-text email">jdandturk@gmail.com</span></a>
+        <div className="side">
+            <div className="side--logo">
+            <a href="#!">Authors Haven</a>
+            { this.props.isLoggedIn
+              ? <div><img className="circle avat" src={robot} /></div>
+              : null }
               </div>
-            </li>
-            <li><a href="#!"><i className="material-icons">cloud</i>First Link With Icon</a></li>
-            <li><a href="#!">Second Link</a></li>
-            <li><div className="divider"></div></li>
-            <li><a className="subheader">Subheader</a></li>
-            <li><a className="waves-effect" href="#!">Third Link With Waves</a></li>
-          </ul>
-          <a href="#" className="sidenav--close">X</a>
-        </div>
+            <div className="side-items">
+              <a href="#">Categories</a>
+            </div>
+            <div className="side-items"><a className="waves-effect" href="#!">Help</a></div>
+          </div>
+          </div>
       </Fragment>
     );
   }
 }
+
+SideNav.propTypes = {
+  isLoggedIn: PropTypes.any.isRequired,
+};

@@ -5,10 +5,13 @@
   background: #fff;
   height: 100%;
   box-shadow: $card-shadow-hover;
-  width: 22rem;
+  width: 30rem;
+  overflow-y: auto;
+  will-change: transform;
+  backface-visibility: hidden;
   left: -55rem;
   top: 0;
-  z-index: 1000;
+  z-index: 1099;
   transition: all cubic-bezier(.08,.64,.65,1.04) .5s;
 }
 
@@ -30,7 +33,63 @@
     color: #fff;
     font-size: 2.3rem;
     font-weight: 500;
-    width: 100%;
     display: block;
   }
+}
+
+.sidebar-overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  // opacity: 1;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 1098;
+  overflow: hidden;
+}
+
+.side {
+  display: grid;
+  grid-gap: 1rem;
+}
+
+.side--logo {
+  position: relative;
+  background-color: $primary-color;
+  width: 100%;
+  height: 15rem;
+  vertical-align: middle;
+
+}
+
+.side--logo a {
+  position: relative;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 5rem;
+  display: block;
+  margin: auto;
+  text-transform: uppercase;
+}
+.side--logo a:hover {
+color: #fff;
+}
+
+.side-items a {
+  color: #333333;
+  display: inline-block;
+  margin-left: 4.5rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.avat {
+  position: relative;
+  width: 6rem;
+  height: 6rem;
+  display: block;
+  margin: -4rem 17rem 0 4rem;
 }

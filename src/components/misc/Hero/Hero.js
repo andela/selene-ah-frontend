@@ -7,7 +7,7 @@ const Hero = () => (
     <div className="hero hide-on-medium">
       <div className="hero--content">
           <div className="hero--image">
-            <img className="image" src={heroImage} />
+            <img className="image hide-on-med-and-down" src={heroImage} />
             </div>
           <div className="hero--box">
             <h3 className="hero--heading">AUTHORS HAVEN</h3>
