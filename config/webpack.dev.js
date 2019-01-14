@@ -6,7 +6,6 @@ const common = require('./webpack.base');
 
 //SCSS test regex 
 const scssTest = /\.scss$/;
-
 // https://medium.com/@trekinbami/using-environment-variables-in-react-6b0a99d83cf5
 const env = dotenv.config().parsed;
 

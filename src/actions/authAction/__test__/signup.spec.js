@@ -1,9 +1,21 @@
+<<<<<<< HEAD
+=======
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+>>>>>>> feat(signup): implement signup page
 import moxios from 'moxios';
 import * as actionTypes from '../actionTypes';
 import * as signupActions from '../signup';
 
+<<<<<<< HEAD
 const url = `${process.env.SERVER_API}/auth/signup`;
 const dispatchFn = jest.fn();
+=======
+const middlewares = [thunk];
+const createStore = configureMockStore(middlewares);
+
+const url = process.env.SERVER_API;
+>>>>>>> feat(signup): implement signup page
 describe('### SignupActions', () => {
   beforeAll(() => {
     moxios.install();
@@ -32,6 +44,7 @@ describe('### SignupActions', () => {
     });
   });
 
+<<<<<<< HEAD
   it('should call the login start dispatch function', async () => {
     const fakeUser = {
       email: 'jdjjd',
@@ -56,6 +69,9 @@ describe('### SignupActions', () => {
       email: 'jdjjd',
       password: 'jdjdjd',
     };
+=======
+  it('should return an action if signUpUser is triggered', async () => {
+>>>>>>> feat(signup): implement signup page
     const mockResponse = {
       response: {
         data: {
@@ -64,6 +80,7 @@ describe('### SignupActions', () => {
       },
     };
 
+<<<<<<< HEAD
     moxios.stubRequest(url, { status: 200, response: mockResponse });
     await signupActions.signUpUser(fakeUser, { push() {} })(dispatchFn);
     expect(dispatchFn).toBeCalledWith(
@@ -80,5 +97,23 @@ describe('### SignupActions', () => {
     moxios.stubRequest(url, { status: 400 });
     await signupActions.signUpUser(fakeUser, { push() {} })(dispatchFn);
     expect(dispatchFn).toBeCalled();
+=======
+    const history = {
+      push: jest.fn(),
+    };
+
+    moxios.stubRequest(`${url}/auth/signup`, {
+      status: 200,
+      response: mockResponse,
+    });
+    const user = {};
+    const store = createStore({});
+    const expectedActions = [
+      { type: actionTypes.SIGN_UP_START },
+      { type: actionTypes.SIGN_UP_SUCCESS, payload: mockResponse },
+    ];
+    await store.dispatch(signupActions.signUpUser(user, history));
+    expect(store.getActions()).toEqual(expectedActions);
+>>>>>>> feat(signup): implement signup page
   });
 });
