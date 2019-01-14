@@ -24,7 +24,7 @@ module.exports = {
   },
   output: {
     path: BUILD_DIR,
-    publicPath: '/'
+    publicPath: '/',
   },
   module: {
     rules: [

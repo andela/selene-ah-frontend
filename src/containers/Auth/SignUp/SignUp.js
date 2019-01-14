@@ -10,6 +10,8 @@ import { FormContainer } from '../../Form';
 import { Input, Button } from '../../../components/utilities';
 import validate from './helpers/signupValidations';
 import validation from '../../../helpers/validationHelpers/validations';
+import SocialButtons from '../SocialAuth/SocialButtons';
+
 
 /* eslint no-unused-expressions: 0 */
 /**
@@ -198,6 +200,9 @@ export class SignUp extends Component {
             <span className="line"></span>
             <p>OR</p>
             <span className="line"></span>
+          </div>
+          <div className="social-btn-group">
+            <SocialButtons />
           </div>
           <p className='center'>Already a member?
             <Link to='login'>Signin</Link></p>

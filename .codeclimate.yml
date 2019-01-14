@@ -1,4 +1,7 @@
 version: "2"
+exclude_patterns:
+- "**/*.spec.js"
+- "**/*.test.js"
 checks:
   argument-count:
     config:
@@ -30,3 +33,4 @@ checks:
   identical-code:
     config:
       threshold: 250
+      

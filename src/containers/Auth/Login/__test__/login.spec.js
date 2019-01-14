@@ -20,7 +20,9 @@ describe('Login container', () => {
     errorMessage: null,
     successMessage: null,
     isLoading: false,
+    isAuthenticated: null,
     imageUrl: loginImage,
+    classes: 'google-btn',
   };
 
   beforeEach(() => {
@@ -111,6 +113,17 @@ describe('Login container', () => {
     expect(
       wrapper.instance().shouldComponentUpdate(nextProps),
     ).toEqual(true);
+  });
+
+  it('should return true when unauthenticated', () => {
+    wrapper.setProps({
+      isAuthenticated: false,
+      toastManager: {
+        add: toastManagerSpy,
+      },
+    });
+    wrapper.instance().componentDidMount();
+    expect(toastManagerSpy).toHaveBeenCalled();
   });
 
   it('should return false when errors occur', () => {
