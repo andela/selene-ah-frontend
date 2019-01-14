@@ -1,0 +1,46 @@
+@for $var from 1 to $padding-limit {
+  @include padding-helper('top', $var);
+}
+
+@for $var from 1 to $padding-limit {
+  @include padding-helper('bottom', $var);
+}
+
+@for $var from 1 to $padding-limit {
+  @include padding-helper('left', $var);
+}
+
+@for $var from 1 to $padding-limit {
+  @include padding-helper('right', $var);
+}
+
+@for $var from 1 to $padding-limit {
+  @include margin-helper('top', $var);
+}
+
+@for $var from 1 to $padding-limit {
+  @include margin-helper('bottom', $var);
+}
+
+@for $var from 1 to $padding-limit {
+  @include margin-helper('left', $var);
+}
+
+@for $var from 1 to $padding-limit {
+  @include margin-helper('right', $var);
+}
+
+.flex-wrapper {
+  display: flex;
+  align-items: center;
+}
+.imgContainer{
+  width: 500px;
+  height: 500px;
+  background-color: $grey-color-lighter;
+}
+
+.text--center {
+  text-align: center;
+  margin: 1rem auto;
+}
