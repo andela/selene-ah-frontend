@@ -1,5 +1,6 @@
 import Login from './containers/Auth/Login/Login';
 import SignUp from './containers/Auth/SignUp/SignUpContainer';
+// import Main from ./components/Main';
 
 
 const routes = [

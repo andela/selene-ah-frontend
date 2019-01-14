@@ -7,6 +7,7 @@ describe('###FormWrapper', () => {
   const props = {
     imageUrl: {},
     children: 'subheader',
+    displayImage: true,
   };
   beforeAll(() => {
     wrapper = shallow(<FormWrapper {...props} />);

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import PurpleImage from '../../assets/images/purple circle.svg';
 
 /**
- * @description FormWrapper JSX Compoent
+ * @description FormWrapper JSX Component
  * @class
  */
 export default class FormWrapper extends Component {
