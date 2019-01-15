@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import * as actionCreators from '../../../actions/authAction/signup';
 import Signup from './SignUp';
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   ...state.signup,
 });
 
-const
+export const
   mapDispatchToProps = dispatch => bindActionCreators(actionCreators, dispatch);
 
 const SignUpContainer = connect(

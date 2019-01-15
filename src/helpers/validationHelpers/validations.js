@@ -19,7 +19,7 @@ class Validation {
  * @returns {Boolean} returns true or false
  */
   static isPasswordValid(password) {
-    const passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^.&_*])([a-zA-Z0-9!@#$.%^&*]{8,20})$/;
+    const passwordRegex = /^(?=.*[0-9])([a-zA-Z0-9!@#$.%^&*~`?><,.';"|}{}+-=)()|]{8,20})$/;
     return passwordRegex.test(password);
   }
 

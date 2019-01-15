@@ -1,6 +1,5 @@
 body {
   background: rgba($white, .9);
-  overflow: hidden;
 }
 
 .background-image {
@@ -8,7 +7,7 @@ body {
   height: 160%;
   right: -55rem;
   top: -23rem;
-  z-index: 0;
+  z-index: -1;
 }
 .form-image{
   position: absolute;
@@ -55,7 +54,6 @@ body {
   }
 
   .input-group {
-
     input {
       width: 100%;
       box-shadow: $card-shadow;
@@ -136,6 +134,45 @@ body {
   }
 
   .form-nav {
+    display: none;
+  }
+
+  .flex-wrapper {
+    display: block;
+    height: 100vh;
+  }
+
+  .image-container {
+    display: none;
+  }
+
+  .login-container {
+    margin-top: -6rem;
+    margin-right: auto;
+    margin-left: auto;
+
+    .login-wrapper {
+      color: #345;
+      padding: 6rem 0;
+      margin-left: 0;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.12);
+      border-top: 2px solid #2C2360;
+      border-radius: 5px;
+    }
+
+    .line {
+      background-color: #345;
+    }
+
+    .form-container {
+      width: 60%;
+      margin: 0 auto;
+    }
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1336px){
+  .background-image {
     display: none;
   }
 

@@ -1,5 +1,5 @@
 module.exports = {
-  setupFiles: ['<rootDir>/tests/setup/enzymeSetup.js'],
+  setupFiles: ['<rootDir>/setup/enzymeSetup.js'],
   transform: {
     '^.+\\.js$': 'babel-jest',
   },

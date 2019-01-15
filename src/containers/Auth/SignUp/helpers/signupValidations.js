@@ -1,6 +1,12 @@
-import helpers from '../../../helpers/validationHelpers/validations';
+import helpers from '../../../../helpers/validationHelpers/validations';
 
 /* eslint no-unused-expressions: 0 */
+/**
+ * @description - Validation to signup user
+ * @param {*} data
+ * @param {*} state
+ * @returns {object} - Error object
+ */
 const validation = (data, state) => {
   const error = { ...state };
   // console.log(error);
@@ -13,17 +19,17 @@ const validation = (data, state) => {
       !helpers.isPasswordValid(data.content)
         ? error.password = true : delete error.password;
       break;
-    case 'firstname':
+    case 'firstName':
       !helpers.isNameValid(data.content)
-        ? error.firstname = true : delete error.firstname;
+        ? error.firstName = true : delete error.firstName;
       break;
-    case 'lastname':
+    case 'lastName':
       !helpers.isNameValid(data.content)
-        ? error.lastname = true : delete error.lastname;
+        ? error.lastName = true : delete error.lastName;
       break;
-    case 'username':
+    case 'userName':
       !helpers.isUsernameValid(data.content)
-        ? error.username = true : delete error.username;
+        ? error.userName = true : delete error.userName;
       break;
     default:
       return error;

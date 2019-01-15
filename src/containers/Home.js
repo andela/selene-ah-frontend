@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
 /**
  * @class Home
@@ -11,9 +11,9 @@ class Home extends Component {
    */
   render() {
     return (
-      <Fragment>
+      <h1>
         Authors Haven
-      </Fragment>
+      </h1>
     );
   }
 }

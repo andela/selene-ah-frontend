@@ -1,5 +1,6 @@
 import Login from './containers/Auth/Login/Login';
 import SignUp from './containers/Auth/SignUp/SignUpContainer';
+import NoMatch from './components/pages/NoMatch/NoMatch';
 
 
 const routes = [
@@ -8,6 +9,9 @@ const routes = [
   },
   {
     path: '/signup', component: SignUp, name: 'signup', exact: false,
+  },
+  {
+    component: NoMatch, name: 'no-match',
   },
 ];
 export default routes;

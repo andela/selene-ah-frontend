@@ -1,6 +1,7 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import App from '../src/containers/App';
+import App from '../App';
+
 
 let wrapper;
 describe('## App container', () => {

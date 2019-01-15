@@ -1,22 +1,29 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withToastManager } from 'react-toast-notifications';
+import { ClipLoader } from 'react-spinners';
 import PropTypes from 'prop-types';
 import FormWrapper from '../../Form/FormWrapper';
 import image from '../../../assets/images/book_woman.svg';
-import './signup.scss';
+import './style/signup.scss';
 import { FormContainer } from '../../Form';
 import { Input, Button } from '../../../components/utilities';
-import validate from './signupValidations';
+import validate from './helpers/signupValidations';
 import validation from '../../../helpers/validationHelpers/validations';
 
 /* eslint no-unused-expressions: 0 */
 /**
- * @class
+ * @class SignUp
+ * @description - SignUp display component
  */
-class SignUp extends Component {
+export class SignUp extends Component {
   static propTypes = {
-    toastManager: PropTypes.func.isRequired,
+    toastManager: PropTypes.object.isRequired,
+    signUpUser: PropTypes.func,
+    response: PropTypes.string,
+    error: PropTypes.bool,
+    history: PropTypes.object,
+    isLoading: PropTypes.bool,
   }
 
   /**
@@ -29,12 +36,30 @@ class SignUp extends Component {
       user: {
         email: '',
         password: '',
-        firstname: '',
-        lastname: '',
-        username: '',
+        firstName: '',
+        lastName: '',
+        userName: '',
         confirmPassword: '',
       },
     };
+  }
+
+  /**
+   * @description - Stop component from re-rendering when error occurs while
+   * user is been sign up. Display toast notification
+   * @param {*} nextProps
+   * @param {*} nextState
+   * @returns {bool} - true or false
+   */
+  shouldComponentUpdate(nextProps) {
+    if (this.props.error !== nextProps.error && nextProps.error === true) {
+      this.props.toastManager.add(`${nextProps.response}`, {
+        appearance: 'error',
+        autoDismiss: true,
+      });
+      return false;
+    }
+    return true;
   }
 
   /**
@@ -57,6 +82,10 @@ class SignUp extends Component {
     });
   }
 
+  /**
+   * @description - check if password and confirm password are equal
+   * @returns {object} - Update state
+   */
   validateConfirmPassword = () => {
     const { user: { password, confirmPassword }, error } = this.state;
     const perror = { ...error };
@@ -79,7 +108,8 @@ class SignUp extends Component {
    */
   handleSubmit = (e) => {
     e.preventDefault();
-    const { props: { toastManager }, state: { error } } = this;
+    const { signUpUser } = this.props;
+    const { props: { toastManager, history }, state: { error } } = this;
     if (Object.keys(error).length > 0) {
       toastManager.add('Some fields are Invalid', {
         appearance: 'error',
@@ -87,7 +117,7 @@ class SignUp extends Component {
       });
       return false;
     }
-    // console.log('I am up');
+    signUpUser(this.state.user, history);
   }
 
   /**
@@ -96,41 +126,46 @@ class SignUp extends Component {
   render() {
     const header = 'Get started, It’s easy';
     const subHeader = '“Today a reader, tomorrow a leader”';
-    const { error } = this.state;
+    const { state: { error }, props: { isLoading } } = this;
     return (
-      <FormWrapper imageUrl={image}>
+      <FormWrapper imageUrl={image} displayImage={true}>
         <FormContainer header={header} subHeader={subHeader}
           onSubmit={this.handleSubmit}>
           <div className="signup-container">
-            <label>Email Address</label>
-            <Input type={'email'} placeholder={'fakeemail@email.com'}
-              classes={error.email ? 'inValid' : ''}
-                id={'email'} required={true} onChange={this.handleChange} />
-            <div className="side_input flex-name">
-              <div>
+            <div className='input-group'>
+              <label>Email Address</label>
+              <Input type={'email'} placeholder={'fakeemail@email.com'}
+                classes={error.email ? 'inValid' : ''}
+                  id={'email'} required={true} onChange={this.handleChange} />
+            </div>
+            <div className="side_input">
+              <div className='input-group flex-left'>
                 <label>First Name</label>
                 <Input type={'text'} placeholder={'first name'}
-                  classes={error.firstname ? 'inValid' : ''}
-                    id={'firstname'}required={true}
+                  classes={error.firstName ? 'inValid' : ''}
+                    id={'firstName'}required={true}
                       onChange={this.handleChange} />
               </div>
-              <div>
+              <div className='input-group'>
                 <label>Last Name</label>
-                <Input type={'text'} id={'lastname'}
-                  classes={error.lastname ? 'inValid' : ''}
+                <Input type={'text'} id={'lastName'}
+                  classes={error.lastName ? 'inValid' : ''}
                   placeholder={'last name'} required={true}
                     onChange={this.handleChange}/>
               </div>
             </div>
             <div className='side_input'>
-              <div>
+              <div className='input-group flex-left'>
                 <label>Password</label>
                 <Input type={'password'} id={'password'}
                   classes={error.password ? 'inValid' : ''}
                   placeholder={'password'} required={true}
                     onChange={this.handleChange}/>
               </div>
-              <div>
+              <p className='small-text mobile-text'>
+              *Password must contain at least a number and must
+                not be less than 8 characters</p>
+              <div className='input-group'>
                 <label>Confirm Password</label>
                 <Input type={'password'} id={'confirmPassword'}
                   placeholder={'password'} required={true}
@@ -139,21 +174,32 @@ class SignUp extends Component {
               </div>
             </div>
             <p className='small-text'>
-              *Password must contain at least a number and a symbol</p>
-            <div>
-              <label>User Name</label>
-              <Input type={'text'} id={'username'} placeholder={'username'}
-                classes={error.username ? 'inValid' : ''}
+              *Password must contain at least a number and must
+                not be less than 8 characters</p>
+            <div className='input-group'>
+              <label>Username</label>
+              <Input type={'text'} id={'userName'} placeholder={'username'}
+                classes={error.userName ? 'inValid' : ''}
                 required={true} onChange={this.handleChange} />
             </div>
-            <Button type={'submit'} classes='form-button'>Register</Button>
+            <div className='text-center'>
+              {!isLoading && <Button type={'submit'} classes='form-button'>
+                Signup</Button>}
+              <ClipLoader
+                  css={'override'}
+                  sizeUnit={'px'}
+                  size={30}
+                  color={'#fff'}
+                  loading={isLoading}
+              />
+            </div>
           <div className='or'>
             <span className="line"></span>
             <p>OR</p>
             <span className="line"></span>
           </div>
           <p className='center'>Already a member?
-            <Link to='login'>Register then.</Link></p>
+            <Link to='login'>Signin</Link></p>
           </div>
         </FormContainer>
       </FormWrapper>
