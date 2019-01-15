@@ -128,38 +128,39 @@ export class SignUp extends Component {
     const subHeader = '“Today a reader, tomorrow a leader”';
     const { state: { error }, props: { isLoading } } = this;
     return (
-      <FormWrapper imageUrl={image} displayImage={true}>
+      <FormWrapper imageUrl={image} displayImage={true} imgId='img-responsive'>
         <FormContainer header={header} subHeader={subHeader}
-          onSubmit={this.handleSubmit}>
-          <div className="signup-container">
+          loginId='login-wrapper' onSubmit={this.handleSubmit}
+          containerId='login-container'>
+          <div id="signup-container">
             <div className='input-group'>
               <label>Email Address</label>
-              <Input type={'email'} placeholder={'fakeemail@email.com'}
+              <Input type='email' placeholder='fakeemail@email.com'
                 classes={error.email ? 'inValid' : ''}
-                  id={'email'} required={true} onChange={this.handleChange} />
+                  id='email' required={true} onChange={this.handleChange} />
             </div>
             <div className="side_input">
               <div className='input-group flex-left'>
                 <label>First Name</label>
-                <Input type={'text'} placeholder={'first name'}
+                <Input type='text' placeholder='first name'
                   classes={error.firstName ? 'inValid' : ''}
-                    id={'firstName'}required={true}
+                    id='firstName' required={true}
                       onChange={this.handleChange} />
               </div>
               <div className='input-group'>
                 <label>Last Name</label>
-                <Input type={'text'} id={'lastName'}
+                <Input type='text' id='lastName'
                   classes={error.lastName ? 'inValid' : ''}
-                  placeholder={'last name'} required={true}
+                  placeholder='last name' required={true}
                     onChange={this.handleChange}/>
               </div>
             </div>
             <div className='side_input'>
               <div className='input-group flex-left'>
                 <label>Password</label>
-                <Input type={'password'} id={'password'}
+                <Input type='password' id='password'
                   classes={error.password ? 'inValid' : ''}
-                  placeholder={'password'} required={true}
+                  placeholder='password' required={true}
                     onChange={this.handleChange}/>
               </div>
               <p className='small-text mobile-text'>
@@ -167,8 +168,8 @@ export class SignUp extends Component {
                 not be less than 8 characters</p>
               <div className='input-group'>
                 <label>Confirm Password</label>
-                <Input type={'password'} id={'confirmPassword'}
-                  placeholder={'password'} required={true}
+                <Input type='password' id='confirmPassword'
+                  placeholder='password' required={true}
                   classes={error.confirmPassword ? 'inValid' : ''}
                     onChange={this.handleChange}/>
               </div>
@@ -178,18 +179,18 @@ export class SignUp extends Component {
                 not be less than 8 characters</p>
             <div className='input-group'>
               <label>Username</label>
-              <Input type={'text'} id={'userName'} placeholder={'username'}
+              <Input type='text' id='userName' placeholder='username'
                 classes={error.userName ? 'inValid' : ''}
                 required={true} onChange={this.handleChange} />
             </div>
             <div className='text-center'>
-              {!isLoading && <Button type={'submit'} classes='form-button'>
+              {!isLoading && <Button type='submit' classes='form-button'>
                 Signup</Button>}
               <ClipLoader
-                  css={'override'}
-                  sizeUnit={'px'}
+                  css='override'
+                  sizeUnit='px'
                   size={30}
-                  color={'#fff'}
+                  color='#fff'
                   loading={isLoading}
               />
             </div>

@@ -108,6 +108,7 @@ export class Login extends Component {
               header="Welcome back! 👋"
               subHeader='“Today a reader, tomorrow a leader”'
               onSubmit={this.handleSubmit}
+              containerId='login-container'
             >
              <div className="input-group">
               <Label for="email">Email Address</Label>

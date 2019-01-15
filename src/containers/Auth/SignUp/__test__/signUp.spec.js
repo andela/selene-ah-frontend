@@ -23,8 +23,8 @@ describe('## Signup Component', () => {
     expect(container.length).toEqual(1);
   });
 
-  it('should render signup-container class', () => {
-    const container = wrapper.find('.signup-container');
+  it('should render signup-container id', () => {
+    const container = wrapper.find('#signup-container');
     expect(container.length).toEqual(1);
   });
 

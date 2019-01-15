@@ -1,6 +1,6 @@
+@import '../../abstracts/variables';
 body {
   background: rgba($white, .9);
-  overflow: hidden;
 }
 
 .background-image {
@@ -108,20 +108,6 @@ body {
 }
 
 
-.socail-btn {
-  border-radius: .5rem;
-  background-color: #FFFFFF;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.16);
-  width: 8rem;
-  height: 5rem;
-
-  .facebook-btn {
-    background: url('../images/socials/facebook.svg') no-repeat;
-    background-position: bottom center;
-    width: 100%;
-  }
-}
-
 @media (min-width: 10em) and (max-width: 43rem) {
   .login-wrapper {
     box-shadow: none !important;
@@ -172,7 +158,7 @@ body {
   }
 }
 
-@media (min-width: 1000px) and (max-width: 1336px){
+@media (min-width: 945px) and (max-width: 1400px){
   .background-image {
     display: none;
   }

@@ -9,7 +9,6 @@ import helpers from '../../../../helpers/validationHelpers/validations';
  */
 const validation = (data, state) => {
   const error = { ...state };
-  // console.log(error);
   switch (data.type) {
     case 'email':
       !helpers.isEmailValid(data.content)
