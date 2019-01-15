@@ -1,0 +1,139 @@
+@import '../../../../assets/scss/abstracts/variables';
+
+.login-wrapper {
+  margin-top: 0;
+
+  p {
+    margin-bottom: 1.5rem !important;
+  }
+}
+
+.or {
+  margin-top: .5rem !important;
+  padding: 5px;
+}
+
+.line {
+  width: 42.5% !important;
+  text-align: left;
+}
+
+.img-responsive {
+  margin-top: -10rem !important;
+}
+
+.login-container {
+  margin-left: 25rem;
+  margin-top: -15rem !important;
+}
+.signup-container {
+  text-align: left;
+  .flex-left {
+    padding-right: 2%;
+  }
+  input[type='text'] {
+    color: $grey-color;
+    width: 100%;
+    margin-bottom: 15px !important;
+  }
+  input[type='email'] {
+    color: $grey-color;
+    width: 100%;
+    margin-bottom: 15px !important;
+  }
+  input[type='password']{
+    color: $grey-color;
+    width: 100%;
+    margin-bottom: 0px !important;
+  }
+  .side_input {
+    width: 100%;
+    display: flex;
+  }
+  .form-button {
+    width: 100%;
+  }
+  a {
+    color: $white !important;
+  }
+  .center {
+    text-align: center;
+  }
+
+  .center a {
+    text-decoration: underline;
+  }
+  .inValid, .inValid:focus {
+    border:1px solid red;
+    box-shadow: none;
+  }
+  .small-text {
+    font-size: 10px;
+    margin-top: 0px !important;
+    font-style: italic;
+    color: lighten(yellow, 15);
+    text-align: center;
+  }
+
+  .form-button {
+    margin-top: 5px !important;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .mobile-text {
+    display: none;
+  }
+}
+
+@media (min-width: 10em) and (max-width: 43em) {
+  body {
+    overflow: auto !important;
+  }
+  .signup-container {
+    text-align: left;
+    width: 60%;
+    margin: 0 auto;
+  }
+
+  .login-wrapper {
+    padding-top: 0 !important;
+  }
+  
+}
+
+@media (min-width: 10em) and (max-width: 59em) {
+  body {
+    overflow: auto !important;
+  }
+
+  .signup-container {
+    text-align: left;
+    width: 60%;
+    margin: 0 auto;
+
+    input[type=password] {
+      margin-bottom: 15px !important;
+    }
+  }
+  .side_input {
+    display: block !important;
+  }
+  .small-text {
+    color: red !important;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1336px){
+  .side_input {
+    display: block !important;
+  }
+  .small-text {
+    color: red !important;
+  }
+  .input-group {
+  margin-bottom: 15px !important;
+  }
+}

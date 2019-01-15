@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { FormWrapper, FormContainer } from '../../Form';
 import { Input, Button, Label } from '../../../components/utilities';
 import loginImage from '../../../assets/images/illustration_1.svg';
-import Validations from '../SignUp/signupValidations';
+import Validations from '../SignUp/helpers/signupValidations';
 import loginActions from '../../../actions/authAction/login';
 import './_login.scss';
 
@@ -42,10 +42,14 @@ export class Login extends Component {
    */
   handleInputChange = (e) => {
     e.preventDefault();
-    const data = { type: e.target.id, content: e.target.value };
-    const errors = Validations(data, this.state.error);
+    let errors;
+    if (e.target.id === 'email') {
+      const data = { type: e.target.id, content: e.target.value };
+      errors = Validations(data, this.state.error);
+    } else {
+      errors = {};
+    }
     const { user } = this.state;
-
     this.setState({
       user: {
         ...user,

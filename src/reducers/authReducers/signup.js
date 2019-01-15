@@ -1,8 +1,6 @@
 import * as actionTypes from '../../actions/authAction/actionTypes';
 import updateObject from '../../helpers/store/utility';
 
-const signUpStart = state => updateObject(state, { loading: true });
-
 const initState = {
   isLoading: false,
   response: null,
@@ -10,16 +8,34 @@ const initState = {
   success: null,
 };
 
-const signUpFailure = (state, action) => {
-  updateObject(state, {
-    loading: false,
-    error: true,
-    response: action.payload,
-  });
-};
+/**
+ * @description - Signup start - update the state when called
+ * @param {object} state
+ * @returns {object} - updated state
+ */
+const signUpStart = state => updateObject(state,
+  { isLoading: true, error: false });
 
+/**
+ * @description - Signup failure - update the state when called
+ * @param {object} state
+ * @param {object} action
+ * @returns {object} - updated state
+ */
+const signUpFailure = (state, action) => updateObject(state, {
+  isLoading: false,
+  error: true,
+  response: action.payload.response.data.message,
+});
+
+/**
+ * @description - Signup success - update the state when called
+ * @param {object} state
+ * @param {object} action
+ * @returns {object} - updated state
+ */
 const signUpSuccess = (state, action) => updateObject(state, {
-  loading: false,
+  isLoading: false,
   success: true,
   response: action.payload,
 });

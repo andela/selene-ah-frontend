@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 /**
- * @class
+ * @class formContainer
  */
 export default class FormContainer extends Component {
   static propTypes = {
