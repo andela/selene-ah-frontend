@@ -15,6 +15,7 @@ export default class FormWrapper extends Component {
       PropTypes.string]).isRequired,
     children: PropTypes.any.isRequired,
     displayImage: PropTypes.bool.isRequired,
+    imgId: PropTypes.string,
   }
 
   /**
@@ -33,7 +34,8 @@ export default class FormWrapper extends Component {
         }
         <div className="flex-wrapper">
           <div className="image-container">
-            <img className="img-responsive" src={`${this.props.imageUrl}`} />
+            <img className="img-responsive" id={this.props.imgId}
+            src={`${this.props.imageUrl}`} />
           </div>
           {this.props.children}
         </div>

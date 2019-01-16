@@ -10,6 +10,8 @@ export default class FormContainer extends Component {
     subHeader: PropTypes.string.isRequired,
     children: PropTypes.any,
     onSubmit: PropTypes.func.isRequired,
+    loginId: PropTypes.string,
+    containerId: PropTypes.string,
   }
 
   /**
@@ -19,8 +21,8 @@ export default class FormContainer extends Component {
   render() {
     return (
       <Fragment>
-        <div className="login-container">
-          <div className="login-wrapper">
+        <div className="login-container" id={this.props.containerId}>
+          <div className="login-wrapper" id={this.props.loginId}>
             <h3>{this.props.header}</h3>
             <p>{this.props.subHeader}</p>
               <div className="form-container">
