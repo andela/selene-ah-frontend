@@ -1,8 +1,9 @@
 import Login from './containers/Auth/Login/Login';
 import SignUp from './containers/Auth/SignUp/SignUpContainer';
 import VerifyAuth from './containers/Auth/SocialAuth/VerifyAuth';
-import Home from './containers/Home';
 import NoMatch from './components/pages/NoMatch/NoMatch';
+import ResetPassword from './containers/Auth/ResetPassword/ResetPassword';
+import UpdatePassword from './containers/Auth/ResetPassword/UpdatePassword';
 
 
 const routes = [
@@ -27,9 +28,17 @@ const routes = [
   {
     path: '/auth', component: VerifyAuth, name: 'auth', exact: true,
   },
-
   {
-    path: '/', component: Home, name: 'home',
+    path: '/password-reset',
+    component: ResetPassword,
+    name: 'reset-password',
+    exact: true,
+  },
+  {
+    path: '/password-update',
+    component: UpdatePassword,
+    name: 'update-password',
+    exact: true,
   },
   {
 

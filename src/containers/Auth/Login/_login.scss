@@ -1,3 +1,63 @@
+@import '../../../assets//scss/abstracts/variables';
+
+.login-container {
+  z-index: 10;
+  margin-top: -10rem;
+  margin-right: 6rem;
+  color: $white;
+  width: 40rem;
+  text-align: center;
+}
+
+.login-wrapper {
+  margin-left: 10rem;
+
+  h3 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+  }
+
+  p {
+    margin-bottom: 5rem;
+  }
+
+  .input-group {
+    input {
+      width: 100%;
+      box-shadow: $card-shadow;
+      padding: 1rem 1rem;
+      border: none;
+      border-radius: 2px;
+      color: $grey-color;
+    }
+  }
+}
+
+.form-container {
+  width: 90%;
+  margin: 0 5%;
+  text-align: left;
+}
+
+.flex-wrapper {
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 20rem;
+}
+
+.image-container {
+  width: 40%;
+  height: calc(100% - 100px);
+  z-index: 10;
+}
+
+.img-responsive {
+  height: 350px;
+  margin-left: 20rem;
+}
+
+
 .navbar--logo {
   padding: 3rem 1.5rem;
 }
@@ -13,4 +73,10 @@
 
 .form-button {
   margin-top: 12px;
+}
+
+.center a {
+  text-decoration: underline;
+  color: white;
+  font-weight: 600;
 }

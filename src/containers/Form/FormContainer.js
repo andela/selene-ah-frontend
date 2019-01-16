@@ -7,9 +7,9 @@ import PropTypes from 'prop-types';
 export default class FormContainer extends Component {
   static propTypes = {
     header: PropTypes.string.isRequired,
-    subHeader: PropTypes.string.isRequired,
+    subHeader: PropTypes.string,
     children: PropTypes.any,
-    onSubmit: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func,
     loginId: PropTypes.string,
     containerId: PropTypes.string,
   }
