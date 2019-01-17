@@ -35,6 +35,10 @@
 @import 'components/preloader';
 @import 'components/pulse';
 
+
+@import 'components/editor/editorContainer.scss';
+@import 'components/select/select.scss';
+
 .css-1p3cd4g{
-  z-index: 10000;
+	z-index: 10000;
 }
