@@ -1,5 +1,4 @@
 @import '../../../assets/scss/abstracts/variables';
-@import '../../../assets/scss/abstracts/mixins';
 
 #sidenav {
   position: fixed;
@@ -10,7 +9,7 @@
   left: -55rem;
   top: 0;
   z-index: 1000;
-  transition: all ease-in-out .5s;
+  transition: all cubic-bezier(.08,.64,.65,1.04) .5s;
 }
 
 #sidenav.sidenav--show {
@@ -20,24 +19,6 @@
 #sidenav ul {
   width: 100%;
   height: 92%;
-
-  li {
-    width: 100%;
-    padding: 1rem 1rem;
-    text-align: center;
-
-    &:hover {
-      background: rgba(0,0,0, .05);
-      cursor: pointer;
-    }
-    
-    a {
-      text-transform: uppercase;
-      color: #345;
-      display: block;
-      width: 100%;
-    }
-  }
 }
 
 .sidenav {
@@ -45,17 +26,11 @@
   &--close {
     height: 8%;
     text-align: center;
-    background: darken(tomato, 10);
+    background: tomato;
     color: #fff;
     font-size: 2.3rem;
     font-weight: 500;
     width: 100%;
     display: block;
-
-    &:hover {
-      color: #fff;
-      background-color: tomato;
-      @include hover-tansistion;
-    }
   }
 }

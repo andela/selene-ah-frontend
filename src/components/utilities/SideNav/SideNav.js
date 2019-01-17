@@ -1,7 +1,5 @@
 /* eslint-disable max-len */
 import React, { Fragment, Component } from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import './SideNav.scss';
 
 /**
@@ -9,26 +7,6 @@ import './SideNav.scss';
  * @description Class implements sidenav feature
  */
 export default class SideNav extends Component {
-  state = {
-    open: false,
-  }
-
-  static propTypes = {
-    children: PropTypes.any.isRequired,
-  };
-
-  /**
-   * @param {event} e
-   * @returns {void}
-   * @memberof SideNav
-   */
-  handleCloseClick = (e) => {
-    e.preventDefault();
-    this.setState({
-      open: false,
-    });
-  }
-
   /**
    * @function
    * @returns {JSX} SideNav JSX
@@ -36,11 +14,25 @@ export default class SideNav extends Component {
   render() {
     return (
       <Fragment>
-        <div id="sidenav" className={this.state.open ? 'sidenav--show' : ''}>
+        <div id="sidenav" className="sidenav--show">
           <ul>
-            {this.props.children}
+            <li>
+              <div className="user-view">
+                <div className="background">
+                  Image
+                </div>
+                <a href="#user">User</a>
+                <a href="#name"><span className="white-text name">John Doe</span></a>
+                <a href="#email"><span className="white-text email">jdandturk@gmail.com</span></a>
+              </div>
+            </li>
+            <li><a href="#!"><i className="material-icons">cloud</i>First Link With Icon</a></li>
+            <li><a href="#!">Second Link</a></li>
+            <li><div className="divider"></div></li>
+            <li><a className="subheader">Subheader</a></li>
+            <li><a className="waves-effect" href="#!">Third Link With Waves</a></li>
           </ul>
-          <Link to="/" onClick={this.handleCloseClick} className="sidenav--close">X</Link>
+          <a href="#" className="sidenav--close">X</a>
         </div>
       </Fragment>
     );
