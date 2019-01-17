@@ -1,0 +1,36 @@
+@import '../../../assets/scss/abstracts/variables';
+
+#sidenav {
+  position: fixed;
+  background: #fff;
+  height: 100%;
+  box-shadow: $card-shadow-hover;
+  width: 22rem;
+  left: -55rem;
+  top: 0;
+  z-index: 1000;
+  transition: all cubic-bezier(.08,.64,.65,1.04) .5s;
+}
+
+#sidenav.sidenav--show {
+  left: 0;
+}
+
+#sidenav ul {
+  width: 100%;
+  height: 92%;
+}
+
+.sidenav {
+
+  &--close {
+    height: 8%;
+    text-align: center;
+    background: tomato;
+    color: #fff;
+    font-size: 2.3rem;
+    font-weight: 500;
+    width: 100%;
+    display: block;
+  }
+}
