@@ -5,6 +5,8 @@ import NoMatch from './components/pages/NoMatch/NoMatch';
 import ResetPassword from './containers/Auth/ResetPassword/ResetPassword';
 import UpdatePassword from './containers/Auth/ResetPassword/UpdatePassword';
 import ArticleView from './containers/Article/ArticleView';
+import CreateArticle from './components/Article/CreateArticle';
+// import Main from ./components/Main';
 
 
 const routes = [
@@ -33,10 +35,10 @@ const routes = [
     exact: true,
   },
   {
-    path: '/auth',
-    component: VerifyAuth,
-    name: 'auth',
-    exact: true,
+    path: '/create-article',
+    component: CreateArticle,
+    name: 'createArticle',
+    exact: false,
   },
   {
     path: '/password-reset',
@@ -54,6 +56,12 @@ const routes = [
     path: '/a/:slug',
     component: ArticleView,
     name: 'article page',
+    exact: true,
+  },
+  {
+    path: '/auth',
+    component: VerifyAuth,
+    name: 'auth',
     exact: true,
   },
   {

@@ -1,5 +1,5 @@
-import reducers from '../signup';
-import * as actionTypes from '../../../actions/authAction/actionTypes';
+import reducers from '../authReducers/signup';
+import * as actionTypes from '../../actions/authAction/actionTypes';
 
 describe('### Signup Reducers', () => {
   it('should return initial state if action is undefined', () => {

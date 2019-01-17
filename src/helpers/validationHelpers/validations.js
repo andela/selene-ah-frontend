@@ -44,6 +44,16 @@ class Validation {
   }
 
   /**
+ * @description checks if an article title is valid
+ * @param {String} articleTitle to be tested
+ * @return {Boolean} returns true or false
+ */
+  static isValidArticleTitle(articleTitle) {
+    const titleRegex = /^([a-zA-Z0-9!@#$%^_&.*]){5,200}$/;
+    return titleRegex.test(articleTitle);
+  }
+
+  /**
    * @description - checks if password is equal to confirm password
    * @param {string} password
    * @param {string} confirmPassword

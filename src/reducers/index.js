@@ -7,6 +7,9 @@ import updatePassword from './authReducers/updatePassword';
 import likeArticleReducer from './reactionReducers/likearticleReactions';
 import articleViewReducer from './articleViewReducer/articleView';
 import articlesResponse from './authReducers/home';
+import articleReducers from './articleReducers/articleReducers';
+import categoryReducer from './articleReducers/categoryReducer';
+import imageUploadReducers from './articleReducers/imageUploadReducers';
 
 const rootReducer = combineReducers({
   signup,
@@ -17,6 +20,9 @@ const rootReducer = combineReducers({
   likeArticleReducer,
   articleViewReducer,
   articlesResponse,
+  articleReducers,
+  categoryReducer,
+  imageUploadReducers,
 });
 
 export default rootReducer;

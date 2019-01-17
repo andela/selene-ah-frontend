@@ -1,0 +1,10 @@
+@import '../../abstracts/variables';
+
+.categorySelect{
+	width: 200px;
+	display:inline-block;
+	border: 1px solid $light-border-color;
+	padding: 5px;
+	font-size: 1em;
+	margin-right: 50px;
+}
