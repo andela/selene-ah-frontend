@@ -3,12 +3,16 @@ import { withToastManager } from 'react-toast-notifications';
 import PropTypes from 'prop-types';
 import { ClipLoader } from 'react-spinners';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { FormWrapper, FormContainer } from '../../Form';
-import { Input, Button, Label } from '../../../components/utilities';
+import {
+  Input, Button, Label,
+} from '../../../components/utilities';
 import loginImage from '../../../assets/images/illustration_1.svg';
 import Validations from '../SignUp/helpers/signupValidations';
 import loginActions from '../../../actions/authAction/login';
+import SocialButtons from '../SocialAuth/SocialButtons';
 import './_login.scss';
 
 /**
@@ -32,6 +36,7 @@ export class Login extends Component {
     successMessage: PropTypes.string,
     isLoading: PropTypes.bool,
     history: PropTypes.object,
+    isAuthenticated: PropTypes.bool,
   };
 
   /**
@@ -96,6 +101,19 @@ export class Login extends Component {
   }
 
   /**
+    * @description - Takes care of toast notifications when component mounts
+    * @returns {bool} - Boolean
+    */
+  componentDidMount() {
+    if (this.props.isAuthenticated === false) {
+      this.props.toastManager.add('Error Logging You in', {
+        appearance: 'error',
+        autoDismiss: true,
+      });
+    }
+  }
+
+  /**
    * @description Our Login JSX template
    * @function
    * @returns {JSX} HTML Template
@@ -146,6 +164,13 @@ export class Login extends Component {
               <p>OR</p>
               <span className="line"></span>
              </div>
+             <div className="social-btn-group">
+              <SocialButtons />
+            </div>
+            <p className='center signup-text-position'>Not a member?
+              <Link className="signup-text" to='signup'>Signup</Link>
+            </p>
+
             </FormContainer>
         </FormWrapper>
       </Fragment>
@@ -155,6 +180,7 @@ export class Login extends Component {
 
 export const mapStateToProps = state => ({
   ...state.login,
+  ...state.socialAuthReducer,
 });
 
 export const mapDispatchToProps = dispatch => bindActionCreators(
