@@ -1,0 +1,183 @@
+$fourohfour-color: #BFBFBF;
+
+.fixed-body, main {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.box {
+  width: 100%;
+  padding: 15rem 7rem;
+  font-size: 1.8rem;
+  font-weight: 300;
+  display: flex;
+  justify-content: space-around;
+  margin-top: -4rem;
+
+  .message {
+    display: block;
+    margin-top: 12rem;
+    color: darken($fourohfour-color, 30);
+  }
+
+  a {
+    margin-top: 2rem;
+    display: inline-block;
+    font-size: 1.4rem;
+  }
+  
+  span {
+    line-height: 4px;
+    font-size: 1.8rem;
+  }
+}
+
+.noMatch {
+  font-size: 40.2rem;
+  font-weight: 500;
+  color: $fourohfour-color;
+  bottom: -10rem;
+  opacity: .15;
+  -webkit-text-stroke: 1.5rem $fourohfour-color;
+}
+
+// https://codepen.io/tedmcdo/pen/PqxKXg
+.wave {
+  background: url('./wave.svg') repeat-x; 
+  position: absolute;
+  bottom: 0;
+  opacity: .8;
+  width: 6400px;
+  height: 198px;
+  animation: wave 7s cubic-bezier( 0.36, 0.45, 0.63, 0.53) infinite;
+  transform: translate3d(0, 0, 0);
+  display: none;
+}
+
+.wave:nth-of-type(2) {
+  top: -175px;
+  animation: wave 7s cubic-bezier( 0.36, 0.45, 0.63, 0.53) -.125s infinite, swell 7s ease -1.25s infinite;
+  opacity: .5;
+}
+
+.ocean {
+  display: none;
+  height: 3%;
+  width:100%;
+  position:absolute;
+  bottom:0;
+  left:0;
+  background: #5941A9;
+}
+
+@media (min-width: 500px) and (max-width: 800px) {
+  .image {
+    display: none;
+
+    img {
+      display: none;
+    }
+  }
+
+  .noMatch {
+    bottom: initial;
+    font-size: 25.4rem;
+    text-shadow: 3px 12px 19px #5941A9;
+    -webkit-text-stroke: 1.5rem #ccc;
+    color: #dedede;
+    left: 20%;
+  }
+
+  .wave {
+    display: block;
+  }
+
+  .ocean {
+    display: block;
+  }
+
+  .box {
+    padding: 25rem 0rem
+  }
+}
+
+@media (min-width: 400px) and (max-width: 500px) {
+  .image {
+    display: none;
+
+    img {
+      display: none;
+    }
+  }
+
+  .noMatch {
+    bottom: initial;
+    font-size: 20.4rem;
+    text-shadow: 3px 12px 19px #5941A9;
+    color: #dedede;
+    -webkit-text-stroke: 1.5rem #ccc;
+    left: 6%;
+  }
+
+  .wave {
+    display: block;
+  }
+
+  .ocean {
+    display: block;
+  }
+
+  .box {
+    padding: 22rem 0rem
+  }
+}
+
+@media (min-width: 300px) and (max-width: 400px) {
+  .image {
+    display: none;
+
+    img {
+      display: none;
+    }
+  }
+
+  .noMatch {
+    bottom: initial;
+    font-size: 17.4rem;
+    text-shadow: 3px 12px 19px #5941A9;
+    color: #dedede;
+    -webkit-text-stroke: 1.5rem #ccc;
+    left: 7%;
+  }
+
+  .wave {
+    display: block;
+  }
+
+  .ocean {
+    display: block;
+  }
+
+  .box {
+    padding: 22rem 0rem
+  }
+}
+
+@keyframes wave {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: -1600px;
+  }
+}
+
+@keyframes swell {
+  0%, 100% {
+    transform: translate3d(0,-25px,0);
+  }
+  50% {
+    transform: translate3d(0,5px,0);
+  }
+}

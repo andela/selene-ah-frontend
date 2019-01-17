@@ -2,6 +2,8 @@ const merge = require('webpack-merge'); // Merge our base and dev config files.
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyWebpackPlugin = require('uglifyjs-webpack-plugin');
 const common = require('./webpack.base');
+const webpack = require('webpack');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 // SCSS test regex 
 const scssTest = /\.scss$/;
@@ -21,7 +23,7 @@ module.exports = merge(common, {
     rules: [
       {
         test: scssTest,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
     ],
   },
@@ -42,6 +44,11 @@ module.exports = merge(common, {
     new MiniCssExtractPlugin({
       filename: '[name].[hash].css',
       chunkFilename: '[id].[hash].css',
-    })
+    }),
+    new OptimizeCssAssetsPlugin({}),
+    uglifyJS,
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    }),
   ],
 });

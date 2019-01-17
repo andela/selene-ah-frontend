@@ -2,6 +2,7 @@ import Login from './containers/Auth/Login/Login';
 import SignUp from './containers/Auth/SignUp/SignUpContainer';
 import VerifyAuth from './containers/Auth/SocialAuth/VerifyAuth';
 import Home from './containers/Home';
+import NoMatch from './components/pages/NoMatch/NoMatch';
 
 
 const routes = [
@@ -30,6 +31,9 @@ const routes = [
   {
     path: '/', component: Home, name: 'home',
   },
+  {
 
+    component: NoMatch, name: 'no-match',
+  },
 ];
 export default routes;
