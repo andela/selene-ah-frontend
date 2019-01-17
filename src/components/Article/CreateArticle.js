@@ -5,10 +5,12 @@ import { withToastManager } from 'react-toast-notifications';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import TextEditor from '../TextEditor/TextEditor';
-import { Input, Button } from '../utilities';
-import NavBar from '../NavBar/NavBar';
+import {
+  Input, Button, Navbar, SideNav,
+} from '../utilities';
 import Select from '../utilities/Select/Select';
 import articleActionCreators from '../../actions/articles';
+import decodeToken from '../../helpers/validationHelpers/decodeToken';
 
 /**
  * @description Class for creating an article
@@ -23,6 +25,7 @@ export class CreateArticle extends Component {
     uploadedImageFile: null,
     imageVisibility: null,
     fileSelected: false,
+    sidenav: false,
   }
 
   static propTypes = {
@@ -54,6 +57,15 @@ export class CreateArticle extends Component {
     const title = e.target.value;
     this.setState({ title });
   }
+
+  /**
+   *@description - method to toggle the sideNav
+   * @memberof CreateArticle
+   * @returns { undefined }
+   */
+  changeSidenav = () => {
+    this.setState({ sidenav: !this.state.sidenav });
+  };
 
   /**
  * @memberof CreateArticle
@@ -153,6 +165,8 @@ readUploadedFile = (file) => {
    * @returns { undefined }
    */
   componentDidMount() {
+    const isAuthenticated = decodeToken();
+    if (!isAuthenticated) this.props.history.push('/login');
     this.props.fetchCategories();
   }
 
@@ -210,7 +224,19 @@ readUploadedFile = (file) => {
     }
     return (
       <Fragment>
-      <NavBar/>
+      { this.state.sidenav
+        ? <div className="sidebar-overlay"
+        onClick={() => this.changeSidenav() }>
+        </div> : null}
+
+       { this.state.sidenav
+         ? <SideNav isLoggedIn={ true }
+         changeSidenav={ this.changeSidenav} /> : null }
+
+      <Navbar
+        isLoggedIn={true}
+        changeSidenav={this.changeSidenav}
+      />
       <div className="editorContainer">
         <div className="editorActions">
           <Select

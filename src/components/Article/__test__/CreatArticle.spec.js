@@ -26,6 +26,9 @@ const props = {
   toastManager: {},
   getCategorySelection: getCategorySelectionSpy,
   fetchCategoriesSuccess: false,
+  history: {
+    push: jest.fn(),
+  },
 };
 
 const props2 = {
@@ -98,6 +101,12 @@ describe('CreateAticle Component', () => {
 
   it('Should submit the article', () => {
     wrapper.instance().submitArticle();
+  });
+
+  it('should display the side nav', () => {
+    wrapper.setState({ sidenav: true });
+    wrapper.find('.sidebar-overlay').simulate('click');
+    wrapper.instance().changeSidenav();
   });
 
   it('Should not upload image if non is selected', () => {
