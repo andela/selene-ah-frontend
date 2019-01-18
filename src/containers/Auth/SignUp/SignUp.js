@@ -186,11 +186,10 @@ export class SignUp extends Component {
                 classes={error.userName ? 'inValid' : ''}
                 required={true} onChange={this.handleChange} />
             </div>
-            <div className='text-center'>
+            <div className='text-center loader'>
               {!isLoading && <Button type='submit' classes='form-button'>
                 Signup</Button>}
               <ClipLoader
-                  css='override'
                   sizeUnit='px'
                   size={30}
                   color='#fff'

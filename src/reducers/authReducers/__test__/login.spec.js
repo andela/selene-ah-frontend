@@ -23,7 +23,7 @@ describe('Login Reducer', () => {
     expect(loginReducer(defaultState, { type: type.LOGIN_FAILED, payload })).toEqual(
       updateObject(defaultState, {
         isLoading: false,
-        error: true,
+        loginError: true,
         errorMessage: payload.response.data.message,
         response: payload,
       }),

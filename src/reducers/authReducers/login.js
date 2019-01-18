@@ -4,7 +4,7 @@ import updateObject from '../../helpers/store/utility';
 export const initialState = {
   isLoading: false,
   response: null,
-  error: null,
+  loginError: null,
   success: null,
   errorMessage: null,
 };
@@ -19,7 +19,7 @@ const updateLoginSuccessState = (state, action) => updateObject(state, {
 
 const updateLoginFailedState = (state, action) => updateObject(state, {
   isLoading: false,
-  error: true,
+  loginError: true,
   response: action.payload,
   errorMessage: action.payload.response.data.message,
 });

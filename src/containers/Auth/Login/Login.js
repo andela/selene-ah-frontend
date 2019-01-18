@@ -37,6 +37,7 @@ export class Login extends Component {
     isLoading: PropTypes.bool,
     history: PropTypes.object,
     isAuthenticated: PropTypes.bool,
+    loginError: PropTypes.bool,
   };
 
   /**
@@ -90,7 +91,8 @@ export class Login extends Component {
     * @returns {bool} - Boolean
     */
   shouldComponentUpdate(nextProps) {
-    if (this.props.error !== nextProps.error && nextProps.errorMessage) {
+    // eslint-disable-next-line max-len
+    if (this.props.loginError !== nextProps.loginError && nextProps.errorMessage) {
       this.props.toastManager.add(`${nextProps.errorMessage}`, {
         appearance: 'error',
         autoDismiss: true,
@@ -153,7 +155,7 @@ export class Login extends Component {
             {!this.props.isLoading
               && <Button type="submit" classes="form-button">Login</Button>
             }
-             <div className="text--center">
+             <div className="text--center loader">
               <ClipLoader
                 sizeUnit={'px'}
                 size={30}
