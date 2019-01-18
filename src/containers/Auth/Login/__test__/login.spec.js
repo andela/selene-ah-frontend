@@ -23,6 +23,7 @@ describe('Login container', () => {
     isAuthenticated: null,
     imageUrl: loginImage,
     classes: 'google-btn',
+    loginError: false,
   };
 
   beforeEach(() => {
@@ -103,9 +104,9 @@ describe('Login container', () => {
   });
 
   it('should return true when no errors', () => {
-    const nextProps = { error: true, errorMessage: false };
+    const nextProps = { loginError: true, errorMessage: false };
     wrapper.setProps({
-      error: false,
+      loginError: false,
       toastManager: {
         add: toastManagerSpy,
       },
@@ -129,7 +130,7 @@ describe('Login container', () => {
   it('should return false when errors occur', () => {
     const nextProps = { error: true, errorMessage: 'dja' };
     wrapper.setProps({
-      error: false,
+      loginError: false,
       toastManager: {
         add: toastManagerSpy,
       },

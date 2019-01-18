@@ -75,14 +75,13 @@ body {
 
   .social-btn{
     background-color: #ffffff;
-    border-radius: 2px;
+    border-radius: 4px;
     width: 7rem;
     height: 5rem;
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.20);
-    opacity: 0.8;
     cursor: pointer;
     .google-btn{
       background: url('../images/socials/google.svg');
@@ -101,7 +100,7 @@ body {
     }
   }
   .social-btn:hover{
-    opacity: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
   }
 }
 
@@ -119,6 +118,12 @@ body {
   .twitter-btn, .facebook-btn, .google-btn {
     width: 1.5rem;
     height: 1.5rem;
+  }
+
+  .loader {
+    div {
+      border-color: $primary-color-dark;
+    }
   }
 
 }
@@ -171,6 +176,12 @@ body {
     .twitter-btn, .facebook-btn, .google-btn {
       width: 1.5rem;
       height: 1.5rem;
+    }
+  }
+
+  .loader {
+    div {
+      border-color: $primary-color-dark;
     }
   }
 }
