@@ -22,11 +22,6 @@ describe('###FormContainer', () => {
     expect(fragment.length).toEqual(1);
   });
 
-  it('should render loginContainer css class', () => {
-    const container = wrapper.find('.login-container');
-    expect(container.length).toEqual(1);
-  });
-
   it('should submit Form', () => {
     const form = wrapper.find('form');
     form.at(0).simulate('submit');

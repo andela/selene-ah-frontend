@@ -130,7 +130,8 @@ export class SignUp extends Component {
     const subHeader = '“Today a reader, tomorrow a leader”';
     const { state: { error }, props: { isLoading } } = this;
     return (
-      <FormWrapper imageUrl={image} displayImage={true} imgId='img-responsive'>
+      <FormWrapper imageUrl={image}
+        displayImage={true} imageId='img-responsive'>
         <FormContainer header={header} subHeader={subHeader}
           loginId='login-wrapper' onSubmit={this.handleSubmit}
           containerId='login-container'>

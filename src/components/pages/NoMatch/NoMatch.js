@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import noMatchImage from '../../../assets/images/undraw_navigation_lytx.svg';
 import './NoMatch.scss';
 
@@ -8,11 +9,11 @@ const NoMatch = () => (
       <div className="box pa">
         <div className="message">
           <p>Seems like you are <br /> lost!</p>
-          <a
+          <Link
             className="color-primary"
-            href="#">
+            to="/">
               <span>&#8592;</span>Back Home
-          </a>
+          </Link>
         </div>
         <div className="image">
           <img

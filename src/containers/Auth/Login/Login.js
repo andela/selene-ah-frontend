@@ -1,9 +1,9 @@
 import React, { Fragment, Component } from 'react';
 import { withToastManager } from 'react-toast-notifications';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { ClipLoader } from 'react-spinners';
 import { bindActionCreators } from 'redux';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { FormWrapper, FormContainer } from '../../Form';
 import {
@@ -121,7 +121,9 @@ export class Login extends Component {
   render() {
     return (
       <Fragment>
-        <FormWrapper imageUrl={loginImage} displayImage={true}>
+        <FormWrapper imageUrl={loginImage} displayImage={true}
+            flexWrapper='flex-wrapper' imageContainer='image-container'
+            imageResponsive='img-responsive'>
             <FormContainer
               header="Welcome back! 👋"
               subHeader='“Today a reader, tomorrow a leader”'
@@ -159,6 +161,8 @@ export class Login extends Component {
                 loading={this.props.isLoading}
                 />
              </div>
+             <p className='center'>
+            <Link to='password-reset'>Forget Password?</Link></p>
              <div className="or">
               <span className="line"></span>
               <p>OR</p>
