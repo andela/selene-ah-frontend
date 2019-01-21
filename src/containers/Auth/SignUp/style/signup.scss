@@ -6,9 +6,7 @@
     margin-bottom: 1.5rem;
   }
 }
-body {
-  overflow: hidden;
-}
+
 .or {
   margin-top: .5rem;
   padding: 5px;
@@ -24,7 +22,6 @@ body {
 }
 
 #login-container {
-  margin-left: 25rem;
   margin-top: -15rem;
 }
 
@@ -54,9 +51,6 @@ body {
   }
   .form-button {
     width: 100%;
-  }
-  a {
-    color: $white;
   }
   .center {
     text-align: center;
@@ -94,6 +88,9 @@ body {
   body {
     overflow: auto;
   }
+  #login-container {
+    margin: 0rem 0rem;
+  }
   #signup-container {
     text-align: left;
     width: 95%;
@@ -120,7 +117,6 @@ body {
 
   #signup-container {
     text-align: left;
-    width: 80% ;
     margin: 0 auto;
 
     input[type=password] {
@@ -140,9 +136,18 @@ body {
       display: block;
     }
   }
+  #login-container {
+    margin-left: 0rem;
+    margin-top: 0rem;
+    width: 100%;
+  }
+  .input-group label{
+    color: #345;
+  }
+  
 }
 
-@media (min-width: 945px) and (max-width: 1400px){
+@media (min-width: 50rem) and (max-width: 76.5rem){
   #signup-container {
     .side_input {
       display: block;
@@ -154,4 +159,8 @@ body {
     margin-bottom: 15px;
     }
   }
+}
+/* very large screen devices */
+@media all and (min-width: 114rem) {
+
 }

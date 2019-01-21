@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withToastManager } from 'react-toast-notifications';
@@ -83,14 +83,16 @@ export class ResetPassword extends Component {
    */
   render() {
     return (
-        <span>
+      <Fragment>
         <FormWrapper imageUrl={image} flexWrapper='reset-flex-wrapper'
-        imageId='sideImage' displayImage={false} >
+        imageId='sideImage' displayImage={false} changeClass='remove-arc'
+        changeForm='inner-form-reset-password' >
             {
           !this.props.success
             ? (<FormContainer
-            header="Forget Password"
+            header="Forgot Password?"
             containerId='resetContainer'
+            formContainer='form-container reset-form-container'
             loginId='resetFormWrapper'
             onSubmit={this.handleSubmit}>
               <div className="input-group">
@@ -125,7 +127,7 @@ export class ResetPassword extends Component {
               containerId='resetContainer'
             loginId='resetFormWrapper'
               container='reset-container' wrapper='reset-wrapper'
-              formContainer='form-container'
+              formContainer='form-container reset-form-container'
               onSubmit={this.handleSubmit}>
                 <div className="text-center">
                     <p className='sent-response'>
@@ -138,7 +140,7 @@ export class ResetPassword extends Component {
               </FormContainer>)
       }
           </FormWrapper>
-    </span>
+    </Fragment>
     );
   }
 }
