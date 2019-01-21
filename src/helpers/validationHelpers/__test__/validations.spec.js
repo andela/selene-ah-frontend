@@ -1,4 +1,4 @@
-import validation from './validations';
+import validation from '../validations';
 
 describe('## Validation class', () => {
   it('should return true if a valid email is supplied', () => {

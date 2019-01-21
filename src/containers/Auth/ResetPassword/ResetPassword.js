@@ -66,6 +66,13 @@ export class ResetPassword extends Component {
   }
 
   /**
+   * @returns {void}
+   */
+  componentDidMount() {
+    document.body.classList.add('overflow');
+  }
+
+  /**
    * @description Handles the form submit
    * @param {object} e The event that is to be submitted
    * @returns {void} - calls the send email function

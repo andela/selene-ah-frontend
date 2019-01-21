@@ -13,6 +13,7 @@ describe('Card Component', () => {
       imageUrl: 'sjdvbdshms',
     },
     readTime: 1,
+    slug: 'dhhdh',
   };
 
   beforeEach(() => {

@@ -21,6 +21,7 @@ describe('## Home Component', () => {
           userName: 'gbols',
         },
         readTime: 1,
+        slug: 'ggsg',
       }],
     },
   };

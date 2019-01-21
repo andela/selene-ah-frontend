@@ -177,7 +177,7 @@
 }
 
 /* NAVBAR RESPONSIVE STYLES */
-@media (min-width: 76.8rem) and (max-width: 52.4rem){
+@media (min-width: 420px) and (max-width: 526px){
   .navbar {
     height: $navbar-height-small;
     line-height: $navbar-height-small;
@@ -215,7 +215,7 @@
   }
 }
 
-@media (min-width: 32rem) and (max-width: 76.8rem){
+@media (min-width: 320px) and (max-width: 476px){
   .navbar {
     height: $navbar-height-small;
     line-height: $navbar-height-small;

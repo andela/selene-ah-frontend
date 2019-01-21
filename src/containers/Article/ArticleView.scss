@@ -1,5 +1,4 @@
 @import '../../assets/scss/abstracts/variables';
-
 .author-section {
   padding-top: 5.4rem;
 }
@@ -80,10 +79,34 @@
   #article .container {
     width: 50%;
   }
+
+  .like-icon {
+    position: relative;
+    left: 0;
+    top: 0;
+  }
 }
 
 @media all and (min-width: 114rem) {
   #article .container {
     width: 50%;
+  }
+}
+// like-icon
+.like-icon {
+position: fixed;
+top: 50%;
+left: 10%;
+}
+
+.like--count {
+padding-left: 2px;
+}
+
+@media (min-width: 20rem) and (max-width: 78rem) {
+  .like-icon {
+    position: relative;
+    left: 0;
+    top: 0;
   }
 }

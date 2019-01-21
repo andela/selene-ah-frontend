@@ -51,6 +51,7 @@ export class UpdatePassword extends Component {
    * @returns{void} - redirect user to password-reset page
    */
   componentDidMount = () => {
+    document.body.classList.add('overflow');
     const { history: { location: { search } } } = this.props;
     if (!search) {
       this.props.history.push('/password-reset');

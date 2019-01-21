@@ -34,6 +34,11 @@
   display: flex;
   align-items: center;
 }
+
+.wrapper {
+  padding: 0 3rem;
+}
+
 .imgContainer{
   width: 500px;
   height: 500px;
@@ -58,4 +63,12 @@
 }
 .wrapper {
   padding: 0 1.5rem;
+}
+
+.bg-green {
+  background-color: #F8FAF8;
+}
+
+.overflow {
+  overflow: hidden;
 }

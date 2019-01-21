@@ -105,6 +105,13 @@ export class SignUp extends Component {
   }
 
   /**
+   * @returns {void}
+   */
+  componentDidMount() {
+    document.body.classList.add('overflow');
+  }
+
+  /**
    * @param {*} e - event
    * @returns {object} - handle submit
    */
