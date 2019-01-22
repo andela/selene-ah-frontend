@@ -117,6 +117,7 @@ export class UserProfile extends Component {
         changeSidenav={this.changeSidenav} />
           { success
             ? <UserInfo
+
             name={fullname}
             SocialLinks={links}
             bio={bio}

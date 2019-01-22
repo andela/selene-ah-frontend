@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { shallow } from 'enzyme';
 import moxios from 'moxios';
@@ -44,6 +43,7 @@ describe('User update profile container', () => {
     wrapper.instance().onChange(e);
   });
 
+<<<<<<< HEAD
   it('should call getImageUrl function', () => {
     const e = {
       target: {

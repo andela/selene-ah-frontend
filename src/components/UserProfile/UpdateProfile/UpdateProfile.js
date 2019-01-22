@@ -78,7 +78,6 @@ export class UpdateProfile extends Component {
       userName: this.state.userName,
       email: this.state.email,
     };
-
     this.props.updateProfileDispatcher(post);
   };
 
@@ -225,6 +224,7 @@ export class UpdateProfile extends Component {
 export const mapStateToProps = state => ({
   ...state.profile,
 });
+
 export const mapDispatchToProps = dispatch => bindActionCreators(
   actionCreators,
   dispatch,
