@@ -1,0 +1,27 @@
+.side-card {
+  width: 25rem;
+  float: left;
+  min-height: 300px;
+  margin-left: 30px;
+  margin-right: 55px;
+  -webkit-box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.16);
+  -moz-box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.16);
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.16);
+  padding: 3rem;
+  text-align: center;
+
+  &__link {
+    background-color: #5C4ABE;
+    color: #fff;
+    display: block;
+    padding: 1rem 0;
+    border-radius: 5px;
+  }
+}
+
+/*Media Queries*/
+@media(max-width: 1250px){
+	.side-card{
+		display: none;
+	}
+}

@@ -9,6 +9,8 @@ const Input = props => (
       required={props.required}
       className={`input ${props.classes}`}
       id={props.id}
+      minLength={props.minLength}
+      maxLength={props.maxLength}
       onChange={props.onChange}
     />
   </Fragment>
@@ -18,6 +20,8 @@ Input.propTypes = {
   type: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
+  maxLength: PropTypes.string,
+  minLength: PropTypes.string,
   required: PropTypes.bool.isRequired,
   classes: PropTypes.string,
   onChange: PropTypes.func,

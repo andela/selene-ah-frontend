@@ -10,6 +10,7 @@ import articlesResponse from './authReducers/home';
 import articleReducers from './articleReducers/articleReducers';
 import categoryReducer from './articleReducers/categoryReducer';
 import imageUploadReducers from './articleReducers/imageUploadReducers';
+import profile from './userProfileReducers/Profile';
 
 const rootReducer = combineReducers({
   signup,
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   articleReducers,
   categoryReducer,
   imageUploadReducers,
+  profile,
 });
 
 export default rootReducer;
