@@ -138,14 +138,14 @@ export class SignUp extends Component {
           <div id="signup-container">
             <div className='input-group'>
               <label>Email Address</label>
-              <Input type='email' placeholder='fakeemail@email.com'
+              <Input type='email' placeholder=''
                 classes={error.email ? 'inValid' : ''}
                   id='email' required={true} onChange={this.handleChange} />
             </div>
             <div className="side_input">
               <div className='input-group flex-left'>
                 <label>First Name</label>
-                <Input type='text' placeholder='first name'
+                <Input type='text' placeholder=''
                   classes={error.firstName ? 'inValid' : ''}
                     id='firstName' required={true}
                       onChange={this.handleChange} />
@@ -154,7 +154,7 @@ export class SignUp extends Component {
                 <label>Last Name</label>
                 <Input type='text' id='lastName'
                   classes={error.lastName ? 'inValid' : ''}
-                  placeholder='last name' required={true}
+                  placeholder='' required={true}
                     onChange={this.handleChange}/>
               </div>
             </div>
@@ -163,7 +163,7 @@ export class SignUp extends Component {
                 <label>Password</label>
                 <Input type='password' id='password'
                   classes={error.password ? 'inValid' : ''}
-                  placeholder='password' required={true}
+                  placeholder='' required={true}
                     onChange={this.handleChange}/>
               </div>
               <p className='small-text mobile-text'>
@@ -172,7 +172,7 @@ export class SignUp extends Component {
               <div className='input-group'>
                 <label>Confirm Password</label>
                 <Input type='password' id='confirmPassword'
-                  placeholder='password' required={true}
+                  placeholder='' required={true}
                   classes={error.confirmPassword ? 'inValid' : ''}
                     onChange={this.handleChange}/>
               </div>
@@ -182,7 +182,7 @@ export class SignUp extends Component {
                 not be less than 8 characters</p>
             <div className='input-group'>
               <label>Username</label>
-              <Input type='text' id='userName' placeholder='username'
+              <Input type='text' id='userName' placeholder=''
                 classes={error.userName ? 'inValid' : ''}
                 required={true} onChange={this.handleChange} />
             </div>
@@ -201,11 +201,13 @@ export class SignUp extends Component {
             <p>OR</p>
             <span className="line"></span>
           </div>
-          <div className="social-btn-group">
-            <SocialButtons />
-          </div>
-          <p className='center'>Already a member?
-            <Link to='login'>Signin</Link></p>
+          <div className="social-group">
+              <div className="social-btn-group">
+                <SocialButtons />
+              </div>
+             </div>
+          <p className='center signup-text-position'>Already a member?
+            <Link className="signup-text" to='login'>Signin</Link></p>
           </div>
         </FormContainer>
       </FormWrapper>

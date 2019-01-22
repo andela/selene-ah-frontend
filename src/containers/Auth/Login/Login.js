@@ -136,7 +136,7 @@ export class Login extends Component {
               <Label for="email">Email Address</Label>
               <Input
                   type="text"
-                  placeholder="fakeemail@gmail.com"
+                  placeholder=""
                   id="email"
                   required={true}
                   onChange={this.handleInputChange}
@@ -146,7 +146,7 @@ export class Login extends Component {
               <Label for="password">Password</Label>
               <Input
                   type="password"
-                  placeholder="password"
+                  placeholder=""
                   id="password"
                   required={true}
                   onChange={this.handleInputChange}
@@ -164,15 +164,18 @@ export class Login extends Component {
                 />
              </div>
              <p className='center'>
-            <Link to='password-reset'>Forget Password?</Link></p>
+            <Link to='password-reset' className='forget-password-text'>
+              Forget Password?</Link></p>
              <div className="or">
               <span className="line"></span>
               <p>OR</p>
               <span className="line"></span>
              </div>
-             <div className="social-btn-group">
-              <SocialButtons />
-            </div>
+             <div className="social-group">
+                <div className="social-btn-group">
+                  <SocialButtons />
+                </div>
+             </div>
             <p className='center signup-text-position'>Not a member?
               <Link className="signup-text" to='signup'>Signup</Link>
             </p>

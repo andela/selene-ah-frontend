@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import PurpleImage from '../../assets/images/purple circle.svg';
+// import PurpleImage from '../../assets/images/purple circle.svg';
 
 /**
  * @description FormWrapper JSX Component
@@ -16,6 +16,8 @@ export default class FormWrapper extends Component {
     children: PropTypes.any.isRequired,
     displayImage: PropTypes.bool.isRequired,
     imageId: PropTypes.string,
+    changeClass: PropTypes.string,
+    changeForm: PropTypes.string,
   }
 
   /**
@@ -25,21 +27,40 @@ export default class FormWrapper extends Component {
    */
   render() {
     return (
-      <Fragment>
+      <div className="row">
+      <div className={`
+          ${this.props.changeClass || 'img-container-form'} row`}></div>
+      <div className="row">
         <div className='form-nav'>
           <Link className='navbar--logo' to='/'>AUTHORS HAVEN</Link>
         </div>
-        { this.props.displayImage
-          && <img src={PurpleImage} className="background-image"/>
-        }
-        <div className="flex-wrapper">
-          <div className="image-container">
-            <img className="img-responsive" id={this.props.imageId}
-            src={`${this.props.imageUrl}`} />
+      </div>
+      <div className="row">
+          <div className="content col s12">
+            <div className="img-container col m6">
+              <div className="flex-wrapper">
+                <div className="image-container"
+                  style={
+                    {
+                      background: `url(${this.props.imageUrl})
+                        no-repeat center center / contain`,
+                    }
+                    }>
+                </div>
+              </div>
+            </div>
+          <div className="col m6 s12" id="adjust-container">
+            <div className={`
+          ${this.props.changeForm || 'inner-form-container'}`}
+          >
+            <div className="form-content">
+            {this.props.children}
+            </div>
           </div>
-          {this.props.children}
+          </div>
         </div>
-      </Fragment>
+      </div>
+      </div>
     );
   }
 }
