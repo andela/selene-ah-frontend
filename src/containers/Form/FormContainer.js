@@ -12,6 +12,7 @@ export default class FormContainer extends Component {
     onSubmit: PropTypes.func,
     loginId: PropTypes.string,
     containerId: PropTypes.string,
+    formContainer: PropTypes.string,
   }
 
   /**
@@ -23,10 +24,14 @@ export default class FormContainer extends Component {
       <Fragment>
         <div className="login-container" id={this.props.containerId}>
           <div className="login-wrapper" id={this.props.loginId}>
-            <h3>{this.props.header}</h3>
-            <p>{this.props.subHeader}</p>
-              <div className="form-container">
+              <div className={`${this.props.formContainer
+                || 'form-container'}`}>
                 <form onSubmit={this.props.onSubmit}>
+                <div className="header-group">
+                  <h3 className="header-text">{this.props.header}</h3>
+                  <p className="subheader-text">{this.props.subHeader}</p>
+
+                </div>
                   {this.props.children}
                 </form>
               </div>

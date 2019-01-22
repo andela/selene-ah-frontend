@@ -6,7 +6,6 @@ import { bindActionCreators } from 'redux';
 
 import * as actions from '../../../actions/authAction/socialAuth';
 
-
 /**
  * @class Home
  * @extends {Component}
@@ -36,7 +35,7 @@ export class VerifyAuth extends Component {
    * @returns {string} null
    */
   getBaseUrl = (urlType) => {
-    const url = 'https://selene-ah-staging.herokuapp.com/api/v1/auth/';
+    const url = process.env.BASE_URL;
     switch (urlType) {
       case 'twitter':
         return `${url}twitter/callback`;

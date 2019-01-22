@@ -2,16 +2,20 @@
 
 .login-container {
   z-index: 10;
-  margin-top: -10rem;
+  margin-top: 10rem;
   margin-right: 6rem;
   color: $white;
   width: 40rem;
   text-align: center;
 }
 
-.login-wrapper {
-  margin-left: 10rem;
+form{
+  margin-top: 40rem;
+}
 
+
+.login-wrapper {
+  
   h3 {
     font-size: 3rem;
     font-weight: bold;
@@ -36,7 +40,7 @@
 
 .form-container {
   width: 90%;
-  margin: 0 5%;
+  margin: 0 0;
   text-align: left;
 }
 
@@ -47,8 +51,8 @@
 }
 
 .image-container {
-  width: 40%;
-  height: calc(100% - 100px);
+  min-width: 350px;
+  min-height: 350px;
   z-index: 10;
 }
 
@@ -75,8 +79,65 @@
   margin-top: 12px;
 }
 
-.center a {
+.forget-password-text {
   text-decoration: underline;
   color: white;
   font-weight: 600;
 }
+
+
+
+/* Mobile in portrait and landscape mode*/
+@media all and (max-width: 47rem) {
+  #login-container {
+    margin: 0rem 0rem;
+  }
+  .login-container {
+    margin: 0rem auto;
+    width: 100%;
+
+  }
+  .form-container{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+  form{
+    width: 80%;
+  }
+  .forget-password-text{
+    color: #345;
+  }
+}
+
+/* Tablets */
+@media all and (min-width: 48rem) and (max-width: 64rem) {
+  #login-container {
+    margin-left: 0rem;
+    margin-top: 0rem;
+  }
+  .login-wrapper{
+    display: flex;
+    justify-content: center;
+  }
+  .forget-password-text, .signup-text {
+    color: #345;
+  }
+
+}
+
+/* Desktop and laptop */
+@media all and (min-width: 76.5rem) {
+  .form-container {
+    width: 75%;
+    margin-left: 5rem;
+    text-align: left;
+  }
+
+}
+
+/* very large screen devices */
+@media all and (min-width: 114rem) {
+
+}
+

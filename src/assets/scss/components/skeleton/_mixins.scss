@@ -1,0 +1,4 @@
+@mixin skeleton-animate($deg: 30) {
+  opacity: 1;
+  background-color: lighten($grey-color, $deg);
+}

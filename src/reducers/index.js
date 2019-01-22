@@ -4,6 +4,7 @@ import login from './authReducers/login';
 import socialAuthReducer from './authReducers/socialAuthReducer';
 import resetPassword from './authReducers/resetPassword';
 import updatePassword from './authReducers/updatePassword';
+import articleViewReducer from './articleViewReducer/articleView';
 
 const rootReducer = combineReducers({
   signup,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   socialAuthReducer,
   resetPassword,
   updatePassword,
+  articleViewReducer,
 });
 
 export default rootReducer;

@@ -7,18 +7,18 @@ const SocialButtons = () => {
   const socialMediaLogin = [{
     className: 'google-btn',
     key: 'google',
-    url: 'https://selene-ah-staging.herokuapp.com/api/v1/auth/google',
+    url: process.env.GOOGLE_URL,
   },
   {
     className: 'facebook-btn',
     key: 'facebook',
-    url: 'https://selene-ah-staging.herokuapp.com/api/v1/auth/facebook',
+    url: process.env.FACEBOOK_URL,
 
   },
   {
     className: 'twitter-btn',
     key: 'twitter',
-    url: 'https://selene-ah-staging.herokuapp.com/api/v1/auth/twitter',
+    url: process.env.TWITTER_URL,
   },
   ].map(socialIcon => (
       <a href={socialIcon.url} key={socialIcon.key} className="social-btn">

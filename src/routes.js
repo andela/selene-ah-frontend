@@ -4,6 +4,7 @@ import VerifyAuth from './containers/Auth/SocialAuth/VerifyAuth';
 import NoMatch from './components/pages/NoMatch/NoMatch';
 import ResetPassword from './containers/Auth/ResetPassword/ResetPassword';
 import UpdatePassword from './containers/Auth/ResetPassword/UpdatePassword';
+import ArticleView from './containers/Article/ArticleView';
 
 
 const routes = [
@@ -41,7 +42,12 @@ const routes = [
     exact: true,
   },
   {
-
+    path: '/a/:slug',
+    component: ArticleView,
+    name: 'article page',
+    exact: true,
+  },
+  {
     component: NoMatch, name: 'no-match',
   },
 ];
