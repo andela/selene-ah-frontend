@@ -5,7 +5,7 @@ import robot from '../../../assets/images/avatars/robot.svg';
 import './SideNav.scss';
 
 /**
- * @className
+ * @class
  * @description Class implements sidenav feature
  */
 export default class SideNav extends Component {

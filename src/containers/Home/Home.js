@@ -7,6 +7,7 @@ import robot from '../../assets/images/avatars/robot.svg';
 import edit from '../../assets/images/edit-3.svg';
 import trimBody from '../../helpers/utilities/utilities';
 
+
 import {
   Navbar,
   Tag,
@@ -38,7 +39,6 @@ export class Home extends Component {
   componentDidMount() {
     this.props.fetchArticles();
   }
-
 
   /**
    * @returns {JSX} Html template

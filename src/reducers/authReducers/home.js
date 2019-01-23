@@ -1,7 +1,7 @@
 import * as actionType from '../../actions/authAction/actionTypes';
 import updateObject from '../../helpers/store/utility';
 
-const initialState = {
+export const initialState = {
   isLoading: false,
   articlesResponse: {},
   error: null,

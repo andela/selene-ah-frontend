@@ -138,7 +138,7 @@ $navbar-hover-color: #f6f9fc;
 
   .searchbar {
     display: flex;
-    padding-top: 2.4rem;
+    padding-bottom: 2.4rem;
     margin-left: 3rem;
 
     form {
@@ -276,4 +276,6 @@ $navbar-hover-color: #f6f9fc;
  .avar {
    vertical-align: middle;
    margin-right: 2rem;
+   width: 40px;
+   height: 40px;
  }

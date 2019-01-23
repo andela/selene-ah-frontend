@@ -6,6 +6,8 @@ describe('Article Component Test', () => {
   let wrapper;
 
   const props = {
+    changeSidenav: jest.fn(),
+    isLoggedIn: true,
     response: {
       article: {
         author: {
@@ -28,6 +30,8 @@ describe('Article Component Test', () => {
 
   it('should render the article component', () => {
     wrapper.setProps({
+      changeSidenav: jest.fn(),
+      isLoggedIn: true,
       response: {
         article: {
           author: {
