@@ -17,16 +17,19 @@ export class ArticleView extends Component {
     isFetchingArticle: PropTypes.bool,
     response: PropTypes.object,
     location: PropTypes.object,
+    fetchFollowers: PropTypes.func,
+    isFetchingFollowers: PropTypes.bool,
   };
 
   /**
    * @param {object} props
    * @returns {void}
    */
-  componentDidMount() {
+  async componentDidMount() {
     document.body.classList.add('bg-green');
     const slug = this.props.location.pathname.split('/')[2];
-    this.props.fetchArticle(slug, this.props.history);
+    await this.props.fetchFollowers();
+    await this.props.fetchArticle(slug, this.props.history);
   }
 
   static propTypes = {
@@ -40,10 +43,10 @@ export class ArticleView extends Component {
   render() {
     return (
      <Fragment>
-        { this.props.isFetchingArticle
+        { (this.props.isFetchingArticle || this.props.isFetchingFollowers)
           && <ArticleLoader />}
-        { this.props.response
-          && !this.props.isFetchingArticle
+        { (this.props.response)
+          && (!this.props.isFetchingArticle)
           && <Article {...this.props}/> };
      </Fragment>
     );

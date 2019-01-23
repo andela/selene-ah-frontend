@@ -35,6 +35,18 @@ describe('ArticleView Actions', () => {
     });
   });
 
+  it('should return an action object once FETCH_FOLLOWERS_START is fired', () => {
+    expect(articleViewActions.fetchFollowersStart()).toEqual({
+      type: type.FETCH_FOLLOWERS_START,
+    });
+  });
+
+  it('should return an action object once FETCH_FOLLOWERS_COMPLETE is fired', () => {
+    expect(articleViewActions.fetchFollowersComplete()).toEqual({
+      type: type.FETCH_FOLLOWERS_COMPLETE,
+    });
+  });
+
   it('should call the fetchArticle start dispatch function', async () => {
     const fakeUser = {
       email: faker.internet.email(),
@@ -90,6 +102,41 @@ describe('ArticleView Actions', () => {
 
     moxios.stubRequest(`${url}/${fakeUser.email}`, { status: 400, response: mockResponse });
     await articleViewActions.fetchArticle(fakeUser.email, history)(dispatchFn);
+    expect(dispatchFn).toBeCalled();
+    expect(dispatchFn).toBeCalledTimes(2);
+  });
+
+
+  it('should call the fetchFollowers start dispatch function', async () => {
+    const mockResponse = {
+      message: 'Successfully fetched article',
+    };
+
+    moxios.stubRequest(`${process.env.SERVER_API}/following`, mockResponse);
+    await articleViewActions.fetchFollowers()(dispatchFn);
+    expect(dispatchFn).toBeCalled();
+    expect(dispatchFn).toBeCalledWith({ type: type.FETCH_FOLLOWERS_START });
+  });
+
+  it('should call the fetchFollower success dispatch function', async () => {
+    const mockResponse = {
+      data: {},
+      message: 'Successfully fetched article',
+    };
+
+    moxios.stubRequest(`${process.env.SERVER_API}/following`, mockResponse);
+    await articleViewActions.fetchFollowers()(dispatchFn);
+    expect(dispatchFn).toBeCalled();
+    expect(dispatchFn).toBeCalledWith({ type: type.FETCH_FOLLOWERS_COMPLETE });
+  });
+
+  it('should call the fetchFollowes dispatch function', async () => {
+    const mockResponse = {
+      data: {},
+      message: 'Successfully fetched article',
+    };
+    moxios.stubRequest(`${process.env.SERVER_API}/following`, { status: 400, response: mockResponse });
+    await articleViewActions.fetchFollowers()(dispatchFn);
     expect(dispatchFn).toBeCalled();
     expect(dispatchFn).toBeCalledTimes(2);
   });

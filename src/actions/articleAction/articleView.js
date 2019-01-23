@@ -15,6 +15,15 @@ const fetchArticleFailed = payload => ({
   payload,
 });
 
+const fetchFollowersStart = () => ({
+  type: type.FETCH_FOLLOWERS_START,
+});
+
+const fetchFollowersComplete = payload => ({
+  type: type.FETCH_FOLLOWERS_COMPLETE,
+  payload,
+});
+
 const fetchArticle = (slug, history) => (dispatch) => {
   dispatch(fetchArticleStart());
   return axios.get(`${process.env.SERVER_API}/article/s/${slug}`)
@@ -27,10 +36,27 @@ const fetchArticle = (slug, history) => (dispatch) => {
     });
 };
 
+const fetchFollowers = () => async (dispatch) => {
+  const token = localStorage.getItem('token');
+  dispatch(fetchFollowersStart());
+  try {
+    const res = await axios.get(`${process.env.SERVER_API}/following`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    dispatch(fetchFollowersComplete(res.data));
+  } catch (err) {
+    dispatch(fetchFollowersComplete(err.response.data.message));
+  }
+};
 
 export default {
   fetchArticleStart,
   fetchArticleSuccess,
   fetchArticleFailed,
   fetchArticle,
+  fetchFollowers,
+  fetchFollowersStart,
+  fetchFollowersComplete,
 };

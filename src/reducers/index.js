@@ -11,6 +11,7 @@ import articleReducers from './articleReducers/articleReducers';
 import categoryReducer from './articleReducers/categoryReducer';
 import imageUploadReducers from './articleReducers/imageUploadReducers';
 import profile from './userProfileReducers/Profile';
+import follow from './reactionReducers/follow';
 
 const rootReducer = combineReducers({
   signup,
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   categoryReducer,
   imageUploadReducers,
   profile,
+  follow,
 });
 
 export default rootReducer;
