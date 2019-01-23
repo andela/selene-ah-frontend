@@ -1,0 +1,89 @@
+@import '../../assets/scss/abstracts/variables';
+
+.author-section {
+  padding-top: 5.4rem;
+}
+
+.author-box {
+  display: flex;
+  width: 100%;
+  margin: 3rem 0;
+  height: 5rem;
+
+  .author-img {
+    flex: 0 0 auto;
+
+    .author-avatar {
+      display: block;
+
+      img {
+        width: 4rem;
+        height: 4rem;
+        display: inline-block;
+        border-radius: 100%;
+        vertical-align: middle;
+        border: 1px solid $grey-color;
+      }
+    }
+  }
+
+  .author-bio {
+    padding-left: 1.5rem;
+    overflow: hidden;
+    flex: 1 1 auto;
+
+    .author-name {
+      color: $primary-text-color-dark;
+      font-weight: 500;
+      margin-right: 1rem;
+    }
+
+    button {
+      height: 19px;
+      line-height: 19px;
+      padding: 0 1.5rem;
+      border-radius: 4px;
+      border: 1px solid rgba(0,0,0,0.15);
+    }
+  }
+}
+
+.article-stat {
+  span {
+    padding-right: 1rem;
+    font-weight: 500;
+    font-size: 11px;
+  }
+}
+
+.body p {
+  color: #345;
+  font-weight: 400;
+}
+
+.article-img {
+  width: 100%;
+  height: 400px;
+  background-position: center center;
+  background-size: cover;
+  margin-bottom: 5rem;
+}
+
+.article-title {
+  font-weight: 500;
+  font-size: 3rem;
+  text-transform: uppercase;
+  margin-bottom: 4rem;
+}
+
+@media all and (min-width: 76.5rem) {
+  #article .container {
+    width: 50%;
+  }
+}
+
+@media all and (min-width: 114rem) {
+  #article .container {
+    width: 50%;
+  }
+}

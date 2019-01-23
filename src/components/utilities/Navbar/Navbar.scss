@@ -1,0 +1,187 @@
+@import '../../../assets/scss/abstracts/variables';
+
+$navbar-height: 54px;
+$navbar-height-small: 54px;
+$navbar-logo-color: #5f4aa1;
+$navbar-links-color: #333333;
+$navbar-shadow: rgba(0, 0, 0, .05);
+$navbar-border: rgba(0, 0, 0, .09);
+$navbar-primary-color: #5f4aa1;
+$navbar-hover-color: #f6f9fc;
+
+#navbar {
+  width: 100%;
+  height: $navbar-height;
+  line-height: $navbar-height;
+  font-weight: 500;
+  background-color: $white;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+
+  &__has-shadow {
+    box-shadow: 0 4px 12px $navbar-shadow;
+  }
+
+  &__has-border {
+    border-bottom: 1px solid $navbar-border;
+  }
+
+  &--content {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  &--left,
+  &--left__small,
+  &--right {
+    display: flex;
+    align-items: center;
+  }
+
+  &--left__small {
+    display: none;
+  }
+
+  &--logo {
+    font-size: 1.9rem;
+    color: $navbar-logo-color;
+    font-weight: bold;
+  }
+
+  &--links {
+    padding-left: 4.1rem;
+
+    li {
+      position: relative;
+      display: inline-block;
+      margin-top: 1.3rem;
+    }
+
+    a {
+      padding: 1rem 1.5rem;
+      text-transform: uppercase;
+      color: $navbar-links-color;
+      font-size: 1.3rem;
+      line-height: 60px;
+      border-radius: 3px;
+
+      &:hover {
+        background-color: $navbar-hover-color;
+      }
+
+    }
+  }
+
+  &__has-dropdown > div {
+    background-color: $white;
+    border-radius: 4px;
+    min-width: 20rem;
+    position: absolute;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    display: none;
+    top: 5rem;
+
+    ul {
+      margin: 0;
+
+      li {
+        display: block;
+        padding: 0;
+        margin: 0;
+        border-left: 0;
+        transition: border ease 300ms;
+
+        &:hover {
+          background: $navbar-hover-color;
+          cursor: pointer;
+          border-left: 4px solid $primary-color;
+        }
+
+        a {
+          padding: 2px 0 2px 3rem;
+          line-height: 0;
+          font-weight: 300;
+          width: 100%;
+          display: inline-block;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+  .navbar--left .navbar--logo {
+    padding: 3rem 0;
+  }
+
+  &__has-dropdown:hover > div {
+    display: block;
+  }
+
+  &--button {
+    background-color: transparent;
+    color: $navbar-primary-color !important;
+    border: 1px solid $navbar-primary-color;
+    padding: 0 1.6rem !important;
+    text-align: center;
+    line-height: 35px !important;
+
+    &:hover {
+      color: $white !important;
+      background: linear-gradient(5deg, $primary-color,#8f94fb);
+      box-shadow: 0 1px 1px $navbar-shadow;
+      border: none;
+    }
+  }
+
+  .searchbar {
+    display: flex;
+    padding-top: 2.4rem;
+    margin-left: 3rem;
+
+    form {
+      position: relative;
+      height: 3.5rem;
+      background: rgba(208, 208, 209, .2);
+      border-radius: 5px;
+      overflow: hidden;
+      cursor: text;
+      white-space: nowrap;
+      padding-top: 1px;
+      padding-left: 40px;
+
+      input {
+        min-width: 30rem;
+        height: 3.5rem;
+        color: #A2A2A2;
+        font-size: 1.3rem;
+        font-weight: 200;
+        line-height: 2rem;
+        border: none;
+        vertical-align: top;
+        background: transparent;
+        padding: 1rem 0;
+        margin-top: -1px;
+        font-weight: 500;
+
+        &:focus, 
+        &:focus &::placeholder,
+        &:focus .icon {
+          color: lighten($navbar-links-color, 20);
+        }
+      }
+
+      .icon {
+        color: #A2A2A2;
+        height: 1.5rem;
+        left: 10px;
+        line-height: 34px;
+        top: .9rem;
+        position: absolute;
+        -webkit-transition: color .2s ease;
+        transition: color .2s ease;
+      }
+    }
+  }
+}
