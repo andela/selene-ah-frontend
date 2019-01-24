@@ -1,7 +1,9 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import * as Icon from 'react-feather';
 import { Link } from 'react-router-dom';
 import robot from '../../../assets/images/avatars/robot.svg';
+import logout from '../../../assets/images/icons/log-out.svg';
 import bell from '../../../assets/images/bell.svg';
 import './Navbar.scss';
 
@@ -17,9 +19,9 @@ const Navbar = props => <Fragment>
       <div className="navbar--content wrapper">
       <div className="flex">
         <div>
-          <span className="hide-on-large-only"
+          <span className="hide-on-large-only" style={{ cursor: 'pointer' }}
           onClick={() => props.changeSidenav()}>
-            <i data-feather="menu" className="icon"></i>
+              <Icon.Menu/>
             </span>
           <Link to='/' className="navbar--logo">AUTHORS HAVEN</Link>
         </div>
@@ -56,16 +58,22 @@ const Navbar = props => <Fragment>
               <img className="circle avar" src={robot}></img>
               </a>
             </li>
+            <li className="logout" onClick= {() => {
+              localStorage.removeItem('token');
+              window.location.replace('/');
+            }}
+              style={{ cursor: 'pointer' }}>
+              <img src={logout} className="icon bell" /></li>
           </div>
         </div>
           : <div className="navbar--right">
-         <div className="navbar--links">
-           <li><Link to='/login'>Login</Link></li>
-           <li>
-             <Link to="/signup"className="navbar--button
-             button hide-on-med-and-down">Get Started</Link>
-           </li>
-         </div>
+          <div className="navbar--links">
+            <li><Link to='/login'>Login</Link></li>
+            <li>
+              <Link to="/signup"className="navbar--button
+              button hide-on-med-and-down">Get Started</Link>
+            </li>
+          </div>
        </div>}
         </div>
       </div>

@@ -12,6 +12,7 @@ import image from '../../../assets/images/updatepassword.svg';
 import actionCreators from '../../../actions/authAction/updatePassword';
 import './ResetPassword.scss';
 import validate from '../SignUp/helpers/signupValidations';
+import decodedToken from '../../../helpers/validationHelpers/decodeToken';
 
 
 /**
@@ -53,7 +54,15 @@ export class UpdatePassword extends Component {
   componentDidMount = () => {
     document.body.classList.add('overflow');
     const { history: { location: { search } } } = this.props;
-    if (!search) {
+    if (!search || search === null) {
+      this.props.history.push('/password-reset');
+      return;
+    }
+    const token = search.split('?')[1];
+    localStorage.setItem('token', token);
+    const decoded = decodedToken();
+    if (!decoded) {
+      localStorage.removeItem(token);
       this.props.history.push('/password-reset');
     }
   }
@@ -137,7 +146,7 @@ export class UpdatePassword extends Component {
   render() {
     return (
         <FormWrapper imageUrl={image}
-        imageId='updateSideImage' displayImage={false}>
+        imageId='updateSideImage' displayImage={false} changeClass='remove-arc'>
         {
           !this.props.passwordChanged
             ? (

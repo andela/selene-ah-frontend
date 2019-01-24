@@ -8,14 +8,12 @@ import rules from './editorSerializer';
 // Create a new serializer instance with our `rules` from above.
 const html = new Html({ rules });
 
-const initialValue = '<p>Tell your story here...</p>';
-
 /**
  * @description class components for the TextEditor
  */
 class TextEditor extends Component {
   state = {
-    value: html.deserialize(initialValue),
+    value: html.deserialize(''),
   }
 
   /**
@@ -26,16 +24,6 @@ class TextEditor extends Component {
     const content = html.serialize(value);
     this.props.getArticleBody(content);
     this.setState({ value });
-  }
-
-  /**
-   * @description - function that clears the editor
-   * @return { null } - does not return anything
-   */
-  onClick = () => {
-    if (html.serialize(this.state.value) === initialValue) {
-      this.setState({ value: html.deserialize('') });
-    }
   }
 
   /**
@@ -73,7 +61,7 @@ class TextEditor extends Component {
         id="textEditor"
         value={this.state.value}
         onChange={this.onChange}
-        onClick={this.onClick}
+        placeholder={'Tell your story here...'}
         plugins={plugins}
         renderMark={this.renderMark}
         className={this.props.classes}

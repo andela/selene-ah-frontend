@@ -42,7 +42,7 @@ export const signUpUser = (user, history) => async (dispatch) => {
       { ...user });
     localStorage.setItem('token', res.data.token);
     dispatch(signUpSuccess(res.data));
-    history.push('/');
+    history.push('/email-verification');
   } catch (err) {
     dispatch(signUpFailure(err));
   }

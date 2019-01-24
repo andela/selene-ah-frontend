@@ -99,7 +99,7 @@ export class ResetPassword extends Component {
             ? (<FormContainer
             header="Forgot Password?"
             containerId='resetContainer'
-            formContainer='form-container reset-form-container'
+            formContainer='reset-form-container'
             loginId='resetFormWrapper'
             onSubmit={this.handleSubmit}>
               <div className="input-group">

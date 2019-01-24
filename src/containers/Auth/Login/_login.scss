@@ -13,7 +13,6 @@ form{
   margin-top: 40rem;
 }
 
-
 .login-wrapper {
   
   h3 {
@@ -86,12 +85,21 @@ form{
 }
 
 
-
 /* Mobile in portrait and landscape mode*/
 @media all and (max-width: 47rem) {
-  #login-container {
-    margin: 0rem 0rem;
+  #login-container .login-wrapper{
+    width: 70%;
+    margin: 0 auto;
   }
+
+  .form-nav {
+    display: none;
+  }
+
+  .or {
+    margin-bottom: 3rem;
+  }
+
   .login-container {
     margin: 0rem auto;
     width: 100%;
@@ -108,6 +116,25 @@ form{
   .forget-password-text{
     color: #345;
   }
+
+  .header-group {
+    text-align: center;
+  }
+
+  #login-container .social-btn {
+    width: 8rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+
+    &:hover {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+    }
+  }
+
+  .forget-password-text, .signup-text {
+    &:hover {
+      color: $primary-color-light;
+    }
+  }
 }
 
 /* Tablets */
@@ -116,6 +143,11 @@ form{
     margin-left: 0rem;
     margin-top: 0rem;
   }
+
+  .form-nav {
+    display: none;
+  }
+
   .login-wrapper{
     display: flex;
     justify-content: center;
@@ -123,7 +155,35 @@ form{
   .forget-password-text, .signup-text {
     color: #345;
   }
+  
 
+  .forget-password-text {
+    &:hover {
+      color: $primary-color-light;
+    }
+  }
+
+  .forget-password-text {
+    &:hover {
+      color: $primary-color-light;
+    }
+  }
+
+  .or {
+    margin-bottom: 3rem;
+  }
+
+  #login-container .social-btn {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+
+    &:hover {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+    }
+  }
+
+  .form-container {
+    width: 60%;
+  }
 }
 
 /* Desktop and laptop */

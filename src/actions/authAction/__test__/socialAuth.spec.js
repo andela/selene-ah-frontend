@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import moxios from 'moxios';
@@ -39,6 +40,11 @@ describe('### SocialAuth Actions', () => {
         });
     });
 
+  it('should return null if authSucces is triggered for fake type',
+    () => {
+      expect(socialAuthActions.authSuccess('fake', newUser))
+        .toEqual(null);
+    });
 
   it('should return an action if authfail is triggered for google', () => {
     expect(socialAuthActions.authFail(error, 'google')).toEqual({
@@ -228,6 +234,25 @@ describe('### SocialAuth Actions', () => {
         .dispatch(socialAuthActions
           .socialAuth(invalidUrl, socialToken, authType));
       expect(store.getActions()).toEqual(expectedActions);
+    });
+
+  it('should return null for invalid type',
+    async () => {
+      const invalidUrl = 'http://localhost:3000/api/v1/auth/twitter';
+      const authType = 'fake';
+      const dispatchFn = jest.fn();
+      const mockResponse = {
+        data: {
+          message: 'registration successful',
+        },
+      };
+      const mergedURL = invalidUrl + socialToken;
+      moxios.stubRequest(mergedURL, {
+        status: 202,
+        response: mockResponse,
+      });
+      socialAuthActions.socialAuth(invalidUrl, socialToken, authType)(dispatchFn);
+      expect(dispatchFn).not.toBeCalled;
     });
 
   it('should return 400 if auth type is github',

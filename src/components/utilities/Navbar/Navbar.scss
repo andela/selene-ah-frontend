@@ -182,6 +182,10 @@ $navbar-hover-color: #f6f9fc;
         position: absolute;
         -webkit-transition: color .2s ease;
         transition: color .2s ease;
+
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
   }

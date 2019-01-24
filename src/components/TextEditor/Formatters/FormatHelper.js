@@ -3,7 +3,8 @@ export const FormatHandler = (options) => {
 
   return {
     onKeyDown(event, editor, next) {
-      if (!event.ctrlKey || event.key !== key) return next();
+      if ((!event.ctrlKey && !event.metaKey)
+      || event.key !== key) return next();
       event.preventDefault();
       editor.toggleMark(type);
     },

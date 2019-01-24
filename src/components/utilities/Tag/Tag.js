@@ -6,7 +6,7 @@ const Tag = props => (
   <Fragment>
     <div className="tag--button">
       <a href="#" className={`tag ${props.isActive ? 'tag__primary' : ''}`}>
-        <i data-feather={props.icon}></i>
+        <props.icon />
           {props.children}
       </a>
     </div>
@@ -15,7 +15,7 @@ const Tag = props => (
 
 Tag.propTypes = {
   children: PropTypes.string.isRequired,
-  icon: PropTypes.string,
+  icon: PropTypes.any,
   isActive: PropTypes.bool,
 };
 

@@ -50,12 +50,12 @@ const socialAuth = (baseAPI, socialToken, authType) => async (dispatch) => {
     const response = await axios.get(url);
     if (response.status === 200) {
       const newUser = false;
-      localStorage.setItem('AuthorHavenToken', response.data.token);
+      localStorage.setItem('token', response.data.token);
       return dispatch(authSuccess(authType, newUser));
     }
     if (response.status === 201) {
       const newUser = true;
-      localStorage.setItem('AuthorHavenToken', response.data.token);
+      localStorage.setItem('token', response.data.token);
       return dispatch(authSuccess(authType, newUser));
     }
   } catch (error) {

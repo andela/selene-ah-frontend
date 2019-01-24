@@ -6,6 +6,7 @@ $social-btn-height: 2.5rem;
 
 body {
   background: rgba($white, .9);
+  overflow: hidden;
 }
 .content{
   height: 100vh;
@@ -17,6 +18,10 @@ label{
 }
 .row .col {
   padding: 0px 0px;
+}
+
+input[type="text"]:not(.browser-default):focus, input[type="text"]:not(.browser-default):hover {
+  background-color: #fff;
 }
 
 .image-container{
@@ -35,6 +40,10 @@ label{
   right: 0px;
 }
 
+.img-container-form-2{
+  height: 100vh;
+
+}
 
 .form-button {
   width: 100%;
@@ -162,6 +171,7 @@ label{
   }
   form {
     margin-top: 0rem;
+    width: 100%;
   }
   label{
     color: #345;
@@ -329,6 +339,10 @@ label{
   #login-container{
     margin-top: 6rem;
   }
+  .header-text{
+    color:#345;
+  }
+
   
 }
 
@@ -342,11 +356,17 @@ label{
     width: 100%;
     z-index: -1;
     position: fixed;
-
-
   }
   #login-container, .login-container {
     margin-top: 0rem;
+  }
+  .login-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .reset-form-container{
+    width:90%
   }
 
 }
@@ -367,8 +387,25 @@ label{
   }
   .form-container {
     width: 90%;
+    margin-left: 32rem;
+    margin-top: 20rem;
   }
   .form-content {
     margin-right: 10rem;
+    transform: scale(1.3)
   }
+  .image-container{
+    margin-top: 15rem;
+    transform: scale(1.3);
+  }
+  .img-container-form{
+    background-color: $primary-color-light;
+    -webkit-clip-path: circle(60% at 92% 51%);
+    clip-path: circle(60% at 92% 51%);
+    height: 120vh;
+    width: 100vw;
+    z-index: -1;
+    position: fixed;
+  }
+
 }

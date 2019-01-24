@@ -1,6 +1,9 @@
-/* eslint-disable no-unused-expressions */
+/* eslint-disable import/first */
+jest.mock('../../../../helpers/validationHelpers/decodeToken');
 import { shallow } from 'enzyme';
 import React from 'react';
+import decodedToken from '../../../../helpers/validationHelpers/decodeToken';
+import decodedUser from '../../../../../__mocks__/decodedUser';
 import {
   UpdatePassword,
   mapStateToProps,
@@ -9,7 +12,12 @@ import {
 
 
 describe('## UpdatePassword Component', () => {
+  decodedToken.mockResolvedValue(() => ({
+    decodedUser,
+  }));
+
   let wrapper;
+  const pushSpy = jest.fn();
   const props = {
     toastManager: {},
     response: '',
@@ -18,12 +26,19 @@ describe('## UpdatePassword Component', () => {
     error: false,
     isLoading: false,
     passwordChanged: false,
-    history: { location: { search: '?auhodhgondogo' }, replace: jest.fn() },
+    history: {
+      location: {
+        search: '?auhodhgondogo',
+      },
+      replace: jest.fn(),
+      push: pushSpy,
+    },
   };
 
 
   beforeEach(() => {
     wrapper = shallow(<UpdatePassword {...props}/>);
+    pushSpy.mockClear();
   });
 
   it('should have the password input field to have rendered', () => {
@@ -90,6 +105,19 @@ describe('## UpdatePassword Component', () => {
     form.at(0).simulate('submit', { preventDefault });
     expect(preventDefault).toHaveBeenCalledTimes(1);
     expect(wrapper.props().toastManager).toBeCalled;
+  });
+
+  it('should direct to password-reset if search if null', () => {
+    wrapper.setProps({
+      history: {
+        push: pushSpy,
+        location: {
+          search: null,
+        },
+      },
+    });
+    wrapper.instance().componentDidMount();
+    expect(pushSpy).toBeCalled;
   });
 
   it('should give error if password is not equal to confirm password', () => {

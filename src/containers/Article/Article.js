@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import renderHTML from 'react-render-html';
 import { Navbar } from '../../components/utilities';
+import SideNav from '../../components/utilities/SideNav/SideNav';
 import config from '../../config';
 import convertTS from '../../helpers/dateStamp';
 import LikeReaction from '../Reaction/LikeReaction';
@@ -40,6 +41,14 @@ class Article extends React.Component {
       <div id="article">
         <Navbar isLoggedIn={this.state.isLoggedIn}
         changeSidenav={this.changeSidenav} />
+        { this.state.sidenav
+          ? <div className="sidebar-overlay"
+          onClick={() => this.changeSidenav() }>
+          </div> : null}
+
+        { this.state.sidenav
+          ? <SideNav isLoggedIn={ this.state.isLoggedIn }
+          changeSidenav={ this.changeSidenav} /> : null }
         <section className="author-section container"
           style={{ boxShadow: 'none' }}>
           <div className="author-box">

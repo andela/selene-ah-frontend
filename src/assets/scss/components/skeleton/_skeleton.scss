@@ -60,6 +60,12 @@
     height: 19rem;
   }
 
+  &--animate {
+    @include skeleton-animate;
+    animation: skeleton-animation $animation-duration infinite linear;
+    animation-delay: .9s;
+  }
+
   .hero {
     width: 100%;
     height: 50rem;
@@ -84,6 +90,10 @@
     &__short {
       width: 40%;
     }
+  }
+
+  .holder {
+    width: 80%;
   }
 }
 
