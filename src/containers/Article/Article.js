@@ -5,6 +5,9 @@ import renderHTML from 'react-render-html';
 import { Navbar } from '../../components/utilities';
 import config from '../../config';
 import convertTS from '../../helpers/dateStamp';
+import LikeReaction from '../Reaction/LikeReaction';
+import isLikedByUser from '../Reaction/helpers';
+import decodeToken from '../../helpers/validationHelpers/decodeToken';
 
 /**
  * @description Returns article based on the this.props given
@@ -22,16 +25,23 @@ class Article extends React.Component {
     this.setState({ sidenav: !this.state.sidenav });
   };
 
+  static propTypes = {
+    response: PropTypes.object,
+  }
+
   /**
    * @returns {JSX} HTML template
    * @memberof Article
    */
   render() {
+    let id;
+    decodeToken() === null ? id = '' : { id } = decodeToken();
     return (
       <div id="article">
         <Navbar isLoggedIn={this.state.isLoggedIn}
         changeSidenav={this.changeSidenav} />
-        <section className="author-section container">
+        <section className="author-section container"
+          style={{ boxShadow: 'none' }}>
           <div className="author-box">
             <div className="author-img">
               <Link to='#' className="author-avatar">
@@ -61,7 +71,7 @@ class Article extends React.Component {
             </div>
           </div>
         </section>
-        <section className="body container">
+        <section className="body container" style={{ boxShadow: 'none' }} >
         {
           this.props.response.article.imageUrl
           && <div className="article-img"
@@ -76,13 +86,18 @@ class Article extends React.Component {
         </div>
         {renderHTML(this.props.response.article.body)}
         </section>
+        <div className='like-icon container' >
+          <LikeReaction
+            isLiked={isLikedByUser(
+              this.props.response.article.likedUsers, id,
+            )}
+            articleId={this.props.response.article.id}
+            likeCount={this.props.response.vote.voteCount.likeCount}
+          />
+        </div>
       </div>
     );
   }
 }
-
-Article.propTypes = {
-  response: PropTypes.object,
-};
 
 export default Article;

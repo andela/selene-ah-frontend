@@ -36,6 +36,7 @@
     "import/extensions": "error",
     "import/no-extraneous-dependencies": "off",
     "import/no-named-as-default": "off",
+    "no-unused-expressions": "off",
     "class-methods-use-this": 0,
     "import/no-unresolved": [
       "error",

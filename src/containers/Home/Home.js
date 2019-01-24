@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import renderHtml from 'react-render-html';
 import homeActionCreators from './homeActionCreators';
 import robot from '../../assets/images/avatars/robot.svg';
 import edit from '../../assets/images/edit-3.svg';
@@ -160,10 +161,11 @@ export class Home extends Component {
           || []).map((article, i) => <Card
             imageUrl={article.imageUrl}
             title={article.title}
-            body={trimBody(article.body)}
+            body={renderHtml(trimBody(article.body))}
             author={article.author}
             readTime={article.readTime}
-            key={i} />)}
+            key={i}
+            slug={article.slug}/>)}
         </CardParent>
       </Fragment>
     );

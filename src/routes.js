@@ -9,10 +9,16 @@ import ArticleView from './containers/Article/ArticleView';
 
 const routes = [
   {
-    path: '/signup', component: SignUp, name: 'signup', exact: false,
+    path: '/signup',
+    component: SignUp,
+    name: 'signup',
+    exact: true,
   },
   {
-    path: '/login', component: Login, name: 'login', exact: true,
+    path: '/login',
+    component: Login,
+    name: 'login',
+    exact: true,
   },
   {
     path: '/auth/twitter',
@@ -27,7 +33,10 @@ const routes = [
     exact: true,
   },
   {
-    path: '/auth', component: VerifyAuth, name: 'auth', exact: true,
+    path: '/auth',
+    component: VerifyAuth,
+    name: 'auth',
+    exact: true,
   },
   {
     path: '/password-reset',

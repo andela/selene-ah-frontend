@@ -62,8 +62,8 @@ const Navbar = props => <Fragment>
          <div className="navbar--links">
            <li><Link to='/login'>Login</Link></li>
            <li>
-             <a href="#"className="navbar--button
-             button hide-on-med-and-down">Get Started</a>
+             <Link to="/signup"className="navbar--button
+             button hide-on-med-and-down">Get Started</Link>
            </li>
          </div>
        </div>}

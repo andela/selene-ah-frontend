@@ -107,6 +107,7 @@ export class Login extends Component {
     * @returns {bool} - Boolean
     */
   componentDidMount() {
+    document.body.classList.add('overflow');
     if (this.props.isAuthenticated === false) {
       this.props.toastManager.add('Error Logging You in', {
         appearance: 'error',
