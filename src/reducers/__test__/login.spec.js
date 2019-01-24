@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
-import * as type from '../../../actions/authAction/actionTypes';
-import loginReducer, { initialState as defaultState } from '../login';
-import updateObject from '../../../helpers/store/utility';
+import * as type from '../../actions/authAction/actionTypes';
+import loginReducer, { initialState as defaultState } from '../authReducers/login';
+import updateObject from '../../helpers/store/utility';
 
 describe('Login Reducer', () => {
   it(`should update state when ${type.LOGIN_START} is triggered`, () => {

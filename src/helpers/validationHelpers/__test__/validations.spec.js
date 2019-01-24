@@ -25,4 +25,8 @@ describe('## Validation class', () => {
   it('should return true if password is equal to confirmPassword', () => {
     expect(validation.verifyConfirmPassword('dan', 'dan')).toEqual(true);
   });
+
+  it('should return true if a valid articleTitle is supplied', () => {
+    expect(validation.isValidArticleTitle('jjdjdj98')).toEqual(true);
+  });
 });

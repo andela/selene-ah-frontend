@@ -1,5 +1,5 @@
-import reducers from '../socialAuthReducer';
-import * as actionTypes from '../../../actions/authAction/actionTypes';
+import reducers from '../authReducers/socialAuthReducer';
+import * as actionTypes from '../../actions/authAction/actionTypes';
 
 describe('### Social Auth Reducers', () => {
   it('should return initial state if action is undefined', () => {
