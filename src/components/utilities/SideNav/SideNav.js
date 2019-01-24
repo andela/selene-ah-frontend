@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import React, { Fragment, Component } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import robot from '../../../assets/images/avatars/robot.svg';
 import './SideNav.scss';
 
 /**
@@ -9,26 +9,6 @@ import './SideNav.scss';
  * @description Class implements sidenav feature
  */
 export default class SideNav extends Component {
-  state = {
-    open: false,
-  }
-
-  static propTypes = {
-    children: PropTypes.any.isRequired,
-  };
-
-  /**
-   * @param {event} e
-   * @returns {void}
-   * @memberof SideNav
-   */
-  handleCloseClick = (e) => {
-    e.preventDefault();
-    this.setState({
-      open: false,
-    });
-  }
-
   /**
    * @function
    * @returns {JSX} SideNav JSX
@@ -36,13 +16,25 @@ export default class SideNav extends Component {
   render() {
     return (
       <Fragment>
-        <div id="sidenav" className={this.state.open ? 'sidenav--show' : ''}>
-          <ul>
-            {this.props.children}
-          </ul>
-          <Link to="/" onClick={this.handleCloseClick} className="sidenav--close">X</Link>
-        </div>
+        <div id="sidenav" className="sidenav--show">
+        <div className="side">
+            <div className="side--logo">
+            <a href="#!">Authors Haven</a>
+            { this.props.isLoggedIn
+              ? <div><img className="circle avat" src={robot} /></div>
+              : null }
+              </div>
+            <div className="side-items">
+              <a href="#">Categories</a>
+            </div>
+            <div className="side-items"><a className="waves-effect" href="#!">Help</a></div>
+          </div>
+          </div>
       </Fragment>
     );
   }
 }
+
+SideNav.propTypes = {
+  isLoggedIn: PropTypes.any.isRequired,
+};

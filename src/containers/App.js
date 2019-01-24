@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { ToastProvider } from 'react-toast-notifications';
 import routes from '../routes';
 import store from '../store';
-import Home from './Home';
+import Home from './Home/Home';
 
 
 const App = () => (
