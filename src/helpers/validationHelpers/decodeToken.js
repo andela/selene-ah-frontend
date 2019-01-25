@@ -2,8 +2,13 @@ import jwtDecode from 'jwt-decode';
 
 const decodeToken = () => {
   const token = localStorage.getItem('token');
+  const currentTime = (new Date().getTime()) / 1000;
   try {
-    return jwtDecode(token).user;
+    const tokenInfo = jwtDecode(token);
+    if (tokenInfo.exp < currentTime) {
+      return null;
+    }
+    return tokenInfo.user;
   } catch (err) {
     return null;
   }
