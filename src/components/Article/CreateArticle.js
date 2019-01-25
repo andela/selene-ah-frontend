@@ -11,6 +11,7 @@ import {
 import Select from '../utilities/Select/Select';
 import articleActionCreators from '../../actions/articles';
 import decodeToken from '../../helpers/validationHelpers/decodeToken';
+import './article.scss';
 
 /**
  * @description Class for creating an article
@@ -165,6 +166,7 @@ readUploadedFile = (file) => {
    * @returns { undefined }
    */
   componentDidMount() {
+    document.body.id = 'overflow';
     const isAuthenticated = decodeToken();
     if (!isAuthenticated) this.props.history.push('/login');
     this.props.fetchCategories();

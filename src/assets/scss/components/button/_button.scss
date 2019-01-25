@@ -1,6 +1,6 @@
 @import '../../abstracts/variables';
 
-input[type=text]:not(.browser-default), .button {
+.button {
   color: $primary-color;
   height: 35px;
   line-height: 35px;
@@ -33,4 +33,9 @@ input[type=text]:not(.browser-default), .button {
       color: $white;
     }
   }
+}
+
+input[type=text]:not(.browser-default) {
+  color: $primary-text-color-dark;
+
 }

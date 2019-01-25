@@ -26,4 +26,10 @@ describe('Navbar Component', () => {
   it('should  navbar state when clicked', () => {
     wrapper.setProps({ isLoggedIn: false });
   });
+
+  it('should logout when list is clicked', () => {
+    localStorage.removeItem = jest.fn();
+    const container = wrapper.find('li.logout');
+    container.at(0).simulate('click');
+  });
 });

@@ -69,6 +69,16 @@
   background-color: #F8FAF8;
 }
 
-.overflow {
-  overflow: hidden;
+/* very large screen devices */
+@media all and (min-width: 76.5rem) {
+  .overflow {
+    overflow: hidden;
+  }
+}
+
+/* very large screen devices */
+@media all and (min-width: 114rem) {
+  .overflow {
+    overflow: hidden;
+  }
 }

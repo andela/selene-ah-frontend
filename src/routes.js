@@ -6,8 +6,8 @@ import ResetPassword from './containers/Auth/ResetPassword/ResetPassword';
 import UpdatePassword from './containers/Auth/ResetPassword/UpdatePassword';
 import ArticleView from './containers/Article/ArticleView';
 import CreateArticle from './components/Article/CreateArticle';
-// import Main from ./components/Main';
-
+import EmailVerification
+  from './components/pages/EmailVerification/EmailVerification';
 
 const routes = [
   {
@@ -41,6 +41,12 @@ const routes = [
     exact: false,
   },
   {
+    path: '/email-verification',
+    component: EmailVerification,
+    name: 'email-verification',
+    exact: true,
+  },
+  {
     path: '/password-reset',
     component: ResetPassword,
     name: 'reset-password',
@@ -53,7 +59,7 @@ const routes = [
     exact: true,
   },
   {
-    path: '/a/:slug',
+    path: '/article/:slug',
     component: ArticleView,
     name: 'article page',
     exact: true,

@@ -2,24 +2,26 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import robot from '../../../assets/images/avatars/robot.svg';
+import Backdrop from '../BackDrop/BackDrop';
 
 const Card = props => (
   <Fragment>
     <div className="held">
         <div className="card-content">
           <div className="card card__has-shadow">
-            <div className="card--image"
-            style={{ backgroundImage: `url(${props.imageUrl})` }}>
+           { props.imageUrl ? <div className="card--image"
+                style={{ backgroundImage: `url(${props.imageUrl})` }}>
                 <div className="hero-image">
                 </div>
             </div>
+             : <Backdrop title={props.title}/> }
           </div>
           <div className="card--footer">
-            <Link to={`/a/${props.slug}`}>
+            <Link to={`/article/${props.slug}`}>
               <h4>{ props.title }</h4>
             </Link>
-            <Link to={`/a/${props.slug}`}>
-              <p>{ props.body }</p>
+            <Link to={`/article/${props.slug}`}>
+              <div>{ props.body }</div>
             </Link>
             <div className="card--info">
               <p className="card--avatar">
@@ -44,9 +46,9 @@ const Card = props => (
 );
 
 Card.propTypes = {
-  imageUrl: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string,
   title: PropTypes.string.isRequired,
-  body: PropTypes.string.isRequired,
+  body: PropTypes.any.isRequired,
   author: PropTypes.object.isRequired,
   readTime: PropTypes.number.isRequired,
   slug: PropTypes.string.isRequired,

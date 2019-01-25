@@ -62,6 +62,7 @@ describe('## Signup Component', () => {
     wrapper.instance().componentDidMount();
     expect(spy).toHaveBeenCalled();
   });
+
   it('should call componentDidMount for twitter auth', () => {
     const spy = jest.spyOn(props, 'socialAuth');
     wrapper.setProps({
@@ -74,6 +75,10 @@ describe('## Signup Component', () => {
     });
     wrapper.instance().componentDidMount();
     expect(spy).toHaveBeenCalled();
+  });
+
+  it('should return null for getBaseUrl', () => {
+    expect(wrapper.instance().getBaseUrl('fake')).toEqual(null);
   });
 });
 

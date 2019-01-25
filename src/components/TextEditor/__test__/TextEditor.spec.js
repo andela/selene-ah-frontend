@@ -49,8 +49,6 @@ const slateArticleBody = {
   ],
 };
 
-const initialValue = '<p>Tell your story here...</p>';
-
 describe('TextEditor component', () => {
   const wrapper = shallow(<TextEditor />);
   const props = {
@@ -106,15 +104,6 @@ describe('TextEditor component', () => {
       const onChangeHandler = wrapper.instance().onChange({ value });
       expect(onChangeHandler).toEqual(undefined);
     });
-
-  it('should check if the user has clicked the article input area', () => {
-    wrapper.instance().onClick();
-  });
-
-  it('should update the state when the user clicks for the first time', () => {
-    wrapper.setState({ value: html.deserialize(initialValue) });
-    wrapper.instance().onClick();
-  });
 
   it('should render the bold mark', () => {
     expect(wrapper.instance().renderMark(props.bold, {}, next))

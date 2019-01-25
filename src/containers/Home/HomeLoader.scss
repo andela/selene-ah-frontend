@@ -1,0 +1,9 @@
+@import '../../assets/scss/components/skeleton/mixins';
+@import '../../assets/scss/abstracts/variables';
+@import '../../assets/scss/components/skeleton/variables';
+
+#home--skeleton .hero {
+  @include skeleton-animate;
+  animation: skeleton-animation $animation-duration infinite linear;
+  animation-delay: .8s;
+}

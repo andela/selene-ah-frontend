@@ -54,6 +54,8 @@ module.exports = merge(common, {
       'process.env.FACEBOOK_URL': JSON.stringify('https://selene-ah-staging.herokuapp.com/api/v1/auth/facebook'),
       'process.env.TWITTER_URL':JSON.stringify('https://selene-ah-staging.herokuapp.com/api/v1/auth/twitter'),
       'process.env.BASE_URL': JSON.stringify('https://selene-ah-staging.herokuapp.com/api/v1/auth/'),
+      'process.env.CLOUDINARY_API_BASE_URL': JSON.stringify('https://api.cloudinary.com/v1_1/dsozu5ads/upload'),
+      'process.env.CLOUDINARY_UPLOAD_PRESET': JSON.stringify('zklk2cjx')
     }),
   ],
 });
