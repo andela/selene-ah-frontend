@@ -12,6 +12,16 @@ import Select from '../utilities/Select/Select';
 import articleActionCreators from '../../actions/articles';
 import decodeToken from '../../helpers/validationHelpers/decodeToken';
 import './article.scss';
+import {
+  INVALID_TITLE,
+  INVALID_ARTICLE_CONTENT,
+  NO_CATEGORY,
+  CREATE_ARTICLE_ERROR,
+  IMAGE_UPLOAD_ERROR,
+  ARTICLE_SUCCESS,
+  toastErrorObj,
+  toastSuccessObj,
+} from './articleConstants';
 
 /**
  * @description Class for creating an article
@@ -99,6 +109,22 @@ export class CreateArticle extends Component {
  */
   submitArticle = async () => {
     if (this.state.fileSelected) await this.uploadImageHandler();
+    if (!this.state.title || this.state.title.length < 5
+      || this.state.title.length > 200) {
+      this.props.toastManager.add(INVALID_TITLE, toastErrorObj);
+      return false;
+    }
+
+    if (!this.state.body || this.state.body.length < 5) {
+      this.props.toastManager.add(INVALID_ARTICLE_CONTENT, toastErrorObj);
+      return false;
+    }
+
+    if (!this.state.categoryId) {
+      this.props.toastManager.add(NO_CATEGORY, toastErrorObj);
+      return false;
+    }
+
     const articleObject = {
       body: this.state.body,
       categoryId: this.state.categoryId,
@@ -182,29 +208,17 @@ readUploadedFile = (file) => {
   shouldComponentUpdate(nextProps) {
     if (this.props.createArticleError !== nextProps.createArticleError
       && nextProps.createArticleError === true) {
-      this.props.toastManager.add('The article could not be created.'
-        + 'Please fill in all the required details and try again.', {
-        appearance: 'error',
-        autoDismiss: true,
-      });
+      this.props.toastManager.add(CREATE_ARTICLE_ERROR, toastErrorObj);
     }
 
     if (this.props.imageUploadError !== nextProps.imageUploadError
       && nextProps.imageUploadError === true) {
-      this.props.toastManager.add('Sorry! your image could not be uploaded.'
-      + 'Please try again.', {
-        appearance: 'error',
-        autoDismiss: true,
-      });
+      this.props.toastManager.add(IMAGE_UPLOAD_ERROR, toastErrorObj);
     }
 
     if (this.props.createArticleSuccess !== nextProps.createArticleSuccess
       && nextProps.createArticleSuccess === true) {
-      this.props.toastManager.add('Your article has been created successfully!',
-        {
-          appearance: 'success',
-          autoDismiss: true,
-        });
+      this.props.toastManager.add(ARTICLE_SUCCESS, toastSuccessObj);
     }
     return true;
   }

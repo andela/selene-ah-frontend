@@ -12,6 +12,8 @@ const postArticleSpy = jest.fn();
 const uploadImageActionSpy = jest.fn();
 const getCategorySelectionSpy = jest.fn();
 const toastManagerSpy = jest.fn();
+const bulkText = 'It should not submit the article if the title '
++ ' is less than 5 characters';
 
 const mockState = {
   categoryReducer: {},
@@ -23,7 +25,9 @@ const props = {
   fetchCategories: fetchCategoriesSpy,
   postArticle: postArticleSpy,
   uploadImageAction: uploadImageActionSpy,
-  toastManager: {},
+  toastManager: {
+    add: jest.fn(),
+  },
   getCategorySelection: getCategorySelectionSpy,
   fetchCategoriesSuccess: false,
   history: {
@@ -99,7 +103,54 @@ describe('CreateAticle Component', () => {
     wrapper.instance().getArticleBody('The article body');
   });
 
+  it('It should not submit the article if the title is less than 5 characters',
+    () => {
+      wrapper.setState({
+        title: 'ear',
+        body: 'ear',
+        categoryId: null,
+      });
+      wrapper.instance().submitArticle();
+    });
+
+  it('It should not submit the article if'
+  + 'the title is more than 200 characters',
+  () => {
+    wrapper.setState({
+      title: bulkText,
+      body: null,
+      categoryId: null,
+    });
+    wrapper.instance().submitArticle();
+  });
+
+  it('It should not submit the article if'
+  + 'the body is less than 5 characters',
+  () => {
+    wrapper.setState({
+      title: 'some text',
+      body: 'four',
+      categoryId: null,
+    });
+    wrapper.instance().submitArticle();
+  });
+
+  it('It should not submit the article if categoryId is null',
+    () => {
+      wrapper.setState({
+        title: 'some text',
+        body: 'some text',
+        categoryId: null,
+      });
+      wrapper.instance().submitArticle();
+    });
+
   it('Should submit the article', () => {
+    wrapper.setState({
+      title: 'some text',
+      body: bulkText,
+      categoryId: 'o890980ijnokjhlkdf',
+    });
     wrapper.instance().submitArticle();
   });
 

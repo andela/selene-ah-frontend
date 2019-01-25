@@ -5,6 +5,7 @@ import {
   CREATE_ARTICLE_FAILURE,
 } from '../../actions/articles/articleActionTypes';
 
+
 export const initialState = {
   isCreatingArticle: false,
   createArticleResponse: null,
