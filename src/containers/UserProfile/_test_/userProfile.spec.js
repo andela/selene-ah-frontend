@@ -6,9 +6,14 @@ import { UserProfile, mapDispatchToProps, mapStateToProps } from '../UserProfile
 
 describe('User profile container', () => {
   let wrapper;
+  let toastManagerSpy;
+
   const props = {
-    toastManager: {},
+    toastManager: {
+      add: toastManagerSpy,
+    },
     response: {},
+    statError: false,
     error: false,
     profileDispatcher: jest.fn(),
     openModal: jest.fn(),
@@ -22,11 +27,13 @@ describe('User profile container', () => {
       push: jest.fn(),
     },
     user: {},
+    getAllStat: jest.fn(),
   };
 
   beforeEach(() => {
     moxios.install();
     wrapper = shallow(<UserProfile {...props}/>);
+    toastManagerSpy = jest.fn();
   });
 
   afterEach(() => {
@@ -52,11 +59,35 @@ describe('User profile container', () => {
     });
     wrapper.instance().render();
   });
-
   it('should display the side nav', () => {
     wrapper.setState({ sidenav: true });
     wrapper.find('.sidebar-overlay').simulate('click');
     wrapper.instance().changeSidenav();
+  });
+  it('should display the User Statistics', async () => {
+    await props.getAllStat();
+    wrapper.setState({
+      userStats: true,
+      activeStat: true,
+      activeArticle: false,
+    });
+    wrapper.instance().handleNavChange('Statistics');
+  });
+  it('should display the User Articles', () => {
+    wrapper.setState({
+      userStats: false,
+      activeStat: false,
+      activeArticle: true,
+    });
+    wrapper.instance().handleNavChange('Articles');
+  });
+  it('should return null if side nav string is not found', () => {
+    wrapper.setState({
+      userStats: false,
+      activeStat: false,
+      activeArticle: true,
+    });
+    wrapper.instance().handleNavChange('followers');
   });
 
   it('should return updated props', () => {
@@ -75,5 +106,18 @@ describe('User profile container', () => {
     expect(
       typeof mapDispatchToProps(dispatch),
     ).toEqual('object');
+  });
+
+  it('should return false when errors occur', () => {
+    const nextProps = { statError: true };
+    wrapper.setProps({
+      statError: false,
+      toastManager: {
+        add: toastManagerSpy,
+      },
+    });
+    expect(
+      wrapper.instance().shouldComponentUpdate(nextProps),
+    ).toEqual(false);
   });
 });

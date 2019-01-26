@@ -16,6 +16,7 @@ import commentReducers from './commentReducers/comment';
 import fetchAverageRating from './ratingsReducer/fetchAveargeRatings';
 import postRating from './ratingsReducer/postRatings';
 import fetchUserRatings from './ratingsReducer/fetchUserRatings';
+import statistics from './userProfileReducers/Statistics';
 
 const rootReducer = combineReducers({
   signup,
@@ -35,6 +36,7 @@ const rootReducer = combineReducers({
   fetchAverageRating,
   postRating,
   fetchUserRatings,
+  statistics,
 });
 
 export default rootReducer;

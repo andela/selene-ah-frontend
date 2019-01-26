@@ -22,6 +22,7 @@ describe('User update profile container', () => {
     userData: {
       facebook: 'facebook',
     },
+    getAllStat: jest.fn(),
   };
 
   beforeEach(() => {
@@ -43,7 +44,6 @@ describe('User update profile container', () => {
     wrapper.instance().onChange(e);
   });
 
-<<<<<<< HEAD
   it('should call getImageUrl function', () => {
     const e = {
       target: {
