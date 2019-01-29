@@ -5,9 +5,8 @@ import './Cards.scss';
 const CardParent = props => (
   <Fragment>
     <div className="section">
-      <div className="wrapper">
-        <div className="section--header">
-        <h3>Popular Today</h3>
+      <div className="container">
+      <p className="article-by"><strong>Articles by you</strong></p>
         </div>
           <div className="cards">
             <div className={`holder ${props.classname}`}>
@@ -15,7 +14,6 @@ const CardParent = props => (
             </div>
         </div>
       </div>
-    </div>
   </Fragment>
 );
 

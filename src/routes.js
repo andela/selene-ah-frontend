@@ -8,6 +8,8 @@ import ArticleView from './containers/Article/ArticleView';
 import CreateArticle from './components/Article/CreateArticle';
 import EmailVerification
   from './components/pages/EmailVerification/EmailVerification';
+import UserProfile from './containers/UserProfile/UserProfile';
+
 
 const routes = [
   {
@@ -71,6 +73,13 @@ const routes = [
     exact: true,
   },
   {
+    path: '/profile',
+    component: UserProfile,
+    name: 'profile',
+    exact: true,
+  },
+  {
+
     component: NoMatch, name: 'no-match',
   },
 ];

@@ -195,7 +195,13 @@ div.category > span {
   padding: 10px;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 }
-
+.fix-holder {
+  grid-template-columns: repeat(auto-fit, minmax(350px, 350px));
+  grid-gap: 0px;
+}
+.article-by {
+  padding-left: 128px;
+}
 .cat > svg{
   width: 40px;
   height: 40px;
@@ -222,4 +228,20 @@ div.category > span {
 }
 .more {
   margin-left: -1.7rem;
+}
+
+/*Media Queries*/
+@media(max-width: 1071px){
+	.fix-holder{
+		grid-template-columns: repeat(auto-fit, minmax(50%, 50%));
+  }
+  .article-by {
+    display: none;
+  }
+}
+
+@media(max-width: 846px){
+	.fix-holder{
+		grid-template-columns: repeat(auto-fit, minmax(100%, 100%));
+	}
 }
