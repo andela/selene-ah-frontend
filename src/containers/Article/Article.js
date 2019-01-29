@@ -13,6 +13,7 @@ import {
 } from '../Reaction/helpers/reactionHelpers';
 import decodeToken from '../../helpers/validationHelpers/decodeToken';
 import Follow from '../Reaction/FollowReaction';
+import ShareButton from '../../components/misc/ShareBtn/ShareButton';
 
 /**
  * @description Returns article based on the this.props given
@@ -33,6 +34,7 @@ class Article extends React.Component {
   static propTypes = {
     response: PropTypes.object,
     followers: PropTypes.any,
+    location: PropTypes.object,
   }
 
   /**
@@ -106,7 +108,7 @@ class Article extends React.Component {
         </div>
         {renderHTML(this.props.response.article.body)}
         </section>
-        <div className='like-icon container' >
+        <div className='like-icon container'>
           <LikeReaction
             isLiked={isLikedByUser(
               this.props.response.article.likedUsers, id,
@@ -114,6 +116,10 @@ class Article extends React.Component {
             articleId={this.props.response.article.id}
             likeCount={this.props.response.vote.voteCount.likeCount}
           />
+
+          <ShareButton
+            url={this.props.location.pathname}
+            title={this.props.response.article.title} />
         </div>
       </div>
     );

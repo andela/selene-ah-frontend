@@ -92,7 +92,7 @@
     width: 50%;
   }
 }
-// like-icon
+
 .like-icon {
 position: fixed;
 top: 50%;
@@ -108,5 +108,22 @@ padding-left: 2px;
     position: relative;
     left: 0;
     top: 0;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 23px;
+  }
+
+  .share-button {
+    p {
+      margin-left: 25px;
+    }
+
+    li {
+      padding: 0 6px;
+    }
+  }
+  .social {
+    display: flex;
+    margin-left: 0;
   }
 }
