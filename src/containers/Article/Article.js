@@ -11,7 +11,6 @@ import {
   isLikedByUser,
   followedByUser,
 } from '../Reaction/helpers/reactionHelpers';
-import decodeToken from '../../helpers/validationHelpers/decodeToken';
 import Follow from '../Reaction/FollowReaction';
 import ShareButton from '../../components/misc/ShareBtn/ShareButton';
 
@@ -34,7 +33,8 @@ class Article extends React.Component {
   static propTypes = {
     response: PropTypes.object,
     followers: PropTypes.any,
-    location: PropTypes.object,
+    history: PropTypes.object,
+    user: PropTypes.any,
   }
 
   /**
@@ -42,8 +42,7 @@ class Article extends React.Component {
    * @memberof Article
    */
   render() {
-    let id;
-    decodeToken() === null ? id = '' : { id } = decodeToken();
+    const id = this.props.user === null ? null : this.props.user.id;
     return (
       <div id="article">
         <Navbar isLoggedIn={this.state.isLoggedIn}
@@ -73,6 +72,7 @@ class Article extends React.Component {
                   }</Link>
                 <Follow
                   followerId={this.props.response.article.userId}
+                  id={id}
                   isFollowingAuthor={followedByUser(
                     this.props.followers.followees || [],
                     this.props.response.article.userId,
@@ -115,10 +115,11 @@ class Article extends React.Component {
             )}
             articleId={this.props.response.article.id}
             likeCount={this.props.response.vote.voteCount.likeCount}
+            id={id}
           />
 
           <ShareButton
-            url={this.props.location.pathname}
+            url={this.props.history.location.pathname}
             title={this.props.response.article.title} />
         </div>
       </div>

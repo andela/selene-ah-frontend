@@ -26,6 +26,8 @@ export class SignUp extends Component {
     error: PropTypes.bool,
     history: PropTypes.object,
     isLoading: PropTypes.bool,
+    user: PropTypes.any,
+    success: PropTypes.bool,
   }
 
   /**
@@ -109,6 +111,7 @@ export class SignUp extends Component {
    */
   componentDidMount() {
     document.body.classList.add('overflow');
+    if (this.props.user) this.props.history.push('/');
   }
 
   /**

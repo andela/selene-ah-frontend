@@ -6,6 +6,7 @@ module.exports = {
   collectCoverageFrom: [
     'src/**/*.{js,jsx}',
     '!src/index.js',
+    '!src/containers/App.js',
   ],
   moduleNameMapper: {
     '\\.(jpg|jpeg|png|gif|svg)$':

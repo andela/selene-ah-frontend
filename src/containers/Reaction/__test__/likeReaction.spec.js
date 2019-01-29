@@ -1,14 +1,10 @@
-/* eslint-disable import/first */
-jest.mock('../../../helpers/validationHelpers/decodeToken');
 import { shallow } from 'enzyme';
 import React from 'react';
-import decodedToken from '../../../helpers/validationHelpers/decodeToken';
 import {
   LikeArticle,
   mapDispatchToProps,
   mapStateToProps,
 } from '../LikeReaction';
-import decodedUser from '../../../../__mocks__/decodedUser';
 
 const props = {
   articleId: 'hdhdhdhd',
@@ -17,9 +13,6 @@ const props = {
   likeArticle: jest.fn(),
 };
 describe('Like article component', () => {
-  decodedToken.mockResolvedValue(() => ({
-    decodedUser,
-  }));
   let wrapper;
   beforeAll(() => {
     wrapper = shallow(<LikeArticle {...props} />);
@@ -106,12 +99,6 @@ describe('Like article component', () => {
   it('should handle click events', () => {
     wrapper.find('div').last().simulate('click');
     expect(wrapper.instance().handleClick()).toHaveBeenCalled;
-  });
-
-  it('should render null when token does not exist', () => {
-    decodedToken.mockClear();
-    const wrapperNull = shallow(<LikeArticle {...props} />);
-    expect(wrapperNull.find('div').exists()).toBe(true);
   });
 });
 

@@ -122,6 +122,7 @@ describe('Login container', () => {
       toastManager: {
         add: toastManagerSpy,
       },
+      success: true,
     });
     wrapper.instance().componentDidMount();
     expect(toastManagerSpy).toHaveBeenCalled();
@@ -156,5 +157,16 @@ describe('Login container', () => {
     expect(
       typeof mapDispatchToProps(dispatch),
     ).toEqual('object');
+  });
+
+  it('should redirect to homepage if user exist', () => {
+    const prop = {
+      toastManager: {},
+      user: {},
+      history: {
+        push: jest.fn(),
+      },
+    };
+    shallow(<Login {...prop} />);
   });
 });

@@ -38,6 +38,8 @@ export class Login extends Component {
     history: PropTypes.object,
     isAuthenticated: PropTypes.bool,
     loginError: PropTypes.bool,
+    user: PropTypes.any,
+    success: PropTypes.bool,
   };
 
   /**
@@ -82,7 +84,7 @@ export class Login extends Component {
       });
       return false;
     }
-    loginDispatcher(this.state.user, this.props.history);
+    loginDispatcher(this.state.user);
   }
 
   /**
@@ -98,6 +100,8 @@ export class Login extends Component {
         autoDismiss: true,
       });
       return false;
+    } if (nextProps.success === true) {
+      window.location.replace('/');
     }
     return true;
   }
@@ -114,6 +118,7 @@ export class Login extends Component {
         autoDismiss: true,
       });
     }
+    if (this.props.user) this.props.history.push('/');
   }
 
   /**

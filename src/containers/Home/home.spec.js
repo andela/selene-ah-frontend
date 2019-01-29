@@ -46,6 +46,14 @@ describe('## Home Component', () => {
     expect(container.length).toEqual(1);
   });
 
+  it('should render a Home Loader', () => {
+    wrapper.setProps({
+      isLoading: true,
+    });
+    const container = wrapper.find('HomeLoader');
+    expect(container.length).toEqual(1);
+  });
+
   it('should open sidenav', () => {
     wrapper.setState({ sidenav: true });
     const container = wrapper.find('div');

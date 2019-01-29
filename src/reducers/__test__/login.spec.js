@@ -33,7 +33,7 @@ describe('Login Reducer', () => {
   it(`should update state when ${type.LOGIN_SUCCESS} is triggered`, () => {
     expect(loginReducer(defaultState, { type: type.LOGIN_SUCCESS, payload: 'passed' })).toEqual(
       updateObject(defaultState, {
-        isLoading: false,
+        isLoading: true,
         success: true,
         response: 'passed',
       }),

@@ -12,7 +12,7 @@ export const initialState = {
 const loginStartState = { isLoading: true };
 
 const updateLoginSuccessState = (state, action) => updateObject(state, {
-  isLoading: false,
+  isLoading: true,
   response: action.payload,
   success: true,
 });

@@ -80,6 +80,14 @@ describe('## Signup Component', () => {
   it('should return null for getBaseUrl', () => {
     expect(wrapper.instance().getBaseUrl('fake')).toEqual(null);
   });
+
+  it('should redirect to login if user is not authenticated', () => {
+    wrapper.setProps({
+      isAuthenticated: false,
+    });
+    const redirect = wrapper.find('Redirect');
+    expect(redirect.length).toEqual(1);
+  });
 });
 
 describe('## VerifyAuth Dispatch functions', () => {

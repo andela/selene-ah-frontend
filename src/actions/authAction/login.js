@@ -15,13 +15,12 @@ const loginFailed = payload => ({
   payload,
 });
 
-const loginDispatcher = (userData, history) => (dispatch) => {
+const loginDispatcher = userData => (dispatch) => {
   dispatch(loginStart());
   return axios.post(`${process.env.SERVER_API}/auth/signin`, userData)
     .then((res) => {
       localStorage.setItem('token', res.data.token);
       dispatch(loginSuccess(res.data));
-      history.push('/');
     })
     .catch((err) => { dispatch(loginFailed(err)); });
 };
