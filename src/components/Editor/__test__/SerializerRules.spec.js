@@ -1,5 +1,5 @@
 import React from 'react';
-import editorSerializer from '../editorSerializer';
+import editorSerializer from '../SerializerRules';
 
 let markObject = {
   object: 'mark',
@@ -82,12 +82,35 @@ describe('Editor serializer', () => {
     const element = {
       tagName: 'em',
       childNodes: <em>this is it</em>,
+      getAttribute: jest.fn(),
     };
 
     const resultObject = { nodes: undefined, object: 'mark', type: 'italic' };
     const next = jest.fn();
     const deserializeSpy = jest.spyOn(editorSerializer[1], 'deserialize');
     const deserialize = editorSerializer[1].deserialize(element, next);
+    expect(deserializeSpy).toHaveBeenCalled();
+    expect(deserialize).toEqual(resultObject);
+  });
+
+  it('should not deserialize a mark', () => {
+    const element = {
+      tagName: 'pre',
+      childNodes: <pre>this is it</pre>,
+      getAttribute: jest.fn(),
+    };
+
+    const resultObject = {
+      nodes: undefined,
+      object: 'block',
+      type: 'code',
+      data: {
+        className: undefined,
+      },
+    };
+    const next = jest.fn();
+    const deserializeSpy = jest.spyOn(editorSerializer[0], 'deserialize');
+    const deserialize = editorSerializer[0].deserialize(element, next);
     expect(deserializeSpy).toHaveBeenCalled();
     expect(deserialize).toEqual(resultObject);
   });

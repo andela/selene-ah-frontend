@@ -45,7 +45,6 @@ const rules = [
       }
     },
   },
-  // Add a new rule that handles marks...
   {
     deserialize(el, next) {
       const type = MARK_TAGS[el.tagName.toLowerCase()];

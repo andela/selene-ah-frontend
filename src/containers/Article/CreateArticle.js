@@ -1,16 +1,15 @@
 import React, { Fragment, Component } from 'react';
-import { connect } from 'react-redux';
 import { ClipLoader } from 'react-spinners';
 import { withToastManager } from 'react-toast-notifications';
+import { Editor } from 'slate-react';
+import Html from 'slate-html-serializer';
 import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
-import TextEditor from '../TextEditor/TextEditor';
 import {
   Input, Button, Navbar, SideNav,
-} from '../utilities';
-import Select from '../utilities/Select/Select';
-import articleActionCreators from '../../actions/articles';
+} from '../../components/utilities';
+import Select from '../../components/utilities/Select/Select';
 import './article.scss';
+import renderMark from '../../helpers/articleHelpers/renderMark';
 import {
   INVALID_TITLE,
   INVALID_ARTICLE_CONTENT,
@@ -18,9 +17,17 @@ import {
   CREATE_ARTICLE_ERROR,
   IMAGE_UPLOAD_ERROR,
   ARTICLE_SUCCESS,
+  INVALID_UPDATE_TITLE,
+  INVALID_ARTICLE_UPDATE_CONTENT,
+  ARTICLE_UPDATE_SUCCESS,
   toastErrorObj,
   toastSuccessObj,
-} from './articleConstants';
+  UPDATE_ARTICLE_ERROR,
+} from '../../helpers/articleConstants';
+import { plugins } from '../../helpers/FormatHelper';
+import rules from '../../components/Editor/SerializerRules';
+
+const html = new Html({ rules });
 
 /**
  * @description Class for creating an article
@@ -29,13 +36,14 @@ import {
 export class CreateArticle extends Component {
   state = {
     title: null,
-    body: null,
+    body: html.deserialize(''),
     featuredImage: null,
     categoryId: null,
     uploadedImageFile: null,
     imageVisibility: null,
     fileSelected: false,
     sidenav: false,
+    editAction: false,
   }
 
   static propTypes = {
@@ -48,14 +56,21 @@ export class CreateArticle extends Component {
     fetchCategoriesError: PropTypes.bool,
     fetchCategoriesSuccess: PropTypes.bool,
     isCreatingArticle: PropTypes.bool,
+    isUpdatingArticle: PropTypes.bool,
     createArticleResponse: PropTypes.any,
     createArticleError: PropTypes.bool,
     createArticleSuccess: PropTypes.bool,
+    updateArticleSuccess: PropTypes.bool,
     toastManager: PropTypes.object.isRequired,
     imageUploadError: PropTypes.bool,
     history: PropTypes.object,
     isUploadingImage: PropTypes.bool,
     user: PropTypes.any,
+    location: PropTypes.object,
+    response: PropTypes.object,
+    fetchArticle: PropTypes.func,
+    postUpdatedArticle: PropTypes.func,
+    updateArticleError: PropTypes.bool,
   };
 
   /**
@@ -93,12 +108,11 @@ export class CreateArticle extends Component {
   }
 
   /**
- * @memberof CreateArticle
- * @param { object } body - article body
- * @returns { null } just updates the state
- */
-  getArticleBody = (body) => {
-    this.setState({ body });
+   * @description - function that updates the state when the user types
+   * @return { null } - does not return anything
+   */
+  onChange = ({ value }) => {
+    this.setState({ body: value });
   }
 
   /**
@@ -126,13 +140,55 @@ export class CreateArticle extends Component {
     }
 
     const articleObject = {
-      body: this.state.body,
+      body: html.serialize(this.state.body),
       categoryId: this.state.categoryId,
       imageUrl: this.props.imageUploadedResponse,
       title: this.state.title,
     };
+
     this.props.postArticle(articleObject);
   }
+
+  /**
+ * @description - function to handle the submission of an article
+ * @memberof CreateArticle
+ * @param { object } e object
+ * @returns { null } does not return anything
+ */
+updateArticle = async () => {
+  const articleObject = {
+    id: this.state.articleId,
+  };
+  if (this.state.fileSelected) await this.uploadImageHandler();
+  if ((this.state.title && this.state.title.length < 5)
+    || this.state.title.length > 200) {
+    this.props.toastManager.add(INVALID_UPDATE_TITLE, toastErrorObj);
+    return false;
+  }
+
+  if (this.state.body && this.state.body.length < 5) {
+    this.props.toastManager.add(INVALID_ARTICLE_UPDATE_CONTENT, toastErrorObj);
+    return false;
+  }
+
+  if (this.props.imageUploadedResponse) {
+    articleObject.imageUrl = this.props.imageUploadedResponse;
+  }
+
+  if (this.state.body) {
+    articleObject.body = html.serialize(this.state.body);
+  }
+
+  if (this.state.title) {
+    articleObject.title = this.state.title;
+  }
+
+  if (this.state.categoryId) {
+    articleObject.categoryId = this.state.categoryId;
+  }
+
+  this.props.postUpdatedArticle(articleObject);
+}
 
 /**
  *
@@ -191,10 +247,31 @@ readUploadedFile = (file) => {
    * @description - function to be executed once the component mounts
    * @returns { undefined }
    */
-  componentDidMount() {
+  async componentDidMount() {
     document.body.id = 'overflow';
+    document.body.background = '#fff';
     if (!this.props.user) this.props.history.push('/login');
-    this.props.fetchCategories();
+    await this.props.fetchCategories();
+    if (this.props.location.pathname.split('/')[1] === 'create-article') {
+      return false;
+    }
+    if (!this.props.response) {
+      const slug = this.props.location.pathname.split('/')[2];
+      await this.props.fetchArticle(slug, this.props.history);
+    }
+    this.setState({
+      title: this.props.response.article.title,
+      articleId: this.props.response.article.id,
+      body: html.deserialize(this.props.response.article.body),
+      editAction: true,
+    });
+
+    if (this.props.response.article.imageUrl) {
+      this.setState({
+        featuredImage: this.props.response.article.imageUrl,
+        imageVisibility: true,
+      });
+    }
   }
 
   /**
@@ -218,6 +295,16 @@ readUploadedFile = (file) => {
     if (this.props.createArticleSuccess !== nextProps.createArticleSuccess
       && nextProps.createArticleSuccess === true) {
       this.props.toastManager.add(ARTICLE_SUCCESS, toastSuccessObj);
+    }
+
+    if (this.props.updateArticleError !== nextProps.updateArticleError
+      && nextProps.updateArticleError === true) {
+      this.props.toastManager.add(UPDATE_ARTICLE_ERROR, toastErrorObj);
+    }
+
+    if (this.props.updateArticleSuccess !== nextProps.updateArticleSuccess
+      && nextProps.updateArticleSuccess === true) {
+      this.props.toastManager.add(ARTICLE_UPDATE_SUCCESS, toastSuccessObj);
     }
     return true;
   }
@@ -269,7 +356,7 @@ readUploadedFile = (file) => {
             id="featureImage"
             onChange={this.onFileChangeHandler}
           />
-        {!this.props.createArticleSuccess
+        {!this.props.createArticleSuccess && !this.state.editAction
          && <Fragment>
           <Button
               id="publish"
@@ -291,11 +378,25 @@ readUploadedFile = (file) => {
           </Button>
          </Fragment>
         }
-        {this.props.createArticleSuccess
+        {(this.props.createArticleSuccess || this.state.editAction)
           && <Button
               id="editArticle"
               classes="button-primary"
-            >Edit</Button>
+              onClick={this.updateArticle}
+            >
+            {
+              !this.props.isUploadingImage
+              && !this.props.isUpdatingArticle
+              && 'Edit'
+            }
+            <ClipLoader
+              sizeUnit={'px'}
+              size={30}
+              color={'#fff'}
+              loading={this.props.isUpdatingArticle
+                || this.props.isUploadingImage }
+            />
+            </Button>
         }
         </div>
         <Input
@@ -303,6 +404,7 @@ readUploadedFile = (file) => {
           id="articleTitle"
           placeholder="Title"
           onChange={this.titleChangeHander}
+          inputValue={this.state.title || ''}
           required
         />
         <div className={this.state.imageVisibility
@@ -310,25 +412,19 @@ readUploadedFile = (file) => {
         }>
           <img src={this.state.featuredImage} alt="featured image" />
         </div>
-        <TextEditor getArticleBody={this.getArticleBody} classes="editorBox"/>
+        <Editor
+          id="textEditor"
+          className="editorBox"
+          value={this.state.body}
+          onChange={this.onChange}
+          placeholder={'Tell your story here...'}
+          plugins={plugins}
+          renderMark={renderMark}
+      />
     </div>
       </Fragment>
     );
   }
 }
 
-export const mapStateToProps = state => ({
-  ...state.categoryReducer,
-  ...state.articleReducers,
-  ...state.imageUploadReducers,
-});
-
-export const mapDispatchToProps = dispatch => bindActionCreators(
-  articleActionCreators,
-  dispatch,
-);
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(withToastManager(CreateArticle));
+export default withToastManager(CreateArticle);

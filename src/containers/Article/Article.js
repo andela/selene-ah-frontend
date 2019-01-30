@@ -55,6 +55,7 @@ class Article extends React.Component {
    */
   render() {
     const id = this.props.user === null ? null : this.props.user.id;
+    const userName = this.props.user === null ? null : this.props.user.userName;
     return (
       <div id="article">
         <Navbar isLoggedIn={this.state.isLoggedIn}
@@ -90,6 +91,14 @@ class Article extends React.Component {
                     this.props.response.article.userId,
                   )}
                 />
+                <span>{this.props.response.article.author.userName === userName
+                  ? <button
+                  id="editBtn"
+                  onClick={this.editArticleHandler}
+                >
+                  Edit
+                </button> : <button>Follow</button>
+                }</span>
               </div>
               <div className="article-stat">
                 <span>
