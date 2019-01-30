@@ -30,7 +30,15 @@ describe('## Signup Component', () => {
 
   it('should render Input component', () => {
     const container = wrapper.find('Input');
-    expect(container.length).toEqual(6);
+    expect(container.length).toEqual(3);
+  });
+
+  it('should render Input component', () => {
+    wrapper.setState({
+      step: 2,
+    });
+    const container = wrapper.find('Input');
+    expect(container.length).toEqual(3);
   });
 
   it('should change state if email field is changed', () => {
@@ -67,6 +75,20 @@ describe('## Signup Component', () => {
     const input = wrapper.find('Input');
     input.at(0).simulate('change', { target: { id: 'userName', value: 'daniel' } });
     expect(wrapper.state().user.userName).toEqual('daniel');
+  });
+
+  it('should update state if next step is called', () => {
+    const e = {
+      preventDefault: jest.fn(),
+    };
+    wrapper.instance().nextStep(e);
+  });
+
+  it('should update state if next step is called', () => {
+    const e = {
+      preventDefault: jest.fn(),
+    };
+    wrapper.instance().prevStep(e);
   });
 
   it('should submit if form is submitted', () => {
@@ -158,6 +180,39 @@ describe('## Signup Component', () => {
         push: jest.fn(),
       },
     };
+    shallow(<SignUp {...props} />);
+  });
+
+
+  it('should update state if next step is called', () => {
+    const e = {
+      preventDefault: jest.fn(),
+    };
+    wrapper.setState({
+      error: { email: true, passowrd: true, confirmPassword: true },
+    });
+
+    wrapper.instance().nextStep(e);
+  });
+
+  it('should update state if next step is called', () => {
+    const props = {
+      toastManager: {},
+      user: {
+        email: '',
+        passowrd: '',
+        confirmPassword: '',
+      },
+      history: {
+        push: jest.fn(),
+      },
+    };
+
+    wrapper.setState({
+      step: 1,
+      error: { email: true, password: true, confirmPassword: true },
+    });
+
     shallow(<SignUp {...props} />);
   });
 });

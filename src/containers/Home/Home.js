@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import renderHtml from 'react-render-html';
 import { Link } from 'react-router-dom';
 import * as Icon from 'react-feather';
 import PropTypes from 'prop-types';
@@ -8,7 +9,6 @@ import homeActionCreators from './homeActionCreators';
 import robot from '../../assets/images/avatars/robot.svg';
 import edit from '../../assets/images/edit-3.svg';
 import trimBody from '../../helpers/utilities/utilities';
-import decodeToken from '../../helpers/validationHelpers/decodeToken';
 import HomeLoader from './HomeLoader';
 
 
@@ -28,7 +28,7 @@ import Hero from '../../components/misc';
 export class Home extends Component {
   state = {
     sidenav: false,
-    isLoggedIn: decodeToken() !== null,
+    isLoggedIn: this.props.user,
     initial: [],
   };
 
@@ -42,6 +42,7 @@ export class Home extends Component {
  */
   componentDidMount() {
     document.body.id = 'overflow';
+    document.body.style.backgroundColor = '#F8FAF8';
     this.props.fetchArticles();
   }
 
@@ -111,24 +112,27 @@ export class Home extends Component {
                    className="title become">
                    <img src={edit} className="icon bell" />
                    <Link to='/create-article' style={{ color: '#345' }}>
-                     write a story</Link>
+                    write a story</Link>
                    </span>
                    : <span id="info"
-                   className="title become"><Link to='/signup'
+                   className="title become">
+                   <Link to='/signup'
                      style={{ color: '#345' }}>
-                   become a writer</Link></span>
+                    become a writer</Link>
+                    </span>
                    }
                </div>
                </div>
              </section>
              <section className="section--header categories">
-               <h3>your categories</h3>
+               <h3>categories</h3>
                <div className="cater">
                <div>
                  <div className="writer--info category--info">
                  <span>
                  <span className="cat">
-                   <i data-feather="life-buoy" className="icon"></i>
+                   <i data-feather="life-buoy" className="icon">
+                   <Icon.LifeBuoy /></i>
                    </span></span>
                  <span className="title cat--title">health</span>
                  </div>
@@ -137,7 +141,9 @@ export class Home extends Component {
                  <div className="writer--info category--info">
                  <span>
                  <span className="cat">
-                 <i data-feather="award" className="icon"></i></span>
+                 <i data-feather="award" className="icon">
+                  <Icon.Award />
+                 </i></span>
                  </span>
                  <span className="title cat--title">design</span>
                  </div>
@@ -146,7 +152,9 @@ export class Home extends Component {
                  <div className="writer--info category--info">
                  <span>
                  <span className="cat">
-                 <i data-feather="cpu" className="icon"></i></span>
+                 <i data-feather="cpu" className="icon">
+                 <Icon.Cpu />
+                 </i></span>
                  </span>
                  <span className="title cat--title">technology</span>
                </div>
@@ -155,7 +163,9 @@ export class Home extends Component {
                  <div className="writer--info category--info cat-space">
                  <span>
                    <span className="cat">
-                   <i data-feather="github" className="icon"></i>
+                   <i data-feather="github" className="icon">
+                   <Icon.GitHub />
+                   </i>
                    </span>
                    </span>
                  <span className="title cat--title">programming</span>
@@ -174,7 +184,7 @@ export class Home extends Component {
              || []).map((article, i) => <Card
                imageUrl={article.imageUrl}
                title={article.title.slice(0, 40)}
-               body={trimBody(article.body)}
+               body={renderHtml(trimBody(article.body))}
                author={article.author}
                readTime={article.readTime}
                key={i}
@@ -198,6 +208,7 @@ Home.propTypes = {
   fetchArticles: PropTypes.func.isRequired,
   articlesResponse: PropTypes.object.isRequired,
   isLoading: PropTypes.bool,
+  user: PropTypes.any,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

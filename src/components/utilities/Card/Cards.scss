@@ -11,7 +11,7 @@ $card-shadow-hover: 0 6px 12px rgba(0, 0, 0, .16);
 .section--header h3 {
   text-transform: uppercase;
   color: rgb(51, 68, 85);
-  font-size: 2rem;
+  font-size: 1.9rem;
   font-weight: bold;
 }
 
@@ -46,7 +46,6 @@ $card-shadow-hover: 0 6px 12px rgba(0, 0, 0, .16);
 
   &--image {
     width: 100%;
-    max-height: 95%;
     background-image: url('../../../assets/images/avatars/robot.svg');
     background-position: center;
     background-repeat: no-repeat;
@@ -67,7 +66,7 @@ $card-shadow-hover: 0 6px 12px rgba(0, 0, 0, .16);
     width: 90%;
 
     h4 {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       text-transform: uppercase;
       font-weight: bold;
       margin-bottom: .8rem;
@@ -79,6 +78,10 @@ $card-shadow-hover: 0 6px 12px rgba(0, 0, 0, .16);
 
     a {
       color: #345;
+
+      &:hover {
+        color: lighten(#345, 16);
+      }
     }
   }
 
@@ -146,10 +149,12 @@ div .writer--info{
   display: inline-block;
   text-align: center;
 }
+
  .title {
   text-transform: capitalize;
-  color: rgb(51, 68, 85);
-  font-size: 2rem;
+  color: #4D4F59;
+  opacity: .9;
+  font-size: 1.8rem;
   font-weight: bold;
   padding: 1rem;
   vertical-align: top;
@@ -157,7 +162,7 @@ div .writer--info{
 
 div .num {
   color: #D0D0D1;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 5rem;
   padding: 1rem;
 }
@@ -183,7 +188,7 @@ div.category > span {
   text-transform: uppercase;
   font-size: 1.5rem;
   border: 1px solid #707070;
-  border-radius: 1rem;
+  border-radius: .5rem;
 }
 #info {
   margin-left: -4.5rem;
@@ -192,7 +197,6 @@ div.category > span {
 .holder {
   display: grid;
   grid-gap: 20px;
-  padding: 10px;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 }
 .fix-holder {
@@ -224,7 +228,7 @@ div.category > span {
   vertical-align: super;
 }
 .become {
-  padding: 2rem 3rem;
+  padding: 1.2rem 3rem;
 }
 .more {
   margin-left: -1.7rem;

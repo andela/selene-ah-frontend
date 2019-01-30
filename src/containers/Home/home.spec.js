@@ -24,6 +24,7 @@ describe('## Home Component', () => {
         slug: 'ggsg',
       }],
     },
+    user: {},
   };
 
 

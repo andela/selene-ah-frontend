@@ -1,7 +1,8 @@
-import renderHtml from 'react-render-html';
+const tags = /<[^>]*>/gi;
 
 const trimBody = (body) => {
-  const bodyCheck = `${body.split('</p>')[0].slice(0, 40)} ...`;
-  return renderHtml(`${bodyCheck} </p>`);
+  const replaceTags = body.replace(tags, '');
+  const bodyCheck = `${replaceTags.slice(0, 40)} ...`;
+  return (`<p>${bodyCheck}</p>`);
 };
 export default trimBody;

@@ -56,10 +56,11 @@
       padding: 1rem 1.5rem;
       text-transform: uppercase;
       color: $navbar-links-color;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       line-height: 60px;
       border-radius: 3px;
       text-decoration: none;
+      font-weight: bold;
 
       &:hover {
         background-color: $navbar-hover-color;
@@ -90,13 +91,12 @@
         &:hover {
           background: $navbar-hover-color;
           cursor: pointer;
-          border-left: 4px solid $primary-color;
         }
 
         a {
           padding: 2px 0 2px 3rem;
           line-height: 0;
-          font-weight: 300;
+          font-weight: 400;
           width: 100%;
           display: inline-block;
           font-size: 12px;
@@ -174,6 +174,30 @@
       }
     }
   }
+}
+
+#navbar .navbar__has-dropdown > div.avatar__dropdown {
+  background-color: $white;
+  border-radius: 4px;
+  min-width: 20rem;
+  position: absolute;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+  display: none;
+  top: 5.4rem;
+  right: 3rem;
+
+  ul li {
+    padding: 0 2rem;
+
+    &:hover {
+      cursor: pointer;
+      border-left: none;
+    }
+  }
+}
+
+.bell .navbar__has-dropdown:hover > .avatar__dropdown {
+  display: block;
 }
 
 /* NAVBAR RESPONSIVE STYLES */
