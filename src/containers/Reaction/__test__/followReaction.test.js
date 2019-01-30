@@ -1,14 +1,10 @@
-/* eslint-disable import/first */
-jest.mock('../../../helpers/validationHelpers/decodeToken');
 import { shallow } from 'enzyme';
 import React from 'react';
-import decodedToken from '../../../helpers/validationHelpers/decodeToken';
 import {
   FollowReaction,
   mapDispatchToProps,
   mapStateToProps,
 } from '../FollowReaction';
-import decodedUser from '../../../../__mocks__/decodedUser';
 
 const props = {
   isFollowingAuthor: true,
@@ -18,9 +14,6 @@ const props = {
   followerId: '1',
 };
 describe('FollowReaction component', () => {
-  decodedToken.mockResolvedValue(() => ({
-    decodedUser,
-  }));
   let wrapper;
   beforeAll(() => {
     wrapper = shallow(<FollowReaction {...props} />);

@@ -10,7 +10,6 @@ import {
 } from '../utilities';
 import Select from '../utilities/Select/Select';
 import articleActionCreators from '../../actions/articles';
-import decodeToken from '../../helpers/validationHelpers/decodeToken';
 import './article.scss';
 import {
   INVALID_TITLE,
@@ -56,6 +55,7 @@ export class CreateArticle extends Component {
     imageUploadError: PropTypes.bool,
     history: PropTypes.object,
     isUploadingImage: PropTypes.bool,
+    user: PropTypes.any,
   };
 
   /**
@@ -193,8 +193,7 @@ readUploadedFile = (file) => {
    */
   componentDidMount() {
     document.body.id = 'overflow';
-    const isAuthenticated = decodeToken();
-    if (!isAuthenticated) this.props.history.push('/login');
+    if (!this.props.user) this.props.history.push('/login');
     this.props.fetchCategories();
   }
 

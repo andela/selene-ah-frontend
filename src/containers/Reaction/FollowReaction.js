@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withToastManager } from 'react-toast-notifications';
 import * as actionCreators from '../../actions/reactionActions/follow';
-import decodeToken from '../../helpers/validationHelpers/decodeToken';
+
 /**
  * @export
  * @class FollowReaction
@@ -25,6 +25,7 @@ export class FollowReaction extends Component {
     isFollowingAuthor: PropTypes.bool.isRequired,
     unloading: PropTypes.bool,
     loading: PropTypes.bool,
+    id: PropTypes.any,
   }
 
   /**
@@ -46,7 +47,7 @@ export class FollowReaction extends Component {
   componentDidMount() {
     this.setState({
       isFollowingAuthor: this.props.isFollowingAuthor,
-      id: decodeToken() !== null ? decodeToken().id : null,
+      id: this.props.id,
     });
   }
 

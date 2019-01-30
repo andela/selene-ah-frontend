@@ -1,23 +1,27 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import PropTypes from 'prop-types';
 import { ToastProvider } from 'react-toast-notifications';
 import routes from '../routes';
 import store from '../store';
 import Home from './Home/Home';
 
 
-const App = () => (
+const App = ({ user }) => (
   <Provider store={store}>
     <ToastProvider>
       <BrowserRouter>
         <Switch>
-          <Route exact path='/' component={Home} />
+          <Route
+            exact path='/'
+            render={props => <Home {...props} user={user} />}
+          />
         {routes.map(route => (
             <Route
             path={route.path}
             key={route.name}
-            component={route.component}
+            render={props => <route.component {...props} user={user} />}
             />
         ))}
         </Switch>
@@ -25,5 +29,9 @@ const App = () => (
     </ToastProvider>
   </Provider>
 );
+
+App.propTypes = {
+  user: PropTypes.any,
+};
 
 export default App;

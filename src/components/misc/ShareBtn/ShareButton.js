@@ -16,7 +16,7 @@ const ShareButton = props => (
     <div className="social">
       <li>
         <FacebookShareButton url={
-          `${process.env.SERVER_API}${props.url}`
+          `${process.env.FRONTEND_API}${props.url}`
           }
           quote={props.title}
         >
@@ -25,7 +25,7 @@ const ShareButton = props => (
       </li>
       <li>
         <TwitterShareButton url={
-          `${process.env.SERVER_API}${props.url}`
+          `${process.env.FRONTEND_API}${props.url}`
           }
           title={props.title}
         >
@@ -35,8 +35,9 @@ const ShareButton = props => (
       <li>
         <EmailShareButton
           subject={props.title}
+          url={`${process.env.FRONTEND_API}${props.url}`}
           body={`Have a look at this great article!!!🎉
-                ${process.env.SERVER_API}${props.url}`}>
+                ${process.env.FRONTEND_API}${props.url}`}>
           <EmailIcon size={32} round={true}/>
         </EmailShareButton>
       </li>

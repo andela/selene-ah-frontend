@@ -6,7 +6,6 @@ import { withToastManager } from 'react-toast-notifications';
 import * as actionCreators from
   '../../actions/reactionActions/likeArticleActions';
 import './scss/reaction.scss';
-import decodeToken from '../../helpers/validationHelpers/decodeToken';
 
 /**
  * @description - a class to like an article
@@ -25,6 +24,7 @@ export class LikeArticle extends Component {
     classes: PropTypes.string,
     likeCount: PropTypes.number,
     loading: PropTypes.bool,
+    id: PropTypes.any,
   }
 
   /**
@@ -48,7 +48,7 @@ export class LikeArticle extends Component {
     this.setState({
       cssclassToggle: this.props.isLiked,
       likeCount: this.props.likeCount,
-      id: decodeToken() !== null ? decodeToken().id : null,
+      id: this.props.id,
     });
   }
 

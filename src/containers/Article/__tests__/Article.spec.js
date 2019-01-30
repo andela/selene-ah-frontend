@@ -1,15 +1,8 @@
-/* eslint-disable import/first */
-jest.mock('../../../helpers/validationHelpers/decodeToken');
 import React from 'react';
 import { shallow } from 'enzyme';
-import decodedToken from '../../../helpers/validationHelpers/decodeToken';
-import decodedUser from '../../../../__mocks__/decodedUser';
 import Article from '../Article';
 
 describe('Article Component Test', () => {
-  decodedToken.mockResolvedValue(() => ({
-    decodedUser,
-  }));
   let wrapper;
   const changeSidenavSpy = jest.fn();
 
@@ -20,6 +13,9 @@ describe('Article Component Test', () => {
       followees: [
         {},
       ],
+    },
+    user: {
+      id: 1,
     },
     response: {
       article: {
@@ -38,8 +34,10 @@ describe('Article Component Test', () => {
         },
       },
     },
-    location: {
-      pathname: '/jdakdjkajda',
+    history: {
+      location: {
+        pathname: '/testpath',
+      },
     },
   };
 
@@ -149,5 +147,11 @@ describe('Article Component Test', () => {
     });
     const sidenavBtn = wrapper.find('div.sidebar-overlay');
     sidenavBtn.at(0).simulate('click');
+  });
+
+  it('should set user props', () => {
+    wrapper.setProps({
+      user: null,
+    });
   });
 });

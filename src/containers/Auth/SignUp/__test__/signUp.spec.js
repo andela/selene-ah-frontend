@@ -149,4 +149,15 @@ describe('## Signup Component', () => {
       error: { userName: true },
     });
   });
+
+  it('should redirect to homepage if user exist', () => {
+    const props = {
+      toastManager: {},
+      user: {},
+      history: {
+        push: jest.fn(),
+      },
+    };
+    shallow(<SignUp {...props} />);
+  });
 });
