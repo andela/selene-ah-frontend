@@ -124,7 +124,7 @@ export class Home extends Component {
                </div>
                </div>
              </section>
-             <section className="section--header categories">
+             <section className="section--header categories mt-2">
                <h3>categories</h3>
                <div className="cater">
                <div>

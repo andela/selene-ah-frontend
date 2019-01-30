@@ -54,6 +54,12 @@
     font-size: 11px;
   }
 }
+.rating{
+  margin-top: 5rem;
+  float: right;
+  cursor: pointer;
+  margin-bottom: 3rem;
+}
 
 .body p {
   color: #345;
@@ -126,4 +132,11 @@ padding-left: 2px;
     display: flex;
     margin-left: 0;
   }
+}
+
+.num--rate {
+  display: inline;
+  font-size: 3rem;
+  padding: 3rem 1rem;
+  font-weight: bold;
 }

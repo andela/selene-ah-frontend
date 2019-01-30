@@ -15,11 +15,18 @@ describe('ArticleView Component Test', () => {
   const props = {
     fetchArticle: fetchArticleSpy,
     fetchFollowers: fetchFollowersSpy,
+    fetchAverageRating: jest.fn(),
+    fetchUserRating: jest.fn(),
     isFetchingArticle: false,
-    response: {},
+    response: {
+      article: {
+        id: 1,
+      },
+    },
     location: {
       pathname: '/a/jdakdkk',
     },
+    user: { name: 'gbols' },
   };
 
   const state = {
@@ -57,5 +64,10 @@ describe('ArticleView Component Test', () => {
     expect(
       typeof mapDispatchToProps(dispatch),
     ).toEqual('object');
+  });
+
+  it('should call the fetch user rating function if loggedIn', async () => {
+    wrapper.setProps({ user: null });
+    await wrapper.instance().componentDidMount();
   });
 });
