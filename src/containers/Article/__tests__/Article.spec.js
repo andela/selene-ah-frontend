@@ -38,6 +38,9 @@ describe('Article Component Test', () => {
         },
       },
     },
+    location: {
+      pathname: '/jdakdjkajda',
+    },
   };
 
   beforeEach(() => {
@@ -75,6 +78,9 @@ describe('Article Component Test', () => {
           },
         },
       },
+      location: {
+        pathname: '/jdakdjkajda',
+      },
     });
     expect(wrapper.length).toEqual(1);
   });
@@ -98,6 +104,9 @@ describe('Article Component Test', () => {
             likeCount: 3,
           },
         },
+      },
+      location: {
+        pathname: '/jdakdjkajda',
       },
     });
     expect(wrapper.length).toEqual(1);
@@ -126,6 +135,9 @@ describe('Article Component Test', () => {
             likeCount: 3,
           },
         },
+      },
+      location: {
+        pathname: '/jdakdjkajda',
       },
     });
     wrapper.instance().changeSidenav();

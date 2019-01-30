@@ -1,0 +1,18 @@
+.share-button {
+  p {
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-left: 0;
+  }
+
+  li {
+    list-style: none;
+    padding-left: 1rem;
+    width: 3.5rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
