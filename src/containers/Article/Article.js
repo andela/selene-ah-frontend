@@ -7,8 +7,12 @@ import SideNav from '../../components/utilities/SideNav/SideNav';
 import config from '../../config';
 import convertTS from '../../helpers/dateStamp';
 import LikeReaction from '../Reaction/LikeReaction';
-import isLikedByUser from '../Reaction/helpers';
+import {
+  isLikedByUser,
+  followedByUser,
+} from '../Reaction/helpers/reactionHelpers';
 import decodeToken from '../../helpers/validationHelpers/decodeToken';
+import Follow from '../Reaction/FollowReaction';
 
 /**
  * @description Returns article based on the this.props given
@@ -28,6 +32,7 @@ class Article extends React.Component {
 
   static propTypes = {
     response: PropTypes.object,
+    followers: PropTypes.any,
   }
 
   /**
@@ -64,7 +69,13 @@ class Article extends React.Component {
                 <Link to="#" className="author-name">{
                     this.props.response.article.author.userName
                   }</Link>
-                <span><button>Follow</button></span>
+                <Follow
+                  followerId={this.props.response.article.userId}
+                  isFollowingAuthor={followedByUser(
+                    this.props.followers.followees || [],
+                    this.props.response.article.userId,
+                  )}
+                />
               </div>
               <div className="article-stat">
                 <span>

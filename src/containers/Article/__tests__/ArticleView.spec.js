@@ -10,9 +10,11 @@ import {
 describe('ArticleView Component Test', () => {
   let wrapper;
   const fetchArticleSpy = jest.fn();
+  const fetchFollowersSpy = jest.fn();
 
   const props = {
     fetchArticle: fetchArticleSpy,
+    fetchFollowers: fetchFollowersSpy,
     isFetchingArticle: false,
     response: {},
     location: {
@@ -35,6 +37,7 @@ describe('ArticleView Component Test', () => {
 
   it('should call the fetchArticle function', () => {
     expect(fetchArticleSpy).toHaveBeenCalled();
+    expect(fetchFollowersSpy).toHaveBeenCalled();
   });
 
   it('should render the ArticleLoader component', () => {

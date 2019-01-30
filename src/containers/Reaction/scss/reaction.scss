@@ -1,13 +1,13 @@
-@import '../../assets/scss/abstracts/variables';
+@import '../../../assets/scss/abstracts/variables';
 
 .like_reaction_clicked {
-  background-image: url('../../assets/images/icons/like-state.svg');
+  background-image: url('../../../assets/images/icons/like-state.svg');
   transition: all .5s ease-in-out;
   animation: pop ease-in-out .5s;
 }
 
 .like_reaction {
-  background-image: url('../../assets/images/icons/like(no-like-state).svg');
+  background-image: url('../../../assets/images/icons/like(no-like-state).svg');
 }
 
 @keyframes pop {
@@ -40,4 +40,22 @@
 
 .hide--like--count {
   display: none;
+}
+
+// follow reaction
+
+.following {
+  background-color: $primary-color;
+  color: $white;
+
+  &:hover {
+    color: $white;
+  } 
+}
+
+.follow {
+  &:hover {
+    background-color: $primary-color;
+    color: $white;
+  } 
 }

@@ -6,27 +6,53 @@ export const initialState = {
   error: null,
   success: null,
   response: null,
+  isFetchingFollowers: false,
+  followers: null,
 };
 
-const fetchingArticleState = { isFetchingArticle: true };
+const fetchingArticleStart = state => updateObject(
+  state, {
+    isFetchingArticle: true,
+    error: false,
+  },
+);
+
+const fetchArtcileFailed = (state, action) => updateObject(
+  state, {
+    response: action.payload,
+    error: true,
+    isFetchingArticle: false,
+  },
+);
+
+const fetchArtcileSucess = (state, action) => updateObject(
+  state, {
+    response: action.payload,
+    isFetchingArticle: false,
+    success: true,
+  },
+);
+
+const fetchFollowersStart = state => updateObject(
+  state, { isFetchingFollowers: true },
+);
+
+const fetchFollowersComplete = (state, action) => updateObject(
+  state, { followers: action.payload, isFetchingFollowers: false },
+);
+
 
 const articleViewReducer = (state = initialState, action) => {
   switch (action.type) {
     case type.FETCH_ARTICLE_START:
-      return updateObject(initialState, fetchingArticleState);
+      return fetchingArticleStart(state);
     case type.FETCH_ARTICLE_SUCCESS:
-      return updateObject(initialState, {
-        response: action.payload,
-        isFetchingArticle: false,
-        success: true,
-      });
+      return fetchArtcileSucess(state, action);
     case type.FETCH_ARTICLE_FAILED:
-      return updateObject(initialState, {
-        response: action.payload,
-        error: true,
-        success: false,
-        isFetchingArticle: false,
-      });
+      return fetchArtcileFailed(state, action);
+    case type.FETCH_FOLLOWERS_START: return fetchFollowersStart(state);
+    case type.FETCH_FOLLOWERS_COMPLETE:
+      return fetchFollowersComplete(state, action);
     default:
       return state;
   }

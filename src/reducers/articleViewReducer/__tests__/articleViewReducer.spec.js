@@ -8,6 +8,7 @@ describe('ArticleView Reducer Test', () => {
     expect(ArticleViewReducer(defaultState, { type: type.FETCH_ARTICLE_START })).toEqual(
       updateObject(defaultState, {
         isFetchingArticle: true,
+        error: false,
       }),
     );
   });
@@ -18,7 +19,7 @@ describe('ArticleView Reducer Test', () => {
       updateObject(defaultState, {
         response: payload,
         error: true,
-        success: false,
+        success: null,
         isFetchingArticle: false,
       }),
     );
@@ -31,6 +32,24 @@ describe('ArticleView Reducer Test', () => {
         response: payload,
         isFetchingArticle: false,
         success: true,
+      }),
+    );
+  });
+
+  it(`should update when state is ${type.FETCH_FOLLOWERS_START} fires`, () => {
+    expect(ArticleViewReducer(defaultState, { type: type.FETCH_FOLLOWERS_START })).toEqual(
+      updateObject(defaultState, {
+        isFetchingFollowers: true,
+      }),
+    );
+  });
+
+  it(`should update when state is ${type.FETCH_FOLLOWERS_COMPLETE} fires`, () => {
+    const payload = {};
+    expect(ArticleViewReducer(defaultState, { type: type.FETCH_FOLLOWERS_COMPLETE, payload })).toEqual(
+      updateObject(defaultState, {
+        isFetchingFollowers: false,
+        followers: {},
       }),
     );
   });

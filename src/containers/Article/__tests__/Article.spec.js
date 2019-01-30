@@ -16,6 +16,11 @@ describe('Article Component Test', () => {
   const props = {
     changeSidenav: changeSidenavSpy,
     isLoggedIn: true,
+    followers: {
+      followees: [
+        {},
+      ],
+    },
     response: {
       article: {
         author: {
@@ -102,6 +107,9 @@ describe('Article Component Test', () => {
     wrapper.setProps({
       changeSidenav: changeSidenavSpy,
       isLoggedIn: true,
+      followers: {
+
+      },
       response: {
         article: {
           author: {

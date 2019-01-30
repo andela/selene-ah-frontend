@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { withToastManager } from 'react-toast-notifications';
 import * as actionCreators from
   '../../actions/reactionActions/likeArticleActions';
-import './likeReaction.scss';
+import './scss/reaction.scss';
 import decodeToken from '../../helpers/validationHelpers/decodeToken';
 
 /**
