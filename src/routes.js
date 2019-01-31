@@ -9,6 +9,8 @@ import CreateArticle from './components/Article/CreateArticle';
 import EmailVerification
   from './components/pages/EmailVerification/EmailVerification';
 import UserProfile from './containers/UserProfile/UserProfile';
+import EmailConfirmation
+  from './components/pages/EmailConfirmation/EmailConfirmation';
 
 
 const routes = [
@@ -46,6 +48,12 @@ const routes = [
     path: '/email-verification',
     component: EmailVerification,
     name: 'email-verification',
+    exact: true,
+  },
+  {
+    path: '/email-confirmation',
+    component: EmailConfirmation,
+    name: 'email-confirmation',
     exact: true,
   },
   {

@@ -131,7 +131,7 @@ class Article extends React.Component {
             title={this.props.response.article.title} />
         </div>
         <div>
-        < Comment articleId={this.props.response.article.id}
+        <Comment articleId={this.props.response.article.id}
         user={this.props.user}
         />
         </div>
