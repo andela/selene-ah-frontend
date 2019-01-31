@@ -1,4 +1,4 @@
-import { mapStateToProps, mapDispatchToProps } from '../CreateArticleContainer';
+import { mapStateToProps, mapDispatchToProps } from '../SaveArticleContainer';
 
 
 const mockState = {

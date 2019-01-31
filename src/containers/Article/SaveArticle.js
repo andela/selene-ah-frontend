@@ -1,11 +1,7 @@
 import React, { Fragment, Component } from 'react';
-import { ClipLoader } from 'react-spinners';
 import { withToastManager } from 'react-toast-notifications';
 import PropTypes from 'prop-types';
-import {
-  Input, Button, Navbar, SideNav,
-} from '../../components/utilities';
-import Select from '../../components/utilities/Select/Select';
+import { Input, Navbar, SideNav } from '../../components/utilities';
 import './article.scss';
 import {
   INVALID_TITLE,
@@ -22,12 +18,13 @@ import {
   UPDATE_ARTICLE_ERROR,
 } from '../../helpers/articleHelpers/articleConstants';
 import TextEditor from './TextEditor';
+import EditorHeader from './EditorHeader';
 
 /**
  * @description Class for creating an article
  * @extends {Component}
  */
-export class CreateArticle extends Component {
+export class SaveArticle extends Component {
   state = {
     title: null,
     body: null,
@@ -83,9 +80,7 @@ export class CreateArticle extends Component {
    * @memberof CreateArticle
    * @returns { undefined }
    */
-  changeSidenav = () => {
-    this.setState({ sidenav: !this.state.sidenav });
-  };
+  changeSidenav = () => this.setState({ sidenav: !this.state.sidenav });
 
   /**
  * @memberof CreateArticle
@@ -99,14 +94,6 @@ export class CreateArticle extends Component {
     }
     const categoryId = event.target.options[event.target.selectedIndex].value;
     this.setState({ categoryId });
-  }
-
-  /**
-   * @description - function that updates the state when the user types
-   * @return { null } - does not return anything
-   */
-  onChange = ({ value }) => {
-    this.setState({ body: value });
   }
 
   /**
@@ -160,26 +147,18 @@ updateArticle = async () => {
     return false;
   }
 
-  if (this.state.body && this.state.body.length < 5) {
+  if (this.state.body && this.state.body.length < 12) {
     this.props.toastManager.add(INVALID_ARTICLE_UPDATE_CONTENT, toastErrorObj);
     return false;
   }
 
-  if (this.props.imageUploadedResponse) {
-    articleObject.imageUrl = this.props.imageUploadedResponse;
-  }
+  this.props.imageUploadedResponse
+    ? articleObject.imageUrl = this.props.imageUploadedResponse : null;
 
-  if (this.state.body) {
-    articleObject.body = this.state.body;
-  }
-
-  if (this.state.title) {
-    articleObject.title = this.state.title;
-  }
-
-  if (this.state.categoryId) {
-    articleObject.categoryId = this.state.categoryId;
-  }
+  this.state.body ? articleObject.body = this.state.body : null;
+  this.state.title ? articleObject.title = this.state.title : null;
+  this.state.categoryId
+    ? articleObject.categoryId = this.state.categoryId : null;
 
   this.props.postUpdatedArticle(articleObject);
 }
@@ -240,9 +219,7 @@ onFileChangeHandler = (event) => {
  * @param { object } body - article body
  * @returns { null } just updates the state
  */
-getArticleBody = (body) => {
-  this.setState({ body });
-}
+getArticleBody = body => this.setState({ body });
 
 /**
    * @memberof CreateArticle
@@ -250,8 +227,6 @@ getArticleBody = (body) => {
    * @returns { undefined }
    */
 async componentDidMount() {
-  document.body.id = 'overflow';
-  document.body.background = '#fff';
   if (!this.props.user) this.props.history.push('/login');
   await this.props.fetchCategories();
   if (this.props.location.pathname.split('/')[1] === 'create-article') {
@@ -296,6 +271,9 @@ shouldComponentUpdate(nextProps) {
 
   if (this.props.createArticleSuccess !== nextProps.createArticleSuccess
       && nextProps.createArticleSuccess === true) {
+    this.setState({
+      articleId: nextProps.createArticleResponse.data.article.id,
+    });
     this.props.toastManager.add(ARTICLE_SUCCESS, toastSuccessObj);
   }
 
@@ -326,6 +304,18 @@ render() {
       )));
     }
   }
+  const editorProps = {
+    isUpdatingArticle: this.props.isUpdatingArticle,
+    isUploadingImage: this.props.isUploadingImage,
+    categories,
+    updateArticle: this.updateArticle,
+    isCreatingArticle: this.props.isCreatingArticle,
+    createArticleSuccess: this.props.createArticleSuccess,
+    getCategorySelection: this.getCategorySelection,
+    onFileChangeHandler: this.onFileChangeHandler,
+    editAction: this.state.editAction,
+    submitArticle: this.submitArticle,
+  };
   return (
       <Fragment>
       { this.state.sidenav
@@ -338,76 +328,17 @@ render() {
          changeSidenav={ this.changeSidenav} /> : null }
 
       <Navbar isLoggedIn={true} changeSidenav={this.changeSidenav}/>
+      <EditorHeader {...editorProps}/>
       <div className="editorContainer">
-        <div className="editorActions">
-          <Select
-            name="category"
-            classes="categorySelect"
-            id="categorySelect"
-            onChange={this.getCategorySelection}
-          >{ categories }
-          </Select>
-
-          <input
-            type="file"
-            accept="image/*"
-            id="featureImage"
-            onChange={this.onFileChangeHandler}
-          />
-        {!this.props.createArticleSuccess && !this.state.editAction
-         && <Fragment>
-          <Button
-              id="publish"
-              classes="button-primary"
-              onClick={this.submitArticle}
-            >
-              {
-                !this.props.isUploadingImage
-                && !this.props.isCreatingArticle
-                && 'Publish'
-              }
-              <ClipLoader
-                sizeUnit={'px'}
-                size={30}
-                color={'#fff'}
-                loading={this.props.isCreatingArticle
-                  || this.props.isUploadingImage }
-              />
-          </Button>
-         </Fragment>
-        }
-        {(this.props.createArticleSuccess || this.state.editAction)
-          && <Button
-              id="editArticle"
-              classes="button-primary"
-              onClick={this.updateArticle}
-            >
-            {
-              !this.props.isUploadingImage
-              && !this.props.isUpdatingArticle
-              && 'Edit'
-            }
-            <ClipLoader
-              sizeUnit={'px'}
-              size={30}
-              color={'#fff'}
-              loading={this.props.isUpdatingArticle
-                || this.props.isUploadingImage }
-            />
-            </Button>
-        }
-        </div>
         <Input
           type="text"
           id="articleTitle"
           placeholder="Title"
           onChange={this.titleChangeHander}
           inputValue={this.state.title || ''}
-          required
-        />
+          required />
         <div className={this.state.imageVisibility
-          ? 'featuredImageContainer' : 'hiddenDisplay'
-        }>
+          ? 'featuredImageContainer' : 'hiddenDisplay' }>
           <img src={this.state.featuredImage} alt="featured image" />
         </div>
         <TextEditor
@@ -419,4 +350,4 @@ render() {
 }
 }
 
-export default withToastManager(CreateArticle);
+export default withToastManager(SaveArticle);

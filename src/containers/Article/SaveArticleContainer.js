@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import CreateArticle from './CreateArticle';
+import SaveArticle from './SaveArticle';
 import articleActionCreators from '../../actions/articles';
 
 
@@ -20,6 +20,6 @@ export const mapDispatchToProps = dispatch => bindActionCreators(
 const CreateArticleContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(CreateArticle);
+)(SaveArticle);
 
 export default CreateArticleContainer;

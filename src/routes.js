@@ -5,7 +5,7 @@ import NoMatch from './components/pages/NoMatch/NoMatch';
 import ResetPassword from './containers/Auth/ResetPassword/ResetPassword';
 import UpdatePassword from './containers/Auth/ResetPassword/UpdatePassword';
 import ArticleView from './containers/Article/ArticleView';
-import CreateArticle from './containers/Article/CreateArticleContainer';
+import SaveArticle from './containers/Article/SaveArticleContainer';
 import EmailVerification
   from './components/pages/EmailVerification/EmailVerification';
 import UserProfile from './containers/UserProfile/UserProfile';
@@ -40,13 +40,13 @@ const routes = [
   },
   {
     path: '/create-article',
-    component: CreateArticle,
+    component: SaveArticle,
     name: 'createArticle',
     exact: false,
   },
   {
     path: '/articles/:slug/edit',
-    component: CreateArticle,
+    component: SaveArticle,
     name: 'updateArticle',
     exact: false,
   },

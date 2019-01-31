@@ -2,27 +2,24 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Html from 'slate-html-serializer';
 import rules from '../../../components/Editor/SerializerRules';
-import { CreateArticle } from '../CreateArticle';
+import { SaveArticle } from '../SaveArticle';
 
 const html = new Html({ rules });
-const fetchCategoriesSpy = jest.fn();
-const postArticleSpy = jest.fn();
-const uploadImageActionSpy = jest.fn();
-const getCategorySelectionSpy = jest.fn();
-const toastManagerSpy = jest.fn();
-const uploadImageHandlerSpy = jest.fn();
-const fetchArticleSpy = jest.fn();
-const postUpdatedArticleSpy = jest.fn();
+const spyFunction = jest.fn();
 const bulkText = 'It should not submit the article if the title '
 + ' is less than 5 characters';
 
 const props = {
-  fetchArticle: fetchArticleSpy,
-  postUpdatedArticle: postUpdatedArticleSpy,
-  fetchCategories: fetchCategoriesSpy,
-  postArticle: postArticleSpy,
-  uploadImageAction: uploadImageActionSpy,
-  uploadImageHandler: uploadImageHandlerSpy,
+  fetchArticle: spyFunction,
+  isUpdatingArticle: false,
+  postUpdatedArticle: spyFunction,
+  fetchCategories: spyFunction,
+  postArticle: spyFunction,
+  uploadImageAction: spyFunction,
+  uploadImageHandler: spyFunction,
+  isUploadingImage: false,
+  isCreatingArticle: false,
+  createArticleSuccess: true,
   response: {
     article: {
       imageUrl: 'something',
@@ -31,7 +28,7 @@ const props = {
   toastManager: {
     add: jest.fn(),
   },
-  getCategorySelection: getCategorySelectionSpy,
+  getCategorySelection: spyFunction,
   fetchCategoriesSuccess: false,
   history: {
     push: jest.fn(),
@@ -52,8 +49,8 @@ const props2 = {
 };
 
 describe('CreateAticle Component', () => {
-  const wrapper = shallow(<CreateArticle {...props}/>);
-  const wrapper2 = shallow(<CreateArticle {...props2}/>);
+  const wrapper = shallow(<SaveArticle {...props}/>);
+  const wrapper2 = shallow(<SaveArticle {...props2}/>);
   let event = {
     preventDefault: jest.fn(),
     target: {
@@ -82,21 +79,11 @@ describe('CreateAticle Component', () => {
     wrapper.find('#articleTitle').simulate('change', event);
   });
 
-  it('Should check the title input field for change', () => {
-    wrapper.find('#categorySelect').simulate('change', event);
-  });
+  it('Should update the state when the user types the article content', () => {
+    wrapper.instance().getArticleBody('something');
 
-  it('Should check the file input field for change', () => {
-    wrapper.find('#featureImage').simulate('change', event);
+    expect(wrapper.state().body).toEqual('something');
   });
-
-  it('It should update the state when the user types the article content',
-    () => {
-      const value = html.deserialize('slateArticleBody.value');
-      wrapper.setProps({ getArticleBody: jest.fn() });
-      const onChangeHandler = wrapper.instance().onChange({ value });
-      expect(onChangeHandler).toEqual(undefined);
-    });
 
   it('Should read an image file', () => {
     const methods = {
@@ -117,7 +104,7 @@ describe('CreateAticle Component', () => {
     () => {
       wrapper.setState({
         title: 'ear',
-        body: html.deserialize('ear'),
+        body: <p>ear</p>,
         categoryId: null,
       });
       wrapper.instance().submitArticle();
@@ -139,10 +126,11 @@ describe('CreateAticle Component', () => {
   () => {
     wrapper.setState({
       title: 'some text',
-      body: html.deserialize('four'),
-      categoryId: null,
+      body: '<p></p>',
+      categoryId: '8e99e00ee9e0',
     });
-    wrapper.instance().submitArticle();
+
+    wrapper.instance().updateArticle();
   });
 
   it('It should not submit the article if categoryId is null',
@@ -175,6 +163,27 @@ describe('CreateAticle Component', () => {
     wrapper.instance().submitArticle();
   });
 
+  it('should upload the image if the file is selected', async () => {
+    wrapper.setState({ fileSelected: true });
+    await wrapper.instance().submitArticle();
+  });
+
+  it('should  update the state if an image is selected', () => {
+    const event3 = {
+      preventDefault() {},
+      target: {
+        files: [true],
+      },
+      options: [
+        {
+          value: 'idjfdf90898098',
+        },
+      ],
+    };
+    const fileObject = wrapper.instance().onFileChangeHandler(event3);
+    expect(fileObject).toEqual(undefined);
+  });
+
   it('Should check the title input field for change', () => {
     wrapper2.find('#articleTitle').simulate('change', event);
   });
@@ -199,7 +208,7 @@ describe('CreateAticle Component', () => {
   it('should display the edit button if the article has been published', () => {
     wrapper.setProps({
       toastManager: {
-        add: toastManagerSpy,
+        add: spyFunction,
       },
     });
     wrapper.setProps({
@@ -215,7 +224,7 @@ describe('CreateAticle Component', () => {
     wrapper.instance().getCategorySelection(event);
   });
 
-  it('should display response messages when actions occur', () => {
+  it('should display response messages when update actions occur', () => {
     const nextProps = {
       createArticleError: true,
       imageUploadError: true,
@@ -224,8 +233,32 @@ describe('CreateAticle Component', () => {
     };
     wrapper.setProps({
       toastManager: {
-        add: toastManagerSpy,
+        add: spyFunction,
       },
+    });
+    expect(
+      wrapper.instance().shouldComponentUpdate(nextProps),
+    ).toEqual(true);
+  });
+
+  it('should display response messages when actions are successful', () => {
+    const nextProps = {
+      createArticleError: true,
+      imageUploadError: true,
+      createArticleSuccess: true,
+      createArticleResponse: {
+        data: {
+          article: {
+            id: '3jereirherherwrewre',
+          },
+        },
+      },
+    };
+    wrapper.setProps({
+      toastManager: {
+        add: spyFunction,
+      },
+      createArticleSuccess: false,
     });
     expect(
       wrapper.instance().shouldComponentUpdate(nextProps),
