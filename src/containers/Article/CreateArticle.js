@@ -1,15 +1,12 @@
 import React, { Fragment, Component } from 'react';
 import { ClipLoader } from 'react-spinners';
 import { withToastManager } from 'react-toast-notifications';
-import { Editor } from 'slate-react';
-import Html from 'slate-html-serializer';
 import PropTypes from 'prop-types';
 import {
   Input, Button, Navbar, SideNav,
 } from '../../components/utilities';
 import Select from '../../components/utilities/Select/Select';
 import './article.scss';
-import renderMark from '../../helpers/articleHelpers/renderMark';
 import {
   INVALID_TITLE,
   INVALID_ARTICLE_CONTENT,
@@ -23,11 +20,8 @@ import {
   toastErrorObj,
   toastSuccessObj,
   UPDATE_ARTICLE_ERROR,
-} from '../../helpers/articleConstants';
-import { plugins } from '../../helpers/FormatHelper';
-import rules from '../../components/Editor/SerializerRules';
-
-const html = new Html({ rules });
+} from '../../helpers/articleHelpers/articleConstants';
+import TextEditor from './TextEditor';
 
 /**
  * @description Class for creating an article
@@ -36,7 +30,7 @@ const html = new Html({ rules });
 export class CreateArticle extends Component {
   state = {
     title: null,
-    body: html.deserialize(''),
+    body: null,
     featuredImage: null,
     categoryId: null,
     uploadedImageFile: null,
@@ -140,7 +134,7 @@ export class CreateArticle extends Component {
     }
 
     const articleObject = {
-      body: html.serialize(this.state.body),
+      body: this.state.body,
       categoryId: this.state.categoryId,
       imageUrl: this.props.imageUploadedResponse,
       title: this.state.title,
@@ -176,7 +170,7 @@ updateArticle = async () => {
   }
 
   if (this.state.body) {
-    articleObject.body = html.serialize(this.state.body);
+    articleObject.body = this.state.body;
   }
 
   if (this.state.title) {
@@ -188,24 +182,6 @@ updateArticle = async () => {
   }
 
   this.props.postUpdatedArticle(articleObject);
-}
-
-/**
- *
- *@description - method to get the uploaded file from the form field
- * @memberof CreateArticle
- * @param { object } event - the event object
- * @returns { undefined } - just updates the state
- */
-onFileChangeHandler = (event) => {
-  event.preventDefault();
-  const uploadedImage = event.target.files[0];
-  if (uploadedImage) {
-    this.setState({ fileSelected: true });
-    this.setState({ uploadedImageFile: uploadedImage });
-    this.setState({ imageVisibility: true });
-    this.readUploadedFile(uploadedImage);
-  }
 }
 
 /**
@@ -228,6 +204,24 @@ readUploadedFile = (file) => {
   }
 }
 
+/**
+ *
+ *@description - method to get the uploaded file from the form field
+ * @memberof CreateArticle
+ * @param { object } event - the event object
+ * @returns { undefined } - just updates the state
+ */
+onFileChangeHandler = (event) => {
+  event.preventDefault();
+  const uploadedImage = event.target.files[0];
+  if (uploadedImage) {
+    this.setState({ fileSelected: true });
+    this.setState({ uploadedImageFile: uploadedImage });
+    this.setState({ imageVisibility: true });
+    this.readUploadedFile(uploadedImage);
+  }
+}
+
   /**
  * @description - function to upload image to cloudinary
  * @param { object } e
@@ -241,90 +235,98 @@ readUploadedFile = (file) => {
     await this.props.uploadImageAction(formData);
   }
 
-
   /**
+ * @memberof CreateArticle
+ * @param { object } body - article body
+ * @returns { null } just updates the state
+ */
+getArticleBody = (body) => {
+  this.setState({ body });
+}
+
+/**
    * @memberof CreateArticle
    * @description - function to be executed once the component mounts
    * @returns { undefined }
    */
-  async componentDidMount() {
-    document.body.id = 'overflow';
-    document.body.background = '#fff';
-    if (!this.props.user) this.props.history.push('/login');
-    await this.props.fetchCategories();
-    if (this.props.location.pathname.split('/')[1] === 'create-article') {
-      return false;
-    }
-    if (!this.props.response) {
-      const slug = this.props.location.pathname.split('/')[2];
-      await this.props.fetchArticle(slug, this.props.history);
-    }
-    this.setState({
-      title: this.props.response.article.title,
-      articleId: this.props.response.article.id,
-      body: html.deserialize(this.props.response.article.body),
-      editAction: true,
-    });
-
-    if (this.props.response.article.imageUrl) {
-      this.setState({
-        featuredImage: this.props.response.article.imageUrl,
-        imageVisibility: true,
-      });
-    }
+async componentDidMount() {
+  document.body.id = 'overflow';
+  document.body.background = '#fff';
+  if (!this.props.user) this.props.history.push('/login');
+  await this.props.fetchCategories();
+  if (this.props.location.pathname.split('/')[1] === 'create-article') {
+    return false;
   }
+  if (!this.props.response) {
+    const slug = this.props.location.pathname.split('/')[2];
+    await this.props.fetchArticle(slug, this.props.history);
+  }
+  this.setState({
+    title: this.props.response.article.title,
+    articleId: this.props.response.article.id,
+    body: this.props.response.article.body,
+    editAction: true,
+  });
 
-  /**
+  if (this.props.response.article.imageUrl) {
+    this.setState({
+      featuredImage: this.props.response.article.imageUrl,
+      imageVisibility: true,
+    });
+  }
+}
+
+/**
  *
  * @param {object} nextProps
  * @param {object} nextState
  * @memberof CreateArticle
  * @returns { boolean } false
  */
-  shouldComponentUpdate(nextProps) {
-    if (this.props.createArticleError !== nextProps.createArticleError
+shouldComponentUpdate(nextProps) {
+  if (this.props.createArticleError !== nextProps.createArticleError
       && nextProps.createArticleError === true) {
-      this.props.toastManager.add(CREATE_ARTICLE_ERROR, toastErrorObj);
-    }
-
-    if (this.props.imageUploadError !== nextProps.imageUploadError
-      && nextProps.imageUploadError === true) {
-      this.props.toastManager.add(IMAGE_UPLOAD_ERROR, toastErrorObj);
-    }
-
-    if (this.props.createArticleSuccess !== nextProps.createArticleSuccess
-      && nextProps.createArticleSuccess === true) {
-      this.props.toastManager.add(ARTICLE_SUCCESS, toastSuccessObj);
-    }
-
-    if (this.props.updateArticleError !== nextProps.updateArticleError
-      && nextProps.updateArticleError === true) {
-      this.props.toastManager.add(UPDATE_ARTICLE_ERROR, toastErrorObj);
-    }
-
-    if (this.props.updateArticleSuccess !== nextProps.updateArticleSuccess
-      && nextProps.updateArticleSuccess === true) {
-      this.props.toastManager.add(ARTICLE_UPDATE_SUCCESS, toastSuccessObj);
-    }
-    return true;
+    this.props.toastManager.add(CREATE_ARTICLE_ERROR, toastErrorObj);
   }
 
-  /**
+  if (this.props.imageUploadError !== nextProps.imageUploadError
+      && nextProps.imageUploadError === true) {
+    this.props.toastManager.add(IMAGE_UPLOAD_ERROR, toastErrorObj);
+  }
+
+  if (this.props.createArticleSuccess !== nextProps.createArticleSuccess
+      && nextProps.createArticleSuccess === true) {
+    this.props.toastManager.add(ARTICLE_SUCCESS, toastSuccessObj);
+  }
+
+  if (this.props.updateArticleError !== nextProps.updateArticleError
+      && nextProps.updateArticleError === true) {
+    this.props.toastManager.add(UPDATE_ARTICLE_ERROR, toastErrorObj);
+  }
+
+  if (this.props.updateArticleSuccess !== nextProps.updateArticleSuccess
+      && nextProps.updateArticleSuccess === true) {
+    this.props.toastManager.add(ARTICLE_UPDATE_SUCCESS, toastSuccessObj);
+  }
+  return true;
+}
+
+/**
    * @description - function to render the component
    * @returns { JSX } - the JSX for the Create article component
    * @memberof CreateArticle
    */
-  render() {
-    let categories = [<option key={'cat_select'}>Select a category</option>];
-    if (this.props.fetchCategoriesResponse) {
-      const categoriesObject = this.props.fetchCategoriesResponse.categories;
-      if (categoriesObject) {
-        categories = categories.concat(categoriesObject.map(category => (
+render() {
+  let categories = [<option key={'cat_select'}>Select a category</option>];
+  if (this.props.fetchCategoriesResponse) {
+    const categoriesObject = this.props.fetchCategoriesResponse.categories;
+    if (categoriesObject) {
+      categories = categories.concat(categoriesObject.map(category => (
         <option value={category.id} key={category.id}>{category.title}</option>
-        )));
-      }
+      )));
     }
-    return (
+  }
+  return (
       <Fragment>
       { this.state.sidenav
         ? <div className="sidebar-overlay"
@@ -335,10 +337,7 @@ readUploadedFile = (file) => {
          ? <SideNav isLoggedIn={ true }
          changeSidenav={ this.changeSidenav} /> : null }
 
-      <Navbar
-        isLoggedIn={true}
-        changeSidenav={this.changeSidenav}
-      />
+      <Navbar isLoggedIn={true} changeSidenav={this.changeSidenav}/>
       <div className="editorContainer">
         <div className="editorActions">
           <Select
@@ -346,8 +345,7 @@ readUploadedFile = (file) => {
             classes="categorySelect"
             id="categorySelect"
             onChange={this.getCategorySelection}
-          >
-            { categories }
+          >{ categories }
           </Select>
 
           <input
@@ -412,19 +410,13 @@ readUploadedFile = (file) => {
         }>
           <img src={this.state.featuredImage} alt="featured image" />
         </div>
-        <Editor
-          id="textEditor"
-          className="editorBox"
-          value={this.state.body}
-          onChange={this.onChange}
-          placeholder={'Tell your story here...'}
-          plugins={plugins}
-          renderMark={renderMark}
-      />
+        <TextEditor
+          setArticleBody={this.getArticleBody}
+          body={this.state.body}/>
     </div>
       </Fragment>
-    );
-  }
+  );
+}
 }
 
 export default withToastManager(CreateArticle);

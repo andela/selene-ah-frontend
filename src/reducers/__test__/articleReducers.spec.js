@@ -2,7 +2,7 @@
 import * as articleActionTypes from '../../actions/articles/articleActionTypes';
 import articleReducers, { initialState as defaultState } from '../articleReducers/articleReducers';
 import stateUpdateUtility from '../../helpers/store/utility';
-import { UPDATE_ARTICLE_ERROR } from '../../helpers/articleConstants';
+import { UPDATE_ARTICLE_ERROR } from '../../helpers/articleHelpers/articleConstants';
 
 describe('Article Reducer', () => {
   /** Article creation reducer test */
