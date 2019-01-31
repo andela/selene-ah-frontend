@@ -12,6 +12,7 @@ const Input = props => (
       minLength={props.minLength}
       maxLength={props.maxLength}
       onChange={props.onChange}
+      value={props.inputValue}
     />
   </Fragment>
 );
@@ -24,6 +25,7 @@ Input.propTypes = {
   minLength: PropTypes.string,
   required: PropTypes.bool.isRequired,
   classes: PropTypes.string,
+  inputValue: PropTypes.any,
   onChange: PropTypes.func,
 };
 

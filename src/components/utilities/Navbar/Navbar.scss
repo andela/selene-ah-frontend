@@ -111,6 +111,23 @@ $navbar-hover-color: #f6f9fc;
       }
     }
   }
+
+  #navbar .navbar__has-dropdown > div.avatar__dropdown {
+    background-color: $white;
+    border-radius: 4px;
+    min-width: 20rem;
+    position: absolute;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    display: none;
+    top: 5.4rem;
+    right: 3rem;
+    min-height: 15rem;
+  }
+
+  .bell .navbar__has-dropdown:hover > .avatar__dropdown {
+    display: block;
+  }
+
   #navbar .navbar--logo {
     padding: 3rem 0;
     vertical-align: super;
@@ -182,6 +199,11 @@ $navbar-hover-color: #f6f9fc;
         position: absolute;
         -webkit-transition: color .2s ease;
         transition: color .2s ease;
+
+        svg {
+          position: absolute;
+          height: 2rem;
+        }
 
         &:hover {
           cursor: pointer;
@@ -276,10 +298,21 @@ $navbar-hover-color: #f6f9fc;
 }
 .bell {
   vertical-align: middle;
+
+  li {
+    padding: 0 4px;
+  }
+}
+
+#navbar .avatar {
+  &:hover {
+    background-color: transparent;
+  }
 }
  .avar {
    vertical-align: middle;
    margin-right: 2rem;
-   width: 40px;
-   height: 40px;
+   width: 35px;
+   height: 35px;
+   border: 1px solid $grey-color;
  }

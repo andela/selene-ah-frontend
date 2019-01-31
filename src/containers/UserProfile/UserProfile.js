@@ -15,7 +15,6 @@ import ArticlesLoader
   from '../../components/UserProfile/UserArticle/ArticlesLoader';
 import Navbar from '../../components/utilities/Navbar/Navbar';
 import SideNav from '../../components/utilities/SideNav/SideNav';
-import decodeToken from '../../helpers/validationHelpers/decodeToken';
 
 /**
  * @class UserProfile
@@ -37,6 +36,7 @@ export class UserProfile extends Component {
     userData: PropTypes.object,
     history: PropTypes.object,
     isProfileUpdate: PropTypes.bool,
+    user: PropTypes.any,
   };
 
   /**
@@ -46,7 +46,7 @@ export class UserProfile extends Component {
     token: '',
     modal: false,
     sidenav: false,
-    isLoggedIn: localStorage.getItem('token') || false,
+    isLoggedIn: this.props.user,
     initial: [],
     isUpdate: false,
   };
@@ -60,7 +60,7 @@ export class UserProfile extends Component {
    * @returns {UserProfile} - returns user profile
    */
   componentDidMount() {
-    const isAuthenticated = decodeToken();
+    const isAuthenticated = this.props.user;
     if (!isAuthenticated) this.props.history.push('/login');
     const { profileDispatcher } = this.props;
     profileDispatcher();

@@ -5,7 +5,7 @@ import './BackDrop.scss';
 const colors = [
   'violet', 'orange',
   'nelson', 'purple',
-  'blue', 'green'];
+  'blue'];
 
 const BackDrop = props => (
   <Fragment>

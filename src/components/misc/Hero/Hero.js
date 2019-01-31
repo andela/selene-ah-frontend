@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import heroImage from '../../../assets/images/hero_img.svg';
 import './Hero.scss';
 
@@ -12,7 +13,10 @@ const Hero = () => (
           <div className="hero--box">
             <h3 className="hero--heading">AUTHORS HAVEN</h3>
             <p className="tagline">Where writers meet readers</p>
-            <a href="#" className="button button--primary">Start Reading</a>
+            <Link
+              to="/login"
+              className="button button--primary"
+            >Start Reading</Link>
           </div>
       </div>
     </div>

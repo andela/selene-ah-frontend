@@ -85,10 +85,11 @@ input[type="text"]:not(.browser-default):focus, input[type="text"]:not(.browser-
 .signup-text{
   color: $white;
   text-decoration: underline;
+  margin-left: 5px;
 }
 
 .signup-text:hover{
-  color: #fff3;
+  color: darken(#fff, 10);
 }
 .social-group{
   display: flex;
@@ -229,6 +230,7 @@ input[type="text"]:not(.browser-default):focus, input[type="text"]:not(.browser-
   }
   .signup-text{
     color: #345;
+    margin-left: 5px;
   }
   .signup-text:hover{
     color: $primary-color-light;
@@ -332,6 +334,7 @@ input[type="text"]:not(.browser-default):focus, input[type="text"]:not(.browser-
   }
   .signup-text{
     color: #345;
+    margin-left: 5px;
   }
   label{
     color: #345;
@@ -358,7 +361,7 @@ input[type="text"]:not(.browser-default):focus, input[type="text"]:not(.browser-
     position: fixed;
   }
   #login-container, .login-container {
-    margin-top: 0rem;
+    margin-top: 6rem;
   }
   .login-wrapper{
     display: flex;

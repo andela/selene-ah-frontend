@@ -21,6 +21,7 @@ describe('User profile container', () => {
     history: {
       push: jest.fn(),
     },
+    user: {},
   };
 
   beforeEach(() => {

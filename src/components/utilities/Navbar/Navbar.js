@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import * as Icon from 'react-feather';
 import { Link } from 'react-router-dom';
 import robot from '../../../assets/images/avatars/robot.svg';
-import logout from '../../../assets/images/icons/log-out.svg';
 import bell from '../../../assets/images/bell.svg';
 import './Navbar.scss';
 
@@ -43,7 +42,7 @@ const Navbar = props => <Fragment>
           </div>
           <div className="searchbar">
             <form>
-              <i data-feather="search" className="icon"></i>
+              <i data-feather="search" className="icon"><Icon.Search /></i>
               <input type="text" placeholder="Search" />
             </form>
           </div>
@@ -53,17 +52,27 @@ const Navbar = props => <Fragment>
           ? <div className="navbar--right">
           <div className="navbar--links bell">
             <li><img src={bell} className="icon bell" /></li>
-            <li>
-              <a href="#" className="hide-on-med-and-down">
+            <li className="navbar__has-dropdown">
+              <a href="#" className="hide-on-med-and-down avatar">
               <img className="circle avar" src={robot}></img>
               </a>
+              <div className="avatar__dropdown">
+                <ul>
+                <li>
+                  <Link to='/profile'>My Profile</Link>
+                </li>
+                <li>
+                  <Link to='/create-article'><Icon.Edit3 /> Write</Link>
+                </li>
+                <li className="logout" onClick= {() => {
+                  localStorage.removeItem('token');
+                  window.location.replace('/');
+                }}
+                style={{ cursor: 'pointer' }}>
+                <Link to="#">Logout</Link></li>
+                </ul>
+              </div>
             </li>
-            <li className="logout" onClick= {() => {
-              localStorage.removeItem('token');
-              window.location.replace('/');
-            }}
-              style={{ cursor: 'pointer' }}>
-              <img src={logout} className="icon bell" /></li>
           </div>
         </div>
           : <div className="navbar--right">

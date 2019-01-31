@@ -84,6 +84,11 @@ form{
   font-weight: 600;
 }
 
+.form-nav a {
+  padding: 1rem;
+  display: inline-block;
+}
+
 
 /* Mobile in portrait and landscape mode*/
 @media all and (max-width: 47rem) {

@@ -69,6 +69,19 @@
   background-color: #F8FAF8;
 }
 
+.d-block {
+  display: block;
+}
+
+.step-button {
+  height: 35px;
+  line-height: 35px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 11px;
+}
+
 /* very large screen devices */
 @media all and (min-width: 76.5rem) {
   .overflow {

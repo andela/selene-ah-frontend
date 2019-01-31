@@ -36,6 +36,7 @@ export class SignUp extends Component {
   constructor() {
     super();
     this.state = {
+      step: 1,
       error: {},
       user: {
         email: '',
@@ -133,6 +134,42 @@ export class SignUp extends Component {
   }
 
   /**
+   * @param {object} e
+   * @returns {void} - Returns a new state
+   * @memberof SignUp
+   */
+  nextStep = (e) => {
+    e.preventDefault();
+    const { email, password, confirmPassword } = this.state.user;
+    if (Object.keys(this.state.error).length > 1
+        || email === ''
+        || password === ''
+        || confirmPassword === '') {
+      this.props.toastManager.add('Some fields are invalid and required', {
+        appearance: 'error',
+        autoDismiss: true,
+      });
+      return;
+    }
+
+    this.setState({
+      step: this.state.step + 1,
+    });
+  }
+
+  /**
+   * @param {object} e
+   * @returns {void} - Returns a new state
+   * @memberof SignUp
+   */
+  prevStep = (e) => {
+    e.preventDefault();
+    this.setState({
+      step: this.state.step - 1,
+    });
+  }
+
+  /**
    * @returns {JSX} - Sign up Template
    */
   render() {
@@ -146,66 +183,120 @@ export class SignUp extends Component {
           loginId='login-wrapper' onSubmit={this.handleSubmit}
           containerId='login-container'>
           <div id="signup-container">
-            <div className='input-group'>
-              <label>Email Address</label>
-              <Input type='email' placeholder=''
-                classes={error.email ? 'inValid' : ''}
-                  id='email' required={true} onChange={this.handleChange} />
-            </div>
-            <div className="side_input">
-              <div className='input-group flex-left'>
-                <label>First Name</label>
-                <Input type='text' placeholder=''
-                  classes={error.firstName ? 'inValid' : ''}
-                    id='firstName' required={true}
+            {
+              this.state.step === 1
+              && <div className='step-1'>
+                <div className='input-group'>
+                  <label>Email Address</label>
+                  <Input
+                    type='email'
+                    placeholder=''
+                    classes={error.email ? 'inValid' : ''}
+                    id='email'
+                    inputValue={this.state.user.email}
+                    required={true}
+                    onChange={this.handleChange} />
+                </div>
+                <div className='side_inpu'>
+                  <div className='input-group flex-left'>
+                    <label>Password</label>
+                    <Input
+                      type='password'
+                      id='password'
+                      classes={error.password ? 'inValid' : ''}
+                      placeholder=''
+                      inputValue={this.state.user.password}
+                      required={true}
+                      onChange={this.handleChange}/>
+                  </div>
+                  <p className='small-text mobile-text'>
+                  *Password must contain at least a number and must
+                    not be less than 8 characters</p>
+                  <div className='input-group'>
+                    <label>Confirm Password</label>
+                    <Input
+                      type='password'
+                      id='confirmPassword'
+                      placeholder=''
+                      required={true}
+                      inputValue={this.state.user.confirmPassword}
+                      classes={error.confirmPassword ? 'inValid' : ''}
+                      onChange={this.handleChange}/>
+                  </div>
+                </div>
+                <p className='small-text'>
+                  *Password must contain at least a number and must
+                    not be less than 8 characters</p>
+                    <div className='text-center loader'>
+                      {!isLoading && <Link
+                        to='#'
+                        onClick={this.nextStep}
+                        className='form-button  d-block step-button'>
+                        Next</Link>
+                      }
+                    </div>
+                 </div>
+            }
+            {
+              this.state.step === 2
+              && <div className="step-2">
+                <div className="side_inpu">
+                  <div className='input-group flex-left'>
+                    <label>First Name</label>
+                    <Input
+                      type='text'
+                      placeholder=''
+                      classes={error.firstName ? 'inValid' : ''}
+                      id='firstName'
+                      inputValue={this.state.user.firstName}
+                      required={true}
                       onChange={this.handleChange} />
+                  </div>
+                  <div className='input-group'>
+                    <label>Last Name</label>
+                    <Input
+                      type='text'
+                      id='lastName'
+                      classes={error.lastName ? 'inValid' : ''}
+                      placeholder=''
+                      required={true}
+                      inputValue={this.state.user.lastName}
+                      onChange={this.handleChange}/>
+                  </div>
+                </div>
+                <div className='input-group'>
+                  <label>Username</label>
+                  <Input
+                    type='text'
+                    id='userName'
+                    placeholder=''
+                    classes={error.userName ? 'inValid' : ''}
+                    inputValue={this.state.user.userName}
+                    required={true}
+                    onChange={this.handleChange} />
+                </div>
+                <div className='text-center loader'>
+                  { !isLoading
+                    && <div className="side-input">
+                      <Link
+                        to='#'
+                        onClick={this.prevStep}
+                        className='form-button d-block step-button'>
+                        Previous</Link>
+                      <Button type='submit' classes='form-button'>
+                      Signup</Button>
+
+                    </div>
+                  }
+                  <ClipLoader
+                      sizeUnit='px'
+                      size={30}
+                      color='#fff'
+                      loading={isLoading}
+                  />
+                </div>
               </div>
-              <div className='input-group'>
-                <label>Last Name</label>
-                <Input type='text' id='lastName'
-                  classes={error.lastName ? 'inValid' : ''}
-                  placeholder='' required={true}
-                    onChange={this.handleChange}/>
-              </div>
-            </div>
-            <div className='side_input'>
-              <div className='input-group flex-left'>
-                <label>Password</label>
-                <Input type='password' id='password'
-                  classes={error.password ? 'inValid' : ''}
-                  placeholder='' required={true}
-                    onChange={this.handleChange}/>
-              </div>
-              <p className='small-text mobile-text'>
-              *Password must contain at least a number and must
-                not be less than 8 characters</p>
-              <div className='input-group'>
-                <label>Confirm Password</label>
-                <Input type='password' id='confirmPassword'
-                  placeholder='' required={true}
-                  classes={error.confirmPassword ? 'inValid' : ''}
-                    onChange={this.handleChange}/>
-              </div>
-            </div>
-            <p className='small-text'>
-              *Password must contain at least a number and must
-                not be less than 8 characters</p>
-            <div className='input-group'>
-              <label>Username</label>
-              <Input type='text' id='userName' placeholder=''
-                classes={error.userName ? 'inValid' : ''}
-                required={true} onChange={this.handleChange} />
-            </div>
-            <div className='text-center loader'>
-              {!isLoading && <Button type='submit' classes='form-button'>
-                Signup</Button>}
-              <ClipLoader
-                  sizeUnit='px'
-                  size={30}
-                  color='#fff'
-                  loading={isLoading}
-              />
-            </div>
+            }
           <div className='or'>
             <span className="line"></span>
             <p>OR</p>
