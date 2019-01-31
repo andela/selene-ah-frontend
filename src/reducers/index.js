@@ -13,6 +13,9 @@ import imageUploadReducers from './articleReducers/imageUploadReducers';
 import profile from './userProfileReducers/Profile';
 import follow from './reactionReducers/follow';
 import commentReducers from './commentReducers/comment';
+import fetchAverageRating from './ratingsReducer/fetchAveargeRatings';
+import postRating from './ratingsReducer/postRatings';
+import fetchUserRatings from './ratingsReducer/fetchUserRatings';
 
 const rootReducer = combineReducers({
   signup,
@@ -29,6 +32,9 @@ const rootReducer = combineReducers({
   profile,
   follow,
   commentReducers,
+  fetchAverageRating,
+  postRating,
+  fetchUserRatings,
 });
 
 export default rootReducer;

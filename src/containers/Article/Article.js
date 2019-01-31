@@ -14,6 +14,8 @@ import {
 import Follow from '../Reaction/FollowReaction';
 import ShareButton from '../../components/misc/ShareBtn/ShareButton';
 import Comment from '../Comment/Comment';
+import Ratings from '../Ratings/Ratings';
+
 
 /**
  * @description Returns article based on the this.props given
@@ -107,7 +109,12 @@ class Article extends React.Component {
         <div className="text-center">
           <h1 className="article-title">{this.props.response.article.title}</h1>
         </div>
+        <div>
         {renderHTML(this.props.response.article.body)}
+        </div>
+        <div className="rating">
+           <Ratings {...this.props} />
+        </div>
         </section>
         <div className='like-icon container'>
           <LikeReaction
@@ -123,9 +130,12 @@ class Article extends React.Component {
             url={this.props.history.location.pathname}
             title={this.props.response.article.title} />
         </div>
+        <div>
         < Comment articleId={this.props.response.article.id}
         user={this.props.user}
         />
+        </div>
+
       </div>
     );
   }

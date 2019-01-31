@@ -6,6 +6,10 @@ import Article from './Article';
 import articleViewActions from '../../actions/articleAction/articleView';
 import './ArticleView.scss';
 import ArticleLoader from '../../components/misc/ArticleLoader/ArticleLoader';
+import fetchAverageRating
+  from '../../actions/Ratings/AverageRatingActionCreators';
+import postRating from '../../actions/Ratings/postRatingActionCreators';
+import fetchUserRatings from '../../actions/Ratings/userRatingActionCreators';
 
 /**
  * @description Handles our articleView functionality
@@ -19,6 +23,11 @@ export class ArticleView extends Component {
     location: PropTypes.object,
     fetchFollowers: PropTypes.func,
     isFetchingFollowers: PropTypes.bool,
+    isUserLoading: PropTypes.bool,
+    isAverageLoading: PropTypes.bool,
+    fetchAverageRating: PropTypes.func,
+    fetchUserRating: PropTypes.func,
+    user: PropTypes.object,
   };
 
   /**
@@ -30,6 +39,9 @@ export class ArticleView extends Component {
     const slug = this.props.location.pathname.split('/')[2];
     await this.props.fetchFollowers();
     await this.props.fetchArticle(slug, this.props.history);
+    await this.props.fetchAverageRating(this.props.response.article.id);
+    this.props.user
+    && await this.props.fetchUserRating(this.props.response.article.id);
   }
 
   static propTypes = {
@@ -43,7 +55,9 @@ export class ArticleView extends Component {
   render() {
     return (
      <Fragment>
-        { (this.props.isFetchingArticle || this.props.isFetchingFollowers)
+        { this.props.isFetchingArticle
+          && this.props.isUserLoading
+          && this.props.isAverageLoading
           && <ArticleLoader />}
         { (this.props.response)
           && (!this.props.isFetchingArticle)
@@ -55,10 +69,18 @@ export class ArticleView extends Component {
 
 export const mapStateToProps = state => ({
   ...state.articleViewReducer,
+  ...state.fetchAverageRating,
+  ...state.postRating,
+  ...state.fetchUserRatings,
 });
 
 export const mapDispatchToProps = dispatch => bindActionCreators(
-  articleViewActions,
+  {
+    ...fetchAverageRating,
+    ...postRating,
+    ...fetchUserRatings,
+    ...articleViewActions,
+  },
   dispatch,
 );
 
