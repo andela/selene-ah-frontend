@@ -5,14 +5,12 @@ import './Cards.scss';
 const CardParent = props => (
   <Fragment>
     <div className="section">
-      <div className="container">
-      <p className="article-by"><strong>Articles by you</strong></p>
+      <p className="article-by">Your Articles</p>
         </div>
           <div className="cards">
             <div className={`holder ${props.classname}`}>
               {props.children}
             </div>
-        </div>
       </div>
   </Fragment>
 );

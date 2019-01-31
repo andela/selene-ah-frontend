@@ -1,33 +1,29 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import SideWidgetLink from './SideWidgetLinks/SideWidgetLink';
+import ProfileLinks from './ProfileLinks';
 import './SideWidget.scss';
 
-const profileLinks = [
-  {
-    id: 1,
-    class: 'side-card__link',
-    title: 'Articles',
-    imageUrl: '',
-    path: '/my-articles',
-  },
-  {
-    id: 2,
-    class: '',
-    titie: 'Stat',
-    imageUrl: '',
-    path: '/profile-stat',
-  },
-];
+const SideWidget = (props) => {
+  const profileLinks = ProfileLinks(props);
+  return (
+    <div className="side-card m2 l2">
+      { profileLinks.map(profileLink => (
+        <SideWidgetLink key={profileLink.id} class={profileLink.class}
+        title={profileLink.title} icon={profileLink.icon}
+        flag={profileLink.flag}
+        handleNavClick={props.handleNavClick}
+        />
+      )) }
+   </div>
+  );
+};
 
-const SideWidget = () => (
-    <div className="side-card">
-        { profileLinks.map(profileLink => (
-          <SideWidgetLink key={profileLink.id} class={profileLink.class}
-          title={profileLink.title} imageUrl={profileLink.imageUrl}
-          path={profileLink.path} />
-        )) }
-    </div>
-);
+SideWidget.propTypes = {
+  handleNavClick: PropTypes.func,
+  activeStat: PropTypes.bool,
+  activeArticle: PropTypes.bool,
+
+};
 
 export default SideWidget;

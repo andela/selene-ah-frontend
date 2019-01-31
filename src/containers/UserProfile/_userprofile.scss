@@ -1,0 +1,45 @@
+.content-container {
+  display: flex;
+}
+
+/* Mobile in portrait and landscape mode*/
+@media all and (max-width: 47rem) {
+  .content-container {
+    display: block;
+    background-color: #fff;
+  }
+  .user-profile-top{
+    margin-bottom: 2rem;
+  }
+  .stats-header{
+    text-align: center;
+  }
+  .minicard-container{
+    justify-content: center;
+  }
+  
+}
+
+/* Tablets */
+@media all and (min-width: 48rem) and (max-width: 64rem) {
+  .minicard-container{
+    justify-content: center;
+  }
+
+}
+
+/* Desktop and laptop */
+@media all and (min-width: 76.5rem) {
+  .form-container {
+    width: 75%;
+    margin-left: 5rem;
+    text-align: left;
+  }
+
+}
+
+/* very large screen devices */
+@media all and (min-width: 114rem) {
+
+}
+

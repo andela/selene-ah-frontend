@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { shallow } from 'enzyme';
 import moxios from 'moxios';
@@ -23,6 +22,7 @@ describe('User update profile container', () => {
     userData: {
       facebook: 'facebook',
     },
+    getAllStat: jest.fn(),
   };
 
   beforeEach(() => {

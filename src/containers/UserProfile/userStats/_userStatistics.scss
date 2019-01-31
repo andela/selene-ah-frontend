@@ -1,0 +1,40 @@
+.minicard-container{
+  display: flex;
+  flex-wrap: wrap;
+  min-width: 300px;
+  margin-top: 1.3rem;
+}
+
+.stats-header{
+  font-weight: 600;
+  padding: 1rem 1rem;
+}
+
+/* Mobile in portrait and landscape mode*/
+@media all and (max-width: 47rem) {
+  .stats-container {
+    display: block;
+  }
+
+  
+}
+
+/* Tablets */
+@media all and (min-width: 48rem) and (max-width: 64rem) {
+
+}
+
+/* Desktop and laptop */
+@media all and (min-width: 76.5rem) {
+  .form-container {
+    width: 75%;
+    margin-left: 5rem;
+    text-align: left;
+  }
+
+}
+
+/* very large screen devices */
+@media all and (min-width: 114rem) {
+
+}

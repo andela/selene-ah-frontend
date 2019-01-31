@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
@@ -11,10 +11,14 @@ import UpdateProfile
 import profileImage from '../../assets/images/user-icon.png';
 import actionCreators from '../../actions/userAction/getProfile';
 import MyLoader from '../../components/UserProfile/UserInfo/UserInfoLoader';
-import ArticlesLoader
-  from '../../components/UserProfile/UserArticle/ArticlesLoader';
+// import ArticlesLoader
+//   from '../../components/UserProfile/UserArticle/ArticlesLoader';
 import Navbar from '../../components/utilities/Navbar/Navbar';
 import SideNav from '../../components/utilities/SideNav/SideNav';
+import UserStatistic from './userStats/UserStatistics';
+import * as actions from '../../actions/userStat/getUserStat';
+import './_userprofile.scss';
+
 
 /**
  * @class UserProfile
@@ -30,13 +34,22 @@ export class UserProfile extends Component {
     toastManager: PropTypes.object.isRequired,
     response: PropTypes.object,
     error: PropTypes.bool,
+    statError: PropTypes.bool,
     profileDispatcher: PropTypes.func.isRequired,
     isLoading: PropTypes.bool.isRequired,
     success: PropTypes.bool,
     userData: PropTypes.object,
     history: PropTypes.object,
     isProfileUpdate: PropTypes.bool,
-    user: PropTypes.any,
+    noUserFollowerStat: PropTypes.object,
+    userArticleLike: PropTypes.number,
+    userArticleStat: PropTypes.object,
+    bookmarkStat: PropTypes.number,
+    commentStat: PropTypes.number,
+    getAllStat: PropTypes.func,
+    fetchingData: PropTypes.bool,
+    usersYouAreFollowing: PropTypes.number,
+    user: PropTypes.object,
   };
 
   /**
@@ -49,6 +62,10 @@ export class UserProfile extends Component {
     isLoggedIn: this.props.user,
     initial: [],
     isUpdate: false,
+    userStats: null,
+    isActive: '',
+    activeStat: null,
+    activeArticle: true,
   };
 
   changeSidenav = () => {
@@ -69,6 +86,63 @@ export class UserProfile extends Component {
   openModal = () => {
     this.setState({ modal: !this.state.modal });
   };
+
+  /**
+   * @description returns the selected tab
+   * @param {string} selectedTab
+   * @returns {string} selectedtab
+   */
+  getSelectedTab = (selectedTab) => {
+    switch (selectedTab) {
+      case 'Articles':
+        return 'userArticlesTab';
+      case 'Statistics':
+        return 'userStatTab';
+      default:
+        return null;
+    }
+  }
+
+  /**
+   * @description returns the selected tab
+   * @param {string} navLink
+   * @returns {undefined} undefined
+   */
+  handleNavChange = async (navLink) => {
+    const selectedTab = this.getSelectedTab(navLink);
+    const token = localStorage.getItem('token');
+    if (selectedTab === 'userArticlesTab') {
+      this.setState({
+        userStats: false,
+        activeStat: false,
+        activeArticle: true,
+      });
+    }
+    if (selectedTab === 'userStatTab') {
+      await this.props.getAllStat(token, this.props.user.id);
+      this.setState({
+        userStats: true,
+        activeStat: true,
+        activeArticle: false,
+      });
+    }
+  }
+
+  /**
+   * @description Check for any error
+   * @param {object} nextProps
+   * @returns {bool} true/false
+   */
+  shouldComponentUpdate(nextProps) {
+    if (this.props.statError !== nextProps.statError) {
+      this.props.toastManager.add('Network Error', {
+        appearance: 'error',
+        autoDismiss: true,
+      });
+      return false;
+    }
+    return true;
+  }
 
   /**
    * @description
@@ -102,7 +176,6 @@ export class UserProfile extends Component {
     }
     const { success } = this.props;
     return (
-      <Fragment>
         <div className="row">
 
         { this.state.sidenav
@@ -117,6 +190,7 @@ export class UserProfile extends Component {
         changeSidenav={this.changeSidenav} />
           { success
             ? <UserInfo
+
             name={fullname}
             SocialLinks={links}
             bio={bio}
@@ -125,29 +199,42 @@ export class UserProfile extends Component {
           /> : <MyLoader />}
           {this.state.modal
             ? <UpdateProfile openModal={this.openModal} /> : null}
-          <SideWidget />
-          { success
-            ? <UserArticle name={fullname}/>
-            : <Fragment>
-              <ArticlesLoader />
-              <ArticlesLoader />
-              <ArticlesLoader />
-            </Fragment>
+        <div className="row content-container">
+          <SideWidget handleNavClick={this.handleNavChange}
+          activeArticle={this.state.activeArticle}
+          activeStat={this.state.activeStat}/>
+          { this.state.userStats && !this.props.statError ? <UserStatistic
+            followerStat={this.props.noUserFollowerStat}
+            articleLikes={this.props.userArticleLike}
+            articleStat={this.props.userArticleStat}
+            bookmarkStat={this.props.bookmarkStat}
+            commentStat={this.props.commentStat}
+            yourFollowing={this.props.usersYouAreFollowing}
+            />
+            : null
           }
+          {
+            this.state.activeArticle ? <UserArticle name={fullname}/> : null
+          }
+          </div>
         </div>
-      </Fragment>
     );
   }
 }
 
 export const mapStateToProps = state => ({
   ...state.profile,
+  ...state.statistics,
 });
 
-
-export const mapDispatchToProps = dispatch => bindActionCreators(actionCreators,
-  dispatch);
-
+export const mapDispatchToProps = dispatch => bindActionCreators(
+  {
+    ...actionCreators,
+    ...actions,
+  },
+  // eslint-disable-next-line
+  dispatch
+);
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
