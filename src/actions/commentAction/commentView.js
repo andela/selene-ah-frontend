@@ -70,7 +70,7 @@ const postComment = (articleId, content, userDetails) => async (dispatch) => {
     );
     dispatch(postCommentSuccess(response.data.comment, userDetails));
   } catch (err) {
-    dispatch(postCommentFailed(err.response.data.error));
+    dispatch(postCommentFailed(err.response.data.message));
   }
 };
 

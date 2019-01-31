@@ -41,7 +41,7 @@ export class Comment extends Component {
     content: '',
     setWriteComment: null,
     viewComment: false,
-    id: this.props.user.id,
+    id: this.props.user ? this.props.user.id : null,
     checkSuccess: false,
     showOthers: false,
   };

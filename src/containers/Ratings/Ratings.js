@@ -126,7 +126,8 @@ export class Ratings extends React.Component {
         </div>
         <div>
           Average rating <div className="num--rate">
-          {this.props.averageRating.averageRating || null }
+          {this.props.averageRating.averageRating
+            ? this.props.averageRating.averageRating.toFixed(2) : null }
           </div>
         </div>
       </div>
