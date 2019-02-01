@@ -2,6 +2,8 @@ const merge = require('webpack-merge'); // Merge our base and dev config files.
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyWebpackPlugin = require('uglifyjs-webpack-plugin');
 const common = require('./webpack.base');
+const webpack = require('webpack');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 // SCSS test regex 
 const scssTest = /\.scss$/;
@@ -21,7 +23,7 @@ module.exports = merge(common, {
     rules: [
       {
         test: scssTest,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
     ],
   },
@@ -42,6 +44,19 @@ module.exports = merge(common, {
     new MiniCssExtractPlugin({
       filename: '[name].[hash].css',
       chunkFilename: '[id].[hash].css',
-    })
+    }),
+    new OptimizeCssAssetsPlugin({}),
+    uglifyJS,
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+      'process.env.SERVER_API': JSON.stringify('https://selene-ah-staging.herokuapp.com/api/v1'),
+      'process.env.GOOGLE_URL':JSON.stringify('https://selene-ah-staging.herokuapp.com/api/v1/auth/google'),
+      'process.env.FACEBOOK_URL': JSON.stringify('https://selene-ah-staging.herokuapp.com/api/v1/auth/facebook'),
+      'process.env.TWITTER_URL':JSON.stringify('https://selene-ah-staging.herokuapp.com/api/v1/auth/twitter'),
+      'process.env.BASE_URL': JSON.stringify('https://selene-ah-staging.herokuapp.com/api/v1/auth/'),
+      'process.env.CLOUDINARY_API_BASE_URL': JSON.stringify('https://api.cloudinary.com/v1_1/dsozu5ads/upload'),
+      'process.env.CLOUDINARY_UPLOAD_PRESET': JSON.stringify('zklk2cjx'),
+      'process.env.FRONTEND_API': JSON.stringify('https://selene-front-staging.herokuapp.com')
+    }),
   ],
 });

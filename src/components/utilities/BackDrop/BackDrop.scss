@@ -1,0 +1,36 @@
+#backdrop {
+  color: #fff;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  background-size: cover;
+
+  h4 {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 2rem;
+    text-shadow: 1px 1px rgba(0,0,0, .3);
+  }
+}
+
+.violet {
+  background: url('../../../assets/images/back.svg');
+}
+
+.orange {
+  background: url('../../../assets/images/back 2.svg');
+}
+
+.purple {
+  background: url('../../../assets/images/back 3.svg');
+}
+
+.nelson {
+  background: url('../../../assets/images/back 4.svg');
+}
+
+.blue {
+  background: url('../../../assets/images/back 5.svg');
+}

@@ -1,0 +1,41 @@
+@import '../../abstracts/variables';
+
+.button {
+  color: $primary-color;
+  height: 35px;
+  line-height: 35px;
+  border-radius: 2px;
+  border: none;
+
+  &:hover {
+    border-color: $primary-color;
+    background-color: $primary-color;
+    @include hover-tansistion;
+    color: $white;
+  }
+
+  &--primary {
+    background-color: $primary-color;
+    border-color: $primary-color;
+    color: $white;
+
+    &:hover {
+      background-color: darken($primary-color, 3);
+    }
+  }
+
+  &--outline {
+    border: 1px solid $hr-color;
+    color: $grey-color;
+
+    &:hover {
+      background-color: $grey-color;
+      color: $white;
+    }
+  }
+}
+
+input[type=text]:not(.browser-default) {
+  color: $primary-text-color-dark;
+
+}

@@ -1,0 +1,165 @@
+@import '../../../../assets/scss/abstracts/variables';
+#login-wrapper {
+  margin-top: 0;
+
+  p {
+    margin-bottom: 1.5rem;
+  }
+}
+.or {
+  margin-top: .5rem;
+  padding: 5px;
+}
+
+.line {
+  width: 42.5%;
+  text-align: left;
+}
+
+#img-responsive {
+  margin-top: -20rem;
+}
+
+#login-container {
+  margin-top: -15rem;
+}
+
+#signup-container {
+  text-align: left;
+  .flex-left {
+    padding-right: 2%;
+  }
+  input[type='text'] {
+    color: $grey-color;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  input[type='email'] {
+    color: $grey-color;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  input[type='password']{
+    color: $grey-color;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .side_input {
+    width: 100%;
+    display: flex;
+  }
+  .form-button {
+    width: 100%;
+  }
+  .center {
+    text-align: center;
+  }
+
+  .center a {
+    text-decoration: underline;
+  }
+  .inValid {
+    border:1px solid red;
+    box-shadow: none;
+  }
+  .small-text {
+    font-size: 10px;
+    margin-top: 0px;
+    font-style: italic;
+    color: lighten(yellow, 15);
+    text-align: center;
+  }
+
+  .form-button {
+    margin-top: 5px;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .mobile-text {
+    display: none;
+  }
+}
+
+@media (min-width: 10em) and (max-width: 43em) {
+  body {
+    overflow: auto;
+  }
+  #login-container {
+    margin: 0rem 0rem;
+  }
+  #signup-container {
+    text-align: left;
+    width: 95%;
+    margin: 0 auto;
+
+    .small-text {
+      display: none;
+    }
+    
+    .mobile-text {
+      display: block;
+    }
+  }
+
+  #login-wrapper {
+    padding-top: 0;
+  }
+}
+
+@media (min-width: 10em) and (max-width: 59em) {
+  body {
+    overflow: auto;
+  }
+
+  #signup-container {
+    text-align: left;
+    margin: 0 auto;
+
+    input[type=password] {
+      margin-bottom: 15px ;
+    }
+    .side_input {
+      display: block;
+    }
+    .small-text {
+      color: red;
+    }
+    .small-text {
+      display: none;
+    }
+    
+    .mobile-text {
+      display: block;
+    }
+  }
+  #login-container {
+    margin-left: 0rem;
+    margin-top: 0rem;
+    width: 100%;
+  }
+  .input-group label{
+    color: #345;
+  }
+  
+}
+
+@media (min-width: 50rem) and (max-width: 76.5rem){
+  #signup-container {
+    .side_input {
+      display: block;
+    }
+    .small-text {
+      color: red;
+    }
+    .input-group {
+    margin-bottom: 15px;
+    }
+  }
+}
+/* very large screen devices */
+@media all and (min-width: 114rem) {
+
+}

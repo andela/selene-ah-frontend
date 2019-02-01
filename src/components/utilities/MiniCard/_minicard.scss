@@ -1,0 +1,59 @@
+.minicard {
+  width: 150px;
+  height: 170px;
+  border: 1px solid rgb(246, 244, 244);
+  box-shadow: 1px 2px 12px rgba(0, 0, 0, .2);
+  text-align: center;
+  padding: 1.5rem 1.5rem;
+  margin: 0rem  3rem 3rem 0rem;
+  background-color: #fff;
+  .minicard-title{
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.3rem;
+    width: 120px;
+    line-height: 1.7rem;
+
+  }
+  .minicard-stat {
+    font-size: 2.4rem;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 1.7rem;
+  }
+  .minicard-image{
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.minicard:hover{
+  box-shadow: 1px 2px 15px rgba(0, 0, 0, .25);
+  -webkit-transition: width 2s, height 2s, -webkit-transform 2s; /* Safari */
+}
+
+/* Mobile in portrait and landscape mode*/
+@media all and (max-width: 47rem) {
+  .minicard {
+    margin: 0rem  1.5rem 3rem 1.5rem;
+  }  
+  
+}
+
+/* Tablets */
+@media all and (min-width: 48rem) and (max-width: 64rem) {
+  .minicard{
+    margin-right: 1.5rem;
+  }
+}
+
+/* Desktop and laptop */
+@media all and (min-width: 76.5rem) {
+}
+
+/* very large screen devices */
+@media all and (min-width: 114rem) {
+
+}
+
+

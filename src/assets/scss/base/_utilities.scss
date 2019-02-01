@@ -1,0 +1,103 @@
+@for $var from 1 to $padding-limit {
+  @include padding-helper('top', $var);
+}
+
+@for $var from 1 to $padding-limit {
+  @include padding-helper('bottom', $var);
+}
+
+@for $var from 1 to $padding-limit {
+  @include padding-helper('left', $var);
+}
+
+@for $var from 1 to $padding-limit {
+  @include padding-helper('right', $var);
+}
+
+@for $var from 1 to $padding-limit {
+  @include margin-helper('top', $var);
+}
+
+@for $var from 1 to $padding-limit {
+  @include margin-helper('bottom', $var);
+}
+
+@for $var from 1 to $padding-limit {
+  @include margin-helper('left', $var);
+}
+
+@for $var from 1 to $padding-limit {
+  @include margin-helper('right', $var);
+}
+
+.flex-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.wrapper {
+  padding: 0 3rem;
+}
+
+.imgContainer{
+  width: 500px;
+  height: 500px;
+  background-color: $grey-color-lighter;
+}
+
+.wrapper {
+  padding: 0 2rem;
+}
+
+.text--center {
+  text-align: center;
+  margin: 1rem auto;
+}
+
+.pr {
+  position: relative;
+}
+
+.pa {
+  position: absolute;
+}
+.wrapper {
+  padding: 0 1.5rem;
+}
+
+.bg-green {
+  background-color: #F8FAF8;
+}
+
+.d-block {
+  display: block;
+}
+
+.step-button {
+  height: 35px;
+  line-height: 35px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 11px;
+}
+
+.clearfloat::after, .clearfloat::before {
+  clear: both;
+  display: table;
+  content: '';
+}
+
+/* very large screen devices */
+@media all and (min-width: 76.5rem) {
+  .overflow {
+    overflow: hidden;
+  }
+}
+
+/* very large screen devices */
+@media all and (min-width: 114rem) {
+  .overflow {
+    overflow: hidden;
+  }
+}

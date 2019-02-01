@@ -16,6 +16,7 @@ const VENDOR_LIBS = [
   'react-router-dom',
 ];
 
+
 // Webpack exports 
 module.exports = {
   entry: {
@@ -24,6 +25,7 @@ module.exports = {
   },
   output: {
     path: BUILD_DIR,
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -38,7 +40,10 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/i,
-        use: ['file-loader'],
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[ext]'
+        }
       },
       {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
@@ -54,10 +59,6 @@ module.exports = {
       },
       {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'file-loader'
-      },
-      {
-        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'file-loader'
       },
       {

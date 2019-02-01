@@ -1,0 +1,109 @@
+@import '../navbar/variables';
+@import './mixins';
+@import './variables';
+
+.skeleton {
+
+  &--rect {
+    width: 10rem;
+    height: 1.6rem;
+    line-height: $navbar-height;
+    display: block;
+    @include skeleton-animate;
+    animation: skeleton-animation $animation-duration infinite linear;
+    animation-delay: .9s;
+
+    &__small {
+      width: 2rem;
+      height: 1.3rem;
+      margin-right: 2rem;
+    }
+
+    &__text {
+      width: 24rem;
+      height: 1.2rem;
+      @include skeleton-animate;
+      animation: skeleton-animation $animation-duration infinite linear;
+      animation-delay: .9s;
+      display: block;
+    }
+
+    &__subtext {
+      width: 12rem;
+      height: 1.2rem;
+      @include skeleton-animate;
+      animation: skeleton-animation $animation-duration infinite linear;
+      display: block;
+      animation-delay: 1s;
+    }
+
+    &__time {
+      width: 2rem;
+      height: 1rem;
+      display: block;
+      @include skeleton-animate;
+      animation: skeleton-animation $animation-duration infinite linear;
+    }
+  }
+
+  &--circle {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: block;
+    @include skeleton-animate;
+    animation: skeleton-animation $animation-duration infinite linear;
+  }
+
+  &--image {
+    width: 100%;
+    height: 19rem;
+  }
+
+  &--animate {
+    @include skeleton-animate;
+    animation: skeleton-animation $animation-duration infinite linear;
+    animation-delay: .9s;
+  }
+
+  .hero {
+    width: 100%;
+    height: 50rem;
+    @include skeleton-animate;
+    animation: skeleton-animation $animation-duration infinite linear;
+    animation-delay: .9s;
+  }
+
+  .body-line {
+    height: 1.6rem;
+    line-height: $navbar-height;
+    display: block;
+    @include skeleton-animate;
+    animation: skeleton-animation $animation-duration infinite linear;
+    animation-delay: 1.1s;
+    margin: 2rem;
+
+    &__long {
+      width: 90%;
+    }
+
+    &__short {
+      width: 40%;
+    }
+  }
+
+  .holder {
+    width: 80%;
+  }
+}
+
+
+@keyframes skeleton-animation {
+  0% {
+    opacity: .3;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

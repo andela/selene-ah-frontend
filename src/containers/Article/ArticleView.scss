@@ -1,0 +1,141 @@
+@import '../../assets/scss/abstracts/variables';
+.author-section {
+  padding-top: 5.4rem;
+}
+
+.author-box {
+  display: flex;
+  width: 100%;
+  margin: 3rem 0;
+  height: 5rem;
+
+  .author-img {
+    flex: 0 0 auto;
+
+    .author-avatar {
+      display: block;
+
+      img {
+        width: 4rem;
+        height: 4rem;
+        display: inline-block;
+        border-radius: 100%;
+        vertical-align: middle;
+        border: 1px solid $grey-color;
+      }
+    }
+  }
+
+  .author-bio {
+    padding-left: 1.5rem;
+    flex: 1 1 auto;
+
+    .author-name {
+      color: $primary-text-color-dark;
+      font-weight: 500;
+      margin-right: 1rem;
+    }
+
+    button {
+      border-radius: 4px;
+      border: 1px solid rgba(0,0,0,0.15);
+      padding: 0 1.5rem;
+      height: 19px;
+      line-height: 0px;
+    }
+  }
+}
+
+.article-stat {
+  span {
+    padding-right: 1rem;
+    font-weight: 500;
+    font-size: 11px;
+  }
+}
+.rating{
+  margin-top: 5rem;
+  float: right;
+  cursor: pointer;
+  margin-bottom: 3rem;
+}
+
+.body p {
+  color: #345;
+  font-weight: 400;
+}
+
+.article-img {
+  width: 100%;
+  height: 400px;
+  background-position: center center;
+  background-size: cover;
+  margin-bottom: 5rem;
+}
+
+.article-title {
+  font-weight: 500;
+  font-size: 3rem;
+  text-transform: uppercase;
+  margin-bottom: 4rem;
+}
+
+@media all and (min-width: 76.5rem) {
+  #article .container {
+    width: 50%;
+  }
+
+  .like-icon {
+    position: relative;
+    left: 0;
+    top: 0;
+  }
+}
+
+@media all and (min-width: 114rem) {
+  #article .container {
+    width: 50%;
+  }
+}
+
+.like-icon {
+position: fixed;
+top: 50%;
+left: 10%;
+}
+
+.like--count {
+padding-left: 2px;
+}
+
+@media (min-width: 20rem) and (max-width: 78rem) {
+  .like-icon {
+    position: relative;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 23px;
+  }
+
+  .share-button {
+    p {
+      margin-left: 25px;
+    }
+
+    li {
+      padding: 0 6px;
+    }
+  }
+  .social {
+    display: flex;
+    margin-left: 0;
+  }
+}
+
+.num--rate {
+  display: inline;
+  font-size: 3rem;
+  padding: 0rem 1rem;
+  font-weight: bold;
+}

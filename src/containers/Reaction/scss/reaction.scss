@@ -1,0 +1,62 @@
+@import '../../../assets/scss/abstracts/variables';
+
+.like_reaction_clicked {
+  background-image: url('../../../assets/images/icons/like-state.svg');
+  transition: all .5s ease-in-out;
+  animation: pop ease-in-out .5s;
+}
+
+.like_reaction {
+  background-image: url('../../../assets/images/icons/like(no-like-state).svg');
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.25);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.reaction {
+  width: 5rem;
+  height: 5rem;
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-bottom: 10px;
+  margin-left: 3px;
+  cursor: pointer;
+}
+
+.liked--count {
+  text-align: center;
+}
+
+.hide--like--count {
+  display: none;
+}
+
+// follow reaction
+
+.following {
+  background-color: $primary-color;
+  color: $white;
+
+  &:hover {
+    color: $white;
+  } 
+}
+
+.follow {
+  &:hover {
+    background-color: $primary-color;
+    color: $white;
+  } 
+}

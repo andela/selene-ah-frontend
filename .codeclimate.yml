@@ -1,0 +1,36 @@
+version: "2"
+exclude_patterns:
+- "**/*.spec.js"
+- "**/*.test.js"
+checks:
+  argument-count:
+    config:
+      threshold: 4
+  complex-logic:
+    config:
+      threshold: 4
+  file-lines:
+    config:
+      threshold: 250
+  method-complexity:
+    config:
+      threshold: 10
+  method-count:
+    config:
+      threshold: 20
+  method-lines:
+    config:
+      threshold: 150
+  nested-control-flow:
+    config:
+      threshold: 4
+  return-statements:
+    config:
+      threshold: 8
+  similar-code:
+    config:
+      threshold: 150
+  identical-code:
+    config:
+      threshold: 250
+      

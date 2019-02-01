@@ -1,0 +1,35 @@
+#emailVerification {
+  text-align: center;
+
+  h2 {
+    margin-top: 10rem;
+    text-transform: uppercase;
+    color: #1D1740;
+    font-weight: bold;
+    font-size: 3.5rem;
+    margin-bottom: 4rem;
+  }
+
+  p {
+    font-size: 2rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-left: 3rem;
+    margin-top: 4rem;
+  }
+}
+
+/* Mobile Views */
+@media all and (min-width: 0rem) and (max-width: 48rem) {
+  #emailVerification {
+    padding: 3rem;
+
+    h2 {
+      font-size: 3rem;
+    }
+
+    p {
+      font-size: 1.5rem;
+    }
+  }
+}
