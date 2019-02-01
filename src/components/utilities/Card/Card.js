@@ -35,7 +35,8 @@ const Card = props => (
               <span className="card--time">
                 <p>
                   <i data-feather="clock" className="icon"></i>
-                  { props.readTime } mins
+                  { props.readTime === 1
+                    ? `${props.readTime} min` : `${props.readTime} mins` }
                 </p>
               </span>
             </div>

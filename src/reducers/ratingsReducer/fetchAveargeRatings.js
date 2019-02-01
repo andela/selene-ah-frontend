@@ -27,7 +27,7 @@ const updateFetchAverageRatingFailedState = (state, action) => updateObject(stat
 const fetchAverageRating = (state = initialState, action) => {
   switch (action.type) {
     case type.FETCH_AVERAGE_RATING_START:
-      return updateObject(initialState, isAverageRatingLoadingState);
+      return updateObject(state, isAverageRatingLoadingState);
 
     case type.FETCH_AVERAGE_RATING_FAILED:
       return updateFetchAverageRatingFailedState(state, action);

@@ -119,7 +119,9 @@ export class LikeArticle extends Component {
         </div>
         <p className= {`like--count ${likeCount === 0
           ? 'hide--like--count' : ''}`}>
-          {this.state.likeCount} liked</p>
+          {this.state.likeCount === 1
+            ? `${this.state.likeCount} like`
+            : `${this.state.likeCount} likes`} </p>
     </div>
     );
   }

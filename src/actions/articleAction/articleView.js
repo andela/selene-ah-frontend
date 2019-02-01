@@ -24,6 +24,10 @@ const fetchFollowersComplete = payload => ({
   payload,
 });
 
+export const unmountArticle = () => ({
+  type: type.UNMOUNT_ARTICLE,
+});
+
 const fetchArticle = (slug, history) => (dispatch) => {
   dispatch(fetchArticleStart());
   return axios.get(`${process.env.SERVER_API}/article/s/${slug}`)
@@ -59,4 +63,5 @@ export default {
   fetchFollowers,
   fetchFollowersStart,
   fetchFollowersComplete,
+  unmountArticle,
 };

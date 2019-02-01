@@ -7,6 +7,7 @@ describe('Article Component Test', () => {
   const changeSidenavSpy = jest.fn();
 
   const props = {
+    unmountArticle: jest.fn(),
     changeSidenav: changeSidenavSpy,
     isLoggedIn: true,
     followers: {
@@ -153,5 +154,9 @@ describe('Article Component Test', () => {
     wrapper.setProps({
       user: null,
     });
+  });
+
+  it('should call componentWillUnmount', () => {
+    expect(wrapper.instance().componentWillUnmount());
   });
 });

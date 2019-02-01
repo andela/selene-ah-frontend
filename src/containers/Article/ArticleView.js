@@ -53,14 +53,18 @@ export class ArticleView extends Component {
    * @returns {JSX} Article View JSX
    */
   render() {
+    const {
+      isFetchingFollowers,
+      isFetchingArticle,
+      isAverageLoading,
+    } = this.props;
     return (
-     <Fragment>
-        { this.props.isFetchingArticle
-          && this.props.isUserLoading
-          && this.props.isAverageLoading
+  <Fragment>
+        { (isFetchingArticle
+          || isFetchingFollowers)
           && <ArticleLoader />}
         { (this.props.response)
-          && (!this.props.isFetchingArticle)
+          && (!isFetchingArticle || !isAverageLoading || !isFetchingFollowers)
           && <Article {...this.props}/> };
      </Fragment>
     );

@@ -22,7 +22,7 @@ describe('FollowReaction component', () => {
     });
   });
 
-  it('should render LikeArticle', () => {
+  it('should render FollowReaction', () => {
     expect(<FollowReaction {...props} />);
   });
 
@@ -47,8 +47,8 @@ describe('FollowReaction component', () => {
     expect(wrapper.instance().shouldComponentUpdate(nextProps)).toEqual(true);
   });
 
-  it('should find div element', () => {
-    const container = wrapper.find('div');
+  it('should find span element', () => {
+    const container = wrapper.find('span');
     expect(container.length).toEqual(1);
   });
 

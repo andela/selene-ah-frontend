@@ -44,6 +44,14 @@ describe('ArticleView Reducer Test', () => {
     );
   });
 
+  it('should update when state is unmountArticle fires', () => {
+    expect(ArticleViewReducer(defaultState, { type: type.UNMOUNT_ARTICLE })).toEqual(
+      updateObject(defaultState, {
+        response: null,
+      }),
+    );
+  });
+
   it(`should update when state is ${type.FETCH_FOLLOWERS_COMPLETE} fires`, () => {
     const payload = {};
     expect(ArticleViewReducer(defaultState, { type: type.FETCH_FOLLOWERS_COMPLETE, payload })).toEqual(
