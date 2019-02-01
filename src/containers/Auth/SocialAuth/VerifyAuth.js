@@ -77,8 +77,9 @@ export class VerifyAuth extends Component {
   render() {
     return (
       <Fragment>
-        {this.props.isAuthenticated
-          ? <Redirect to='/' /> : <Redirect to='/login' />}
+        {this.props.isAuthenticated === true ? <Redirect to='/' /> : null }
+        {this.props.isAuthenticated === false
+          ? <Redirect to='/login' /> : null }
       </Fragment>
     );
   }

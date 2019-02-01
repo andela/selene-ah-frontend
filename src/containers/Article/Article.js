@@ -33,11 +33,20 @@ class Article extends React.Component {
     this.setState({ sidenav: !this.state.sidenav });
   };
 
+  /**
+ * @returns {void}
+ * @memberof Article
+ */
+  componentWillUnmount() {
+    this.props.unmountArticle();
+  }
+
   static propTypes = {
     response: PropTypes.object,
     followers: PropTypes.any,
     history: PropTypes.object,
     user: PropTypes.any,
+    unmountArticle: PropTypes.func,
   }
 
   /**

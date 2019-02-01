@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -115,7 +115,7 @@ export class FollowReaction extends Component {
       props: { unloading, loading, followerId },
     } = this;
     return id !== followerId && (
-      <div>
+      <Fragment>
         <span>
           <button
           className={isFollowingAuthor ? 'following' : 'follow'}
@@ -123,7 +123,7 @@ export class FollowReaction extends Component {
             {isFollowingAuthor ? 'following' : 'follow'}
           </button>
         </span>
-      </div>
+    </Fragment>
     );
   }
 }

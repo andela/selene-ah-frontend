@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import faker from 'faker';
 import moxios from 'moxios';
-import articleViewActions from '../articleView';
+import articleViewActions, { unmountArticle } from '../articleView';
 import * as type from '../actionTypes';
 
 const dispatchFn = jest.fn();
@@ -26,6 +26,12 @@ describe('ArticleView Actions', () => {
   it(`should return an action object once ${type.FETCH_ARTICLE_FAILED} is fired`, () => {
     expect(articleViewActions.fetchArticleFailed()).toEqual({
       type: type.FETCH_ARTICLE_FAILED,
+    });
+  });
+
+  it('should return an action object once UNMOUNT_ARTICLE is fired', () => {
+    expect(unmountArticle()).toEqual({
+      type: type.UNMOUNT_ARTICLE,
     });
   });
 

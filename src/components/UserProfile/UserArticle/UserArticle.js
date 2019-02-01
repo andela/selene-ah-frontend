@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
+import renderHtml from 'react-render-html';
 import { withToastManager } from 'react-toast-notifications';
 import getArticleActions from '../../../actions/userAction/getArticle';
 import './_userArticle.scss';
@@ -34,14 +36,18 @@ export class UserArticle extends Component {
   render() {
     const articles = (this.props.articleData || []).map(article => (
       <Card key={article.id} title={article.title}
-      body={trimBody(article.body)} imageUrl={article.imageUrl}
-      readTime={article.readingStat} slug={article.slug}
+      body={renderHtml(trimBody(article.body))} imageUrl={article.imageUrl}
+      readTime={article.readTime} slug={article.slug}
       author={article.author} name={article.author}></Card>
     ));
     return (
       <div className="article-container">
       <ArticleParent classname="fix-holder">
-      {articles}
+        {articles.length < 1
+          ? <p className='article-by'>You have no articles.
+            <Link to="/create-article">
+              <span>&nbsp; Start Writing</span></Link></p>
+          : articles}
       </ArticleParent>
       </div>
     );
