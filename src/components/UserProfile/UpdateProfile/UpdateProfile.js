@@ -33,6 +33,9 @@ export class UpdateProfile extends Component {
     image: this.props.userData.image,
     isLoading: this.props.isLoading,
     getFile: null,
+    textAreaLength: this.props.userData.bio
+      ? (200 - this.props.userData.bio.length)
+      : 200,
   };
 
   /**
@@ -41,6 +44,12 @@ export class UpdateProfile extends Component {
    */
   onChange = (e) => {
     this.setState({ [e.target.id]: e.target.value });
+    if (e.target.id === 'bio') {
+      const newLength = 200 - e.target.value.length;
+      this.setState({
+        textAreaLength: newLength,
+      });
+    }
   };
 
   getImageUrl = (e) => {
@@ -143,7 +152,18 @@ export class UpdateProfile extends Component {
                     maxLength="50"
                   />
                   <label className="reset-password-label" id="resetLabel">
-                    Facebook
+                    Email Address
+                  </label>
+                  <Input
+                    type="text"
+                    classes="reset-password-tbx disabled"
+                    id="email"
+                    value={this.state.email}
+                    placeholder={this.props.userData.email}
+                    disabled={true}
+                  />
+                  <label className="reset-password-label" id="resetLabel">
+                    Facebook Url
                   </label>
                   <Input
                     type="text"
@@ -157,7 +177,7 @@ export class UpdateProfile extends Component {
                     maxLength="50"
                   />
                   <label className="reset-password-label" id="resetLabel">
-                    Twitter
+                    Twitter Url
                   </label>
                   <Input
                     type="text"
@@ -171,7 +191,9 @@ export class UpdateProfile extends Component {
                     maxLength="100"
                   />
                   <label className="reset-password-label" id="resetLabel">
-                    Bio
+                    Bio <span className="textarea-length">
+                      {this.state.textAreaLength}
+                      </span>
                   </label>
                   <textarea
                     value={this.state.bio}

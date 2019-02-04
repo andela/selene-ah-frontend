@@ -13,6 +13,7 @@ const Input = props => (
       maxLength={props.maxLength}
       onChange={props.onChange}
       value={props.inputValue}
+      disabled={props.disabled}
     />
   </Fragment>
 );
@@ -28,6 +29,7 @@ Input.propTypes = {
   inputValue: PropTypes.any,
   onChange: PropTypes.func,
   value: PropTypes.string,
+  disabled: PropTypes.bool,
 };
 
 

@@ -21,6 +21,7 @@ describe('User update profile container', () => {
     getImageUrl: jest.fn(),
     userData: {
       facebook: 'facebook',
+      bio: 'djajdjda',
     },
     getAllStat: jest.fn(),
   };
@@ -39,6 +40,16 @@ describe('User update profile container', () => {
     const e = {
       target: {
         id: 7,
+      },
+    };
+    wrapper.instance().onChange(e);
+  });
+
+  it('should  call onChange function', () => {
+    const e = {
+      target: {
+        id: 'bio',
+        value: 'fjajs',
       },
     };
     wrapper.instance().onChange(e);
@@ -71,7 +82,7 @@ describe('User update profile container', () => {
 
 
   it('should call the openModal function', () => {
-    wrapper.find('span').simulate('click', {
+    wrapper.find('span.close').simulate('click', {
       preventDefault: preventDefaultSpy,
       target: {
         class: 'modal-content',
@@ -83,6 +94,9 @@ describe('User update profile container', () => {
   it('should call the submit', () => {
     wrapper.setProps({
       onSubmit: jest.fn(),
+      userData: {
+        bio: null,
+      },
     });
     const preventDefault = jest.fn();
     const form = wrapper.find('FormContainer');
