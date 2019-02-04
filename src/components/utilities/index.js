@@ -8,3 +8,4 @@ export { default as TagParent } from './Tag/TagParent';
 export { default as SideNav } from './SideNav/SideNav';
 export { default as Card } from './Card/Card';
 export { default as CardParent } from './Card/CardParent';
+export { default as Select } from './Select/Select';

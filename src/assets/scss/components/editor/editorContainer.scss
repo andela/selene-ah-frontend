@@ -13,9 +13,9 @@ overflow: auto;
 	#articleTitle.input{
 		width: 100%;
 		min-height: 60px;
-		border: 1px solid $light-border-color;
+		border: 0px;
 		font-size: 2em;
-		padding: 20px 20px;
+		padding: 20px 0;
 		font-weight: bold;
 	}
 
@@ -26,14 +26,13 @@ overflow: auto;
 	}
 
 	.featuredImageContainer{
-		max-width: 40%;
+		max-width: 70%;
 		max-height: 350px;
 		display: block;
-	}
-
-	.featuredImageContainer{
+		margin-bottom: 20px;
+		overflow: hidden;
 		img{
-			max-width: 100%;
+			max-width: 80%;
 			margin: 0 auto;
 		}
 	}
@@ -52,7 +51,6 @@ overflow: auto;
 .editorBox{
 	min-height: 80vh;
 	font-size: 1.5em;
-	border: 1px solid $light-border-color;
 }
 
 .hiddenDisplay{

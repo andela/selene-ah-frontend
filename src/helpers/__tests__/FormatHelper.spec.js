@@ -1,4 +1,4 @@
-import { FormatHandler } from '../FormatHelper';
+import { FormatHandler } from '../articleHelpers/FormatHelper';
 
 describe('Format Helper', () => {
   const editor = {

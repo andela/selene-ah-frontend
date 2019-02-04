@@ -27,6 +27,7 @@ Input.propTypes = {
   classes: PropTypes.string,
   inputValue: PropTypes.any,
   onChange: PropTypes.func,
+  value: PropTypes.string,
 };
 
 

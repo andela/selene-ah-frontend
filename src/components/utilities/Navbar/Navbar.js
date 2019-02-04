@@ -62,7 +62,7 @@ const Navbar = props => <Fragment>
                   <Link to='/profile'>My Profile</Link>
                 </li>
                 <li>
-                  <Link to='/create-article'><Icon.Edit3 /> Write</Link>
+                  <Link to='/create-article'>Write an article</Link>
                 </li>
                 <li className="logout" onClick= {() => {
                   localStorage.removeItem('token');
