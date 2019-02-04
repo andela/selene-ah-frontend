@@ -41,6 +41,11 @@ class Article extends React.Component {
     this.props.unmountArticle();
   }
 
+  editArticleHandler = () => {
+    const { slug } = this.props.response.article;
+    this.props.history.push(`/articles/${slug}/edit`);
+  }
+
   static propTypes = {
     response: PropTypes.object,
     followers: PropTypes.any,
@@ -83,7 +88,13 @@ class Article extends React.Component {
                 <Link to="#" className="author-name">{
                     this.props.response.article.author.userName
                   }</Link>
-                <Follow
+                <span>{this.props.response.article.author.userName === userName
+                  ? <button
+                  id="editBtn"
+                  onClick={this.editArticleHandler}
+                >
+                  Edit
+                </button> : <Follow
                   followerId={this.props.response.article.userId}
                   id={id}
                   isFollowingAuthor={followedByUser(
@@ -91,13 +102,6 @@ class Article extends React.Component {
                     this.props.response.article.userId,
                   )}
                 />
-                <span>{this.props.response.article.author.userName === userName
-                  ? <button
-                  id="editBtn"
-                  onClick={this.editArticleHandler}
-                >
-                  Edit
-                </button> : <button>Follow</button>
                 }</span>
               </div>
               <div className="article-stat">

@@ -170,4 +170,9 @@ describe('Article Component Test', () => {
   it('should call componentWillUnmount', () => {
     expect(wrapper.instance().componentWillUnmount());
   });
+
+
+  it('should call editArticleHandler', () => {
+    expect(wrapper.instance().editArticleHandler());
+  });
 });
