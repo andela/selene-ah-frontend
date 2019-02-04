@@ -1,37 +1,40 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import {
-  CreateArticle,
-  mapStateToProps,
-  mapDispatchToProps,
-} from '../CreateArticle';
+import Html from 'slate-html-serializer';
+import rules from '../../../components/Editor/SerializerRules';
+import { SaveArticle } from '../SaveArticle';
 
-
-const fetchCategoriesSpy = jest.fn();
-const postArticleSpy = jest.fn();
-const uploadImageActionSpy = jest.fn();
-const getCategorySelectionSpy = jest.fn();
-const toastManagerSpy = jest.fn();
+const html = new Html({ rules });
+const spyFunction = jest.fn();
 const bulkText = 'It should not submit the article if the title '
 + ' is less than 5 characters';
 
-const mockState = {
-  categoryReducer: {},
-  articleReducers: {},
-  imageUploadReducers: {},
-};
-
 const props = {
-  fetchCategories: fetchCategoriesSpy,
-  postArticle: postArticleSpy,
-  uploadImageAction: uploadImageActionSpy,
+  fetchArticle: spyFunction,
+  isUpdatingArticle: false,
+  postUpdatedArticle: spyFunction,
+  fetchCategories: spyFunction,
+  postArticle: spyFunction,
+  uploadImageAction: spyFunction,
+  uploadImageHandler: spyFunction,
+  isUploadingImage: false,
+  isCreatingArticle: false,
+  createArticleSuccess: true,
+  response: {
+    article: {
+      imageUrl: 'something',
+    },
+  },
   toastManager: {
     add: jest.fn(),
   },
-  getCategorySelection: getCategorySelectionSpy,
+  getCategorySelection: spyFunction,
   fetchCategoriesSuccess: false,
   history: {
     push: jest.fn(),
+  },
+  location: {
+    pathname: 'selene/selene/create-article',
   },
 };
 
@@ -46,8 +49,8 @@ const props2 = {
 };
 
 describe('CreateAticle Component', () => {
-  const wrapper = shallow(<CreateArticle {...props}/>);
-  const wrapper2 = shallow(<CreateArticle {...props2}/>);
+  const wrapper = shallow(<SaveArticle {...props}/>);
+  const wrapper2 = shallow(<SaveArticle {...props2}/>);
   let event = {
     preventDefault: jest.fn(),
     target: {
@@ -76,12 +79,10 @@ describe('CreateAticle Component', () => {
     wrapper.find('#articleTitle').simulate('change', event);
   });
 
-  it('Should check the title input field for change', () => {
-    wrapper.find('#categorySelect').simulate('change', event);
-  });
+  it('Should update the state when the user types the article content', () => {
+    wrapper.instance().getArticleBody('something');
 
-  it('Should check the file input field for change', () => {
-    wrapper.find('#featureImage').simulate('change', event);
+    expect(wrapper.state().body).toEqual('something');
   });
 
   it('Should read an image file', () => {
@@ -99,15 +100,11 @@ describe('CreateAticle Component', () => {
     wrapper.instance().readUploadedFile(event2.target.files[0]);
   });
 
-  it('Should check get the article body and set the state', () => {
-    wrapper.instance().getArticleBody('The article body');
-  });
-
   it('It should not submit the article if the title is less than 5 characters',
     () => {
       wrapper.setState({
         title: 'ear',
-        body: 'ear',
+        body: <p>ear</p>,
         categoryId: null,
       });
       wrapper.instance().submitArticle();
@@ -129,17 +126,18 @@ describe('CreateAticle Component', () => {
   () => {
     wrapper.setState({
       title: 'some text',
-      body: 'four',
-      categoryId: null,
+      body: '<p></p>',
+      categoryId: '8e99e00ee9e0',
     });
-    wrapper.instance().submitArticle();
+
+    wrapper.instance().updateArticle();
   });
 
   it('It should not submit the article if categoryId is null',
     () => {
       wrapper.setState({
         title: 'some text',
-        body: 'some text',
+        body: html.deserialize('some text'),
         categoryId: null,
       });
       wrapper.instance().submitArticle();
@@ -148,7 +146,7 @@ describe('CreateAticle Component', () => {
   it('Should submit the article', () => {
     wrapper.setState({
       title: 'some text',
-      body: bulkText,
+      body: html.deserialize(bulkText),
       categoryId: 'o890980ijnokjhlkdf',
     });
     wrapper.instance().submitArticle();
@@ -165,22 +163,29 @@ describe('CreateAticle Component', () => {
     wrapper.instance().submitArticle();
   });
 
+  it('should upload the image if the file is selected', async () => {
+    wrapper.setState({ fileSelected: true });
+    await wrapper.instance().submitArticle();
+  });
+
+  it('should  update the state if an image is selected', () => {
+    const event3 = {
+      preventDefault() {},
+      target: {
+        files: [true],
+      },
+      options: [
+        {
+          value: 'idjfdf90898098',
+        },
+      ],
+    };
+    const fileObject = wrapper.instance().onFileChangeHandler(event3);
+    expect(fileObject).toEqual(undefined);
+  });
+
   it('Should check the title input field for change', () => {
     wrapper2.find('#articleTitle').simulate('change', event);
-  });
-
-  it('should return updated state as props', () => {
-    expect(
-      mapStateToProps(mockState),
-    ).toEqual({});
-  });
-
-  it('should return updated state props', () => {
-    const dispatch = jest.fn();
-
-    expect(
-      typeof mapDispatchToProps(dispatch),
-    ).toEqual('object');
   });
 
   it('should get the selected category', () => {
@@ -203,7 +208,7 @@ describe('CreateAticle Component', () => {
   it('should display the edit button if the article has been published', () => {
     wrapper.setProps({
       toastManager: {
-        add: toastManagerSpy,
+        add: spyFunction,
       },
     });
     wrapper.setProps({
@@ -219,15 +224,41 @@ describe('CreateAticle Component', () => {
     wrapper.instance().getCategorySelection(event);
   });
 
-  it('should display error messages when there are errors', () => {
+  it('should display response messages when update actions occur', () => {
     const nextProps = {
       createArticleError: true,
       imageUploadError: true,
+      updateArticleError: true,
+      updateArticleSuccess: true,
     };
     wrapper.setProps({
       toastManager: {
-        add: toastManagerSpy,
+        add: spyFunction,
       },
+    });
+    expect(
+      wrapper.instance().shouldComponentUpdate(nextProps),
+    ).toEqual(true);
+  });
+
+  it('should display response messages when actions are successful', () => {
+    const nextProps = {
+      createArticleError: true,
+      imageUploadError: true,
+      createArticleSuccess: true,
+      createArticleResponse: {
+        data: {
+          article: {
+            id: '3jereirherherwrewre',
+          },
+        },
+      },
+    };
+    wrapper.setProps({
+      toastManager: {
+        add: spyFunction,
+      },
+      createArticleSuccess: false,
     });
     expect(
       wrapper.instance().shouldComponentUpdate(nextProps),
@@ -254,4 +285,64 @@ describe('CreateAticle Component', () => {
       const imageDisplay = wrapper.find('.featuredImageContainer').length;
       expect(imageDisplay).toEqual(1);
     });
+
+  it('should fetch the article before updating if it has not been fetched',
+    () => {
+      wrapper.setProps({ response: null });
+      wrapper.instance().componentDidMount();
+    });
+
+  it('should not fecth any article for creating articles',
+    () => {
+      const location = {
+        pathname: 'selene/create-article',
+      };
+      wrapper.setProps({ location });
+      wrapper.instance().componentDidMount();
+    });
+
+  it('should not update the image has not been uploaded', async () => {
+    wrapper.setProps({ imageUploadedResponse: false });
+    await wrapper.instance().updateArticle();
+  });
+
+  it('should update the image if an image has been selected', async () => {
+    wrapper.setState({
+      fileSelected: true,
+      title: 'dav',
+      body: html.deserialize('dav'),
+    });
+    wrapper.setProps({ imageUploadedResponse: true });
+    await wrapper.instance().updateArticle();
+  });
+
+  it('should not update the image if an image has been selected', async () => {
+    wrapper.setState({
+      fileSelected: false,
+      title: 'dav',
+      body: html.deserialize('dav'),
+    });
+    wrapper.setProps({ imageUploadedResponse: true });
+    await wrapper.instance().updateArticle();
+  });
+
+  it('should not update the body if no content was entered', async () => {
+    wrapper.setState({
+      body: null,
+    });
+    wrapper.setProps({ imageUploadedResponse: true });
+    await wrapper.instance().updateArticle();
+  });
+
+  it('should not update the title if no content was entered', async () => {
+    wrapper.setState({
+      title: '',
+    });
+    await wrapper.instance().updateArticle();
+  });
+
+  it('should throw an error if the title is greater than 200', async () => {
+    wrapper.setState({ title: bulkText, categoryId: '0970jkjeor89o0u' });
+    await wrapper.instance().updateArticle();
+  });
 });
