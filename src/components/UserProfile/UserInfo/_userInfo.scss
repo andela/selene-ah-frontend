@@ -21,7 +21,15 @@
 }
 .edit-button {
   height: 35px;
+  display: flex;
+  align-items: center;
 }
+
+.edit-button img {
+  height: 14px;
+  margin-right: 5px;
+}
+
 @media(max-width: 1071px){
 	.edit-button{
 		float: left;

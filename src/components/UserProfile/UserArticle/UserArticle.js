@@ -35,7 +35,7 @@ export class UserArticle extends Component {
    */
   render() {
     const articles = (this.props.articleData || []).map(article => (
-      <Card key={article.id} title={article.title}
+      <Card key={article.id} title={article.title.slice(0, 40)}
       body={renderHtml(trimBody(article.body))} imageUrl={article.imageUrl}
       readTime={article.readTime} slug={article.slug}
       author={article.author} name={article.author}></Card>

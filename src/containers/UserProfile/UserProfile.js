@@ -32,7 +32,7 @@ export class UserProfile extends Component {
 
   static propTypes = {
     toastManager: PropTypes.object.isRequired,
-    response: PropTypes.object,
+    response: PropTypes.any,
     error: PropTypes.bool,
     statError: PropTypes.bool,
     profileDispatcher: PropTypes.func.isRequired,

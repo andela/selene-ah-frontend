@@ -32,4 +32,13 @@ describe('UserStatics Container', () => {
     const div = wrapper.find('div.minicard-container');
     expect(div.length).toEqual(1);
   });
+  it('should find Div', () => {
+    const div = wrapper.find('div.minicard-container');
+    wrapper.setProps({
+      articleStat: {
+        totalNoOfReadingTime: 2,
+      },
+    });
+    expect(div.length).toEqual(1);
+  });
 });

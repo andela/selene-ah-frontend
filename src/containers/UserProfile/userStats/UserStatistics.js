@@ -70,7 +70,9 @@ class UserStat extends Component {
       {
         id: 8,
         icon: Icon.FileText,
-        stat: `${this.props.articleStat.totalNoOfReadingTime}Min(s)`,
+        stat: this.props.articleStat.totalNoOfReadingTime <= 1
+          ? `${this.props.articleStat.totalNoOfReadingTime}min`
+          : `${this.props.articleStat.totalNoOfReadingTime}mins`,
         title: 'Total Number of Article Read Time',
       },
       {

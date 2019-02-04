@@ -66,6 +66,12 @@
   display: block;
 }
 
+#updateFormWrapper .disabled {
+  background: #f0f0f0;
+  border: none;
+  box-shadow: none;
+}
+
 .step-button {
   height: 35px;
   line-height: 35px;
