@@ -4,7 +4,7 @@ import * as Icon from 'react-feather';
 import { Link } from 'react-router-dom';
 import robot from '../../../assets/images/avatars/robot.svg';
 import bell from '../../../assets/images/bell.svg';
-import './Navbar.scss';
+import './navbar.scss';
 
 /**
  *

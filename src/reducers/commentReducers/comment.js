@@ -1,6 +1,6 @@
-import * as actionType from '../../actions/commentAction/commentType';
+import * as actionType from '../../actions/commentAction/actionTypes';
 import updateObject from '../../helpers/store/utility';
-import commentAuthor from '../../helpers/utilities/addCommentAuthor';
+import commentAuthor from '../../helpers/addCommentAuthor';
 
 
 const initialState = {

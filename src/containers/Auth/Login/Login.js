@@ -13,7 +13,7 @@ import loginImage from '../../../assets/images/illustration_1.svg';
 import Validations from '../SignUp/helpers/signupValidations';
 import loginActions from '../../../actions/authAction/login';
 import SocialButtons from '../SocialAuth/SocialButtons';
-import './_login.scss';
+import './login.scss';
 
 /**
  * @class

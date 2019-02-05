@@ -1,9 +1,9 @@
 /* eslint-disable import/first */
-jest.mock('../../../helpers/utilities/addCommentAuthor');
+jest.mock('../../../helpers/addCommentAuthor');
 import reducer from '../comment';
-import * as types from '../../../actions/commentAction/commentType';
+import * as types from '../../../actions/commentAction/actionTypes';
 
-import addCommentAuthor from '../../../helpers/utilities/addCommentAuthor';
+import addCommentAuthor from '../../../helpers/addCommentAuthor';
 import comment from '../../../../__mocks__/comment';
 
 

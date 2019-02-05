@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import homeActionCreators from './homeActionCreators';
 import robot from '../../assets/images/avatars/robot.svg';
 import edit from '../../assets/images/edit-3.svg';
-import trimBody from '../../helpers/utilities/utilities';
+import trimBody from '../../helpers/trimArticleTitle';
 import HomeLoader from './HomeLoader';
 
 
@@ -20,7 +20,7 @@ import {
   CardParent,
   SideNav,
 } from '../../components/utilities';
-import Hero from '../../components/misc';
+import Hero from '../../components/utilities/Hero/Hero';
 /**
  * @class Home
  * @extends {Component}

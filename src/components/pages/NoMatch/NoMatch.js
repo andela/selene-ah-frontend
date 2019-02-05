@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import noMatchImage from '../../../assets/images/undraw_navigation_lytx.svg';
-import './NoMatch.scss';
+import './no-match.scss';
 
 const NoMatch = () => (
   <Fragment>

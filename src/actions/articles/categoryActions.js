@@ -4,7 +4,7 @@ import {
   GET_CATEGORY,
   GET_CATEGORY_FAILURE,
   GET_CATEGORY_SUCCESS,
-} from './categoryActionTypes';
+} from './actionTypes';
 
 export const getCategory = () => ({
   type: GET_CATEGORY,

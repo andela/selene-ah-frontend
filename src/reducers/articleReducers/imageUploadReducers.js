@@ -3,7 +3,7 @@ import {
   UPLOAD_IMAGE,
   UPLOAD_IMAGE_FAILURE,
   UPLOAD_IMAGE_SUCCESS,
-} from '../../actions/articles/imageUploadActionTypes';
+} from '../../actions/articles/actionTypes';
 
 export const initialState = {
   isUploadingImage: false,

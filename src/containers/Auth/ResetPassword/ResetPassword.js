@@ -8,7 +8,7 @@ import FormContainer from '../../Form/FormContainer';
 import FormWrapper from '../../Form/FormWrapper';
 import { Button, Input } from '../../../components/utilities';
 import image from '../../../assets/images/sendemail.svg';
-import './ResetPassword.scss';
+import './reset-password.scss';
 import actionCreators from '../../../actions/authAction/resetPassword';
 
 

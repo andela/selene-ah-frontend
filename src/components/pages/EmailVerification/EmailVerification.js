@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import AlmostDone from '../../../assets/images/almost_done.svg';
-import './EmailVerification.scss';
+import './email-verification.scss';
 
 const EmailVerification = () => (
     <Fragment>

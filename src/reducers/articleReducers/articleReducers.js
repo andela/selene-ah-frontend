@@ -6,7 +6,7 @@ import {
   UPDATE_ARTICLE,
   UPDATE_ARTICLE_SUCCESS,
   UPDATE_ARTICLE_FAILURE,
-} from '../../actions/articles/articleActionTypes';
+} from '../../actions/articles/actionTypes';
 
 
 export const initialState = {

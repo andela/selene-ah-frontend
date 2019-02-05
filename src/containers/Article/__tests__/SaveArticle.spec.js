@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Html from 'slate-html-serializer';
-import rules from '../../../components/Editor/SerializerRules';
+import rules from '../../../components/editor/SerializerRules';
 import { SaveArticle } from '../SaveArticle';
 
 const html = new Html({ rules });

@@ -10,7 +10,7 @@ import FormWrapper from '../../Form/FormWrapper';
 import { Button, Input } from '../../../components/utilities';
 import image from '../../../assets/images/updatepassword.svg';
 import actionCreators from '../../../actions/authAction/updatePassword';
-import './ResetPassword.scss';
+import './reset-password.scss';
 import validate from '../SignUp/helpers/signupValidations';
 import decodedToken from '../../../helpers/validationHelpers/decodeToken';
 

@@ -1,5 +1,5 @@
 import moxios from 'moxios';
-import * as imageUploadActionTypes from '../imageUploadActionTypes';
+import * as imageUploadActionTypes from '../actionTypes';
 import uploadImageAction, {
   uploadImageFailure,
   uploadImageSuccess,

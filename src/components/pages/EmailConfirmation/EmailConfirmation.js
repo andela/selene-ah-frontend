@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import AlmostDone from '../../../assets/images/confirm.svg';
-import './emailConfirmation.scss';
+import './email-confirmation.scss';
 
 const EmailConfirmation = () => (
     <Fragment>

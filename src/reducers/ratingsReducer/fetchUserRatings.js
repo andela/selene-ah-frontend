@@ -1,4 +1,4 @@
-import * as type from '../../actions/Ratings/actionTypes';
+import * as type from '../../actions/ratings/actionTypes';
 import updateObject from '../../helpers/store/utility';
 
 export const initialState = {
