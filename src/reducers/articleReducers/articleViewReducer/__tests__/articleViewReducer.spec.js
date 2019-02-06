@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import ArticleViewReducer, { initialState as defaultState } from '../articleView';
-import * as type from '../../../actions/articleAction/actionTypes';
-import updateObject from '../../../helpers/store/utility';
+import * as type from '../../../../actions/articleAction/actionTypes';
+import updateObject from '../../../../helpers/store/utility';
 
 describe('ArticleView Reducer Test', () => {
   it(`should update when state is ${type.FETCH_ARTICLE_START} fires`, () => {

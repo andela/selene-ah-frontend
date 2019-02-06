@@ -1,5 +1,5 @@
-import * as type from '../../actions/articleAction/actionTypes';
-import updateObject from '../../helpers/store/utility';
+import * as type from '../../../actions/articleAction/actionTypes';
+import updateObject from '../../../helpers/store/utility';
 
 export const initialState = {
   isFetchingArticle: false,
