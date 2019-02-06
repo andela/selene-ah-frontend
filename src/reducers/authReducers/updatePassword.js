@@ -11,6 +11,12 @@ const initialState = {
 
 const updatePasswordStartState = { isLoading: true };
 
+/**
+ * @description - Dispatches when password is updated successfully
+ * @param {object} state
+ * @param {object} action
+ * @returns {object} - An updated state
+ */
 const updatePasswordSuccessState = (state, action) => updateObject(state, {
   isLoading: false,
   response: action.payload,
@@ -18,7 +24,12 @@ const updatePasswordSuccessState = (state, action) => updateObject(state, {
   passwordChanged: true,
 });
 
-
+/**
+ * @description - Dispatches when update password fails
+ * @param {object} state
+ * @param {object} action
+ * @returns {object} - An updated state
+ */
 const updatePasswordFailedState = (state, action) => updateObject(state, {
   isLoading: false,
   error: true,

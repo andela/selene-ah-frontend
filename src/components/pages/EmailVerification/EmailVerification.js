@@ -2,6 +2,10 @@ import React, { Fragment } from 'react';
 import AlmostDone from '../../../assets/images/almost_done.svg';
 import './email-verification.scss';
 
+/**
+ * @description - Email verification component
+ * @returns {JSX} - Email verification JSX template
+ */
 const EmailVerification = () => (
     <Fragment>
       <div className="pr">

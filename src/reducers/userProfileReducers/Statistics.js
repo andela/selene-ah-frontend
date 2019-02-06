@@ -12,6 +12,12 @@ export const initialState = {
   fetchingData: false,
 };
 
+/**
+ * @description - Dispatches when userstats fail
+ * @param {object} state
+ * @param {object} action
+ * @returns {object} - updated state
+ */
 const userStatFail = (state, action) => (
   updateObject(state, {
     statError: true,
@@ -19,36 +25,72 @@ const userStatFail = (state, action) => (
   })
 );
 
+/**
+ * @description - Dispatches when user article stats is gotten successfully
+ * @param {object} state
+ * @param {object} action
+ * @returns {object} - updated state
+ */
 const userArticleStatSuccess = (state, action) => (
   updateObject(state, {
     userArticleStat: action.payload,
   })
 );
 
+/**
+ * @description - Dispatches when user comment stats is gotten successfully
+ * @param {object} state
+ * @param {object} action
+ * @returns {object} - updated state
+ */
 const userCommentStatSuccess = (state, action) => (
   updateObject(state, {
     commentStat: action.payload,
   })
 );
 
+/**
+ * @description - Dispatches when user bookmark stats is gotten successfully
+ * @param {object} state
+ * @param {object} action
+ * @returns {object} - updated state
+ */
 const userBookmarkStatSuccess = (state, action) => (
   updateObject(state, {
     bookmarkStat: action.payload,
   })
 );
 
+/**
+ * @description - Dispatches when user followers stats is gotten successfully
+ * @param {object} state
+ * @param {object} action
+ * @returns {object} - updated state
+ */
 const userFollowerStatSuccess = (state, action) => (
   updateObject(state, {
     noUserFollowerStat: action.payload,
   })
 );
+
+/**
+ * @description - Dispatches when user following stats is gotten successfully
+ * @param {object} state
+ * @param {object} action
+ * @returns {object} - updated state
+ */
 const usersYouFollowSuccess = (state, action) => (
   updateObject(state, {
     usersYouAreFollowing: action.payload,
   })
 );
 
-
+/**
+ * @description - Dispatches when user like stats is gotten successfully
+ * @param {object} state
+ * @param {object} action
+ * @returns {object} - updated state
+ */
 const userArticleLikeSuccess = (state, action) => (
   updateObject(state, {
     userArticleLike: action.payload,

@@ -20,12 +20,23 @@ export const initialState = {
   updateArticleSuccess: false,
 };
 
-const updateCreateArticle = state => updateStateUtility(
+/**
+ * @description - Dispatches when articleCreate starts
+ * @param {object} state
+ * @returns {object} - An updated state
+ */
+const createArticle = state => updateStateUtility(
   state,
   { isCreatingArticle: true, createArticleError: false },
 );
 
-const updateCreateArticleSuccess = (state, payload) => updateStateUtility(
+/**
+ * @description - Dispatches when article is created successfully
+ * @param {object} state
+ * @param {object} payload
+ * @returns {object} - An updated state
+ */
+const createArticleSuccess = (state, payload) => updateStateUtility(
   state,
   {
     isCreatingArticle: false,
@@ -35,7 +46,13 @@ const updateCreateArticleSuccess = (state, payload) => updateStateUtility(
   },
 );
 
-const updateCreateArticleFailure = (state, payload) => updateStateUtility(
+/**
+ * @description - Dispatches when there is an error in creating article
+ * @param {object} state
+ * @param {object} payload
+ * @returns {object} - An updated state
+ */
+const createArticleFailure = (state, payload) => updateStateUtility(
   state,
   {
     isCreatingArticle: false,
@@ -44,9 +61,12 @@ const updateCreateArticleFailure = (state, payload) => updateStateUtility(
   },
 );
 
-/** Updating articles */
-
-const updateArticleReducer = state => updateStateUtility(
+/**
+ * @description - Dispatches when updateArticle start
+ * @param {object} state
+ * @returns {object} - An updated state
+ */
+const updateArticle = state => updateStateUtility(
   state,
   {
     isUpdatingArticle: true,
@@ -55,7 +75,13 @@ const updateArticleReducer = state => updateStateUtility(
   },
 );
 
-const updateArticleSuccessReducer = (state, payload) => updateStateUtility(
+/**
+ * @description - Dispatches when article is updated successfully
+ * @param {object} state
+ * @param {object} payload
+ * @returns {object} - An updated state
+ */
+const updateArticleSuccess = (state, payload) => updateStateUtility(
   state,
   {
     isUpdatingArticle: false,
@@ -65,7 +91,13 @@ const updateArticleSuccessReducer = (state, payload) => updateStateUtility(
   },
 );
 
-const updateArticleFailureReducer = (state, payload) => updateStateUtility(
+/**
+ * @description - Dispatches when there is an error in updating article
+ * @param {object} state
+ * @param {object} payload
+ * @returns {object} - An updated state
+ */
+const updateArticleFailure = (state, payload) => updateStateUtility(
   state,
   {
     isUpdatingArticle: false,
@@ -77,17 +109,17 @@ const updateArticleFailureReducer = (state, payload) => updateStateUtility(
 const articleReducer = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_ARTICLE:
-      return updateCreateArticle(state);
+      return createArticle(state);
     case CREATE_ARTICLE_SUCCESS:
-      return updateCreateArticleSuccess(state, action.payload);
+      return createArticleSuccess(state, action.payload);
     case CREATE_ARTICLE_FAILURE:
-      return updateCreateArticleFailure(state, action.payload);
+      return createArticleFailure(state, action.payload);
     case UPDATE_ARTICLE:
-      return updateArticleReducer(state, action.payload);
+      return updateArticle(state, action.payload);
     case UPDATE_ARTICLE_SUCCESS:
-      return updateArticleSuccessReducer(state, action.payload);
+      return updateArticleSuccess(state, action.payload);
     case UPDATE_ARTICLE_FAILURE:
-      return updateArticleFailureReducer(state, action.payload);
+      return updateArticleFailure(state, action.payload);
     default:
       return state;
   }

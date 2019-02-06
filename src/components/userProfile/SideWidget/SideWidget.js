@@ -4,6 +4,11 @@ import SideWidgetLink from './SideWidgetLinks/SideWidgetLink';
 import ProfileLinks from './ProfileLinks';
 import './side-widget.scss';
 
+/**
+ * @description - Sidewidget Component
+ * @param {object} props
+ * @returns {JSX} - SideWidget JSX template
+ */
 const SideWidget = (props) => {
   const profileLinks = ProfileLinks(props);
   return (

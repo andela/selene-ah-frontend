@@ -7,12 +7,23 @@ const initialState = {
   isNewUser: null,
 };
 
+/**
+ * @description - Dispatches when social authentication fail
+ * @param {object} state
+ * @returns {object} - An updated state
+ */
 const socialAuthFail = state => (
   updateObject(state, {
     isAuthenticated: false,
   })
 );
 
+/**
+ * @description - Dispatches when social authentication is successful
+ * @param {object} state
+ * @param {object} action
+ * @returns {object} - An updated state
+ */
 const socialAuthSuccess = (state, action) => (
   updateObject(state, {
     isAuthenticated: true,

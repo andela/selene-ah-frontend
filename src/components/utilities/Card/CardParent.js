@@ -2,6 +2,11 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import './card-parent.scss';
 
+/**
+ * @description - CardParent Component
+ * @param {object} props
+ * @returns {JSX} - CardParent JSX template
+ */
 const CardParent = props => (
   <Fragment>
     <div className="section">

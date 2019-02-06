@@ -10,6 +10,11 @@ import {
 } from 'react-share';
 import './share-button.scss';
 
+/**
+ * @description - ShareButton Component
+ * @param {object} props
+ * @returns {JSX} - ShareButton JSX template
+ */
 const ShareButton = props => (
   <div className="share-button">
     <p>Share</p>

@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom';
 import heroImage from '../../../assets/images/hero_img.svg';
 import './hero.scss';
 
+/**
+ * @description - Hero Component
+ * @param {object} props
+ * @returns {JSX} - Hero JSX template
+ */
 const Hero = () => (
   <Fragment>
     <div className="hero hide-on-medium">

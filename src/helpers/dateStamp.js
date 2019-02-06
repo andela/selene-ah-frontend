@@ -14,7 +14,7 @@ const MONTHS = [
 ];
 
 /**
- * @description Converts TimeStamp to valid date
+ * @description A function to Convert TimeStamp to valid date
  * @param {string} ts
  * @returns {string} Date string
  */

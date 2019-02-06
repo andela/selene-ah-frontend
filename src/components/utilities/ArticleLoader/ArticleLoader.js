@@ -1,5 +1,9 @@
 import React from 'react';
 
+/**
+ * @description - Article Loader Component
+ * @returns {JSX} - Article Loader JSX template
+ */
 const ArticleLoader = () => (
   <div className="skeleton">
     <div className="navbar navbar__has-shadow">

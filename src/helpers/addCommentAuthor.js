@@ -1,4 +1,9 @@
-
+/**
+ * @description - A function to add author details to a comment
+ * @param {object} payload
+ * @param {object} userDetails
+ * @returns {object} - authors details
+ */
 const addCommentAuthor = (payload, userDetails) => {
   const author = {
     userName: userDetails.userName,

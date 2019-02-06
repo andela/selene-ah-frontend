@@ -11,12 +11,24 @@ export const initialState = {
 
 const loginStartState = { isLoading: true };
 
+/**
+ * @description - Dispatches when login is successful
+ * @param {object} state
+ * @param {object} action
+ * @returns {object} - An updated state
+ */
 const updateLoginSuccessState = (state, action) => updateObject(state, {
   isLoading: true,
   response: action.payload,
   success: true,
 });
 
+/**
+ * @description - Dispatches when login fails
+ * @param {object} state
+ * @param {object} action
+ * @returns {object} - An updated state
+ */
 const updateLoginFailedState = (state, action) => updateObject(state, {
   isLoading: false,
   loginError: true,

@@ -10,6 +10,11 @@ export const initialState = {
   followers: null,
 };
 
+/**
+ * @description - Dispatches when fetching article start
+ * @param {object} state
+ * @returns {object} - An updated state
+ */
 const fetchingArticleStart = state => updateObject(
   state, {
     isFetchingArticle: true,
@@ -17,12 +22,24 @@ const fetchingArticleStart = state => updateObject(
   },
 );
 
+/**
+ * @description - Dispatches when unmount article is called
+ * to set response to null
+ * @param {object} state
+ * @returns {object} - An updated state
+ */
 const unmountArticle = state => updateObject(
   state, {
     response: null,
   },
 );
 
+/**
+ * @description - Dispatches when fetching articles fails
+ * @param {object} state
+ * @param {object} action
+ * @returns {object} - An updated state
+ */
 const fetchArtcileFailed = (state, action) => updateObject(
   state, {
     response: action.payload,
@@ -31,6 +48,12 @@ const fetchArtcileFailed = (state, action) => updateObject(
   },
 );
 
+/**
+ * @description - Dispatches when article is fetched successfully
+ * @param {object} state
+ * @param {object} action
+ * @returns {object} - An updated state
+ */
 const fetchArtcileSucess = (state, action) => updateObject(
   state, {
     response: action.payload,
@@ -39,10 +62,21 @@ const fetchArtcileSucess = (state, action) => updateObject(
   },
 );
 
+/**
+ * @description - Dispatches when fetch followers starts
+ * @param {object} state
+ * @returns {object} - An updated state
+ */
 const fetchFollowersStart = state => updateObject(
   state, { isFetchingFollowers: true },
 );
 
+/**
+ * @description - Dispatches when followers is fetched successfully
+ * @param {object} state
+ * @param {object} action
+ * @returns {object} - An updated state
+ */
 const fetchFollowersComplete = (state, action) => updateObject(
   state, { followers: action.payload, isFetchingFollowers: false },
 );

@@ -1,3 +1,8 @@
+/**
+ * @description - Get user input and runs if user selects some control keys
+ * @param {object} options
+ * @returns {object} - an action based on user input
+ */
 export const FormatHandler = (options) => {
   const { type, key } = options;
 

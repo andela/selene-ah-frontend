@@ -28,6 +28,12 @@ export const unmountArticle = () => ({
   type: type.UNMOUNT_ARTICLE,
 });
 
+/**
+ * @description - Fetch Article from the database
+ * @param {object} slug
+ * @param {object} history
+ * @returns {Function} - A dispatch function
+ */
 const fetchArticle = (slug, history) => (dispatch) => {
   dispatch(fetchArticleStart());
   return axios.get(`${process.env.SERVER_API}/article/s/${slug}`)
@@ -40,6 +46,10 @@ const fetchArticle = (slug, history) => (dispatch) => {
     });
 };
 
+/**
+ * @description - Fetch Followers from the database
+ * @returns {Function} - A dispatch function
+ */
 const fetchFollowers = () => async (dispatch) => {
   const token = localStorage.getItem('token');
   dispatch(fetchFollowersStart());

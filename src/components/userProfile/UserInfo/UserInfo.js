@@ -9,6 +9,11 @@ import SocialLinks from '../SocialLinks/SocialLinks';
 import ProfileImage from '../ProfileImage/ProfileImage';
 import userIcon from '../../../assets/images/user.svg';
 
+/**
+ * @description - UserInfo page
+ * @param {object} props
+ * @returns {JSX} - UserInfo template
+ */
 const UserInfo = props => (
     <div className="user-profile-top">
       <div className="row">

@@ -2,6 +2,11 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import './tag.scss';
 
+/**
+ * @description - Tag Component
+ * @param {object} props
+ * @returns {JSX} - Tag JSX template
+ */
 const Tag = props => (
   <Fragment>
     <div className="tag--button">

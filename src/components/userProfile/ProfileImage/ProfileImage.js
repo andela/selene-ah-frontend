@@ -2,6 +2,11 @@ import React, { Fragment } from 'react';
 import './profile-image.scss';
 import PropTypes from 'prop-types';
 
+/**
+ * @description - Profile image Component
+ * @param {object} props
+ * @returns {JSX} - Profile Image JSX template
+ */
 const ProfileImage = props => (
   <Fragment>
   <div className='avatar-upload'>
