@@ -13,8 +13,8 @@ import {
   INVALID_UPDATE_TITLE,
   INVALID_ARTICLE_UPDATE_CONTENT,
   ARTICLE_UPDATE_SUCCESS,
-  toastErrorObj,
-  toastSuccessObj,
+  TOAST_ERROR_OBJECT,
+  TOAST_SUCCESS_OBJECT,
   UPDATE_ARTICLE_ERROR,
 } from '../../helpers/articleHelpers/articleConstants';
 import TextEditor from './TextEditor';
@@ -106,17 +106,17 @@ export class SaveArticle extends Component {
     if (this.state.fileSelected) await this.uploadImageHandler();
     if (!this.state.title || this.state.title.length < 5
       || this.state.title.length > 200) {
-      this.props.toastManager.add(INVALID_TITLE, toastErrorObj);
+      this.props.toastManager.add(INVALID_TITLE, TOAST_ERROR_OBJECT);
       return false;
     }
 
     if (!this.state.body || this.state.body.length < 5) {
-      this.props.toastManager.add(INVALID_ARTICLE_CONTENT, toastErrorObj);
+      this.props.toastManager.add(INVALID_ARTICLE_CONTENT, TOAST_ERROR_OBJECT);
       return false;
     }
 
     if (!this.state.categoryId) {
-      this.props.toastManager.add(NO_CATEGORY, toastErrorObj);
+      this.props.toastManager.add(NO_CATEGORY, TOAST_ERROR_OBJECT);
       return false;
     }
 
@@ -143,12 +143,13 @@ updateArticle = async () => {
   if (this.state.fileSelected) await this.uploadImageHandler();
   if ((this.state.title && this.state.title.length < 5)
     || this.state.title.length > 200) {
-    this.props.toastManager.add(INVALID_UPDATE_TITLE, toastErrorObj);
+    this.props.toastManager.add(INVALID_UPDATE_TITLE, TOAST_ERROR_OBJECT);
     return false;
   }
 
   if (this.state.body && this.state.body.length < 12) {
-    this.props.toastManager.add(INVALID_ARTICLE_UPDATE_CONTENT, toastErrorObj);
+    this.props.toastManager.add(INVALID_ARTICLE_UPDATE_CONTENT,
+      TOAST_ERROR_OBJECT);
     return false;
   }
 
@@ -261,12 +262,12 @@ async componentDidMount() {
 shouldComponentUpdate(nextProps) {
   if (this.props.createArticleError !== nextProps.createArticleError
       && nextProps.createArticleError === true) {
-    this.props.toastManager.add(CREATE_ARTICLE_ERROR, toastErrorObj);
+    this.props.toastManager.add(CREATE_ARTICLE_ERROR, TOAST_ERROR_OBJECT);
   }
 
   if (this.props.imageUploadError !== nextProps.imageUploadError
       && nextProps.imageUploadError === true) {
-    this.props.toastManager.add(IMAGE_UPLOAD_ERROR, toastErrorObj);
+    this.props.toastManager.add(IMAGE_UPLOAD_ERROR, TOAST_ERROR_OBJECT);
   }
 
   if (this.props.createArticleSuccess !== nextProps.createArticleSuccess
@@ -274,17 +275,17 @@ shouldComponentUpdate(nextProps) {
     this.setState({
       articleId: nextProps.createArticleResponse.data.article.id,
     });
-    this.props.toastManager.add(ARTICLE_SUCCESS, toastSuccessObj);
+    this.props.toastManager.add(ARTICLE_SUCCESS, TOAST_SUCCESS_OBJECT);
   }
 
   if (this.props.updateArticleError !== nextProps.updateArticleError
       && nextProps.updateArticleError === true) {
-    this.props.toastManager.add(UPDATE_ARTICLE_ERROR, toastErrorObj);
+    this.props.toastManager.add(UPDATE_ARTICLE_ERROR, TOAST_ERROR_OBJECT);
   }
 
   if (this.props.updateArticleSuccess !== nextProps.updateArticleSuccess
       && nextProps.updateArticleSuccess === true) {
-    this.props.toastManager.add(ARTICLE_UPDATE_SUCCESS, toastSuccessObj);
+    this.props.toastManager.add(ARTICLE_UPDATE_SUCCESS, TOAST_SUCCESS_OBJECT);
   }
   return true;
 }

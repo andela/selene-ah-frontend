@@ -27,12 +27,12 @@ export const ARTICLE_UPDATE_SUCCESS = 'Your article has been'
 + ' updated successfully!';
 
 
-export const toastErrorObj = {
+export const TOAST_ERROR_OBJECT = {
   appearance: 'error',
   autoDismiss: true,
 };
 
-export const toastSuccessObj = {
+export const TOAST_SUCCESS_OBJECT = {
   appearance: 'success',
   autoDismiss: true,
 };
