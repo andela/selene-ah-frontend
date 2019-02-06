@@ -1,5 +1,5 @@
 import React from 'react';
-import './HomeLoader.scss';
+import './home-loader.scss';
 
 const HomeLoader = () => (
   <div className="skeleton" id="home--skeleton">

@@ -4,7 +4,7 @@ import faker from 'faker';
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
 
-import * as types from '../commentType';
+import * as types from '../actionTypes';
 import commentActions from '../commentView';
 
 

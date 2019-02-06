@@ -7,7 +7,7 @@ import {
   UPDATE_ARTICLE,
   UPDATE_ARTICLE_SUCCESS,
   UPDATE_ARTICLE_FAILURE,
-} from './articleActionTypes';
+} from './actionTypes';
 
 export const createArticle = () => ({ type: CREATE_ARTICLE });
 

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import './BackDrop.scss';
+import './back-drop.scss';
 
 const colors = [
   'violet', 'orange',

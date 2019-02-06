@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import './Cards.scss';
+import './card-parent.scss';
 
 const CardParent = props => (
   <Fragment>

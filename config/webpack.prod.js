@@ -56,7 +56,8 @@ module.exports = merge(common, {
       'process.env.BASE_URL': JSON.stringify('https://selene-ah-staging.herokuapp.com/api/v1/auth/'),
       'process.env.CLOUDINARY_API_BASE_URL': JSON.stringify('https://api.cloudinary.com/v1_1/dsozu5ads/upload'),
       'process.env.CLOUDINARY_UPLOAD_PRESET': JSON.stringify('zklk2cjx'),
-      'process.env.FRONTEND_API': JSON.stringify('https://selene-front-production.herokuapp.com')
+      'process.env.FRONTEND_API': JSON.stringify('https://selene-front-production.herokuapp.com'),
+      'process.env.DEFAULT_IMAGE_URL': JSON.stringify('https://res.cloudinary.com/dsozu5ads/image/upload/v1548068649/robot.svg')
     }),
   ],
 });

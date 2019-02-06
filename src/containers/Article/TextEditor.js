@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Editor } from 'slate-react';
 import Html from 'slate-html-serializer';
 
-import { plugins } from '../../helpers/articleHelpers/FormatHelper';
+import { plugins } from '../../helpers/articleHelpers/formatHelper';
 import renderMark from '../../helpers/articleHelpers/renderMark';
-import rules from '../../components/Editor/SerializerRules';
+import rules from '../../components/editor/SerializerRules';
 
 const html = new Html({ rules });
 

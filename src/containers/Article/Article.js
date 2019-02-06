@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import renderHTML from 'react-render-html';
 import { Navbar } from '../../components/utilities';
 import SideNav from '../../components/utilities/SideNav/SideNav';
-import config from '../../config';
 import convertTS from '../../helpers/dateStamp';
 import LikeReaction from '../Reaction/LikeReaction';
 import {
@@ -12,7 +11,7 @@ import {
   followedByUser,
 } from '../Reaction/helpers/reactionHelpers';
 import Follow from '../Reaction/FollowReaction';
-import ShareButton from '../../components/misc/ShareBtn/ShareButton';
+import ShareButton from '../../components/utilities/ShareBtn/ShareButton';
 import Comment from '../Comment/Comment';
 import Ratings from '../Ratings/Ratings';
 
@@ -79,7 +78,7 @@ class Article extends React.Component {
             <div className="author-img">
               <Link to='#' className="author-avatar">
                 <img src={!this.props.response.article.author.imageUrl
-                  ? config.defaultImageUrl
+                  ? process.env.DEFAULT_IMAGE_URL
                   : this.props.response.article.author.imageUrl} />
               </Link>
             </div>

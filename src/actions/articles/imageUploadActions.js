@@ -4,7 +4,7 @@ import {
   UPLOAD_IMAGE,
   UPLOAD_IMAGE_FAILURE,
   UPLOAD_IMAGE_SUCCESS,
-} from './imageUploadActionTypes';
+} from './actionTypes';
 
 export const uploadImage = () => ({
   type: UPLOAD_IMAGE,

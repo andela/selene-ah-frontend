@@ -1,5 +1,5 @@
 import moxios from 'moxios';
-import * as articleActionTypes from '../articleActionTypes';
+import * as articleActionTypes from '../actionTypes';
 import {
   createArticle,
   postArticle,

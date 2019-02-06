@@ -3,7 +3,7 @@ import React, { Fragment, Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import robot from '../../../assets/images/avatars/robot.svg';
-import './SideNav.scss';
+import './sidenav.scss';
 
 /**
  * @class

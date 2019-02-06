@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import './Tag.scss';
+import './tag.scss';
 
 const Tag = props => (
   <Fragment>

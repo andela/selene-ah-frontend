@@ -1,5 +1,5 @@
 import axios from 'axios';
-import * as actionTypes from './commentType';
+import * as actionTypes from './actionTypes';
 
 const getCommentStart = () => ({
   type: actionTypes.GET_COMMENT_START,

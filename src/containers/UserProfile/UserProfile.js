@@ -3,21 +3,21 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { withToastManager } from 'react-toast-notifications';
-import UserInfo from '../../components/UserProfile/UserInfo/UserInfo';
-import SideWidget from '../../components/UserProfile/SideWidget/SideWidget';
-import UserArticle from '../../components/UserProfile/UserArticle/UserArticle';
+import UserInfo from '../../components/userProfile/UserInfo/UserInfo';
+import SideWidget from '../../components/userProfile/SideWidget/SideWidget';
+import UserArticle from '../../components/userProfile/UserArticle/UserArticle';
 import UpdateProfile
-  from '../../components/UserProfile/UpdateProfile/UpdateProfile';
+  from '../../components/userProfile/UpdateProfile/UpdateProfile';
 import profileImage from '../../assets/images/user-icon.png';
 import actionCreators from '../../actions/userAction/getProfile';
-import MyLoader from '../../components/UserProfile/UserInfo/UserInfoLoader';
+import MyLoader from '../../components/userProfile/UserInfo/UserInfoLoader';
 // import ArticlesLoader
 //   from '../../components/UserProfile/UserArticle/ArticlesLoader';
 import Navbar from '../../components/utilities/Navbar/Navbar';
 import SideNav from '../../components/utilities/SideNav/SideNav';
-import UserStatistic from './userStats/UserStatistics';
+import UserStatistic from './UserStatistics';
 import * as actions from '../../actions/userStat/getUserStat';
-import './_userprofile.scss';
+import './scss/user-profile.scss';
 
 
 /**

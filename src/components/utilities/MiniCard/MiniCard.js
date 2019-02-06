@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './_minicard.scss';
+import './mini-card.scss';
 
 const MiniCard = props => (
   <div className='minicard'>

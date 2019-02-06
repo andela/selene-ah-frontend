@@ -3,7 +3,7 @@ import {
   GET_CATEGORY,
   GET_CATEGORY_SUCCESS,
   GET_CATEGORY_FAILURE,
-} from '../../actions/articles/categoryActionTypes';
+} from '../../actions/articles/actionTypes';
 
 export const initialState = {
   isFetchingCategories: false,
