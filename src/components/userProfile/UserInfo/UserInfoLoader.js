@@ -1,6 +1,11 @@
 import React from 'react';
 import ContentLoader from 'react-content-loader';
 
+/**
+ * @description - User Information Loader
+ * @param {object} props
+ * @returns {JSX} - UserInformation template
+ */
 const UserInforloader = props => (
   <div className="user-top">
   <ContentLoader

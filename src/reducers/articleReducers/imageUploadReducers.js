@@ -12,12 +12,23 @@ export const initialState = {
   imageUploadSuccess: false,
 };
 
-const updateUploadImage = state => updateStateUtility(
+/**
+ * @description - Dispatches when upload image starts
+ * @param {object} state
+ * @returns {object} - An updated state
+ */
+const uploadImage = state => updateStateUtility(
   state,
   { isUploadingImage: true, imageUploadError: false },
 );
 
-const updateImageUploadSuccess = (state, payload) => updateStateUtility(
+/**
+ * @description - Dispatches when image is uploaded successfully
+ * @param {object} state
+ * @param {object} payload
+ * @returns {object} - An updated state
+ */
+const uploadImageSuccess = (state, payload) => updateStateUtility(
   state,
   {
     isUploadingImage: false,
@@ -27,7 +38,13 @@ const updateImageUploadSuccess = (state, payload) => updateStateUtility(
   },
 );
 
-const updateImageUploadFailure = (state, payload) => updateStateUtility(
+/**
+ * @description - Dispatches when image upload fails
+ * @param {object} state
+ * @param {object} payload
+ * @returns {object} - An updated state
+ */
+const uploadImageFailure = (state, payload) => updateStateUtility(
   state,
   {
     isUploadingImage: false,
@@ -39,11 +56,11 @@ const updateImageUploadFailure = (state, payload) => updateStateUtility(
 const imageUploadReducer = (state = initialState, action) => {
   switch (action.type) {
     case UPLOAD_IMAGE:
-      return updateUploadImage(state);
+      return uploadImage(state);
     case UPLOAD_IMAGE_SUCCESS:
-      return updateImageUploadSuccess(state, action.payload);
+      return uploadImageSuccess(state, action.payload);
     case UPLOAD_IMAGE_FAILURE:
-      return updateImageUploadFailure(state, action.payload);
+      return uploadImageFailure(state, action.payload);
     default:
       return state;
   }

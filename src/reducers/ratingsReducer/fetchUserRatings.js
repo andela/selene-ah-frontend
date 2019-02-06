@@ -10,19 +10,34 @@ export const initialState = {
 
 const isUserRatingLoadingState = { isUserLoading: true };
 
-// eslint-disable-next-line max-len
-const updateFetchUserRatingSuccessState = (state, action) => updateObject(state, {
-  isUserLoading: false,
-  userRatingResponse: action.payload,
-  userSuccess: true,
-});
+/**
+ * @description - Dispatches when user rating is gotten successfully
+ * @param {object} state
+ * @param {object} action
+ * @returns {object} - An updated state
+ */
+const updateFetchUserRatingSuccessState = (state, action) => updateObject(
+  state, {
+    isUserLoading: false,
+    userRatingResponse: action.payload,
+    userSuccess: true,
+  },
+);
 
-// eslint-disable-next-line max-len
-const updateFetchUserRatingFailedState = (state, action) => updateObject(state, {
-  isUserLoading: false,
-  userRatingResponse: action.payload,
-  userError: true,
-});
+/**
+ * @description - Dispatches when user rating fails
+ * @param {object} state
+ * @param {object} action
+ * @returns {object} - An updated state
+ */
+const updateFetchUserRatingFailedState = (state, action) => updateObject(
+  state, {
+    isUserLoading: false,
+    userRatingResponse: action.payload,
+    userError: true,
+  },
+);
+
 
 const fetchUserRating = (state = initialState, action) => {
   switch (action.type) {

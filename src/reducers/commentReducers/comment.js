@@ -17,6 +17,12 @@ const getCommentStartState = {
   error: false,
 };
 
+/**
+ * @description - Dispatches when comment is fetched successfully
+ * @param {object} state
+ * @param {object} action
+ * @returns {object} - An updated state
+ */
 const getCommentSuccessState = (state, action) => updateObject(state, {
   isLoading: false,
   response: action.payload,
@@ -25,6 +31,12 @@ const getCommentSuccessState = (state, action) => updateObject(state, {
   getSuccess: true,
 });
 
+/**
+ * @description - Dispatches when getComment fails
+ * @param {object} state
+ * @param {object} action
+ * @returns {object} - An updated state
+ */
 const getCommentFailedState = (state, action) => updateObject(state, {
   isLoading: false,
   error: true,
@@ -39,7 +51,12 @@ const postCommentStartState = {
   error: false,
 };
 
-
+/**
+ * @description - Dispatches when comment fail to post
+ * @param {object} state
+ * @param {object} action
+ * @returns {object} - An updated state
+ */
 const postCommentFailedState = (state, action) => updateObject(state, {
   isLoading: false,
   error: true,
@@ -49,6 +66,12 @@ const postCommentFailedState = (state, action) => updateObject(state, {
   getSuccess: true,
 });
 
+/**
+ * @description - Dispatches when comment is posted successfully
+ * @param {object} state
+ * @param {object} action
+ * @returns {object} - An updated state
+ */
 const postCommentSuccessState = (state, action) => updateObject(state, {
   isLoading: false,
   response: [

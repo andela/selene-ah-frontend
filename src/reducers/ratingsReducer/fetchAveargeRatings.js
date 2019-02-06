@@ -10,19 +10,34 @@ export const initialState = {
 
 const isAverageRatingLoadingState = { isAverageLoading: true };
 
-// eslint-disable-next-line max-len
-const updateFetchAverageRatingSuccessState = (state, action) => updateObject(state, {
-  isAverageLoading: false,
-  averageRating: action.payload,
-  averageSuccess: true,
-});
+/**
+ * @description - Dispatches when average rating is gotten successfully
+ * @param {object} state
+ * @param {object} action
+ * @returns {object} - An updated state
+ */
+const updateFetchAverageRatingSuccessState = (state, action) => updateObject(
+  state, {
+    isAverageLoading: false,
+    averageRating: action.payload,
+    averageSuccess: true,
+  },
+);
 
-// eslint-disable-next-line max-len
-const updateFetchAverageRatingFailedState = (state, action) => updateObject(state, {
-  isAverageLoading: false,
-  averageRating: action.payload,
-  averageError: true,
-});
+/**
+ * @description - Dispatches when average rating fails
+ * @param {object} state
+ * @param {object} action
+ * @returns {object} - An updated state
+ */
+const updateFetchAverageRatingFailedState = (state, action) => updateObject(
+  state, {
+    isAverageLoading: false,
+    averageRating: action.payload,
+    averageError: true,
+  },
+);
+
 
 const fetchAverageRating = (state = initialState, action) => {
   switch (action.type) {

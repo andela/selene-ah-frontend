@@ -7,6 +7,12 @@ const colors = [
   'nelson', 'purple',
   'blue'];
 
+/**
+ * @description - BackDrop Component - Set a default image
+ * for articles with no image
+ * @param {object} props
+ * @returns {JSX} - A default image
+ */
 const BackDrop = props => (
   <Fragment>
     <div id="backdrop"

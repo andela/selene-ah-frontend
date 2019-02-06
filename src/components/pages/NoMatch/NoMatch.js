@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import noMatchImage from '../../../assets/images/undraw_navigation_lytx.svg';
 import './no-match.scss';
 
+/**
+ * @description - 404 page
+ * @returns {JSX} - 404 page template
+ */
 const NoMatch = () => (
   <Fragment>
       <main className="pr fixed-body">

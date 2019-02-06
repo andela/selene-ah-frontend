@@ -11,8 +11,6 @@ import UpdateProfile
 import profileImage from '../../assets/images/user-icon.png';
 import actionCreators from '../../actions/userAction/getProfile';
 import MyLoader from '../../components/userProfile/UserInfo/UserInfoLoader';
-// import ArticlesLoader
-//   from '../../components/UserProfile/UserArticle/ArticlesLoader';
 import Navbar from '../../components/utilities/Navbar/Navbar';
 import SideNav from '../../components/utilities/SideNav/SideNav';
 import UserStatistic from './UserStatistics';

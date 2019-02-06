@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 
 import './mini-card.scss';
 
+/**
+ * @description - MiniCard Component
+ * @param {object} props
+ * @returns {JSX} - MiniCard JSX template
+ */
 const MiniCard = props => (
   <div className='minicard'>
     <div className="minicard-image">

@@ -1,19 +1,15 @@
-/** Create article actions */
 export const CREATE_ARTICLE = 'CREATE_ARTICLE';
 export const CREATE_ARTICLE_SUCCESS = 'CREATE_ARTICLE_SUCCESS';
 export const CREATE_ARTICLE_FAILURE = 'CREATE_ARTICLE_FAILURE';
 
-/** Upload image action */
 export const UPLOAD_IMAGE = 'UPLOAD_IMAGE';
 export const UPLOAD_IMAGE_SUCCESS = 'UPLOAD_IMAGE_SUCCESS';
 export const UPLOAD_IMAGE_FAILURE = 'UPLOAD_IMAGE_FAILURE';
 
-/** Update article */
 export const UPDATE_ARTICLE = 'UPDATE_ARTICLE';
 export const UPDATE_ARTICLE_SUCCESS = 'UPDATE_ARTICLE_SUCCESS';
 export const UPDATE_ARTICLE_FAILURE = 'UPDATE_ARTICLE_FAILURE';
 
-/** Category actions */
 export const GET_CATEGORY = 'GET_CATEGORY';
 export const GET_CATEGORY_FAILURE = 'GET_CATEGORY_FAILURE';
 export const GET_CATEGORY_SUCCESS = 'GET_CATEGORY_SUCCESS';

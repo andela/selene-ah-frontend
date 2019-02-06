@@ -10,19 +10,34 @@ export const initialState = {
 
 const isPostRateLoadingState = { isPostLoading: true };
 
-// eslint-disable-next-line max-len
-const updatePostRatingSuccessState = (state, action) => updateObject(state, {
-  isPostLoading: false,
-  ratedArticle: action.payload,
-  postSuccess: true,
-});
+/**
+ * @description - Dispatches when user rating is posted successfully
+ * @param {object} state
+ * @param {object} action
+ * @returns {object} - An updated state
+ */
+const updatePostRatingSuccessState = (state, action) => updateObject(
+  state, {
+    isPostLoading: false,
+    ratedArticle: action.payload,
+    postSuccess: true,
+  },
+);
 
-// eslint-disable-next-line max-len
-const updateFetchAverageRatingFailedState = (state, action) => updateObject(state, {
-  isPostLoading: false,
-  ratedArticle: action.payload,
-  postError: true,
-});
+/**
+ * @description - Dispatches when user rating fails to post
+ * @param {object} state
+ * @param {object} action
+ * @returns {object} - An updated state
+ */
+const updateFetchAverageRatingFailedState = (state, action) => updateObject(
+  state, {
+    isPostLoading: false,
+    ratedArticle: action.payload,
+    postError: true,
+  },
+);
+
 
 const postRating = (state = initialState, action) => {
   switch (action.type) {

@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import AlmostDone from '../../../assets/images/confirm.svg';
 import './email-confirmation.scss';
 
+/**
+ * @description - Email confirmation Component
+ * @returns {JSX} - Email confimation jsx template
+ */
 const EmailConfirmation = () => (
     <Fragment>
       <div className="pr">

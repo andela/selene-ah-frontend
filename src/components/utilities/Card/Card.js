@@ -4,6 +4,11 @@ import PropTypes from 'prop-types';
 import robot from '../../../assets/images/avatars/robot.svg';
 import Backdrop from '../BackDrop/BackDrop';
 
+/**
+ * @description - Card Component
+ * @param {object} props
+ * @returns {JSX} - Card JSX template
+ */
 const Card = props => (
   <Fragment>
     <div className="held">

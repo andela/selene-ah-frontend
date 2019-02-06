@@ -40,6 +40,10 @@ class Article extends React.Component {
     this.props.unmountArticle();
   }
 
+  /**
+ * @returns {void}
+ * @memberof Article
+ */
   editArticleHandler = () => {
     const { slug } = this.props.response.article;
     this.props.history.push(`/articles/${slug}/edit`);

@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 
 import '../side-widget.scss';
 
+/**
+ * @description - Side widget Component
+ * @param {object} props
+ * @returns {JSX} - Side widget html syntax
+ */
 const SideWidgetLink = props => (
   <Fragment>
     <p className={props.class + (props.flag ? ' active' : ' inactive') }

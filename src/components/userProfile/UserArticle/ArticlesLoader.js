@@ -2,6 +2,11 @@ import React from 'react';
 import ContentLoader from 'react-content-loader';
 import './articles-loader.scss';
 
+/**
+ * @description - Article Loader Component
+ * @param {object} props
+ * @returns {JSX} - Article loader JSX template
+ */
 const ArticlesLoader = props => (
 <div className="loader-card">
 <ContentLoader
