@@ -4,13 +4,13 @@ import { withToastManager } from 'react-toast-notifications';
 import { ClipLoader } from 'react-spinners';
 import PropTypes from 'prop-types';
 import FormWrapper from '../../Form/FormWrapper';
-import image from '../../../assets/images/book_woman.svg';
-import './scss/signup.scss';
 import { FormContainer } from '../../Form';
 import { Input, Button } from '../../../components/utilities';
+import SocialButtons from '../SocialAuth/SocialButtons';
 import validate from './helpers/signupValidations';
 import validation from '../../../helpers/validationHelpers/validations';
-import SocialButtons from '../SocialAuth/SocialButtons';
+import image from '../../../assets/images/book_woman.svg';
+import './scss/signup.scss';
 
 
 /* eslint no-unused-expressions: 0 */

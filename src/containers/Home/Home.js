@@ -6,10 +6,10 @@ import { Link } from 'react-router-dom';
 import * as Icon from 'react-feather';
 import PropTypes from 'prop-types';
 import homeActionCreators from './homeActionCreators';
+import HomeLoader from './HomeLoader';
+import trimBody from '../../helpers/trimArticleTitle';
 import robot from '../../assets/images/avatars/robot.svg';
 import edit from '../../assets/images/edit-3.svg';
-import trimBody from '../../helpers/trimArticleTitle';
-import HomeLoader from './HomeLoader';
 
 
 import {

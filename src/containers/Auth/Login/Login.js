@@ -2,17 +2,17 @@ import React, { Fragment, Component } from 'react';
 import { withToastManager } from 'react-toast-notifications';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { ClipLoader } from 'react-spinners';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { ClipLoader } from 'react-spinners';
 import { FormWrapper, FormContainer } from '../../Form';
 import {
   Input, Button, Label,
 } from '../../../components/utilities';
-import loginImage from '../../../assets/images/illustration_1.svg';
-import Validations from '../SignUp/helpers/signupValidations';
-import loginActions from '../../../actions/authAction/login';
 import SocialButtons from '../SocialAuth/SocialButtons';
+import loginActions from '../../../actions/authAction/login';
+import Validations from '../SignUp/helpers/signupValidations';
+import loginImage from '../../../assets/images/illustration_1.svg';
 import './login.scss';
 
 /**

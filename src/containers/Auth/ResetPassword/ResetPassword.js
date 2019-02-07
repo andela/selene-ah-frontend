@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 import { withToastManager } from 'react-toast-notifications';
 import { bindActionCreators } from 'redux';
 import { ClipLoader } from 'react-spinners';
+import { Button, Input } from '../../../components/utilities';
 import FormContainer from '../../Form/FormContainer';
 import FormWrapper from '../../Form/FormWrapper';
-import { Button, Input } from '../../../components/utilities';
+import actionCreators from '../../../actions/authAction/resetPassword';
 import image from '../../../assets/images/sendemail.svg';
 import './reset-password.scss';
-import actionCreators from '../../../actions/authAction/resetPassword';
 
 
 /**
