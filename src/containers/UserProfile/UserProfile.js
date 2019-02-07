@@ -8,13 +8,13 @@ import SideWidget from '../../components/userProfile/SideWidget/SideWidget';
 import UserArticle from '../../components/userProfile/UserArticle/UserArticle';
 import UpdateProfile
   from '../../components/userProfile/UpdateProfile/UpdateProfile';
-import profileImage from '../../assets/images/user-icon.png';
-import actionCreators from '../../actions/userAction/getProfile';
 import MyLoader from '../../components/userProfile/UserInfo/UserInfoLoader';
 import Navbar from '../../components/utilities/Navbar/Navbar';
 import SideNav from '../../components/utilities/SideNav/SideNav';
 import UserStatistic from './UserStatistics';
+import actionCreators from '../../actions/userAction/getProfile';
 import * as actions from '../../actions/userStat/getUserStat';
+import profileImage from '../../assets/images/user-icon.png';
 import './scss/user-profile.scss';
 
 

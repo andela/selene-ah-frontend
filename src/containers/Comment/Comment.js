@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { withToastManager } from 'react-toast-notifications';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import './comment.scss';
-import actionCreators from '../../actions/commentAction/commentView';
 import EachComment from './EachComment';
 import ShowCommentButton from './ShowCommentButton';
 import WriteComment from './WriteComment';
+import actionCreators from '../../actions/commentAction/commentView';
+import './comment.scss';
 
 
 /**

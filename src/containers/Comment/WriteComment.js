@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import './comment.scss';
 import { ClipLoader } from 'react-spinners';
 import * as Icon from 'react-feather';
+import './comment.scss';
 
 /**
  * @returns {JSX} - The single comment box html

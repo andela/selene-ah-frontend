@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import './comment.scss';
+import convertTS from '../../helpers/dateStamp';
 import likesImage from '../../assets/images/thumbs-up.svg';
 import userFace from '../../assets/images/user-icon.png';
-import convertTS from '../../helpers/dateStamp';
+import './comment.scss';
 
 
 /**

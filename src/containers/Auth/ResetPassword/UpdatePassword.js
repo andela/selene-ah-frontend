@@ -2,17 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { withToastManager } from 'react-toast-notifications';
 import { bindActionCreators } from 'redux';
 import { ClipLoader } from 'react-spinners';
+import { withToastManager } from 'react-toast-notifications';
 import FormContainer from '../../Form/FormContainer';
 import FormWrapper from '../../Form/FormWrapper';
 import { Button, Input } from '../../../components/utilities';
-import image from '../../../assets/images/updatepassword.svg';
 import actionCreators from '../../../actions/authAction/updatePassword';
-import './reset-password.scss';
-import validate from '../SignUp/helpers/signupValidations';
 import decodedToken from '../../../helpers/validationHelpers/decodeToken';
+import validate from '../SignUp/helpers/signupValidations';
+import image from '../../../assets/images/updatepassword.svg';
+import './reset-password.scss';
 
 
 /**
