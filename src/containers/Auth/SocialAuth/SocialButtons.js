@@ -21,9 +21,9 @@ const SocialButtons = () => {
     url: process.env.TWITTER_URL,
   },
   ].map(socialIcon => (
-      <a href={socialIcon.url} key={socialIcon.key} className="social-btn">
-        <SocialButton classes={socialIcon.className}/>
-      </a>
+    <a href={socialIcon.url} key={socialIcon.key} className="social-btn">
+      <SocialButton classes={socialIcon.className}/>
+    </a>
   ));
 
   return (

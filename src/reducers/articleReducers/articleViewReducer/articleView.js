@@ -84,19 +84,19 @@ const fetchFollowersComplete = (state, action) => updateObject(
 
 const articleViewReducer = (state = initialState, action) => {
   switch (action.type) {
-    case type.FETCH_ARTICLE_START:
-      return fetchingArticleStart(state);
-    case type.FETCH_ARTICLE_SUCCESS:
-      return fetchArtcileSucess(state, action);
-    case type.FETCH_ARTICLE_FAILED:
-      return fetchArtcileFailed(state, action);
-    case type.FETCH_FOLLOWERS_START: return fetchFollowersStart(state);
-    case type.FETCH_FOLLOWERS_COMPLETE:
-      return fetchFollowersComplete(state, action);
-    case type.UNMOUNT_ARTICLE:
-      return unmountArticle(state, action);
-    default:
-      return state;
+  case type.FETCH_ARTICLE_START:
+    return fetchingArticleStart(state);
+  case type.FETCH_ARTICLE_SUCCESS:
+    return fetchArtcileSucess(state, action);
+  case type.FETCH_ARTICLE_FAILED:
+    return fetchArtcileFailed(state, action);
+  case type.FETCH_FOLLOWERS_START: return fetchFollowersStart(state);
+  case type.FETCH_FOLLOWERS_COMPLETE:
+    return fetchFollowersComplete(state, action);
+  case type.UNMOUNT_ARTICLE:
+    return unmountArticle(state, action);
+  default:
+    return state;
   }
 };
 

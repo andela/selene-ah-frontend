@@ -11,7 +11,7 @@ const Label = props => (
     <label
       htmlFor = {props.for}
     >
-    {props.children}
+      {props.children}
     </label>
   </Fragment>
 );

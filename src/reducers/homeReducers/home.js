@@ -24,17 +24,17 @@ const updateFetchArticleFailedState = (state, action) => updateObject(state, {
 
 const fetchArticles = (state = initialState, action) => {
   switch (action.type) {
-    case actionType.FECTH_ARTICLES_START:
-      return updateObject(initialState, isHomeLoadingState);
+  case actionType.FECTH_ARTICLES_START:
+    return updateObject(initialState, isHomeLoadingState);
 
-    case actionType.FECTH_ARTICLES_FAILED:
-      return updateFetchArticleFailedState(state, action);
+  case actionType.FECTH_ARTICLES_FAILED:
+    return updateFetchArticleFailedState(state, action);
 
-    case actionType.FECTH_ARTICLES_SUCCESS:
-      return updateFetchArticlesSuccessState(state, action);
+  case actionType.FECTH_ARTICLES_SUCCESS:
+    return updateFetchArticlesSuccessState(state, action);
 
-    default:
-      return state;
+  default:
+    return state;
   }
 };
 

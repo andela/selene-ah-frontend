@@ -83,17 +83,17 @@ const unFollowUserSuccess = (state, { payload }) => updateObject(state, {
 
 const reducer = (state = initState, action) => {
   switch (action.type) {
-    case actionTypes.FOLLOW_USER_START: return followUserStart(state);
-    case actionTypes.FOLLOW_USER_FAILURE:
-      return followUserFailure(state, action);
-    case actionTypes.FOLLOW_USER_SUCCESS:
-      return followUserSuccess(state, action);
-    case actionTypes.UNFOLLOW_USER_START: return unFollowUserStart(state);
-    case actionTypes.UNFOLLOW_USER_FAILURE:
-      return unFollowUserFailure(state, action);
-    case actionTypes.UNFOLLOW_USER_SUCCESS:
-      return unFollowUserSuccess(state, action);
-    default: return state;
+  case actionTypes.FOLLOW_USER_START: return followUserStart(state);
+  case actionTypes.FOLLOW_USER_FAILURE:
+    return followUserFailure(state, action);
+  case actionTypes.FOLLOW_USER_SUCCESS:
+    return followUserSuccess(state, action);
+  case actionTypes.UNFOLLOW_USER_START: return unFollowUserStart(state);
+  case actionTypes.UNFOLLOW_USER_FAILURE:
+    return unFollowUserFailure(state, action);
+  case actionTypes.UNFOLLOW_USER_SUCCESS:
+    return unFollowUserSuccess(state, action);
+  default: return state;
   }
 };
 

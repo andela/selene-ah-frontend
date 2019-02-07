@@ -30,7 +30,11 @@
       "error",
       "multi-line"
     ],
-    "eol-last": "warn",
+    "indent": [
+      "error",
+      2
+    ],
+    "eol-last": "error",
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
     "import/extensions": "error",

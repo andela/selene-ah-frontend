@@ -7,46 +7,46 @@ import { Button } from '../../components/utilities';
 
 const EditorHeader = props => (
   <div className="editorActions container">
-  <Select
-    name="category"
-    classes="categorySelect"
-    id="categorySelect"
-    onChange={props.getCategorySelection}
-  >{ props.categories }
-  </Select>
+    <Select
+      name="category"
+      classes="categorySelect"
+      id="categorySelect"
+      onChange={props.getCategorySelection}
+    >{ props.categories }
+    </Select>
 
-  <input
-    type="file"
-    accept="image/*"
-    id="featureImage"
-    onChange={props.onFileChangeHandler}
-  />
-  {!props.createArticleSuccess && !props.editAction
+    <input
+      type="file"
+      accept="image/*"
+      id="featureImage"
+      onChange={props.onFileChangeHandler}
+    />
+    {!props.createArticleSuccess && !props.editAction
   && <Button
-      id="publish"
-      classes="button-primary"
-      onClick={props.submitArticle}
-    >
-      {
-        !props.isUploadingImage
+    id="publish"
+    classes="button-primary"
+    onClick={props.submitArticle}
+  >
+    {
+      !props.isUploadingImage
         && !props.isCreatingArticle
         && 'Publish'
-      }
-      <ClipLoader
-        sizeUnit={'px'}
-        size={30}
-        color={'#fff'}
-        loading={props.isCreatingArticle
+    }
+    <ClipLoader
+      sizeUnit={'px'}
+      size={30}
+      color={'#fff'}
+      loading={props.isCreatingArticle
           || props.isUploadingImage }
-      />
+    />
   </Button>
-  }
-  {(props.createArticleSuccess || props.editAction)
+    }
+    {(props.createArticleSuccess || props.editAction)
   && <Button
-      id="editArticle"
-      classes="button-primary"
-      onClick={props.updateArticle}
-    >
+    id="editArticle"
+    classes="button-primary"
+    onClick={props.updateArticle}
+  >
     {
       !props.isUploadingImage
       && !props.isUpdatingArticle
@@ -59,8 +59,8 @@ const EditorHeader = props => (
       loading={props.isUpdatingArticle
         || props.isUploadingImage }
     />
-    </Button>
-  }
+  </Button>
+    }
   </div>
 
 );

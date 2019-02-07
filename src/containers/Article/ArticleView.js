@@ -60,14 +60,14 @@ export class ArticleView extends Component {
       isAverageLoading,
     } = this.props;
     return (
-  <Fragment>
+      <Fragment>
         { (isFetchingArticle
           || isFetchingFollowers)
           && <ArticleLoader />}
         { (this.props.response)
           && (!isFetchingArticle || !isAverageLoading || !isFetchingFollowers)
           && <Article {...this.props}/> };
-     </Fragment>
+      </Fragment>
     );
   }
 }

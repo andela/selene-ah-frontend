@@ -39,17 +39,17 @@ const updateLoginFailedState = (state, action) => updateObject(state, {
 
 const loginReducer = (state = initialState, action) => {
   switch (action.type) {
-    case type.LOGIN_START:
-      return updateObject(initialState, loginStartState);
+  case type.LOGIN_START:
+    return updateObject(initialState, loginStartState);
 
-    case type.LOGIN_FAILED:
-      return updateLoginFailedState(state, action);
+  case type.LOGIN_FAILED:
+    return updateLoginFailedState(state, action);
 
-    case type.LOGIN_SUCCESS:
-      return updateLoginSuccessState(state, action);
+  case type.LOGIN_SUCCESS:
+    return updateLoginSuccessState(state, action);
 
-    default:
-      return state;
+  default:
+    return state;
   }
 };
 

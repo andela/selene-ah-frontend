@@ -115,28 +115,28 @@ const getArticleSuccess = (state, action) => updateObject(state, {
 });
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.GET_PROFILE_START:
-      return userProfileStart(state);
-    case actionTypes.GET_PROFILE_SUCCESS:
-      return userProfileSuccess(state, action);
-    case actionTypes.GET_PROFILE_FAIL:
-      return userProfileFail(state, action);
+  case actionTypes.GET_PROFILE_START:
+    return userProfileStart(state);
+  case actionTypes.GET_PROFILE_SUCCESS:
+    return userProfileSuccess(state, action);
+  case actionTypes.GET_PROFILE_FAIL:
+    return userProfileFail(state, action);
 
-    case actionTypes.UPDATE_PROFILE_START:
-      return updateProfileStart(state);
-    case actionTypes.UPDATE_PROFILE_SUCCESS:
-      return updateProfileSuccess(state, action);
-    case actionTypes.UPDATE_PROFILE_FAIL:
-      return updateProfileFail(state, action);
+  case actionTypes.UPDATE_PROFILE_START:
+    return updateProfileStart(state);
+  case actionTypes.UPDATE_PROFILE_SUCCESS:
+    return updateProfileSuccess(state, action);
+  case actionTypes.UPDATE_PROFILE_FAIL:
+    return updateProfileFail(state, action);
 
-    case actionTypes.GET_ARTICLE_START:
-      return getArticleStart(state);
-    case actionTypes.GET_ARTICLE_SUCCESS:
-      return getArticleSuccess(state, action);
-    case actionTypes.GET_ARTICLE_FAIL:
-      return getArticleFail(state, action);
-    default:
-      return state;
+  case actionTypes.GET_ARTICLE_START:
+    return getArticleStart(state);
+  case actionTypes.GET_ARTICLE_SUCCESS:
+    return getArticleSuccess(state, action);
+  case actionTypes.GET_ARTICLE_FAIL:
+    return getArticleFail(state, action);
+  default:
+    return state;
   }
 };
 

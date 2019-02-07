@@ -45,12 +45,12 @@ const likeArticleSuccess = (state, { payload }) => updatedObject(state, {
 
 const reducer = (state = initState, action) => {
   switch (action.type) {
-    case actionTypes.LIKE_ARTICLE_START: return likeArticleStart(state);
-    case actionTypes.LIKE_ARTICLE_FAILURE:
-      return likeArticleFailure(state, action);
-    case actionTypes.LIKE_ARTICLE_SUCCESS:
-      return likeArticleSuccess(state, action);
-    default: return state;
+  case actionTypes.LIKE_ARTICLE_START: return likeArticleStart(state);
+  case actionTypes.LIKE_ARTICLE_FAILURE:
+    return likeArticleFailure(state, action);
+  case actionTypes.LIKE_ARTICLE_SUCCESS:
+    return likeArticleSuccess(state, action);
+  default: return state;
   }
 };
 

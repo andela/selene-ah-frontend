@@ -86,26 +86,26 @@ const postCommentSuccessState = (state, action) => updateObject(state, {
 
 const commentReducers = (state = initialState, action) => {
   switch (action.type) {
-    case actionType.GET_COMMENT_START:
-      return updateObject(state, getCommentStartState);
+  case actionType.GET_COMMENT_START:
+    return updateObject(state, getCommentStartState);
 
-    case actionType.GET_COMMENT_FAIL:
-      return getCommentFailedState(state, action);
+  case actionType.GET_COMMENT_FAIL:
+    return getCommentFailedState(state, action);
 
-    case actionType.GET_COMMENT_SUCCESS:
-      return getCommentSuccessState(state, action);
+  case actionType.GET_COMMENT_SUCCESS:
+    return getCommentSuccessState(state, action);
 
-    case actionType.POST_COMMENT_START:
-      return updateObject(state, postCommentStartState);
+  case actionType.POST_COMMENT_START:
+    return updateObject(state, postCommentStartState);
 
-    case actionType.POST_COMMENT_SUCCESS:
-      return postCommentSuccessState(state, action);
+  case actionType.POST_COMMENT_SUCCESS:
+    return postCommentSuccessState(state, action);
 
-    case actionType.POST_COMMENT_FAIL:
-      return postCommentFailedState(state, action);
+  case actionType.POST_COMMENT_FAIL:
+    return postCommentFailedState(state, action);
 
-    default:
-      return state;
+  default:
+    return state;
   }
 };
 

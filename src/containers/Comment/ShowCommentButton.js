@@ -21,24 +21,24 @@ export class WriteComment extends Component {
      */
     render() {
       return (
-            <Fragment>
-            {
-              (!this.props.viewComment) ? (
-                <div className='button-center' >
-                  <button onClick={this.props.showResponse}
-                    className='comment-button'>Show Comments</button>
-              {
-                this.props.loading ? (
-                  <ClipLoader
-                    sizeUnit='px'
-                    size={30}
-                    color={'#2C2360'}
-                    loading={true}
-                  />) : (
-                  null)
-              }
+        <Fragment>
+          {
+            (!this.props.viewComment) ? (
+              <div className='button-center' >
+                <button onClick={this.props.showResponse}
+                  className='comment-button'>Show Comments</button>
+                {
+                  this.props.loading ? (
+                    <ClipLoader
+                      sizeUnit='px'
+                      size={30}
+                      color={'#2C2360'}
+                      loading={true}
+                    />) : (
+                    null)
+                }
               </div>) : (null) }
-            </Fragment>
+        </Fragment>
       );
     }
 }

@@ -56,14 +56,14 @@ const getCategoryFailure = (state, payload) => updateStateUtility(
 
 const categoryReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_CATEGORY:
-      return getCategory(state);
-    case GET_CATEGORY_SUCCESS:
-      return getCategorySuccess(state, action.payload);
-    case GET_CATEGORY_FAILURE:
-      return getCategoryFailure(state, action.payload);
-    default:
-      return state;
+  case GET_CATEGORY:
+    return getCategory(state);
+  case GET_CATEGORY_SUCCESS:
+    return getCategorySuccess(state, action.payload);
+  case GET_CATEGORY_FAILURE:
+    return getCategoryFailure(state, action.payload);
+  default:
+    return state;
   }
 };
 

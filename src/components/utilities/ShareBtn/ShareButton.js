@@ -22,8 +22,8 @@ const ShareButton = props => (
       <li>
         <FacebookShareButton url={
           `${process.env.FRONTEND_API}${props.url}`
-          }
-          quote={props.title}
+        }
+        quote={props.title}
         >
           <FacebookIcon size={32} round={true}/>
         </FacebookShareButton>
@@ -31,8 +31,8 @@ const ShareButton = props => (
       <li>
         <TwitterShareButton url={
           `${process.env.FRONTEND_API}${props.url}`
-          }
-          title={props.title}
+        }
+        title={props.title}
         >
           <TwitterIcon size={32} round={true} />
         </TwitterShareButton>

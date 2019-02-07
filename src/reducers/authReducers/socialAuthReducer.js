@@ -33,20 +33,20 @@ const socialAuthSuccess = (state, action) => (
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionsTypes.GOOGLE_AUTH_FAIL:
-      return socialAuthFail(state, action);
-    case actionsTypes.FACEBOOK_AUTH_FAIL:
-      return socialAuthFail(state, action);
-    case actionsTypes.TWITTER_AUTH_FAIL:
-      return socialAuthFail(state, action);
-    case actionsTypes.GOOGLE_AUTH_SUCCESS:
-      return socialAuthSuccess(state, action);
-    case actionsTypes.FACEBOOK_AUTH_SUCCESS:
-      return socialAuthSuccess(state, action);
-    case actionsTypes.TWITTER_AUTH_SUCCESS:
-      return socialAuthSuccess(state, action);
-    default:
-      return state;
+  case actionsTypes.GOOGLE_AUTH_FAIL:
+    return socialAuthFail(state, action);
+  case actionsTypes.FACEBOOK_AUTH_FAIL:
+    return socialAuthFail(state, action);
+  case actionsTypes.TWITTER_AUTH_FAIL:
+    return socialAuthFail(state, action);
+  case actionsTypes.GOOGLE_AUTH_SUCCESS:
+    return socialAuthSuccess(state, action);
+  case actionsTypes.FACEBOOK_AUTH_SUCCESS:
+    return socialAuthSuccess(state, action);
+  case actionsTypes.TWITTER_AUTH_SUCCESS:
+    return socialAuthSuccess(state, action);
+  default:
+    return state;
   }
 };
 

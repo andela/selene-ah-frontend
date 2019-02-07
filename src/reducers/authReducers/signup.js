@@ -41,10 +41,10 @@ const signUpSuccess = (state, action) => updateObject(state, {
 });
 const reducer = (state = initState, action) => {
   switch (action.type) {
-    case actionTypes.SIGN_UP_START: return signUpStart(state);
-    case actionTypes.SIGN_UP_FAILURE: return signUpFailure(state, action);
-    case actionTypes.SIGN_UP_SUCCESS: return signUpSuccess(state, action);
-    default: return state;
+  case actionTypes.SIGN_UP_START: return signUpStart(state);
+  case actionTypes.SIGN_UP_FAILURE: return signUpFailure(state, action);
+  case actionTypes.SIGN_UP_SUCCESS: return signUpSuccess(state, action);
+  default: return state;
   }
 };
 

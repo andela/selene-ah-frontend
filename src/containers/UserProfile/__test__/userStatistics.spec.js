@@ -21,12 +21,12 @@ describe('UserStatics Container', () => {
   let wrapper;
   beforeAll(() => {
     wrapper = shallow(<UserStatistics
-          followerStat={props.followerStat}
-          articleLikes={props.articleLikes}
-          articleStat={props.articleStat}
-          bookmarkStat={props.bookmarkStat}
-          commentStat={props.commentStat}
-        />);
+      followerStat={props.followerStat}
+      articleLikes={props.articleLikes}
+      articleStat={props.articleStat}
+      bookmarkStat={props.bookmarkStat}
+      commentStat={props.commentStat}
+    />);
   });
   it('should find Div', () => {
     const div = wrapper.find('div.minicard-container');

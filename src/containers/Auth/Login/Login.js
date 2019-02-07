@@ -130,63 +130,63 @@ export class Login extends Component {
     return (
       <Fragment>
         <FormWrapper imageUrl={loginImage} displayImage={true}
-            flexWrapper='flex-wrapper' imageContainer='image-container'
-            imageResponsive='img-responsive'>
-            <FormContainer
-              header="Welcome back! 👋"
-              subHeader='“Today a reader, tomorrow a leader”'
-              onSubmit={this.handleSubmit}
-              containerId='login-container'
-            >
-             <div className="input-group">
+          flexWrapper='flex-wrapper' imageContainer='image-container'
+          imageResponsive='img-responsive'>
+          <FormContainer
+            header="Welcome back! 👋"
+            subHeader='“Today a reader, tomorrow a leader”'
+            onSubmit={this.handleSubmit}
+            containerId='login-container'
+          >
+            <div className="input-group">
               <Label for="email">Email Address</Label>
               <Input
-                  type="text"
-                  placeholder=""
-                  id="email"
-                  required={true}
-                  onChange={this.handleInputChange}
-                />
-             </div>
-             <div className="input-group">
+                type="text"
+                placeholder=""
+                id="email"
+                required={true}
+                onChange={this.handleInputChange}
+              />
+            </div>
+            <div className="input-group">
               <Label for="password">Password</Label>
               <Input
-                  type="password"
-                  placeholder=""
-                  id="password"
-                  required={true}
-                  onChange={this.handleInputChange}
-                />
-             </div>
+                type="password"
+                placeholder=""
+                id="password"
+                required={true}
+                onChange={this.handleInputChange}
+              />
+            </div>
             {!this.props.isLoading
               && <Button type="submit" classes="form-button">Login</Button>
             }
-             <div className="text--center loader">
+            <div className="text--center loader">
               <ClipLoader
                 sizeUnit={'px'}
                 size={30}
                 color={'#fff'}
                 loading={this.props.isLoading}
-                />
-             </div>
-             <p className='center'>
-            <Link to='password-reset' className='forget-password-text'>
+              />
+            </div>
+            <p className='center'>
+              <Link to='password-reset' className='forget-password-text'>
               Forget Password?</Link></p>
-             <div className="or">
+            <div className="or">
               <span className="line"></span>
               <p>OR</p>
               <span className="line"></span>
-             </div>
-             <div className="social-group">
-                <div className="social-btn-group">
-                  <SocialButtons />
-                </div>
-             </div>
+            </div>
+            <div className="social-group">
+              <div className="social-btn-group">
+                <SocialButtons />
+              </div>
+            </div>
             <p className='center signup-text-position'>Not a member?
               <Link className="signup-text" to='signup'>Signup</Link>
             </p>
 
-            </FormContainer>
+          </FormContainer>
         </FormWrapper>
       </Fragment>
     );

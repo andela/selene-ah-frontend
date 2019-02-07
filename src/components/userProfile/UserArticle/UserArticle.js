@@ -36,19 +36,19 @@ export class UserArticle extends Component {
   render() {
     const articles = (this.props.articleData || []).map(article => (
       <Card key={article.id} title={article.title.slice(0, 40)}
-      body={renderHtml(trimBody(article.body))} imageUrl={article.imageUrl}
-      readTime={article.readTime} slug={article.slug}
-      author={article.author} name={article.author}></Card>
+        body={renderHtml(trimBody(article.body))} imageUrl={article.imageUrl}
+        readTime={article.readTime} slug={article.slug}
+        author={article.author} name={article.author}></Card>
     ));
     return (
       <div className="article-container">
-      <ArticleParent classname="fix-holder">
-        {articles.length < 1
-          ? <p className='article-by'>You have no articles.
-            <Link to="/create-article">
-              <span>&nbsp; Start Writing</span></Link></p>
-          : articles}
-      </ArticleParent>
+        <ArticleParent classname="fix-holder">
+          {articles.length < 1
+            ? <p className='article-by'>You have no articles.
+              <Link to="/create-article">
+                <span>&nbsp; Start Writing</span></Link></p>
+            : articles}
+        </ArticleParent>
       </div>
     );
   }

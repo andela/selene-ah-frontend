@@ -11,7 +11,7 @@
     "serve": "node server.js",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
-    "linter": "eslint './**/*.js'",
+    "linter": "eslint './**/*.js' --fix",
     "postinstall": "npm run build"
   },
   "repository": {

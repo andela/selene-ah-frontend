@@ -30,17 +30,17 @@ const rules = [
     serialize(obj, children) {
       if (obj.object === 'block') {
         switch (obj.type) {
-          case 'code':
-            return (
-              <pre>
-                <code>{children}</code>
-              </pre>
-            );
-          case 'paragraph':
-            return <p className={obj.data.get('className')}>{children}</p>;
-          case 'quote':
-            return <blockquote>{children}</blockquote>;
-          default:
+        case 'code':
+          return (
+            <pre>
+              <code>{children}</code>
+            </pre>
+          );
+        case 'paragraph':
+          return <p className={obj.data.get('className')}>{children}</p>;
+        case 'quote':
+          return <blockquote>{children}</blockquote>;
+        default:
         }
       }
     },
@@ -59,13 +59,13 @@ const rules = [
     serialize(obj, children) {
       if (obj.object === 'mark') {
         switch (obj.type) {
-          case 'bold':
-            return <strong>{children}</strong>;
-          case 'italic':
-            return <em>{children}</em>;
-          case 'underline':
-            return <u>{children}</u>;
-          default:
+        case 'bold':
+          return <strong>{children}</strong>;
+        case 'italic':
+          return <em>{children}</em>;
+        case 'underline':
+          return <u>{children}</u>;
+        default:
         }
       }
     },

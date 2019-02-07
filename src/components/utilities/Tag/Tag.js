@@ -12,7 +12,7 @@ const Tag = props => (
     <div className="tag--button">
       <a href="#" className={`tag ${props.isActive ? 'tag__primary' : ''}`}>
         <props.icon />
-          {props.children}
+        {props.children}
       </a>
     </div>
   </Fragment>

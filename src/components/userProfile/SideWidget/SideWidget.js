@@ -15,12 +15,12 @@ const SideWidget = (props) => {
     <div className="side-card m2 l2">
       { profileLinks.map(profileLink => (
         <SideWidgetLink key={profileLink.id} class={profileLink.class}
-        title={profileLink.title} icon={profileLink.icon}
-        flag={profileLink.flag}
-        handleNavClick={props.handleNavClick}
+          title={profileLink.title} icon={profileLink.icon}
+          flag={profileLink.flag}
+          handleNavClick={props.handleNavClick}
         />
       )) }
-   </div>
+    </div>
   );
 };
 

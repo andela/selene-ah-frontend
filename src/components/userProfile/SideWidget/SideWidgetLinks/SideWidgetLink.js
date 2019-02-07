@@ -13,7 +13,7 @@ const SideWidgetLink = props => (
     <p className={props.class + (props.flag ? ' active' : ' inactive') }
       onClick={() => props.handleNavClick(props.title)}
     ><props.icon className="icon"/><span
-      className="side-nav-text">{props.title}</span></p>
+        className="side-nav-text">{props.title}</span></p>
   </Fragment>
 );
 

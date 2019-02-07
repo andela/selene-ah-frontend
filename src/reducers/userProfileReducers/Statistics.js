@@ -99,32 +99,32 @@ const userArticleLikeSuccess = (state, action) => (
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionsTypes.GET_FOLLOWERS_FAILURE:
-      return userStatFail(state, action);
-    case actionsTypes.GET_LIKED_ARTICLES_FAILURE:
-      return userStatFail(state, action);
-    case actionsTypes.GET_BOOKMARK_FAILURE:
-      return userStatFail(state, action);
-    case actionsTypes.GET_ARTICLES_STAT_FAILURE:
-      return userStatFail(state, action);
-    case actionsTypes.FOLLOWING_OTHERS_STAT_FAILURE:
-      return userStatFail(state, action);
-    case actionsTypes.GET_COMMENT_STAT_FAILURE:
-      return userStatFail(state, action);
-    case actionsTypes.GET_FOLLOWERS_SUCCESS:
-      return userFollowerStatSuccess(state, action);
-    case actionsTypes.FOLLOWING_OTHERS_STAT_SUCCESS:
-      return usersYouFollowSuccess(state, action);
-    case actionsTypes.GET_LIKED_ARTICLES_SUCCESS:
-      return userArticleLikeSuccess(state, action);
-    case actionsTypes.GET_BOOKMARK_SUCCESS:
-      return userBookmarkStatSuccess(state, action);
-    case actionsTypes.GET_ARTICLES_STAT_SUCCESS:
-      return userArticleStatSuccess(state, action);
-    case actionsTypes.GET_COMMENT_STAT_SUCCESS:
-      return userCommentStatSuccess(state, action);
-    default:
-      return state;
+  case actionsTypes.GET_FOLLOWERS_FAILURE:
+    return userStatFail(state, action);
+  case actionsTypes.GET_LIKED_ARTICLES_FAILURE:
+    return userStatFail(state, action);
+  case actionsTypes.GET_BOOKMARK_FAILURE:
+    return userStatFail(state, action);
+  case actionsTypes.GET_ARTICLES_STAT_FAILURE:
+    return userStatFail(state, action);
+  case actionsTypes.FOLLOWING_OTHERS_STAT_FAILURE:
+    return userStatFail(state, action);
+  case actionsTypes.GET_COMMENT_STAT_FAILURE:
+    return userStatFail(state, action);
+  case actionsTypes.GET_FOLLOWERS_SUCCESS:
+    return userFollowerStatSuccess(state, action);
+  case actionsTypes.FOLLOWING_OTHERS_STAT_SUCCESS:
+    return usersYouFollowSuccess(state, action);
+  case actionsTypes.GET_LIKED_ARTICLES_SUCCESS:
+    return userArticleLikeSuccess(state, action);
+  case actionsTypes.GET_BOOKMARK_SUCCESS:
+    return userBookmarkStatSuccess(state, action);
+  case actionsTypes.GET_ARTICLES_STAT_SUCCESS:
+    return userArticleStatSuccess(state, action);
+  case actionsTypes.GET_COMMENT_STAT_SUCCESS:
+    return userCommentStatSuccess(state, action);
+  default:
+    return state;
   }
 };
 

@@ -41,16 +41,16 @@ const updateFetchAverageRatingFailedState = (state, action) => updateObject(
 
 const fetchAverageRating = (state = initialState, action) => {
   switch (action.type) {
-    case type.FETCH_AVERAGE_RATING_START:
-      return updateObject(state, isAverageRatingLoadingState);
+  case type.FETCH_AVERAGE_RATING_START:
+    return updateObject(state, isAverageRatingLoadingState);
 
-    case type.FETCH_AVERAGE_RATING_FAILED:
-      return updateFetchAverageRatingFailedState(state, action);
+  case type.FETCH_AVERAGE_RATING_FAILED:
+    return updateFetchAverageRatingFailedState(state, action);
 
-    case type.FETCH_AVERAGE_RATING_SUCCESS:
-      return updateFetchAverageRatingSuccessState(state, action);
-    default:
-      return state;
+  case type.FETCH_AVERAGE_RATING_SUCCESS:
+    return updateFetchAverageRatingSuccessState(state, action);
+  default:
+    return state;
   }
 };
 
