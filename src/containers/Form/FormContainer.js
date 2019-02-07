@@ -24,17 +24,17 @@ export default class FormContainer extends Component {
       <Fragment>
         <div className="login-container" id={this.props.containerId}>
           <div className="login-wrapper" id={this.props.loginId}>
-              <div className={`${this.props.formContainer
+            <div className={`${this.props.formContainer
                 || 'form-container'}`}>
-                <form onSubmit={this.props.onSubmit}>
+              <form onSubmit={this.props.onSubmit}>
                 <div className="header-group">
                   <h3 className="header-text">{this.props.header}</h3>
                   <p className="subheader-text">{this.props.subHeader}</p>
 
                 </div>
-                  {this.props.children}
-                </form>
-              </div>
+                {this.props.children}
+              </form>
+            </div>
           </div>
         </div>
       </Fragment>

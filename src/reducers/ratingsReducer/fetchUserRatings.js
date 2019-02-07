@@ -41,16 +41,16 @@ const updateFetchUserRatingFailedState = (state, action) => updateObject(
 
 const fetchUserRating = (state = initialState, action) => {
   switch (action.type) {
-    case type.FETCH_USER_RATING_START:
-      return updateObject(initialState, isUserRatingLoadingState);
+  case type.FETCH_USER_RATING_START:
+    return updateObject(initialState, isUserRatingLoadingState);
 
-    case type.FETCH_USER_RATING_FAILED:
-      return updateFetchUserRatingFailedState(state, action);
+  case type.FETCH_USER_RATING_FAILED:
+    return updateFetchUserRatingFailedState(state, action);
 
-    case type.FETCH_USER_RATING_SUCCESS:
-      return updateFetchUserRatingSuccessState(state, action);
-    default:
-      return state;
+  case type.FETCH_USER_RATING_SUCCESS:
+    return updateFetchUserRatingSuccessState(state, action);
+  default:
+    return state;
   }
 };
 

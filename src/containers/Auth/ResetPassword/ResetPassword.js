@@ -92,33 +92,33 @@ export class ResetPassword extends Component {
     return (
       <Fragment>
         <FormWrapper imageUrl={image} flexWrapper='reset-flex-wrapper'
-        imageId='sideImage' displayImage={false} changeClass='remove-arc'
-        changeForm='inner-form-reset-password' >
-            {
-          !this.props.success
-            ? (<FormContainer
-            header="Forgot Password?"
-            containerId='resetContainer'
-            formContainer='reset-form-container'
-            loginId='resetFormWrapper'
-            onSubmit={this.handleSubmit}>
-              <div className="input-group">
+          imageId='sideImage' displayImage={false} changeClass='remove-arc'
+          changeForm='inner-form-reset-password' >
+          {
+            !this.props.success
+              ? (<FormContainer
+                header="Forgot Password?"
+                containerId='resetContainer'
+                formContainer='reset-form-container'
+                loginId='resetFormWrapper'
+                onSubmit={this.handleSubmit}>
+                <div className="input-group">
                   <label className='reset-password-label'
-                  id='resetLabel'>Email Address</label>
+                    id='resetLabel'>Email Address</label>
                   <Input
-                      type="email"
-                      placeholder="example@example.com"
-                      id="email"
-                      classes='reset-password-tbx'
-                      required={true}
-                      onChange={this.handleInputChange}
-                    />
+                    type="email"
+                    placeholder="example@example.com"
+                    id="email"
+                    classes='reset-password-tbx'
+                    required={true}
+                    onChange={this.handleInputChange}
+                  />
                 </div>
                 <div className='text-center' id='clipLoader'>
-                {!this.props.isLoading
+                  {!this.props.isLoading
                   && <Button
-                  type={'submit'} buttonId='submitButton'
-                  classes='form-button' >
+                    type={'submit'} buttonId='submitButton'
+                    classes='form-button' >
                   Send Reset Password Link</Button>}
 
                   <ClipLoader
@@ -127,27 +127,27 @@ export class ResetPassword extends Component {
                     color={'#2C2360'}
                     loading={this.props.isLoading}
                   />
-              </div>
-            </FormContainer>)
-            : (<FormContainer
-              header="Email Sent"
-              containerId='resetContainer'
-            loginId='resetFormWrapper'
-              container='reset-container' wrapper='reset-wrapper'
-              formContainer='form-container reset-form-container'
-              onSubmit={this.handleSubmit}>
+                </div>
+              </FormContainer>)
+              : (<FormContainer
+                header="Email Sent"
+                containerId='resetContainer'
+                loginId='resetFormWrapper'
+                container='reset-container' wrapper='reset-wrapper'
+                formContainer='form-container reset-form-container'
+                onSubmit={this.handleSubmit}>
                 <div className="text-center">
-                    <p className='sent-response'>
+                  <p className='sent-response'>
                     Please Check your email for a link to reset your password.
                     If it doesn’t appear within a few minutes, check your spam
                     folder.</p>
-                  </div>
-                  <div className='text-center'>
+                </div>
+                <div className='text-center'>
                 </div>
               </FormContainer>)
-      }
-          </FormWrapper>
-    </Fragment>
+          }
+        </FormWrapper>
+      </Fragment>
     );
   }
 }

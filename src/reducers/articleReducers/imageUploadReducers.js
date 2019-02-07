@@ -55,14 +55,14 @@ const uploadImageFailure = (state, payload) => updateStateUtility(
 
 const imageUploadReducer = (state = initialState, action) => {
   switch (action.type) {
-    case UPLOAD_IMAGE:
-      return uploadImage(state);
-    case UPLOAD_IMAGE_SUCCESS:
-      return uploadImageSuccess(state, action.payload);
-    case UPLOAD_IMAGE_FAILURE:
-      return uploadImageFailure(state, action.payload);
-    default:
-      return state;
+  case UPLOAD_IMAGE:
+    return uploadImage(state);
+  case UPLOAD_IMAGE_SUCCESS:
+    return uploadImageSuccess(state, action.payload);
+  case UPLOAD_IMAGE_FAILURE:
+    return uploadImageFailure(state, action.payload);
+  default:
+    return state;
   }
 };
 

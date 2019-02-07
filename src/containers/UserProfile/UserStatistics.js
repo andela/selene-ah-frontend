@@ -82,14 +82,14 @@ class UserStat extends Component {
         title: 'Total Number of Comments by You',
       },
     ].map(stat => (
-        <MiniCard key={stat.id} stat={stat.stat}
-          icon={stat.icon} title={stat.title} />
+      <MiniCard key={stat.id} stat={stat.stat}
+        icon={stat.icon} title={stat.title} />
     ));
     return (
       <div className="stats-container">
         <p className="stats-header">Your Stats</p>
         <div className="minicard-container">
-        {stats}
+          {stats}
         </div>
       </div>
     );

@@ -318,15 +318,15 @@ render() {
     submitArticle: this.submitArticle,
   };
   return (
-      <Fragment>
+    <Fragment>
       { this.state.sidenav
         ? <div className="sidebar-overlay"
-        onClick={() => this.changeSidenav() }>
+          onClick={() => this.changeSidenav() }>
         </div> : null}
 
-       { this.state.sidenav
-         ? <SideNav isLoggedIn={ true }
-         changeSidenav={ this.changeSidenav} /> : null }
+      { this.state.sidenav
+        ? <SideNav isLoggedIn={ true }
+          changeSidenav={ this.changeSidenav} /> : null }
 
       <Navbar isLoggedIn={true} changeSidenav={this.changeSidenav}/>
       <EditorHeader {...editorProps}/>
@@ -345,8 +345,8 @@ render() {
         <TextEditor
           setArticleBody={this.getArticleBody}
           body={this.state.body}/>
-    </div>
-      </Fragment>
+      </div>
+    </Fragment>
   );
 }
 }

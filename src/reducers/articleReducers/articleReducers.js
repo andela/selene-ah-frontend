@@ -108,20 +108,20 @@ const updateArticleFailure = (state, payload) => updateStateUtility(
 
 const articleReducer = (state = initialState, action) => {
   switch (action.type) {
-    case CREATE_ARTICLE:
-      return createArticle(state);
-    case CREATE_ARTICLE_SUCCESS:
-      return createArticleSuccess(state, action.payload);
-    case CREATE_ARTICLE_FAILURE:
-      return createArticleFailure(state, action.payload);
-    case UPDATE_ARTICLE:
-      return updateArticle(state, action.payload);
-    case UPDATE_ARTICLE_SUCCESS:
-      return updateArticleSuccess(state, action.payload);
-    case UPDATE_ARTICLE_FAILURE:
-      return updateArticleFailure(state, action.payload);
-    default:
-      return state;
+  case CREATE_ARTICLE:
+    return createArticle(state);
+  case CREATE_ARTICLE_SUCCESS:
+    return createArticleSuccess(state, action.payload);
+  case CREATE_ARTICLE_FAILURE:
+    return createArticleFailure(state, action.payload);
+  case UPDATE_ARTICLE:
+    return updateArticle(state, action.payload);
+  case UPDATE_ARTICLE_SUCCESS:
+    return updateArticleSuccess(state, action.payload);
+  case UPDATE_ARTICLE_FAILURE:
+    return updateArticleFailure(state, action.payload);
+  default:
+    return state;
   }
 };
 

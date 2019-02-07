@@ -100,23 +100,23 @@ export class Ratings extends React.Component {
     for (let i = 1; i <= 5; i += 1) {
       if (this.state.rating != null && this.state.rating >= i) {
         stars.push(<Star
-                      onClick={() => this.rate(i)}
-                      onMouseOver={() => this.starOver(i)}
-                      onMouseOut={() => this.starOut()}
-                      index={i}
-                      key={i}
-                      color="#ecd018"
-                      fill="#ecd018"
-                          />);
+          onClick={() => this.rate(i)}
+          onMouseOver={() => this.starOver(i)}
+          onMouseOut={() => this.starOut()}
+          index={i}
+          key={i}
+          color="#ecd018"
+          fill="#ecd018"
+        />);
       } else {
         stars.push(<Star
-                      onClick={() => this.rate(i)}
-                      onMouseOver={() => this.starOver(i)}
-                      onMouseOut={() => this.starOut()}
-                      key={i}
-                      color="#D0D0D1"
-                      index={i}
-                      />);
+          onClick={() => this.rate(i)}
+          onMouseOver={() => this.starOver(i)}
+          onMouseOut={() => this.starOut()}
+          key={i}
+          color="#D0D0D1"
+          index={i}
+        />);
       }
     }
     return (
@@ -126,8 +126,8 @@ export class Ratings extends React.Component {
         </div>
         <div>
           Average rating <div className="num--rate">
-          {this.props.averageRating.averageRating
-            ? this.props.averageRating.averageRating.toFixed(2) : null }
+            {this.props.averageRating.averageRating
+              ? this.props.averageRating.averageRating.toFixed(2) : null }
           </div>
         </div>
       </div>

@@ -227,15 +227,15 @@ export class SignUp extends Component {
                 <p className='small-text'>
                   *Password must contain at least a number and must
                     not be less than 8 characters</p>
-                    <div className='text-center loader'>
-                      {!isLoading && <Link
-                        to='#'
-                        onClick={this.nextStep}
-                        className='form-button  d-block step-button'>
+                <div className='text-center loader'>
+                  {!isLoading && <Link
+                    to='#'
+                    onClick={this.nextStep}
+                    className='form-button  d-block step-button'>
                         Next</Link>
-                      }
-                    </div>
-                 </div>
+                  }
+                </div>
+              </div>
             }
             {
               this.state.step === 2
@@ -289,26 +289,26 @@ export class SignUp extends Component {
                     </div>
                   }
                   <ClipLoader
-                      sizeUnit='px'
-                      size={30}
-                      color='#fff'
-                      loading={isLoading}
+                    sizeUnit='px'
+                    size={30}
+                    color='#fff'
+                    loading={isLoading}
                   />
                 </div>
               </div>
             }
-          <div className='or'>
-            <span className="line"></span>
-            <p>OR</p>
-            <span className="line"></span>
-          </div>
-          <div className="social-group">
+            <div className='or'>
+              <span className="line"></span>
+              <p>OR</p>
+              <span className="line"></span>
+            </div>
+            <div className="social-group">
               <div className="social-btn-group">
                 <SocialButtons />
               </div>
-             </div>
-          <p className='center signup-text-position'>Already a member?
-            <Link className="signup-text" to='login'>Signin</Link></p>
+            </div>
+            <p className='center signup-text-position'>Already a member?
+              <Link className="signup-text" to='login'>Signin</Link></p>
           </div>
         </FormContainer>
       </FormWrapper>

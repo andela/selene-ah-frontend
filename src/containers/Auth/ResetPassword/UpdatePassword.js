@@ -145,41 +145,41 @@ export class UpdatePassword extends Component {
    */
   render() {
     return (
-        <FormWrapper imageUrl={image}
+      <FormWrapper imageUrl={image}
         imageId='updateSideImage' displayImage={false} changeClass='remove-arc'>
         {
           !this.props.passwordChanged
             ? (
-            <FormContainer
-           header="Change Password"
-           onSubmit={this.handleSubmit}
-           containerId='updateContainer'
-            loginId='updateFormWrapper'
-          >
-          <div className="input-group" id='inputGroup'>
-          <label className='reset-password-label'
-          id='resetLabel'>Password:</label>
-              <Input
-                  type="password"
-                  classes='reset-password-tbx'
-                  id='password'
-                  required={true}
-                  onChange={this.handleInputChange}
-                />
-              <label className='reset-password-label'
-              id='resetLabel'>Confirm Password:</label>
-              <Input
-                type='password'
-                classes='reset-password-tbx'
-                id='confirmPassword'
-                required={true}
-                onChange={this.handleInputChange}
-              />
-             </div>
-             <div className='text-center'>
-             {!this.props.isLoading && <Button type={'submit'}
-             buttonId='updateButton'
-                classes='form-button' >
+              <FormContainer
+                header="Change Password"
+                onSubmit={this.handleSubmit}
+                containerId='updateContainer'
+                loginId='updateFormWrapper'
+              >
+                <div className="input-group" id='inputGroup'>
+                  <label className='reset-password-label'
+                    id='resetLabel'>Password:</label>
+                  <Input
+                    type="password"
+                    classes='reset-password-tbx'
+                    id='password'
+                    required={true}
+                    onChange={this.handleInputChange}
+                  />
+                  <label className='reset-password-label'
+                    id='resetLabel'>Confirm Password:</label>
+                  <Input
+                    type='password'
+                    classes='reset-password-tbx'
+                    id='confirmPassword'
+                    required={true}
+                    onChange={this.handleInputChange}
+                  />
+                </div>
+                <div className='text-center'>
+                  {!this.props.isLoading && <Button type={'submit'}
+                    buttonId='updateButton'
+                    classes='form-button' >
                   Change Password</Button>}
                   <p className='password-inst'>
               *Password must contain at least a number and must
@@ -189,26 +189,26 @@ export class UpdatePassword extends Component {
                     size={30}
                     color={'#2C2360'}
                     loading={this.props.isLoading}
-              />
-               </div>
-            </FormContainer>
+                  />
+                </div>
+              </FormContainer>
             )
             : (
-            <FormContainer
-              header="Password Changed"
-              containerId='updateContainer'
-            loginId='resetFormWrapper'>
+              <FormContainer
+                header="Password Changed"
+                containerId='updateContainer'
+                loginId='resetFormWrapper'>
                 <div className="text-center">
-                    <p className='sent-response'>
+                  <p className='sent-response'>
                     You have successfully changed your password</p>
-                  </div>
-                  <Link to='/login'><Button type={'submit'}
-             buttonId='updateButton'
-                classes='form-button'>Return to Login</Button></Link>
+                </div>
+                <Link to='/login'><Button type={'submit'}
+                  buttonId='updateButton'
+                  classes='form-button'>Return to Login</Button></Link>
               </FormContainer>)
-          }
+        }
 
-        </FormWrapper>
+      </FormWrapper>
     );
   }
 }

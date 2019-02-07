@@ -118,12 +118,12 @@ export class FollowReaction extends Component {
       <Fragment>
         <span>
           <button
-          className={isFollowingAuthor ? 'following' : 'follow'}
-          onClick={() => (!unloading || !loading) && this.handleClick()}>
+            className={isFollowingAuthor ? 'following' : 'follow'}
+            onClick={() => (!unloading || !loading) && this.handleClick()}>
             {isFollowingAuthor ? 'following' : 'follow'}
           </button>
         </span>
-    </Fragment>
+      </Fragment>
     );
   }
 }

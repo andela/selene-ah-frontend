@@ -4,36 +4,36 @@ import * as actionTypes from './actionTypes';
 
 export const authSuccess = (authType, newUser) => {
   switch (authType.toUpperCase()) {
-    case 'GOOGLE':
-      return ({
-        type: actionTypes.GOOGLE_AUTH_SUCCESS,
-        newUser,
-      });
-    case 'FACEBOOK':
-      return ({
-        type: actionTypes.FACEBOOK_AUTH_SUCCESS,
-        newUser,
-      });
+  case 'GOOGLE':
+    return ({
+      type: actionTypes.GOOGLE_AUTH_SUCCESS,
+      newUser,
+    });
+  case 'FACEBOOK':
+    return ({
+      type: actionTypes.FACEBOOK_AUTH_SUCCESS,
+      newUser,
+    });
 
-    case 'TWITTER':
-      return ({
-        type: actionTypes.TWITTER_AUTH_SUCCESS,
-        newUser,
-      });
-    default: return null;
+  case 'TWITTER':
+    return ({
+      type: actionTypes.TWITTER_AUTH_SUCCESS,
+      newUser,
+    });
+  default: return null;
   }
 };
 
 const getSocialAuthAction = (authType) => {
   switch (authType.toUpperCase()) {
-    case 'GOOGLE':
-      return actionTypes.GOOGLE_AUTH_FAIL;
-    case 'FACEBOOK':
-      return actionTypes.FACEBOOK_AUTH_FAIL;
-    case 'TWITTER':
-      return actionTypes.TWITTER_AUTH_FAIL;
-    default:
-      return null;
+  case 'GOOGLE':
+    return actionTypes.GOOGLE_AUTH_FAIL;
+  case 'FACEBOOK':
+    return actionTypes.FACEBOOK_AUTH_FAIL;
+  case 'TWITTER':
+    return actionTypes.TWITTER_AUTH_FAIL;
+  default:
+    return null;
   }
 };
 

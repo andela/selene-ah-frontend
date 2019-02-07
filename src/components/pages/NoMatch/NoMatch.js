@@ -9,14 +9,14 @@ import './no-match.scss';
  */
 const NoMatch = () => (
   <Fragment>
-      <main className="pr fixed-body">
+    <main className="pr fixed-body">
       <div className="box pa">
         <div className="message">
           <p>Seems like you are <br /> lost!</p>
           <Link
             className="color-primary"
             to="/">
-              <span>&#8592;</span>Back Home
+            <span>&#8592;</span>Back Home
           </Link>
         </div>
         <div className="image">

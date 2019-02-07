@@ -67,15 +67,15 @@ class Article extends React.Component {
     return (
       <div id="article">
         <Navbar isLoggedIn={this.state.isLoggedIn}
-        changeSidenav={this.changeSidenav} />
+          changeSidenav={this.changeSidenav} />
         { this.state.sidenav
           ? <div className="sidebar-overlay"
-          onClick={() => this.changeSidenav() }>
+            onClick={() => this.changeSidenav() }>
           </div> : null}
 
         { this.state.sidenav
           ? <SideNav isLoggedIn={ this.state.isLoggedIn }
-          changeSidenav={ this.changeSidenav} /> : null }
+            changeSidenav={ this.changeSidenav} /> : null }
         <section className="author-section container"
           style={{ boxShadow: 'none' }}>
           <div className="author-box">
@@ -89,22 +89,22 @@ class Article extends React.Component {
             <div className="author-bio">
               <div>
                 <Link to="#" className="author-name">{
-                    this.props.response.article.author.userName
-                  }</Link>
+                  this.props.response.article.author.userName
+                }</Link>
                 <span>{this.props.response.article.author.userName === userName
                   ? <button
-                  id="editBtn"
-                  onClick={this.editArticleHandler}
-                >
+                    id="editBtn"
+                    onClick={this.editArticleHandler}
+                  >
                   Edit
-                </button> : <Follow
-                  followerId={this.props.response.article.userId}
-                  id={id}
-                  isFollowingAuthor={followedByUser(
-                    this.props.followers.followees || [],
-                    this.props.response.article.userId,
-                  )}
-                />
+                  </button> : <Follow
+                    followerId={this.props.response.article.userId}
+                    id={id}
+                    isFollowingAuthor={followedByUser(
+                      this.props.followers.followees || [],
+                      this.props.response.article.userId,
+                    )}
+                  />
                 }</span>
               </div>
               <div className="article-stat">
@@ -122,24 +122,26 @@ class Article extends React.Component {
           </div>
         </section>
         <section className="body container" style={{ boxShadow: 'none' }} >
-        {
-          this.props.response.article.imageUrl
+          {
+            this.props.response.article.imageUrl
           && <div className="article-img"
-          style={{
-            backgroundImage:
+            style={{
+              backgroundImage:
             `url(${this.props.response.article.imageUrl})`,
-          }}
+            }}
           ></div>
-        }
-        <div className="text-center">
-          <h1 className="article-title">{this.props.response.article.title}</h1>
-        </div>
-        <div>
-        {renderHTML(this.props.response.article.body)}
-        </div>
-        <div className="rating">
-           <Ratings {...this.props} />
-        </div>
+          }
+          <div className="text-center">
+            <h1 className="article-title">
+              {this.props.response.article.title}
+            </h1>
+          </div>
+          <div>
+            {renderHTML(this.props.response.article.body)}
+          </div>
+          <div className="rating">
+            <Ratings {...this.props} />
+          </div>
         </section>
         <div className='like-icon container'>
           <LikeReaction
@@ -156,9 +158,9 @@ class Article extends React.Component {
             title={this.props.response.article.title} />
         </div>
         <div>
-        <Comment articleId={this.props.response.article.id}
-        user={this.props.user}
-        />
+          <Comment articleId={this.props.response.article.id}
+            user={this.props.user}
+          />
         </div>
 
       </div>

@@ -9,8 +9,8 @@ const Select = props => (
   <Fragment>
     <select
       className={props.classes} name={props.name} onChange={props.onChange}>
-        {props.children}
-      </select>
+      {props.children}
+    </select>
   </Fragment>
 );
 

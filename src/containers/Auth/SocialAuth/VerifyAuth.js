@@ -37,14 +37,14 @@ export class VerifyAuth extends Component {
   getBaseUrl = (urlType) => {
     const url = process.env.BASE_URL;
     switch (urlType) {
-      case 'twitter':
-        return `${url}twitter/callback`;
-      case 'facebook':
-        return `${url}facebook/callback`;
-      case 'google':
-        return `${url}google/callback`;
-      default:
-        return null;
+    case 'twitter':
+      return `${url}twitter/callback`;
+    case 'facebook':
+      return `${url}facebook/callback`;
+    case 'google':
+      return `${url}google/callback`;
+    default:
+      return null;
     }
   }
 

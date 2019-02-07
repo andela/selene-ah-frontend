@@ -15,36 +15,36 @@ import userIcon from '../../../assets/images/user.svg';
  * @returns {JSX} - UserInfo template
  */
 const UserInfo = props => (
-    <div className="user-profile-top">
-      <div className="row">
-        <div className="user-top">
-          <ProfileImage classname="image-size" imageUrl={props.imageUrl} />
-          <div className="profile-details">
-            <h6>
-              <strong>{props.name}</strong>
-            </h6>
-            <p>
-             {props.bio}
-            </p>
-            <ul>
-             <SocialLinks icon={userIcon}>
-                {props.SocialLinks.userName}
-              </SocialLinks>
-              <SocialLinks icon={twitter}>
-                {props.SocialLinks.twitter}
-              </SocialLinks>
-              <SocialLinks icon={facebook}>
-                {props.SocialLinks.facebook}
-              </SocialLinks>
-              <SocialLinks icon={email}>{props.SocialLinks.email}</SocialLinks>
-            </ul>
-          </div>
-          <button className="edit-button" onClick={() => props.openModal()}>
-            <img src={edit} /> Edit
-          </button>
+  <div className="user-profile-top">
+    <div className="row">
+      <div className="user-top">
+        <ProfileImage classname="image-size" imageUrl={props.imageUrl} />
+        <div className="profile-details">
+          <h6>
+            <strong>{props.name}</strong>
+          </h6>
+          <p>
+            {props.bio}
+          </p>
+          <ul>
+            <SocialLinks icon={userIcon}>
+              {props.SocialLinks.userName}
+            </SocialLinks>
+            <SocialLinks icon={twitter}>
+              {props.SocialLinks.twitter}
+            </SocialLinks>
+            <SocialLinks icon={facebook}>
+              {props.SocialLinks.facebook}
+            </SocialLinks>
+            <SocialLinks icon={email}>{props.SocialLinks.email}</SocialLinks>
+          </ul>
         </div>
+        <button className="edit-button" onClick={() => props.openModal()}>
+          <img src={edit} /> Edit
+        </button>
       </div>
     </div>
+  </div>
 );
 
 UserInfo.propTypes = {

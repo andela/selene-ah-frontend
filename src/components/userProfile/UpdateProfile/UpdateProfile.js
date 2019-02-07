@@ -193,7 +193,7 @@ export class UpdateProfile extends Component {
                   <label className="reset-password-label" id="resetLabel">
                     Bio <span className="textarea-length">
                       {this.state.textAreaLength}
-                      </span>
+                    </span>
                   </label>
                   <textarea
                     value={this.state.bio}

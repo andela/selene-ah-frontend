@@ -17,13 +17,13 @@ const App = ({ user }) => (
             exact path='/'
             render={props => <Home {...props} user={user} />}
           />
-        {routes.map(route => (
+          {routes.map(route => (
             <Route
-            path={route.path}
-            key={route.name}
-            render={props => <route.component {...props} user={user} />}
+              path={route.path}
+              key={route.name}
+              render={props => <route.component {...props} user={user} />}
             />
-        ))}
+          ))}
         </Switch>
       </BrowserRouter>
     </ToastProvider>

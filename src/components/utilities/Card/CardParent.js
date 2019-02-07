@@ -12,12 +12,12 @@ const CardParent = props => (
     <div className="section">
       <div className="wrapper">
         <div className="section--header">
-        <h3>Popular Today</h3>
+          <h3>Popular Today</h3>
         </div>
-          <div className="cards">
-            <div className={`holder ${props.classname}`}>
-              {props.children}
-            </div>
+        <div className="cards">
+          <div className={`holder ${props.classname}`}>
+            {props.children}
+          </div>
         </div>
       </div>
     </div>

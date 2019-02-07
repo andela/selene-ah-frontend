@@ -16,7 +16,7 @@ const colors = [
 const BackDrop = props => (
   <Fragment>
     <div id="backdrop"
-         className={`${colors[Math.floor(Math.random() * colors.length)]}`}>
+      className={`${colors[Math.floor(Math.random() * colors.length)]}`}>
       <h4>{ props.title }</h4>
     </div>
   </Fragment>

@@ -36,17 +36,17 @@ const updateResetFailedState = (state, action) => updateObject(state, {
 
 const resetPassword = (state = initialState, action) => {
   switch (action.type) {
-    case actionType.RESET_PASSWORD_START:
-      return updateObject(initialState, resetPasswordStartState);
+  case actionType.RESET_PASSWORD_START:
+    return updateObject(initialState, resetPasswordStartState);
 
-    case actionType.RESET_PASSWORD_FAILED:
-      return updateResetFailedState(state, action);
+  case actionType.RESET_PASSWORD_FAILED:
+    return updateResetFailedState(state, action);
 
-    case actionType.RESET_PASSWORD_SUCCESS:
-      return updateResetSuccessState(state, action);
+  case actionType.RESET_PASSWORD_SUCCESS:
+    return updateResetSuccessState(state, action);
 
-    default:
-      return state;
+  default:
+    return state;
   }
 };
 

@@ -92,12 +92,12 @@ export class UserProfile extends Component {
    */
   getSelectedTab = (selectedTab) => {
     switch (selectedTab) {
-      case 'Articles':
-        return 'userArticlesTab';
-      case 'Statistics':
-        return 'userStatTab';
-      default:
-        return null;
+    case 'Articles':
+      return 'userArticlesTab';
+    case 'Statistics':
+      return 'userStatTab';
+    default:
+      return null;
     }
   }
 
@@ -174,20 +174,20 @@ export class UserProfile extends Component {
     }
     const { success } = this.props;
     return (
-        <div className="row">
+      <div className="row">
 
         { this.state.sidenav
           ? <div className="sidebar-overlay"
-         onClick={() => this.changeSidenav() }>
-         </div> : null}
+            onClick={() => this.changeSidenav() }>
+          </div> : null}
 
         { this.state.sidenav
           ? <SideNav isLoggedIn={ this.state.isLoggedIn }
-          changeSidenav={ this.changeSidenav} /> : null }
+            changeSidenav={ this.changeSidenav} /> : null }
         <Navbar isLoggedIn={this.state.isLoggedIn}
-        changeSidenav={this.changeSidenav} />
-          { success
-            ? <UserInfo
+          changeSidenav={this.changeSidenav} />
+        { success
+          ? <UserInfo
 
             name={fullname}
             SocialLinks={links}
@@ -195,12 +195,12 @@ export class UserProfile extends Component {
             imageUrl={imageUrl}
             openModal={this.openModal}
           /> : <MyLoader />}
-          {this.state.modal
-            ? <UpdateProfile openModal={this.openModal} /> : null}
+        {this.state.modal
+          ? <UpdateProfile openModal={this.openModal} /> : null}
         <div className="row content-container">
           <SideWidget handleNavClick={this.handleNavChange}
-          activeArticle={this.state.activeArticle}
-          activeStat={this.state.activeStat}/>
+            activeArticle={this.state.activeArticle}
+            activeStat={this.state.activeStat}/>
           { this.state.userStats && !this.props.statError ? <UserStatistic
             followerStat={this.props.noUserFollowerStat}
             articleLikes={this.props.userArticleLike}
@@ -208,14 +208,14 @@ export class UserProfile extends Component {
             bookmarkStat={this.props.bookmarkStat}
             commentStat={this.props.commentStat}
             yourFollowing={this.props.usersYouAreFollowing}
-            />
+          />
             : null
           }
           {
             this.state.activeArticle ? <UserArticle name={fullname}/> : null
           }
-          </div>
         </div>
+      </div>
     );
   }
 }
