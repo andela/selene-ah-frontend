@@ -89,9 +89,7 @@ export class SaveArticle extends Component {
  */
   getCategorySelection = (event) => {
     event.preventDefault();
-    if (!this.props.fetchCategoriesSuccess) {
-      this.props.fetchCategories();
-    }
+    if (!this.props.fetchCategoriesSuccess) { this.props.fetchCategories(); }
     const categoryId = event.target.options[event.target.selectedIndex].value;
     this.setState({ categoryId });
   }
@@ -137,9 +135,7 @@ export class SaveArticle extends Component {
  * @returns { null } does not return anything
  */
 updateArticle = async () => {
-  const articleObject = {
-    id: this.state.articleId,
-  };
+  const articleObject = { id: this.state.articleId };
   if (this.state.fileSelected) await this.uploadImageHandler();
   if ((this.state.title && this.state.title.length < 5)
     || this.state.title.length > 200) {
@@ -179,7 +175,6 @@ readUploadedFile = (file) => {
         featuredImage: fileReader.result,
       });
     });
-
     fileReader.readAsDataURL(file);
   }
 }
@@ -276,6 +271,9 @@ shouldComponentUpdate(nextProps) {
       articleId: nextProps.createArticleResponse.data.article.id,
     });
     this.props.toastManager.add(ARTICLE_SUCCESS, TOAST_SUCCESS_OBJECT);
+    const articleUrl = `article/${nextProps
+      .createArticleResponse.data.article.slug}`;
+    this.props.history.push(articleUrl);
   }
 
   if (this.props.updateArticleError !== nextProps.updateArticleError
@@ -286,6 +284,8 @@ shouldComponentUpdate(nextProps) {
   if (this.props.updateArticleSuccess !== nextProps.updateArticleSuccess
       && nextProps.updateArticleSuccess === true) {
     this.props.toastManager.add(ARTICLE_UPDATE_SUCCESS, TOAST_SUCCESS_OBJECT);
+    const slug = this.props.location.pathname.split('/')[2];
+    this.props.history.push(`/article/${slug}`);
   }
   return true;
 }
@@ -319,21 +319,16 @@ render() {
   };
   return (
     <Fragment>
-      { this.state.sidenav
-        ? <div className="sidebar-overlay"
-          onClick={() => this.changeSidenav() }>
-        </div> : null}
+      { this.state.sidenav ? <div className="sidebar-overlay"
+        onClick={() => this.changeSidenav() }> </div> : null}
 
-      { this.state.sidenav
-        ? <SideNav isLoggedIn={ true }
-          changeSidenav={ this.changeSidenav} /> : null }
+      { this.state.sidenav ? <SideNav isLoggedIn={ true }
+        changeSidenav={ this.changeSidenav} /> : null }
 
       <Navbar isLoggedIn={true} changeSidenav={this.changeSidenav}/>
       <EditorHeader {...editorProps}/>
       <div className="editorContainer">
-        <Input
-          type="text"
-          id="articleTitle"
+        <Input type="text" id="articleTitle"
           placeholder="Title"
           onChange={this.titleChangeHander}
           inputValue={this.state.title || ''}
@@ -343,8 +338,7 @@ render() {
           <img src={this.state.featuredImage} alt="featured image" />
         </div>
         <TextEditor
-          setArticleBody={this.getArticleBody}
-          body={this.state.body}/>
+          setArticleBody={this.getArticleBody} body={this.state.body}/>
       </div>
     </Fragment>
   );

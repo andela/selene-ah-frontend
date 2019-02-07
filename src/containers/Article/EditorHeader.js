@@ -4,6 +4,7 @@ import { ClipLoader } from 'react-spinners';
 
 import Select from '../../components/utilities/Select/Select';
 import { Button } from '../../components/utilities';
+import './spinner.scss';
 
 const EditorHeader = props => (
   <div className="editorActions container">
@@ -34,7 +35,7 @@ const EditorHeader = props => (
     }
     <ClipLoader
       sizeUnit={'px'}
-      size={30}
+      size={15}
       color={'#fff'}
       loading={props.isCreatingArticle
           || props.isUploadingImage }
@@ -50,11 +51,11 @@ const EditorHeader = props => (
     {
       !props.isUploadingImage
       && !props.isUpdatingArticle
-      && 'Edit'
+      && 'Update'
     }
     <ClipLoader
       sizeUnit={'px'}
-      size={30}
+      size={15}
       color={'#fff'}
       loading={props.isUpdatingArticle
         || props.isUploadingImage }
