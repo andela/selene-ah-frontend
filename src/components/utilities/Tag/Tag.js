@@ -1,13 +1,18 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import './Tag.scss';
+import './tag.scss';
 
+/**
+ * @description - Tag Component
+ * @param {object} props
+ * @returns {JSX} - Tag JSX template
+ */
 const Tag = props => (
   <Fragment>
     <div className="tag--button">
       <a href="#" className={`tag ${props.isActive ? 'tag__primary' : ''}`}>
         <props.icon />
-          {props.children}
+        {props.children}
       </a>
     </div>
   </Fragment>

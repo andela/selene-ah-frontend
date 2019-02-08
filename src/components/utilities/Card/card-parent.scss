@@ -1,0 +1,253 @@
+@import '../../../assets/scss/abstracts/variables';
+@import '../../../assets/scss/abstracts/mixins';
+
+$card-shadow: 0 1px 2px rgba(0, 0, 0, .16);
+$card-shadow-hover: 0 6px 12px rgba(0, 0, 0, .16);
+
+.section--header {
+  margin: 4rem 0px;
+}
+
+.section--header h3 {
+  text-transform: uppercase;
+  color: rgb(51, 68, 85);
+  font-size: 1.9rem;
+  font-weight: bold;
+}
+
+.card-content {
+  position: relative;
+}
+
+.card {
+  display: block;
+  background-color: $white;
+  border-radius: 3px;
+  position: relative;
+  width: 90%;
+  height: 200px;
+  transition: all ease-in-out 200ms;
+
+  &__has-shadow {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-clip: padding-box;
+    box-shadow: $card-shadow;
+    padding: 1rem;
+
+    @include webkit-helper(box-shadow, $card-shadow);
+
+    &:hover {
+      box-shadow: $card-shadow-hover;
+      @include webkit-helper(box-shadow, $card-shadow-hover);
+    }
+  }
+
+  &--image {
+    width: 100%;
+    background-image: url('../../../assets/images/avatars/robot.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 15rem;
+  }
+
+  &--link {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+
+  &--footer {
+    // margin-top: -1rem;
+    position: relative;
+    padding: 1rem .5rem;
+    width: 90%;
+
+    h4 {
+      font-size: 1.6rem;
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-bottom: .8rem;
+    }
+
+    p {
+      font-size: 1.4rem;
+    }
+
+    a {
+      color: #345;
+
+      &:hover {
+        color: lighten(#345, 16);
+      }
+    }
+  }
+
+  &--info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1rem;
+  }
+
+  &--avatar {
+    a {
+      position: relative;
+
+      span:first-child {
+        height: 2rem;
+        width: 2rem;
+        border-radius: 50%;
+        display: inline-block;
+
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+      span:nth-child(2) {
+        color: $primary-text-color;
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 3px;
+        padding-left: 3px;
+        font-size: inherit;
+      }
+    }
+  }
+
+  &--time {
+    p {
+      display: flex;
+      align-items: center;
+
+      .icon {
+        height: 1.5rem;
+      }
+    }
+  }
+}
+
+aside {
+  float: right;
+  width: 26rem;
+  margin: 8rem 3rem 0 0;
+}
+  section{
+    background-clip: #FFFFFF;
+    box-shadow: $card-shadow;
+    margin-bottom: 5rem;
+    h3{
+      text-align: center;
+      padding: 2.5rem;
+    }
+  }
+
+div .writer--info{
+  padding: 1rem;
+  display: inline-block;
+  text-align: center;
+}
+
+ .title {
+  text-transform: capitalize;
+  color: #4D4F59;
+  opacity: .9;
+  font-size: 1.8rem;
+  font-weight: bold;
+  padding: 1rem;
+  vertical-align: top;
+}
+
+div .num {
+  color: #D0D0D1;
+  font-weight: 700;
+  font-size: 5rem;
+  padding: 1rem;
+}
+
+.categories {
+  background-color: #D8EDED;
+}
+.category{
+  margin-top: 8rem;
+  margin-bottom: 4rem;
+}
+.call-to-category {
+  background-color: #D8EDED;
+}
+
+.category--info {
+  position: relative;
+  right: -25%;
+  left: 25%;
+}
+
+div.category > span {
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  border: 1px solid #707070;
+  border-radius: .5rem;
+}
+#info {
+  margin-left: -4.5rem;
+}
+
+.holder {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+.fix-holder {
+  grid-template-columns: repeat(auto-fit, minmax(350px, 350px));
+  grid-gap: 0px;
+}
+.article-by {
+  padding-left: 2rem;
+  font-weight: 600;
+}
+.cat > svg{
+  width: 40px;
+  height: 40px;
+  stroke-width: 1;
+}
+
+.cat--title {
+  text-transform: uppercase;
+  font-size: 1.5rem;
+}
+.cater {
+  margin-left: -5rem;
+}
+
+.fav {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+.cat {
+  vertical-align: super;
+}
+.become {
+  padding: 1.2rem 3rem;
+}
+.more {
+  margin-left: -1.7rem;
+}
+
+/*Media Queries*/
+@media(max-width: 1071px){
+	.fix-holder{
+		grid-template-columns: repeat(auto-fit, minmax(50%, 50%));
+  }
+  .article-by {
+    display: none;
+  }
+}
+
+@media(max-width: 846px){
+	.fix-holder{
+		grid-template-columns: repeat(auto-fit, minmax(100%, 100%));
+	}
+}

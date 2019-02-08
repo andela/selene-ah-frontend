@@ -4,12 +4,13 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Article from './Article';
 import articleViewActions from '../../actions/articleAction/articleView';
-import './ArticleView.scss';
-import ArticleLoader from '../../components/misc/ArticleLoader/ArticleLoader';
+import './article-view.scss';
+import ArticleLoader
+  from '../../components/utilities/ArticleLoader/ArticleLoader';
 import fetchAverageRating
-  from '../../actions/Ratings/AverageRatingActionCreators';
-import postRating from '../../actions/Ratings/postRatingActionCreators';
-import fetchUserRatings from '../../actions/Ratings/userRatingActionCreators';
+  from '../../actions/ratings/averageRatingActionCreators';
+import postRating from '../../actions/ratings/postRatingActionCreators';
+import fetchUserRatings from '../../actions/ratings/userRatingActionCreators';
 
 /**
  * @description Handles our articleView functionality
@@ -59,14 +60,14 @@ export class ArticleView extends Component {
       isAverageLoading,
     } = this.props;
     return (
-  <Fragment>
+      <Fragment>
         { (isFetchingArticle
           || isFetchingFollowers)
           && <ArticleLoader />}
         { (this.props.response)
           && (!isFetchingArticle || !isAverageLoading || !isFetchingFollowers)
           && <Article {...this.props}/> };
-     </Fragment>
+      </Fragment>
     );
   }
 }

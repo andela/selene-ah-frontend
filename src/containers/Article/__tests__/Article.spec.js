@@ -10,13 +10,14 @@ describe('Article Component Test', () => {
     unmountArticle: jest.fn(),
     changeSidenav: changeSidenavSpy,
     isLoggedIn: true,
+    user: {
+      id: 1,
+      userName: 'davandela',
+    },
     followers: {
       followees: [
         {},
       ],
-    },
-    user: {
-      id: 1,
     },
     response: {
       article: {
@@ -39,6 +40,7 @@ describe('Article Component Test', () => {
       location: {
         pathname: '/testpath',
       },
+      push: jest.fn(),
     },
   };
 
@@ -77,6 +79,9 @@ describe('Article Component Test', () => {
           },
         },
       },
+      user: {
+        userName: 'davandela',
+      },
       location: {
         pathname: '/jdakdjkajda',
       },
@@ -87,6 +92,9 @@ describe('Article Component Test', () => {
   it('should render the article component', () => {
     wrapper.setProps({
       isLoggedIn: true,
+      user: {
+        userName: 'davandela',
+      },
       response: {
         article: {
           author: {
@@ -114,6 +122,9 @@ describe('Article Component Test', () => {
   it('should render the article component', () => {
     wrapper.setProps({
       changeSidenav: changeSidenavSpy,
+      user: {
+        userName: 'davandela',
+      },
       isLoggedIn: true,
       followers: {
 
@@ -158,5 +169,10 @@ describe('Article Component Test', () => {
 
   it('should call componentWillUnmount', () => {
     expect(wrapper.instance().componentWillUnmount());
+  });
+
+
+  it('should call editArticleHandler', () => {
+    expect(wrapper.instance().editArticleHandler());
   });
 });

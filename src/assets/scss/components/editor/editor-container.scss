@@ -1,0 +1,58 @@
+@import '../../abstracts/variables';
+
+body{
+overflow: auto;
+}
+
+.editorContainer{
+	width: 70%;
+	height: auto;
+	padding: 10px;
+	margin: 0 auto;
+
+	#articleTitle.input{
+		width: 100%;
+		min-height: 60px;
+		border: 0px;
+		font-size: 2em;
+		padding: 20px 0;
+		font-weight: bold;
+	}
+
+	#featuredImage{
+		border: 1px solid $light-border-color;
+		padding: 10px 10px;
+		margin-right: 40px;
+	}
+
+	.featuredImageContainer{
+		max-width: 70%;
+		max-height: 350px;
+		display: block;
+		margin-bottom: 20px;
+		overflow: hidden;
+		img{
+			max-width: 80%;
+			margin: 0 auto;
+		}
+	}
+}
+
+.editorActions{
+	margin-top: 80px;
+
+	button{
+		display: inline-block;
+		margin-top: 10px;
+	}
+}
+
+
+.editorBox{
+	min-height: 80vh;
+	font-size: 1.5em;
+}
+
+.hiddenDisplay{
+	display: none;
+}

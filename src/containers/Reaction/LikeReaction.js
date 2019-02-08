@@ -122,7 +122,7 @@ export class LikeArticle extends Component {
           {this.state.likeCount === 1
             ? `${this.state.likeCount} like`
             : `${this.state.likeCount} likes`} </p>
-    </div>
+      </div>
     );
   }
 }

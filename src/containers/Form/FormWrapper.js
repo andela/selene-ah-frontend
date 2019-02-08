@@ -28,14 +28,14 @@ export default class FormWrapper extends Component {
   render() {
     return (
       <div className="row">
-      <div className={`
+        <div className={`
           ${this.props.changeClass || 'img-container-form'} row`}></div>
-      <div className="row">
-        <div className='form-nav'>
-          <Link className='navbar--logo' to='/'>AUTHORS HAVEN</Link>
+        <div className="row">
+          <div className='form-nav'>
+            <Link className='navbar--logo' to='/'>AUTHORS HAVEN</Link>
+          </div>
         </div>
-      </div>
-      <div className="row">
+        <div className="row">
           <div className="content col s12">
             <div className="img-container col m6">
               <div className="flex-wrapper">
@@ -45,21 +45,21 @@ export default class FormWrapper extends Component {
                       background: `url(${this.props.imageUrl})
                         no-repeat center center / contain`,
                     }
-                    }>
+                  }>
                 </div>
               </div>
             </div>
-          <div className="col m6 s12" id="adjust-container">
-            <div className={`
+            <div className="col m6 s12" id="adjust-container">
+              <div className={`
           ${this.props.changeForm || 'inner-form-container'}`}
-          >
-            <div className="form-content">
-            {this.props.children}
+              >
+                <div className="form-content">
+                  {this.props.children}
+                </div>
+              </div>
             </div>
           </div>
-          </div>
         </div>
-      </div>
       </div>
     );
   }

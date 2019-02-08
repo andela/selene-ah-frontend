@@ -1,6 +1,11 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
+/**
+ * @description - Input Component
+ * @param {object} props
+ * @returns {JSX} - Input Field JSX template
+ */
 const Input = props => (
   <Fragment>
     <input
@@ -13,6 +18,7 @@ const Input = props => (
       maxLength={props.maxLength}
       onChange={props.onChange}
       value={props.inputValue}
+      disabled={props.disabled}
     />
   </Fragment>
 );
@@ -27,6 +33,8 @@ Input.propTypes = {
   classes: PropTypes.string,
   inputValue: PropTypes.any,
   onChange: PropTypes.func,
+  value: PropTypes.string,
+  disabled: PropTypes.bool,
 };
 
 

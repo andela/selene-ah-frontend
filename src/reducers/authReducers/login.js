@@ -11,12 +11,24 @@ export const initialState = {
 
 const loginStartState = { isLoading: true };
 
+/**
+ * @description - Dispatches when login is successful
+ * @param {object} state
+ * @param {object} action
+ * @returns {object} - An updated state
+ */
 const updateLoginSuccessState = (state, action) => updateObject(state, {
   isLoading: true,
   response: action.payload,
   success: true,
 });
 
+/**
+ * @description - Dispatches when login fails
+ * @param {object} state
+ * @param {object} action
+ * @returns {object} - An updated state
+ */
 const updateLoginFailedState = (state, action) => updateObject(state, {
   isLoading: false,
   loginError: true,
@@ -27,17 +39,17 @@ const updateLoginFailedState = (state, action) => updateObject(state, {
 
 const loginReducer = (state = initialState, action) => {
   switch (action.type) {
-    case type.LOGIN_START:
-      return updateObject(initialState, loginStartState);
+  case type.LOGIN_START:
+    return updateObject(initialState, loginStartState);
 
-    case type.LOGIN_FAILED:
-      return updateLoginFailedState(state, action);
+  case type.LOGIN_FAILED:
+    return updateLoginFailedState(state, action);
 
-    case type.LOGIN_SUCCESS:
-      return updateLoginSuccessState(state, action);
+  case type.LOGIN_SUCCESS:
+    return updateLoginSuccessState(state, action);
 
-    default:
-      return state;
+  default:
+    return state;
   }
 };
 

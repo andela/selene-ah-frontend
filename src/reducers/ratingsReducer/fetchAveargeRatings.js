@@ -1,4 +1,4 @@
-import * as type from '../../actions/Ratings/actionTypes';
+import * as type from '../../actions/ratings/actionTypes';
 import updateObject from '../../helpers/store/utility';
 
 export const initialState = {
@@ -10,32 +10,47 @@ export const initialState = {
 
 const isAverageRatingLoadingState = { isAverageLoading: true };
 
-// eslint-disable-next-line max-len
-const updateFetchAverageRatingSuccessState = (state, action) => updateObject(state, {
-  isAverageLoading: false,
-  averageRating: action.payload,
-  averageSuccess: true,
-});
+/**
+ * @description - Dispatches when average rating is gotten successfully
+ * @param {object} state
+ * @param {object} action
+ * @returns {object} - An updated state
+ */
+const updateFetchAverageRatingSuccessState = (state, action) => updateObject(
+  state, {
+    isAverageLoading: false,
+    averageRating: action.payload,
+    averageSuccess: true,
+  },
+);
 
-// eslint-disable-next-line max-len
-const updateFetchAverageRatingFailedState = (state, action) => updateObject(state, {
-  isAverageLoading: false,
-  averageRating: action.payload,
-  averageError: true,
-});
+/**
+ * @description - Dispatches when average rating fails
+ * @param {object} state
+ * @param {object} action
+ * @returns {object} - An updated state
+ */
+const updateFetchAverageRatingFailedState = (state, action) => updateObject(
+  state, {
+    isAverageLoading: false,
+    averageRating: action.payload,
+    averageError: true,
+  },
+);
+
 
 const fetchAverageRating = (state = initialState, action) => {
   switch (action.type) {
-    case type.FETCH_AVERAGE_RATING_START:
-      return updateObject(state, isAverageRatingLoadingState);
+  case type.FETCH_AVERAGE_RATING_START:
+    return updateObject(state, isAverageRatingLoadingState);
 
-    case type.FETCH_AVERAGE_RATING_FAILED:
-      return updateFetchAverageRatingFailedState(state, action);
+  case type.FETCH_AVERAGE_RATING_FAILED:
+    return updateFetchAverageRatingFailedState(state, action);
 
-    case type.FETCH_AVERAGE_RATING_SUCCESS:
-      return updateFetchAverageRatingSuccessState(state, action);
-    default:
-      return state;
+  case type.FETCH_AVERAGE_RATING_SUCCESS:
+    return updateFetchAverageRatingSuccessState(state, action);
+  default:
+    return state;
   }
 };
 

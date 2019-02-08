@@ -3,7 +3,7 @@ import {
   GET_CATEGORY,
   GET_CATEGORY_SUCCESS,
   GET_CATEGORY_FAILURE,
-} from '../../actions/articles/categoryActionTypes';
+} from '../../actions/articles/actionTypes';
 
 export const initialState = {
   isFetchingCategories: false,
@@ -12,12 +12,23 @@ export const initialState = {
   fetchCategoriesSuccess: false,
 };
 
-const updateGetCategory = state => updateStateUtility(
+/**
+ * @description - Dispatches when getCategory start
+ * @param {object} state
+ * @returns {object} - An updated state
+ */
+const getCategory = state => updateStateUtility(
   state,
   { isFetchingCategories: true, fetchCategoriesError: false },
 );
 
-const updateGetCategorySuccess = (state, payload) => updateStateUtility(
+/**
+ * @description - Dispatches when category is returned successfully
+ * @param {object} state
+ * @param {object} payload
+ * @returns {object} - An updated state
+ */
+const getCategorySuccess = (state, payload) => updateStateUtility(
   state,
   {
     isFetchingCategories: false,
@@ -27,7 +38,13 @@ const updateGetCategorySuccess = (state, payload) => updateStateUtility(
   },
 );
 
-const updateGetCategoryFailure = (state, payload) => updateStateUtility(
+/**
+ * @description - Dispatches when there is a failure in fetching category
+ * @param {object} state
+ * @param {object} payload
+ * @returns {object} - An updated state
+ */
+const getCategoryFailure = (state, payload) => updateStateUtility(
   state,
   {
     isFetchingCategories: false,
@@ -39,14 +56,14 @@ const updateGetCategoryFailure = (state, payload) => updateStateUtility(
 
 const categoryReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_CATEGORY:
-      return updateGetCategory(state);
-    case GET_CATEGORY_SUCCESS:
-      return updateGetCategorySuccess(state, action.payload);
-    case GET_CATEGORY_FAILURE:
-      return updateGetCategoryFailure(state, action.payload);
-    default:
-      return state;
+  case GET_CATEGORY:
+    return getCategory(state);
+  case GET_CATEGORY_SUCCESS:
+    return getCategorySuccess(state, action.payload);
+  case GET_CATEGORY_FAILURE:
+    return getCategoryFailure(state, action.payload);
+  default:
+    return state;
   }
 };
 

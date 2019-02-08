@@ -1,5 +1,5 @@
 import moxios from 'moxios';
-import * as categoryActionTypes from '../categoryActionTypes';
+import * as categoryActionTypes from '../actionTypes';
 import fetchCategories, * as categoryActions from '../categoryActions';
 
 const url = `${process.env.SERVER_API}/categories`;

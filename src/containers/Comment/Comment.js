@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { withToastManager } from 'react-toast-notifications';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import './comment.scss';
-import actionCreators from '../../actions/commentAction/commentView';
 import EachComment from './EachComment';
 import ShowCommentButton from './ShowCommentButton';
 import WriteComment from './WriteComment';
+import actionCreators from '../../actions/commentAction/commentView';
+import './comment.scss';
 
 
 /**
@@ -141,35 +141,35 @@ export class Comment extends Component {
      */
   render() {
     return (
-          <div className='container'>
-          <section className='comment-section' style={{ boxShadow: 'none' }}>
-              <ShowCommentButton
-                loading={this.state.isLoading}
-                viewComment={this.state.viewComment}
-                showResponse={this.handleCommentButton}/>
+      <div className='container'>
+        <section className='comment-section' style={{ boxShadow: 'none' }}>
+          <ShowCommentButton
+            loading={this.state.isLoading}
+            viewComment={this.state.viewComment}
+            showResponse={this.handleCommentButton}/>
 
-              {
+          {
             this.props.getSuccess
             && this.state.viewComment
             && !this.props.isLoading ? (
-            <div>
-              <label className='comment-response-label'>Comments</label>
-              <WriteComment
-                inputChange={this.handleInputChange}
-                setWriteComment={this.state.setWriteComment}
-                postIsLoading={this.props.postIsLoading}
-                submitComment={this.commentSubmit}
-                textFocus={this.onTextFocus}
-                content={this.state.content}
-              />
-              {Array.isArray(this.props.response)
+                <div>
+                  <label className='comment-response-label'>Comments</label>
+                  <WriteComment
+                    inputChange={this.handleInputChange}
+                    setWriteComment={this.state.setWriteComment}
+                    postIsLoading={this.props.postIsLoading}
+                    submitComment={this.commentSubmit}
+                    textFocus={this.onTextFocus}
+                    content={this.state.content}
+                  />
+                  {Array.isArray(this.props.response)
               && this.props.response.map(comment => (
-              <EachComment key={comment.id} commentDetails={comment} />
+                <EachComment key={comment.id} commentDetails={comment} />
               ))}
-            </div>
+                </div>
               ) : (null)}
-             </section>
-          </div>
+        </section>
+      </div>
     );
   }
 }

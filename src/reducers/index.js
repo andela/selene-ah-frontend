@@ -5,8 +5,9 @@ import socialAuthReducer from './authReducers/socialAuthReducer';
 import resetPassword from './authReducers/resetPassword';
 import updatePassword from './authReducers/updatePassword';
 import likeArticleReducer from './reactionReducers/likearticleReactions';
-import articleViewReducer from './articleViewReducer/articleView';
-import articlesResponse from './authReducers/home';
+import articleViewReducer
+  from './articleReducers/articleViewReducer/articleView';
+import articlesResponse from './homeReducers/home';
 import articleReducers from './articleReducers/articleReducers';
 import categoryReducer from './articleReducers/categoryReducer';
 import imageUploadReducers from './articleReducers/imageUploadReducers';

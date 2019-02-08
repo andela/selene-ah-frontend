@@ -3,7 +3,7 @@ import React, { Fragment, Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import robot from '../../../assets/images/avatars/robot.svg';
-import './SideNav.scss';
+import './sidenav.scss';
 
 /**
  * @class
@@ -18,13 +18,13 @@ export default class SideNav extends Component {
     return (
       <Fragment>
         <div id="sidenav" className="sidenav--show">
-        <div className="side">
+          <div className="side">
             <div className="side--logo">
-            <a href="#!">Authors Haven</a>
-            { this.props.isLoggedIn
-              ? <div><img className="circle avat" src={robot} /></div>
-              : null }
-              </div>
+              <a href="#!">Authors Haven</a>
+              { this.props.isLoggedIn
+                ? <div><img className="circle avat" src={robot} /></div>
+                : null }
+            </div>
             <div className="side-items">
               <a href="#">Categories</a>
             </div>
@@ -32,7 +32,7 @@ export default class SideNav extends Component {
               : <div className="side-items"><Link to='/signup' className="waves-effect" href="#!">Become a writer</Link></div>}
             <div className="side-items"><a className="waves-effect" href="#!">Help</a></div>
           </div>
-          </div>
+        </div>
       </Fragment>
     );
   }

@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as actionCreators from '../../../actions/authAction/signup';
 import Signup from './SignUp';
+import * as actionCreators from '../../../actions/authAction/signup';
 
 export const mapStateToProps = state => ({
   ...state.signup,
