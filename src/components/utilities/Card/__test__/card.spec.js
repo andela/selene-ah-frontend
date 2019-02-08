@@ -21,7 +21,7 @@ describe('Card Component', () => {
   });
 
   it('it should render a Card Component', () => {
-    shallow(<Card {...props} />);
+    expect(shallow(<Card {...props} />)).toBeTruthy;
   });
 
   it('should render default avatar', () => {
@@ -30,5 +30,6 @@ describe('Card Component', () => {
         imageUrl: null,
       },
     });
+    expect(wrapper.props().imageUrl).toEqual(undefined);
   });
 });

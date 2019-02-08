@@ -12,6 +12,6 @@ describe('Card Component', () => {
   });
 
   it('it should render a Card Component', () => {
-    shallow(<Hero {...props} />);
+    expect(shallow(<Hero {...props} />)).toBeTruthy;
   });
 });

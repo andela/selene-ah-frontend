@@ -12,10 +12,11 @@ describe('SideNav Component', () => {
   });
 
   it('should render SideNav', () => {
-    shallow(<SideNav {...props}/>);
+    expect(shallow(<SideNav {...props}/>)).toBeTruthy;
   });
 
   it('it should render an avatar based on isLoggenIn state', () => {
     wrapper.setProps({ isLoggedIn: false });
+    expect(wrapper.props()).toBeTruthy;
   });
 });

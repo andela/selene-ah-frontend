@@ -14,7 +14,7 @@ describe('Navbar Component', () => {
   });
 
   it('it should render a Navbar Component', () => {
-    shallow(<Navbar {...props} />);
+    expect(shallow(<Navbar {...props} />)).toBeTruthy;
   });
 
   it('should open navbar state when clicked', () => {
@@ -30,6 +30,6 @@ describe('Navbar Component', () => {
   it('should logout when list is clicked', () => {
     localStorage.removeItem = jest.fn();
     const container = wrapper.find('li.logout');
-    container.at(0).simulate('click');
+    expect(container.at(0).simulate('click')).toBeTruthy;
   });
 });

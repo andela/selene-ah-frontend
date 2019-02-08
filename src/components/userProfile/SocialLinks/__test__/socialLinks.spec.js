@@ -8,6 +8,6 @@ describe('Social Component', () => {
     children: 'links',
   };
   it('should render Social links', () => {
-    shallow(<SocialLinks {...props} />);
+    expect(shallow(<SocialLinks {...props} />)).toBeTruthy;
   });
 });

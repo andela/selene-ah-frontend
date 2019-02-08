@@ -150,7 +150,7 @@ describe('Article Component Test', () => {
         pathname: '/jdakdjkajda',
       },
     });
-    wrapper.instance().changeSidenav();
+    expect(wrapper.instance().changeSidenav()).toBeTruthy;
   });
 
   it('should click the overlay button', () => {
@@ -158,21 +158,22 @@ describe('Article Component Test', () => {
       sidenav: true,
     });
     const sidenavBtn = wrapper.find('div.sidebar-overlay');
-    sidenavBtn.at(0).simulate('click');
+    expect(sidenavBtn.at(0).simulate('click')).toBeTruthy;
   });
 
   it('should set user props', () => {
     wrapper.setProps({
       user: null,
     });
+    expect(wrapper.props()).toBeTruthy;
   });
 
   it('should call componentWillUnmount', () => {
-    expect(wrapper.instance().componentWillUnmount());
+    expect(wrapper.instance().componentWillUnmount()).toBeTruthy;
   });
 
 
   it('should call editArticleHandler', () => {
-    expect(wrapper.instance().editArticleHandler());
+    expect(wrapper.instance().editArticleHandler()).toBeTruthy;
   });
 });

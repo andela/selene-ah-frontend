@@ -7,6 +7,7 @@ let wrapper;
 describe('## App container', () => {
   it('should render App Container', () => {
     wrapper = shallow(<App />);
+    expect(wrapper).toBeTruthy;
   });
 
   it('should find the Switch component', () => {

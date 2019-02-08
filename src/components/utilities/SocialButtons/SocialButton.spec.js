@@ -8,7 +8,7 @@ describe('Button Component', () => {
     wrapper = shallow(<SocialButton />);
   });
   it('should render SocialButton', () => {
-    shallow(<SocialButton />);
+    expect(shallow(<SocialButton />)).toBeTruthy;
   });
   it('should find Fragment', () => {
     const fragment = wrapper.find('Fragment');

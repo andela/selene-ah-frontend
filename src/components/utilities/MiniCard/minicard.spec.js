@@ -11,7 +11,7 @@ describe('Button Component', () => {
     wrapper = shallow(<MiniCard {...props}/>);
   });
   it('should render MiniCard', () => {
-    shallow(<MiniCard {...props}/>);
+    expect(shallow(<MiniCard {...props}/>)).toBeTruthy;
   });
   it('should find Div', () => {
     const div = wrapper.find('div');

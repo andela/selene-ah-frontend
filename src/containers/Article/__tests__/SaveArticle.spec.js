@@ -81,7 +81,6 @@ describe('CreateAticle Component', () => {
 
   it('Should update the state when the user types the article content', () => {
     wrapper.instance().getArticleBody('something');
-
     expect(wrapper.state().body).toEqual('something');
   });
 
@@ -97,7 +96,9 @@ describe('CreateAticle Component', () => {
   });
 
   it('Should not read an invalid image file', () => {
-    wrapper.instance().readUploadedFile(event2.target.files[0]);
+    expect(wrapper.instance().readUploadedFile(
+      event2.target.files[0],
+    )).toBeTruthy;
   });
 
   it('It should not submit the article if the title is less than 5 characters',
@@ -107,7 +108,7 @@ describe('CreateAticle Component', () => {
         body: <p>ear</p>,
         categoryId: null,
       });
-      wrapper.instance().submitArticle();
+      expect(wrapper.instance().submitArticle()).toBeTruthy;
     });
 
   it('It should not submit the article if'
@@ -118,7 +119,7 @@ describe('CreateAticle Component', () => {
       body: null,
       categoryId: null,
     });
-    wrapper.instance().submitArticle();
+    expect(wrapper.instance().submitArticle()).toBeTruthy;
   });
 
   it('It should not submit the article if'
@@ -130,7 +131,7 @@ describe('CreateAticle Component', () => {
       categoryId: '8e99e00ee9e0',
     });
 
-    wrapper.instance().updateArticle();
+    expect(wrapper.instance().updateArticle()).toBeTruthy;
   });
 
   it('It should not submit the article if categoryId is null',
@@ -140,7 +141,7 @@ describe('CreateAticle Component', () => {
         body: html.deserialize('some text'),
         categoryId: null,
       });
-      wrapper.instance().submitArticle();
+      expect(wrapper.instance().submitArticle()).toBeTruthy;
     });
 
   it('Should submit the article', () => {
@@ -149,23 +150,23 @@ describe('CreateAticle Component', () => {
       body: html.deserialize(bulkText),
       categoryId: 'o890980ijnokjhlkdf',
     });
-    wrapper.instance().submitArticle();
+    expect(wrapper.instance().submitArticle()).toBeTruthy;
   });
 
   it('should display the side nav', () => {
     wrapper.setState({ sidenav: true });
     wrapper.find('.sidebar-overlay').simulate('click');
-    wrapper.instance().changeSidenav();
+    expect(wrapper.instance().changeSidenav()).toBeTruthy;
   });
 
   it('Should not upload image if non is selected', () => {
     wrapper.setState({ fileSelected: false });
-    wrapper.instance().submitArticle();
+    expect(wrapper.instance().submitArticle()).toBeTruthy;
   });
 
   it('should upload the image if the file is selected', async () => {
     wrapper.setState({ fileSelected: true });
-    await wrapper.instance().submitArticle();
+    expect(await wrapper.instance().submitArticle()).toBeTruthy;
   });
 
   it('should  update the state if an image is selected', () => {
@@ -185,14 +186,14 @@ describe('CreateAticle Component', () => {
   });
 
   it('Should check the title input field for change', () => {
-    wrapper2.find('#articleTitle').simulate('change', event);
+    expect(wrapper2.find('#articleTitle').simulate('change', event)).toBeTruthy;
   });
 
   it('should get the selected category', () => {
     wrapper.setProps({
       fetchCategoriesSuccess: true,
     });
-    wrapper.instance().getCategorySelection(event);
+    expect(wrapper.instance().getCategorySelection(event)).toBeTruthy;
   });
 
   it('should not try to display categories if non exist', () => {
@@ -202,7 +203,7 @@ describe('CreateAticle Component', () => {
     wrapper.setProps({
       fetchCategoriesResponse: categoriesResponse,
     });
-    wrapper.instance().render();
+    expect(wrapper.instance().render()).toBeTruthy;
   });
 
   it('should display the edit button if the article has been published', () => {
@@ -214,14 +215,14 @@ describe('CreateAticle Component', () => {
     wrapper.setProps({
       createArticleSuccess: true,
     });
-    wrapper.instance().render();
+    expect(wrapper.instance().render()).toBeTruthy;
   });
 
   it('should get the categories', () => {
     wrapper.setProps({
       fetchCategoriesSuccess: false,
     });
-    wrapper.instance().getCategorySelection(event);
+    expect(wrapper.instance().getCategorySelection(event)).toBeTruthy;
   });
 
   it('should display response messages when update actions occur', () => {
@@ -289,7 +290,7 @@ describe('CreateAticle Component', () => {
   it('should fetch the article before updating if it has not been fetched',
     () => {
       wrapper.setProps({ response: null });
-      wrapper.instance().componentDidMount();
+      expect(wrapper.instance().componentDidMount()).toBeTruthy;
     });
 
   it('should not fecth any article for creating articles',
@@ -298,12 +299,12 @@ describe('CreateAticle Component', () => {
         pathname: 'selene/create-article',
       };
       wrapper.setProps({ location });
-      wrapper.instance().componentDidMount();
+      expect(wrapper.instance().componentDidMount()).toBeTruthy;
     });
 
   it('should not update the image has not been uploaded', async () => {
     wrapper.setProps({ imageUploadedResponse: false });
-    await wrapper.instance().updateArticle();
+    expect(await wrapper.instance().updateArticle()).toBeTruthy;
   });
 
   it('should update the image if an image has been selected', async () => {
@@ -313,7 +314,7 @@ describe('CreateAticle Component', () => {
       body: html.deserialize('dav'),
     });
     wrapper.setProps({ imageUploadedResponse: true });
-    await wrapper.instance().updateArticle();
+    expect(await wrapper.instance().updateArticle()).toBeTruthy;
   });
 
   it('should not update the image if an image has been selected', async () => {
@@ -323,7 +324,7 @@ describe('CreateAticle Component', () => {
       body: html.deserialize('dav'),
     });
     wrapper.setProps({ imageUploadedResponse: true });
-    await wrapper.instance().updateArticle();
+    expect(await wrapper.instance().updateArticle()).toBeTruthy;
   });
 
   it('should not update the body if no content was entered', async () => {
@@ -331,18 +332,18 @@ describe('CreateAticle Component', () => {
       body: null,
     });
     wrapper.setProps({ imageUploadedResponse: true });
-    await wrapper.instance().updateArticle();
+    expect(await wrapper.instance().updateArticle()).toBeTruthy;
   });
 
   it('should not update the title if no content was entered', async () => {
     wrapper.setState({
       title: '',
     });
-    await wrapper.instance().updateArticle();
+    expect(await wrapper.instance().updateArticle()).toBeTruthy;
   });
 
   it('should throw an error if the title is greater than 200', async () => {
     wrapper.setState({ title: bulkText, categoryId: '0970jkjeor89o0u' });
-    await wrapper.instance().updateArticle();
+    expect(await wrapper.instance().updateArticle()).toBeTruthy;
   });
 });

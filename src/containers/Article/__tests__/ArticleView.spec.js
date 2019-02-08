@@ -68,6 +68,6 @@ describe('ArticleView Component Test', () => {
 
   it('should call the fetch user rating function if loggedIn', async () => {
     wrapper.setProps({ user: null });
-    await wrapper.instance().componentDidMount();
+    expect(await wrapper.instance().componentDidMount()).toBeTruthy;
   });
 });

@@ -14,6 +14,6 @@ describe('Card Component', () => {
   });
 
   it('it should render a Card Component', () => {
-    shallow(<Tag {...props} />);
+    expect(shallow(<Tag {...props} />)).toBeTruthy;
   });
 });

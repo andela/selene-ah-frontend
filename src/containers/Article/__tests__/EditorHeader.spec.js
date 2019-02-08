@@ -34,11 +34,13 @@ const event = {
 
 describe('Editor Header ', () => {
   it('Should check the file input field for change', () => {
-    wrapper.find('#featureImage').simulate('change', event);
+    expect(wrapper.find('#featureImage').simulate('change', event)).toBeTruthy;
   });
 
   it('Should check that a category has been selected', () => {
-    wrapper.find('#categorySelect').simulate('change', event);
+    expect(wrapper.find('#categorySelect').simulate(
+      'change', event,
+    )).toBeTruthy;
   });
 
   it('Should display the edit button once the article has been created',

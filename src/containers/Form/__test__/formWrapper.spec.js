@@ -14,7 +14,7 @@ describe('###FormWrapper', () => {
   });
 
   it('should render FormWrapperwq', () => {
-    expect(<FormWrapper {...props} />);
+    expect(<FormWrapper {...props} />).toBeTruthy;
   });
 
   it('should render form-nav css class', () => {

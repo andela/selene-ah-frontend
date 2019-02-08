@@ -24,19 +24,19 @@ describe('Test the article actions', () => {
 
   afterEach(() => moxios.uninstall());
 
-  it('should return an action if CREATE_ARTICLE is triggerd', () => {
+  it('should return an action if UPLOAD_IMAGE is triggerd', () => {
     expect(uploadImage()).toEqual({
       type: imageUploadActionTypes.UPLOAD_IMAGE,
     });
   });
 
-  it('should return an action if CREATE_ARTICLE_SUCCESS is triggered', () => {
+  it('should return an action if UPLOAD_IMAGE_SUCCESS is triggered', () => {
     expect(uploadImageSuccess()).toEqual({
       type: imageUploadActionTypes.UPLOAD_IMAGE_SUCCESS,
     });
   });
 
-  it('should return an action if CREATE_ARTICLE_FAILURE is triggerd', () => {
+  it('should return an action if UPLOAD_IMAGE_FAILURE is triggerd', () => {
     expect(uploadImageFailure()).toEqual({
       type: imageUploadActionTypes.UPLOAD_IMAGE_FAILURE,
     });

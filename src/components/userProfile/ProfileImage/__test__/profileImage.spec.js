@@ -8,6 +8,8 @@ describe('SideWidget Component', () => {
     classname: 'profile',
   };
   it('should render Social links', () => {
-    shallow(<ProfileImage {...props} />);
+    const wrapper = shallow(<ProfileImage {...props} />);
+    const container = wrapper.find('div');
+    expect(container.length).toEqual(3);
   });
 });
