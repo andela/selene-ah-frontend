@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { ClipLoader } from 'react-spinners';
 import { withToastManager } from 'react-toast-notifications';
-import FormContainer from '../../../containers/Form/FormContainer';
-import { Button, Input } from '../../utilities';
-import actionCreators from '../../../actions/userAction/updateProfile';
+import FormContainer from '../Form/FormContainer';
+import { Button, Input } from '../../components/utilities/index';
+import actionCreators from '../../actions/userAction/updateProfile';
 import './update-profile.scss';
-import uploadImage from '../../../helpers/imageUpload';
+import uploadImage from '../../helpers/imageUpload';
 
 /**
  * @param {object} e
@@ -161,6 +161,7 @@ export class UpdateProfile extends Component {
                     value={this.state.email}
                     placeholder={this.props.userData.email}
                     disabled={true}
+                    required={false}
                   />
                   <label className="reset-password-label" id="resetLabel">
                     Facebook Url

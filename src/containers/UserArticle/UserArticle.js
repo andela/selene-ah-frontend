@@ -5,11 +5,11 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import renderHtml from 'react-render-html';
 import { withToastManager } from 'react-toast-notifications';
-import getArticleActions from '../../../actions/userAction/getArticle';
+import getArticleActions from '../../actions/userAction/getArticle';
 import './user-article.scss';
-import ArticleParent from '../../utilities/Card/ArticleParent';
-import Card from '../../utilities/Card/Card';
-import trimBody from '../../../helpers/trimArticleTitle';
+import ArticleParent from '../../components/utilities/Card/ArticleParent';
+import Card from '../../components/utilities/Card/Card';
+import trimBody from '../../helpers/trimArticleTitle';
 
 /**
  * @class userArticle

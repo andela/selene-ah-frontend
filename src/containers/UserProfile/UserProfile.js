@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { withToastManager } from 'react-toast-notifications';
-import UserInfo from '../../components/userProfile/UserInfo/UserInfo';
-import SideWidget from '../../components/userProfile/SideWidget/SideWidget';
-import UserArticle from '../../components/userProfile/UserArticle/UserArticle';
+import UserInfo from '../../components/UserProfile/UserInfo/UserInfo';
+import SideWidget from '../../components/UserProfile/SideWidget/SideWidget';
+import UserArticle from '../UserArticle/UserArticle';
 import UpdateProfile
-  from '../../components/userProfile/UpdateProfile/UpdateProfile';
-import MyLoader from '../../components/userProfile/UserInfo/UserInfoLoader';
+  from '../UpdateProfile/UpdateProfile';
+import MyLoader from '../../components/UserProfile/UserInfo/UserInfoLoader';
 import Navbar from '../../components/utilities/Navbar/Navbar';
 import SideNav from '../../components/utilities/SideNav/SideNav';
 import UserStatistic from './UserStatistics';

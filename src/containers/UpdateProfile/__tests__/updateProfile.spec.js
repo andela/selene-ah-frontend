@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import moxios from 'moxios';
-import imageUpload from '../../../../helpers/imageUpload';
+import imageUpload from '../../../helpers/imageUpload';
 import {
   UpdateProfile,
   mapDispatchToProps,
@@ -9,7 +9,7 @@ import {
 } from '../UpdateProfile';
 
 
-jest.mock('../../../../helpers/imageUpload');
+jest.mock('../../../helpers/imageUpload');
 describe('User update profile container', () => {
   let wrapper;
   let preventDefaultSpy;
