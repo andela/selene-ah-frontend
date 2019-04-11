@@ -6,7 +6,7 @@
 
   ],
   "env": {
-    "SERVER_API": "https://selene-ah-staging.herokuapp.com/api/v1"
+    "SERVER_API": "http://10.0.2.221/api/v1"
   },
   "formation": {
   },
