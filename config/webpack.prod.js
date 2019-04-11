@@ -49,7 +49,7 @@ module.exports = merge(common, {
     uglifyJS,
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
-      'process.env.SERVER_API': JSON.stringify('https://selene-ah-staging.herokuapp.com/api/v1'),
+      'process.env.SERVER_API': JSON.stringify('http://10.0.2.221/api/v1'),
       'process.env.GOOGLE_URL':JSON.stringify('https://selene-ah-staging.herokuapp.com/api/v1/auth/google'),
       'process.env.FACEBOOK_URL': JSON.stringify('https://selene-ah-staging.herokuapp.com/api/v1/auth/facebook'),
       'process.env.TWITTER_URL':JSON.stringify('https://selene-ah-staging.herokuapp.com/api/v1/auth/twitter'),
