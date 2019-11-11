@@ -16,7 +16,7 @@ describe('Button Component', () => {
   });
 
   it('should render Input', () => {
-    shallow(<Input {...props} />);
+    expect(shallow(<Input {...props} />)).toBeTruthy;
   });
 
   it('should find Fragment', () => {

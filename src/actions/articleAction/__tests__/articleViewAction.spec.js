@@ -17,13 +17,13 @@ describe('ArticleView Actions', () => {
     moxios.uninstall();
   });
 
-  it(`should return an action object once ${type.FETCH_ARTICLE_START} is fired`, () => {
+  it('should return an action object once FETCH_ARTICLE_START is fired', () => {
     expect(articleViewActions.fetchArticleStart()).toEqual({
       type: type.FETCH_ARTICLE_START,
     });
   });
 
-  it(`should return an action object once ${type.FETCH_ARTICLE_FAILED} is fired`, () => {
+  it('should return an action object once FETCH_ARTICLE_FAILED is fired', () => {
     expect(articleViewActions.fetchArticleFailed()).toEqual({
       type: type.FETCH_ARTICLE_FAILED,
     });
@@ -35,7 +35,7 @@ describe('ArticleView Actions', () => {
     });
   });
 
-  it(`should return an action object once ${type.FETCH_ARTICLE_SUCCESS} is fired`, () => {
+  it('should return an action object once FETCH_ARTICLE_SUCCESS is fired', () => {
     expect(articleViewActions.fetchArticleSuccess()).toEqual({
       type: type.FETCH_ARTICLE_SUCCESS,
     });

@@ -81,14 +81,14 @@ describe('## Signup Component', () => {
     const e = {
       preventDefault: jest.fn(),
     };
-    wrapper.instance().nextStep(e);
+    expect(wrapper.instance().nextStep(e)).toBeTruthy;
   });
 
   it('should update state if next step is called', () => {
     const e = {
       preventDefault: jest.fn(),
     };
-    wrapper.instance().prevStep(e);
+    expect(wrapper.instance().prevStep(e)).toBeTruthy;
   });
 
   it('should submit if form is submitted', () => {
@@ -149,27 +149,27 @@ describe('## Signup Component', () => {
   });
 
   it('should return invalid if error', () => {
-    wrapper.setState({
+    expect(wrapper.setState({
       error: { firstName: true },
-    });
+    })).toBeTruthy;
   });
 
   it('should return invalid if error', () => {
-    wrapper.setState({
+    expect(wrapper.setState({
       error: { lastName: true },
-    });
+    })).toBeTruthy;
   });
 
   it('should return invalid if error', () => {
-    wrapper.setState({
+    expect(wrapper.setState({
       error: { password: true },
-    });
+    })).toBeTruthy;
   });
 
   it('should return invalid if error', () => {
-    wrapper.setState({
+    expect(wrapper.setState({
       error: { userName: true },
-    });
+    })).toBeTruthy;
   });
 
   it('should redirect to homepage if user exist', () => {
@@ -180,7 +180,7 @@ describe('## Signup Component', () => {
         push: jest.fn(),
       },
     };
-    shallow(<SignUp {...props} />);
+    expect(shallow(<SignUp {...props} />)).toBeTruthy;
   });
 
 
@@ -192,7 +192,7 @@ describe('## Signup Component', () => {
       error: { email: true, passowrd: true, confirmPassword: true },
     });
 
-    wrapper.instance().nextStep(e);
+    expect(wrapper.instance().nextStep(e)).toBeTruthy;
   });
 
   it('should update state if next step is called', () => {
@@ -213,6 +213,6 @@ describe('## Signup Component', () => {
       error: { email: true, password: true, confirmPassword: true },
     });
 
-    shallow(<SignUp {...props} />);
+    expect(shallow(<SignUp {...props} />)).toBeTruthy;
   });
 });

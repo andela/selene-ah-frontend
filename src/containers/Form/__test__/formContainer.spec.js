@@ -25,7 +25,6 @@ describe('###FormContainer', () => {
   it('should submit Form', () => {
     const form = wrapper.find('form');
     form.at(0).simulate('submit');
-    // eslint-disable-next-line
     expect(wrapper.props().onSubmit).toBeCalled;
   });
 });

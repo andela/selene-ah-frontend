@@ -18,19 +18,19 @@ describe('Test the article actions', () => {
 
   afterEach(() => moxios.uninstall());
 
-  it('should return an action if CREATE_ARTICLE is triggerd', () => {
+  it('should return an action if GET_CATEGORY is triggerd', () => {
     expect(categoryActions.getCategory()).toEqual({
       type: categoryActionTypes.GET_CATEGORY,
     });
   });
 
-  it('should return an action if CREATE_ARTICLE_SUCCESS is triggerd', () => {
+  it('should return an action if GET_CATEGORY_SUCCESS is triggerd', () => {
     expect(categoryActions.getCategorySuccess()).toEqual({
       type: categoryActionTypes.GET_CATEGORY_SUCCESS,
     });
   });
 
-  it('should return an action if CREATE_ARTICLE_FAILURE is triggerd', () => {
+  it('should return an action if GET_CATEGORY_FAILURE is triggerd', () => {
     expect(categoryActions.getCategoryFailure()).toEqual({
       type: categoryActionTypes.GET_CATEGORY_FAILURE,
     });

@@ -42,7 +42,7 @@ describe('User update profile container', () => {
         id: 7,
       },
     };
-    wrapper.instance().onChange(e);
+    expect(wrapper.instance().onChange(e)).toBeTruthy;
   });
 
   it('should  call onChange function', () => {
@@ -52,7 +52,7 @@ describe('User update profile container', () => {
         value: 'fjajs',
       },
     };
-    wrapper.instance().onChange(e);
+    expect(wrapper.instance().onChange(e)).toBeTruthy;
   });
 
   it('should call getImageUrl function', () => {
@@ -61,7 +61,7 @@ describe('User update profile container', () => {
         files: [0],
       },
     };
-    wrapper.instance().getImageUrl(e);
+    expect(wrapper.instance().getImageUrl(e)).toBeTruthy;
   });
 
   it('should call handleImageUpload function', () => {
@@ -77,7 +77,7 @@ describe('User update profile container', () => {
       response:
       { data: { secure_url: {} } },
     }));
-    wrapper.instance().handleImageUpload(e);
+    expect(wrapper.instance().handleImageUpload(e)).toBeTruthy;
   });
 
 

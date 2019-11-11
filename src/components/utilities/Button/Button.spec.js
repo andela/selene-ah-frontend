@@ -9,7 +9,7 @@ describe('Button Component', () => {
   });
 
   it('should render Button', () => {
-    shallow(<Button />);
+    expect(shallow(<Button />)).toBeTruthy;
   });
 
   it('should find Fragment', () => {

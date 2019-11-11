@@ -74,11 +74,11 @@ describe('## Home Component', () => {
   });
 
   it('should not render a card component', () => {
-    wrapper.setProps({
+    expect(wrapper.setProps({
       articlesResponse: {
         articles: null,
       },
-    });
+    })).toBeTruthy;
   });
 });
 

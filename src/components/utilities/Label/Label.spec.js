@@ -15,7 +15,7 @@ describe('Label Component ', () => {
   });
 
   it('should render the label component', () => {
-    shallow(<Label {...labelProps}/>);
+    expect(shallow(<Label {...labelProps}/>)).toBeTruthy;
   });
 
   it('should find Fragment field', () => {

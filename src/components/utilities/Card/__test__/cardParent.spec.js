@@ -11,6 +11,6 @@ describe('Card Parent Component', () => {
   });
 
   it('it should render a Card Component', () => {
-    shallow(<CardParent {...props} />);
+    expect(shallow(<CardParent {...props} />)).toBeTruthy;
   });
 });

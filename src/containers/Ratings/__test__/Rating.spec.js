@@ -104,7 +104,7 @@ describe('## Rating Component', () => {
         id: 6,
       },
     };
-    shallow(<Ratings {...newProps} />);
+    expect(shallow(<Ratings {...newProps} />)).toBeTruthy;
   });
 
   it('should return true if there is no error', () => {

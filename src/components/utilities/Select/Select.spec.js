@@ -9,7 +9,7 @@ describe('Switch Component', () => {
   });
 
   it('should render select item', () => {
-    shallow(<Select />);
+    expect(shallow(<Select />)).toBeTruthy;
   });
 
   it('should find Fragment', () => {

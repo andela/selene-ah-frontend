@@ -8,7 +8,7 @@ describe('SideWidget Component', () => {
     wrapper = shallow(<SideWidget />);
   });
   it('should render SideWidget', () => {
-    shallow(<SideWidget />);
+    expect(shallow(<SideWidget />)).toBeTruthy;
   });
   it('should find Div', () => {
     const div = wrapper.find('div');

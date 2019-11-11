@@ -17,19 +17,19 @@ describe('Login Act{ions', () => {
     moxios.uninstall();
   });
 
-  it(`should return an action object once ${type.LOGIN_START} is fired`, () => {
+  it('should return an action object once LOGIN_START is fired', () => {
     expect(loginActions.loginStart()).toEqual({
       type: type.LOGIN_START,
     });
   });
 
-  it(`should return an action object once ${type.LOGIN_FAILED} is fired`, () => {
+  it('should return an action object once LOGIN_FAILED is fired', () => {
     expect(loginActions.loginFailed()).toEqual({
       type: type.LOGIN_FAILED,
     });
   });
 
-  it(`should return an action object once ${type.LOGIN_SUCCESS} is fired`, () => {
+  it('should return an action object once LOGIN_SUCCESS is fired', () => {
     expect(loginActions.loginSuccess()).toEqual({
       type: type.LOGIN_SUCCESS,
     });

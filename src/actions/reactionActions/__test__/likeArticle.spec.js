@@ -46,7 +46,7 @@ describe('Like article actions', () => {
     ).toEqual('Ops');
   });
 
-  it(`should dispatch ${types.LIKE_ARTICLE_SUCCESS} `, async () => {
+  it('should dispatch LIKE_ARTICLE_SUCCESS', async () => {
     const mockResponse = {
       data: {
         data: {
@@ -67,7 +67,7 @@ describe('Like article actions', () => {
     expect(store.getActions()).toEqual(expectedActions);
   });
 
-  it(`should dispatch ${types.LIKE_ARTICLE_FAILURE} `, async () => {
+  it('should dispatch types.LIKE_ARTICLE_FAILURE', async () => {
     const mockResponse = {
       response: {
         data: {

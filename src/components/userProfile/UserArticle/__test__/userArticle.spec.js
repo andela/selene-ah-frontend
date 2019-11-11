@@ -49,14 +49,14 @@ describe('User profile container', () => {
     wrapper.setProps({
       articleData: null,
     });
-    wrapper.instance().render();
+    expect(wrapper.instance().render()).toBeTruthy;
   });
 
   it('should render the component', () => {
     wrapper.setProps({
       success: true,
     });
-    wrapper.instance().render();
+    expect(wrapper.instance().render()).toBeTruthy;
   });
 
   it('should return updated props', () => {

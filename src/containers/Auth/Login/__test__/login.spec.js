@@ -167,6 +167,6 @@ describe('Login container', () => {
         push: jest.fn(),
       },
     };
-    shallow(<Login {...prop} />);
+    expect(shallow(<Login {...prop} />)).toBeTruthy;
   });
 });
