@@ -1,5 +1,5 @@
 import * as type from '../../../actions/userAction/actionTypes';
-import updateProfileReducer, { initialState as defaultState } from '../Profile';
+import updateProfileReducer, { initialState as defaultState } from '../profile';
 import updateObject from '../../../helpers/store/utility';
 
 describe('Update Profile Reducer', () => {

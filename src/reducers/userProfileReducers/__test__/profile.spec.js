@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import * as type from '../../../actions/userAction/actionTypes';
-import profileReducer, { initialState as defaultState } from '../Profile';
+import profileReducer, { initialState as defaultState } from '../profile';
 import updateObject from '../../../helpers/store/utility';
 
 describe('profile Reducer', () => {

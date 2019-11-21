@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import * as ActionTypes from '../../../actions/userStat/actionTypes';
-import reducer, { initialState as defaultState } from '../Statistics';
+import reducer, { initialState as defaultState } from '../statistics';
 import updateObject from '../../../helpers/store/utility';
 
 describe('##User statistics Reducer - SUCCESS', () => {
